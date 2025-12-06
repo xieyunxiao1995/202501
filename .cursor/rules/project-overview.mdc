@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+
+# 真遇圈 Project Overview
+
+真遇圈 is a glamping (glamorous camping) community and tools application built with Flutter.
+
+## Core Identity
+- **Product Name**: 真遇圈
+- **Positioning**: Vertical community and tool platform focused on refined camping (Glamping)
+- **Core Value**: Connecting "inspiration" with "execution" - solving pain points for camping newcomers while satisfying experienced players' needs for recording and sharing
+
+## Architecture
+Bottom navigation with 5 tabs:
+1. **Discovery** - Content feed, Wiki, Creator profiles
+2. **Plan** - Smart planning, Gear checklist, Packing list
+3. **Journal** (Camp Log) - Timeline-based camping records
+4. **Community** - AI assistant chat, Topic circles
+5. **Profile** - User stats, Saved plans, Gear box
+
+## Design Language
+- **Color Scheme**: "Forest Breath" - Classic, calm, professional
+  - Primary: Deep Pine `#1A3C34`
+  - Secondary: Warm Stone `#F2F0EB`
+  - Accent: Ember Orange `#D97D54`
+  - Neutral: Basalt Grey `#333333`
+- **Language**: English
+- **Style**: Magazine layout, large images, natural and healing atmosphere
+
+## Technical Constraints
+- NO freezed package or part syntax
+- State management: Use `setState` only
+- Data storage: `shared_preferences`
+- NO local image assets (assets/images/)
+- NO cached_network_image
+- NO account/authentication features
+- NO external fonts (use system fonts)
+
+## Reference
+Main prototype: [index.html](mdc:index.html)

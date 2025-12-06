@@ -1,0 +1,235 @@
+---
+alwaysApply: true
+---
+
+# 真遇圈 Cursor Rules Index
+
+This directory contains comprehensive development guidelines for the 真遇圈 Flutter app.
+
+## 📋 Available Rules
+
+### Core Documentation
+1. **[project-overview.mdc](mdc:.cursor/rules/project-overview.mdc)**
+   - Product positioning and core values
+   - Design language and color scheme
+   - Technical constraints
+   - Reference to HTML prototype
+
+2. **[architecture.mdc](mdc:.cursor/rules/architecture.mdc)** ⭐ Always Applied
+   - Layer structure (UI, Business Logic, Data)
+   - File organization patterns
+   - State management approach
+   - Data flow principles
+
+### Development Standards
+3. **[coding-standards.mdc](mdc:.cursor/rules/coding-standards.mdc)**
+   - Dart style guide
+   - Code organization patterns
+   - Naming conventions
+   - Model class patterns (without freezed)
+   - Error handling best practices
+
+4. **[ui-design.mdc](mdc:.cursor/rules/ui-design.mdc)**
+   - Color system and 60-30-10 rule
+   - Typography hierarchy
+   - Spacing and border radius standards
+   - Button styles and card designs
+   - Animation guidelines
+
+### Feature Specifications
+5. **[feature-requirements.mdc](mdc:.cursor/rules/feature-requirements.mdc)**
+   - Detailed specs for all 5 tabs
+   - Screen layouts and components
+   - User interaction flows
+   - Data requirements per feature
+
+6. **[data-models.mdc](mdc:.cursor/rules/data-models.mdc)**
+   - Complete model definitions
+   - JSON serialization patterns
+   - Model relationships
+   - Helper methods and enums
+
+### Implementation Guides
+7. **[services.mdc](mdc:.cursor/rules/services.mdc)**
+   - Service layer architecture
+   - LocalStorageService patterns
+   - DataService mock data
+   - WeatherService integration
+   - Best practices for async operations
+
+8. **[navigation.mdc](mdc:.cursor/rules/navigation.mdc)**
+   - Bottom navigation structure
+   - Page routing patterns
+   - Modal sheets and dialogs
+   - Navigation flows per feature
+   - Deep linking structure (future)
+
+9. **[widgets.mdc](mdc:.cursor/rules/widgets.mdc)**
+   - Reusable widget library
+   - Card components (Wiki, Post, Gear, Plan)
+   - Message bubbles
+   - Utility widgets
+   - Widget documentation patterns
+
+10. **[testing.mdc](mdc:.cursor/rules/testing.mdc)**
+    - Test structure and organization
+    - Unit test patterns
+    - Widget test examples
+    - Integration test setup
+    - Mock data fixtures
+
+## 🎯 Quick Reference
+
+### When Starting Development
+1. Read `project-overview.mdc` for context
+2. Review `architecture.mdc` for structure
+3. Follow `coding-standards.mdc` for style
+
+### When Building UI
+1. Check `ui-design.mdc` for design tokens
+2. Use `widgets.mdc` for reusable components
+3. Reference `feature-requirements.mdc` for specs
+
+### When Implementing Features
+1. Define models per `data-models.mdc`
+2. Create services per `services.mdc`
+3. Implement navigation per `navigation.mdc`
+
+### When Writing Tests
+1. Follow patterns in `testing.mdc`
+2. Create fixtures for mock data
+3. Test models, services, widgets, screens
+
+## 🚫 Important Constraints
+
+- **NO** freezed package or part syntax
+- **NO** complex state management (Provider, Bloc, Riverpod)
+- **NO** local image assets (use placeholders)
+- **NO** cached_network_image package
+- **NO** authentication features
+- **NO** external fonts (use system fonts)
+
+## ✅ Approved Technologies
+
+- **State**: `setState()` only
+- **Storage**: `shared_preferences`
+- **Icons**: FontAwesome via `font_awesome_flutter`
+- **HTTP**: Standard `http` package (future)
+
+## 📱 App Structure
+
+```
+lib/
+├── main.dart              # App entry point
+├── app.dart               # MaterialApp config
+├── models/                # Data models (8 files)
+│   ├── user_model.dart
+│   ├── post_model.dart
+│   ├── camp_model.dart
+│   ├── gear_model.dart
+│   ├── wiki_model.dart
+│   ├── log_model.dart
+│   ├── message_model.dart
+│   └── circle_model.dart
+├── services/              # Business logic (3+ files)
+│   ├── local_storage_service.dart
+│   ├── data_service.dart
+│   └── weather_service.dart
+├── screens/               # Full-page views (8 files)
+│   ├── discovery_screen.dart
+│   ├── plan_screen.dart
+│   ├── camp_log_screen.dart
+│   ├── community_screen.dart
+│   ├── profile_screen.dart
+│   ├── creator_profile_screen.dart
+│   ├── wiki_detail_screen.dart
+│   └── post_detail_screen.dart
+├── widgets/               # Reusable components (10+ files)
+│   ├── custom_bottom_nav.dart
+│   ├── custom_app_bar.dart
+│   ├── gear_card.dart
+│   ├── wiki_card.dart
+│   ├── plan_card.dart
+│   ├── post_card.dart
+│   ├── message_bubble.dart
+│   ├── log_entry_card.dart
+│   ├── image_placeholder.dart
+│   ├── section_header.dart
+│   └── category_chip.dart
+└── utils/                 # Utilities (3 files)
+    ├── constants.dart
+    ├── theme.dart
+    └── extensions.dart
+```
+
+## 🎨 Design Tokens
+
+```dart
+// Colors
+primaryColor:    #1A3C34  // Deep Pine
+secondaryColor:  #F2F0EB  // Warm Stone
+accentColor:     #D97D54  // Ember Orange
+neutralColor:    #333333  // Basalt Grey
+
+// Spacing (multiples of 4)
+spacing8, spacing12, spacing16, spacing20, spacing24, spacing32
+
+// Border Radius
+radiusSmall: 8, radiusMedium: 12, radiusLarge: 16, radiusXLarge: 24
+
+// Typography
+heading1: 32px bold
+heading2: 24px bold
+heading3: 18px bold
+bodyLarge: 16px
+bodyMedium: 14px
+bodySmall: 12px
+caption: 10px
+```
+
+## 🔄 Data Flow
+
+```
+User Action
+    ↓
+Widget Callback
+    ↓
+Screen setState
+    ↓
+Service Layer
+    ↓
+SharedPreferences / Mock Data
+    ↓
+Update State
+    ↓
+UI Rebuild
+```
+
+## 📖 How to Use These Rules
+
+1. **Cursor will automatically apply** rules marked with `alwaysApply: true`
+2. **Reference specific rules** by asking: "@data-models how should I structure User model?"
+3. **Search rules** using semantic questions about features or patterns
+4. **Follow patterns** consistently across the codebase
+
+## 🆘 Common Questions
+
+**Q: How do I add a new screen?**
+A: Check `navigation.mdc` for routing patterns and `feature-requirements.mdc` for layout specs
+
+**Q: How do I style a button?**
+A: See `ui-design.mdc` button styles section
+
+**Q: How do I create a new model?**
+A: Follow the pattern in `data-models.mdc` with toJson, fromJson, copyWith
+
+**Q: How do I store data?**
+A: Use `LocalStorageService` as shown in `services.mdc`
+
+**Q: Where do I put reusable components?**
+A: Create widgets in `lib/widgets/` following patterns in `widgets.mdc`
+
+---
+
+Last Updated: 2024-11-24
+Version: 1.0
