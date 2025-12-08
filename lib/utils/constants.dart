@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// App-wide constants for 悦伴
+/// App-wide constants for 实遇记
 /// Following "Forest Breath" design language
 class AppConstants {
   // Private constructor to prevent instantiation
   AppConstants._();
 
   // App Info
-  static const String appName = '悦伴';
+  static const String appName = '实遇记';
   static const String appTagline = 'Glamping Community & Tools';
 
   // Colors - Forest Breath Theme

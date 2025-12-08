@@ -207,7 +207,7 @@ class AppSecurityScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.spacing12),
           Text(
-            '在 悦伴，我们实施多层安全措施来保护您的数据和隐私。了解我们下面的全面安全措施。',
+            '在 实遇记，我们实施多层安全措施来保护您的数据和隐私。了解我们下面的全面安全措施。',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
@@ -496,7 +496,7 @@ class AppSecurityScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.spacing16),
           Text(
-            '悦伴 符合国际安全和隐私标准：',
+            '实遇记 符合国际安全和隐私标准：',
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
               color: Colors.grey[800],

@@ -1,6 +1,6 @@
 ---
 globs: test/**/*.dart
-description: Testing guidelines and patterns for 悦伴 app
+description: Testing guidelines and patterns for 实遇记 app
 ---
 
 # Testing Guidelines

@@ -1,6 +1,6 @@
 ---
 globs: lib/widgets/*.dart
-description: Reusable widget patterns and component library for 悦伴 app
+description: Reusable widget patterns and component library for 实遇记 app
 ---
 
 # Widget Components Library

@@ -1,6 +1,6 @@
 ---
 globs: lib/models/*.dart
-description: Data model definitions and patterns for 悦伴 app
+description: Data model definitions and patterns for 实遇记 app
 ---
 
 # Data Models Reference

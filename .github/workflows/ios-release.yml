@@ -46,7 +46,7 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           WORKING_DIRECTORY: build/ios/ipa
-          IPA_FILE_NAME: 悦伴.ipa
+          IPA_FILE_NAME: 实遇记.ipa
           APPLE_USERNAME: fengliang1993524@icloud.com
           APPLE_PASSWORD: ykbt-pgxt-hmiu-getw
           APPLE_ASC_PROVIDER: LZF7S7L486
