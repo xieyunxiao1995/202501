@@ -1,6 +1,6 @@
 ---
 globs: lib/services/*.dart
-description: Service layer patterns and data management for 真遇圈 app
+description: Service layer patterns and data management for 悦伴 app
 ---
 
 # Services Layer Guidelines

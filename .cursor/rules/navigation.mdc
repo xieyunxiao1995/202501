@@ -1,12 +1,12 @@
 ---
-description: Navigation structure and routing patterns for 真遇圈 app
+description: Navigation structure and routing patterns for 悦伴 app
 ---
 
 # Navigation Guidelines
 
 ## Navigation Architecture
 
-真遇圈 uses a bottom navigation bar with 5 main tabs:
+悦伴 uses a bottom navigation bar with 5 main tabs:
 1. Discovery (Tab 0)
 2. Plan (Tab 1)
 3. Camp Log - Center FAB (Tab 2)
@@ -19,14 +19,14 @@ description: Navigation structure and routing patterns for 真遇圈 app
 
 ### Implementation in `app.dart`
 ```dart
-class 真遇圈App extends StatefulWidget {
-  const 真遇圈App({super.key});
+class 悦伴App extends StatefulWidget {
+  const 悦伴App({super.key});
   
   @override
-  State<真遇圈App> createState() => _真遇圈AppState();
+  State<悦伴App> createState() => _悦伴AppState();
 }
 
-class _真遇圈AppState extends State<真遇圈App> {
+class _悦伴AppState extends State<悦伴App> {
   int _currentIndex = 0;
   
   final List<Widget> _screens = [

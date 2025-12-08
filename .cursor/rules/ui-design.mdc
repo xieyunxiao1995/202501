@@ -1,9 +1,9 @@
 ---
 globs: *.dart
-description: UI design guidelines and styling rules for 真遇圈 app
+description: UI design guidelines and styling rules for 悦伴 app
 ---
 
-# UI Design Guidelines for 真遇圈
+# UI Design Guidelines for 悦伴
 
 ## Design Principles
 1. **Magazine Layout**: Large images, minimal dividers, visual impact

@@ -43,7 +43,7 @@ class UserAgreementScreen extends StatelessWidget {
                         iconBg: const Color(0xFFE3F2FD),
                         title: '1. 接受条款',
                         content:
-                            '通过访问和使用 真遇圈（"本应用"），您接受并同意受本协议条款和规定的约束。如果您不同意这些条款，请不要使用本应用。\n\n本协议自您首次使用本应用之日起生效，并将持续有效，直至任何一方终止。',
+                            '通过访问和使用 悦伴（"本应用"），您接受并同意受本协议条款和规定的约束。如果您不同意这些条款，请不要使用本应用。\n\n本协议自您首次使用本应用之日起生效，并将持续有效，直至任何一方终止。',
                       ),
                       const SizedBox(height: AppConstants.spacing16),
                       _buildSection(
@@ -61,7 +61,7 @@ class UserAgreementScreen extends StatelessWidget {
                         iconBg: const Color(0xFFFFF3E0),
                         title: '3. 用户内容',
                         content:
-                            '您保留在 真遇圈 上发布的所有内容的所有权利，包括照片、视频、露营日志和评论。通过发布内容，您授予我们：\n\n• 全球范围内非独家许可，以使用、展示和分发您的内容\n• 出于技术目的修改内容的权利（例如格式化）\n• 在宣传材料中展示您内容的许可\n\n您声明您拥有或有权使用您发布的所有内容。',
+                            '您保留在 悦伴 上发布的所有内容的所有权利，包括照片、视频、露营日志和评论。通过发布内容，您授予我们：\n\n• 全球范围内非独家许可，以使用、展示和分发您的内容\n• 出于技术目的修改内容的权利（例如格式化）\n• 在宣传材料中展示您内容的许可\n\n您声明您拥有或有权使用您发布的所有内容。',
                       ),
                       const SizedBox(height: AppConstants.spacing16),
                       _buildSection(
@@ -88,7 +88,7 @@ class UserAgreementScreen extends StatelessWidget {
                         iconBg: const Color(0xFFE0F7FA),
                         title: '6. 知识产权',
                         content:
-                            '本应用的所有内容、功能和功能均由 真遇圈 Technologies Inc. 拥有，并受以下保护：\n\n• 版权法\n• 商标法\n• 专利法\n• 商业秘密法\n\n未经书面许可，您不得复制、修改、分发或逆向工程本应用的任何部分。',
+                            '本应用的所有内容、功能和功能均由 悦伴 Technologies Inc. 拥有，并受以下保护：\n\n• 版权法\n• 商标法\n• 专利法\n• 商业秘密法\n\n未经书面许可，您不得复制、修改、分发或逆向工程本应用的任何部分。',
                       ),
                       const SizedBox(height: AppConstants.spacing16),
                       _buildSection(
@@ -212,7 +212,7 @@ class UserAgreementScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.spacing16),
           Text(
-            '在使用 真遇圈 之前，请仔细阅读这些条款。使用我们的应用即表示您同意这些条款和条件。',
+            '在使用 悦伴 之前，请仔细阅读这些条款。使用我们的应用即表示您同意这些条款和条件。',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
@@ -454,7 +454,7 @@ class UserAgreementScreen extends StatelessWidget {
           const SizedBox(width: AppConstants.spacing16),
           Expanded(
             child: Text(
-              'By using 真遇圈, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.',
+              'By using 悦伴, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.',
               style: TextStyle(
                 fontSize: AppConstants.fontSizeMedium,
                 color: Colors.grey[800],

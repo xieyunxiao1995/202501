@@ -39,7 +39,7 @@ class VersionInfoScreen extends StatelessWidget {
                       date: '2025年11月26日',
                       isLatest: true,
                       features: [
-                        '真遇圈 应用首次发布',
+                        '悦伴 应用首次发布',
                         '发现功能，用于查找露营地点',
                         '露营日志追踪和记录',
                         '带有 AI 助手的社区功能',

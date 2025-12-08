@@ -140,7 +140,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           ),
           const SizedBox(height: AppConstants.spacing12),
           Text(
-            '您的想法帮助我们改进 真遇圈。分享您的想法、报告问题，或者让我们知道我们做得如何！',
+            '您的想法帮助我们改进 悦伴。分享您的想法、报告问题，或者让我们知道我们做得如何！',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
@@ -199,7 +199,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           ),
           const SizedBox(height: AppConstants.spacing20),
           const Text(
-            '您如何评价您在 真遇圈 的整体体验？',
+            '您如何评价您在 悦伴 的整体体验？',
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
               color: AppConstants.neutralColor,
@@ -714,7 +714,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               ),
               const SizedBox(height: AppConstants.spacing12),
               Text(
-                '您的反馈已成功提交。感谢您花时间帮助我们改进 真遇圈！',
+                '您的反馈已成功提交。感谢您花时间帮助我们改进 悦伴！',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: AppConstants.fontSizeMedium,

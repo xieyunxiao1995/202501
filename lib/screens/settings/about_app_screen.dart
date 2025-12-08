@@ -123,7 +123,7 @@ class AboutAppScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.spacing20),
           const Text(
-            '真遇圈',
+            '悦伴',
             style: TextStyle(
               fontSize: AppConstants.fontSizeHeading1,
               fontWeight: FontWeight.bold,
@@ -199,7 +199,7 @@ class AboutAppScreen extends StatelessWidget {
               ),
               const SizedBox(width: AppConstants.spacing12),
               const Text(
-                '关于 真遇圈',
+                '关于 悦伴',
                 style: TextStyle(
                   fontSize: AppConstants.fontSizeHeading3,
                   fontWeight: FontWeight.bold,
@@ -210,7 +210,7 @@ class AboutAppScreen extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.spacing20),
           const Text(
-            '您的户外冒险和露营体验的终极伴侣。真遇圈汇聚了充满热情的户外爱好者社区，提供工具和资源来规划、追踪和分享您的露营之旅。',
+            '您的户外冒险和露营体验的终极伴侣。悦伴汇聚了充满热情的户外爱好者社区，提供工具和资源来规划、追踪和分享您的露营之旅。',
             style: TextStyle(
               fontSize: AppConstants.fontSizeMedium,
               color: AppConstants.neutralColor,
@@ -353,7 +353,7 @@ class AboutAppScreen extends StatelessWidget {
           const SizedBox(height: AppConstants.spacing12),
           _buildContactItem(Icons.language, '网站', 'www.celva.app'),
           const SizedBox(height: AppConstants.spacing12),
-          _buildContactItem(Icons.business, '公司', '真遇圈 Technologies Inc.'),
+          _buildContactItem(Icons.business, '公司', '悦伴 Technologies Inc.'),
         ],
       ),
     );
