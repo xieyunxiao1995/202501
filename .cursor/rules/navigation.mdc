@@ -1,12 +1,12 @@
 ---
-description: Navigation structure and routing patterns for 实遇记 app
+description: Navigation structure and routing patterns for 约傍 app
 ---
 
 # Navigation Guidelines
 
 ## Navigation Architecture
 
-实遇记 uses a bottom navigation bar with 5 main tabs:
+约傍 uses a bottom navigation bar with 5 main tabs:
 1. Discovery (Tab 0)
 2. Plan (Tab 1)
 3. Camp Log - Center FAB (Tab 2)
@@ -19,14 +19,14 @@ description: Navigation structure and routing patterns for 实遇记 app
 
 ### Implementation in `app.dart`
 ```dart
-class 实遇记App extends StatefulWidget {
-  const 实遇记App({super.key});
+class 约傍App extends StatefulWidget {
+  const 约傍App({super.key});
   
   @override
-  State<实遇记App> createState() => _实遇记AppState();
+  State<约傍App> createState() => _约傍AppState();
 }
 
-class _实遇记AppState extends State<实遇记App> {
+class _约傍AppState extends State<约傍App> {
   int _currentIndex = 0;
   
   final List<Widget> _screens = [

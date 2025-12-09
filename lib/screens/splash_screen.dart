@@ -337,7 +337,7 @@ class _SplashScreenState extends State<SplashScreen>
                     colors: [Colors.white, Color(0xFFFFF9E6)],
                   ).createShader(bounds),
                   child: const Text(
-                    '实遇记',
+                    '约傍',
                     style: TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.w900,

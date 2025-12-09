@@ -2,7 +2,7 @@
 globs: *.dart
 ---
 
-# Dart Coding Standards for 实遇记
+# Dart Coding Standards for 约傍
 
 ## General Rules
 - Follow official [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style)

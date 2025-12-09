@@ -180,7 +180,7 @@ class AppGuideScreen extends StatelessWidget {
           const Icon(Icons.menu_book, size: 48, color: Colors.white),
           const SizedBox(height: AppConstants.spacing16),
           const Text(
-            '欢迎使用 实遇记！',
+            '欢迎使用 约傍！',
             style: TextStyle(
               fontSize: AppConstants.fontSizeHeading2,
               fontWeight: FontWeight.bold,
