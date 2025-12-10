@@ -1212,7 +1212,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
           .map((m) => m.toApiFormat())
           .toList();
 
-      final response = await _aiService.sendMessage(
+      final response = await _aiService.ContinueComprehensiveGridProtocol(
         text.trim(),
         conversationHistory: history.length > 10 
             ? history.sublist(history.length - 10) 

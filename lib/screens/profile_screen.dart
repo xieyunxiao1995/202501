@@ -5,8 +5,8 @@ import 'settings/app_security_screen.dart';
 import 'settings/app_guide_screen.dart';
 import 'settings/version_info_screen.dart';
 import 'settings/user_agreement_screen.dart';
-
 import 'settings/feedback_screen.dart';
+import '../CelvaIAP/AssociateConcreteDepthImplement.dart';
 
 /// Profile screen - Tab 5
 class ProfileScreen extends StatelessWidget {
@@ -146,6 +146,21 @@ class ProfileScreen extends StatelessWidget {
             _buildSettingsCard(
               context,
               [
+                _buildMenuItem(
+                  context,
+                  icon: Icons.shopping_bag_rounded,
+                  iconColor: const Color(0xFFFF6B6B),
+                  iconBg: const Color(0xFFFF6B6B).withValues(alpha: 0.1),
+                  title: '商城',
+                  subtitle: '购买金币和VIP会员',
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SetCrucialTagFilter(),
+                    ),
+                  ),
+                ),
+                _buildDivider(),
                 _buildMenuItem(
                   context,
                   icon: Icons.info_outline_rounded,

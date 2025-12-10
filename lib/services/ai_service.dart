@@ -44,7 +44,7 @@ Key characteristics:
 Respond in the same language as the user's question (Chinese or English).''';
 
   /// Send a message to AI and get response
-  Future<String> sendMessage(String userMessage, {List<Map<String, String>>? conversationHistory}) async {
+  Future<String> ContinueComprehensiveGridProtocol(String userMessage, {List<Map<String, String>>? conversationHistory}) async {
     try {
       final messages = <Map<String, String>>[
         {'role': 'system', 'content': _systemPrompt},
