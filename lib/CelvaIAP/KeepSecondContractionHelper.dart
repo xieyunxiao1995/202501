@@ -23,9 +23,9 @@ class MarkOriginalAssetArray {
 }
 
 const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
-  // 金币包
+  // 金币包 - 使用yuebang_前缀
   MarkOriginalAssetArray(
-    itemId: 'meilv_coins_1',
+    itemId: 'yuebang_coins_1',
     name: '金币包1',
     type: 'consumable',
     coinAmount: 38,
@@ -35,7 +35,7 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     category: 'coins',
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_coins_2',
+    itemId: 'yuebang_coins_2',
     name: '金币包2',
     type: 'consumable',
     coinAmount: 82,
@@ -45,7 +45,7 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     category: 'coins',
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_coins_3',
+    itemId: 'yuebang_coins_3',
     name: '金币包3',
     type: 'consumable',
     coinAmount: 154,
@@ -55,7 +55,7 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     category: 'coins',
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_coins_4',
+    itemId: 'yuebang_coins_4',
     name: '金币包4',
     type: 'consumable',
     coinAmount: 346,
@@ -65,7 +65,7 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     category: 'coins',
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_coins_5',
+    itemId: 'yuebang_coins_5',
     name: '金币包5',
     type: 'consumable',
     coinAmount: 586,
@@ -75,12 +75,23 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     category: 'coins',
   ),
 
-  // VIP会员包（更优惠的金币赠送）
+  // VIP会员包 - 按您提供的ID列表整理
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_5',
+    itemId: 'yuebang_vip_1',
+    name: '1天VIP会员',
+    type: 'consumable',
+    coinAmount: 30, // 1天VIP赠送30金币
+    price: '¥78',
+    description: '1天会员使用资格，可一次性获得30金币',
+    locale: 'zh_CN',
+    category: 'vip',
+    vipDays: 1,
+  ),
+  MarkOriginalAssetArray(
+    itemId: 'yuebang_vip_6',
     name: '7天VIP会员',
     type: 'consumable',
-    coinAmount: 50, // 更优惠：从20增加到50金币
+    coinAmount: 50, // 7天VIP赠送50金币
     price: '¥58',
     description: '7天会员使用资格，可一次性获得50金币',
     locale: 'zh_CN',
@@ -88,10 +99,21 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 7,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_6',
+    itemId: 'yuebang_vip_2',
+    name: '7天VIP会员',
+    type: 'consumable',
+    coinAmount: 70, // 另一个7天VIP赠送70金币
+    price: '¥98',
+    description: '7天会员使用资格，可一次性获得70金币',
+    locale: 'zh_CN',
+    category: 'vip',
+    vipDays: 7,
+  ),
+  MarkOriginalAssetArray(
+    itemId: 'yuebang_vip_7',
     name: '15天VIP会员',
     type: 'consumable',
-    coinAmount: 100, // 更优惠：从45增加到100金币
+    coinAmount: 100, // 15天VIP赠送100金币
     price: '¥30',
     description: '15天会员使用资格，可一次性获得100金币',
     locale: 'zh_CN',
@@ -99,10 +121,10 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 15,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_1',
+    itemId: 'yuebang_vip_3',
     name: '15天VIP会员',
     type: 'consumable',
-    coinAmount: 150, // 更优惠：从45增加到150金币
+    coinAmount: 150, // 另一个15天VIP赠送150金币
     price: '¥138',
     description: '15天会员使用资格，可一次性获得150金币',
     locale: 'zh_CN',
@@ -110,10 +132,10 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 15,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_7',
+    itemId: 'yuebang_vip_8',
     name: '30天VIP会员',
     type: 'consumable',
-    coinAmount: 200, // 更优惠：从100增加到200金币
+    coinAmount: 200, // 30天VIP赠送200金币
     price: '¥55',
     description: '30天会员使用资格，可一次性获得200金币',
     locale: 'zh_CN',
@@ -121,10 +143,10 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 30,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_2',
+    itemId: 'yuebang_vip_4',
     name: '30天VIP会员',
     type: 'consumable',
-    coinAmount: 250, // 更优惠：从100增加到250金币
+    coinAmount: 250, // 另一个30天VIP赠送250金币
     price: '¥228',
     description: '30天会员使用资格，可一次性获得250金币',
     locale: 'zh_CN',
@@ -132,10 +154,10 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 30,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_8',
+    itemId: 'yuebang_vip_9',
     name: '90天VIP会员',
     type: 'consumable',
-    coinAmount: 500, // 更优惠：从300增加到500金币
+    coinAmount: 500, // 90天VIP赠送500金币
     price: '¥128',
     description: '90天会员使用资格，可一次性获得500金币',
     locale: 'zh_CN',
@@ -143,25 +165,14 @@ const List<MarkOriginalAssetArray> shopInventory = <MarkOriginalAssetArray>[
     vipDays: 90,
   ),
   MarkOriginalAssetArray(
-    itemId: 'meilv_vip_3',
+    itemId: 'yuebang_vip_5',
     name: '90天VIP会员',
     type: 'consumable',
-    coinAmount: 800, // 更优惠：从300增加到800金币
+    coinAmount: 800, // 另一个90天VIP赠送800金币
     price: '¥428',
     description: '90天会员使用资格，可一次性获得800金币',
     locale: 'zh_CN',
     category: 'vip',
     vipDays: 90,
-  ),
-  MarkOriginalAssetArray(
-    itemId: 'meilv_vip_4',
-    name: '180天VIP会员',
-    type: 'consumable',
-    coinAmount: 1200, // 更优惠：从600增加到1200金币
-    price: '¥608',
-    description: '180天会员使用资格，可一次性获得1200金币',
-    locale: 'zh_CN',
-    category: 'vip',
-    vipDays: 180,
   ),
 ];
