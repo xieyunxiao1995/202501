@@ -84,6 +84,9 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
         return titleMatch || descriptionMatch || creatorMatch || usernameMatch;
       }).toList();
     }
+
+    // 过滤掉被屏蔽用户的内容 - 立即从 feed 中移除
+    _posts = _dataService.filterBlockedUserPosts(_posts);
   }
 
   void _onCategoryChanged(String category) {
@@ -974,7 +977,9 @@ class _DiscoveryScreenState extends State<DiscoveryScreen> {
             gradient: LinearGradient(
               colors: [
                 _getCategoryColorForTab(_selectedCategory),
-                _getCategoryColorForTab(_selectedCategory).withValues(alpha: 0.8),
+                _getCategoryColorForTab(
+                  _selectedCategory,
+                ).withValues(alpha: 0.8),
               ],
             ),
             borderRadius: BorderRadius.circular(25),

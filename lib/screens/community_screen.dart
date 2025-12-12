@@ -19,11 +19,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
   final _messageController = TextEditingController();
   final _scrollController = ScrollController();
   final _focusNode = FocusNode();
-  
+
   final List<ChatMessage> _messages = [];
   bool _isLoading = false;
   bool _showChat = false;
-  
+
   static const int _maxInputLength = 300; // 输入上限300字符
 
   @override
@@ -41,7 +41,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
     _messages.add(
       ChatMessage(
         id: 'welcome',
-        content: '你好！我是 Camp Copilot，你的专业露营助手。\n\n我可以帮你解答关于露营的任何问题，比如：\n• 装备选择建议\n• 营地推荐\n• 露营技巧\n• 天气应对\n• 安全注意事项\n\n有什么我可以帮助你的吗？',
+        content:
+            '你好！我是 Camp Copilot，你的专业露营助手。\n\n我可以帮你解答关于露营的任何问题，比如：\n• 装备选择建议\n• 营地推荐\n• 露营技巧\n• 天气应对\n• 安全注意事项\n\n有什么我可以帮助你的吗？',
         isUser: false,
         timestamp: DateTime.now(),
       ),
@@ -212,7 +213,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
               ],
             ),
             child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF667EEA), size: 20),
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xFF667EEA),
+                size: 20,
+              ),
               onPressed: () {
                 setState(() {
                   _showChat = false;
@@ -235,10 +240,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 ),
                 Text(
                   '专业露营问答',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey[600],
-                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                 ),
               ],
             ),
@@ -250,7 +252,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
-                icon: const Icon(Icons.delete_outline, color: Colors.red, size: 20),
+                icon: const Icon(
+                  Icons.delete_outline,
+                  color: Colors.red,
+                  size: 20,
+                ),
                 tooltip: '清除所有消息',
                 onPressed: _showClearConfirmDialog,
               ),
@@ -352,11 +358,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
     );
   }
 
-
-
   Widget _buildCampingTipsSection() {
     final tips = _dataService.getPopularCampingTips(limit: 6);
-    
+
     return SliverToBoxAdapter(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -376,7 +380,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFF667EEA).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
@@ -464,7 +471,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   ),
                   const Spacer(),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
                       color: const Color(0xFF667EEA).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
@@ -532,36 +542,33 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
   Widget _buildPopularTopicsSection() {
     final moreTips = _dataService.getCampingTips().skip(6).take(6).toList();
-    
+
     return SliverPadding(
       padding: const EdgeInsets.all(20),
       sliver: SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            if (index == 0) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 16),
-                  const Text(
-                    '更多问题',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF1A1D29),
-                    ),
+        delegate: SliverChildBuilderDelegate((context, index) {
+          if (index == 0) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16),
+                const Text(
+                  '更多问题',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1A1D29),
                   ),
-                  const SizedBox(height: 16),
-                ],
-              );
-            }
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: _buildModernTopicCard(moreTips[index - 1]),
+                ),
+                const SizedBox(height: 16),
+              ],
             );
-          },
-          childCount: moreTips.length + 1,
-        ),
+          }
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: _buildModernTopicCard(moreTips[index - 1]),
+          );
+        }, childCount: moreTips.length + 1),
       ),
     );
   }
@@ -604,10 +611,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Center(
-                child: Text(
-                  tip.emoji,
-                  style: const TextStyle(fontSize: 26),
-                ),
+                child: Text(tip.emoji, style: const TextStyle(fontSize: 26)),
               ),
             ),
             const SizedBox(width: 14),
@@ -629,11 +633,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      Icon(
-                        Icons.visibility,
-                        size: 14,
-                        color: Colors.grey[500],
-                      ),
+                      Icon(Icons.visibility, size: 14, color: Colors.grey[500]),
                       const SizedBox(width: 4),
                       Text(
                         '${tip.viewCount} 次',
@@ -645,7 +645,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       ),
                       const SizedBox(width: 12),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 3,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xFF667EEA).withOpacity(0.1),
                           borderRadius: BorderRadius.circular(8),
@@ -691,7 +694,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         child: _buildMessageContent(message),
       );
     }
-    
+
     return Padding(
       padding: const EdgeInsets.only(bottom: AppConstants.spacing12),
       child: GestureDetector(
@@ -703,8 +706,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
   Widget _buildMessageContent(ChatMessage message) {
     return Row(
-      mainAxisAlignment:
-          message.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      mainAxisAlignment: message.isUser
+          ? MainAxisAlignment.end
+          : MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (!message.isUser) ...[
@@ -867,9 +871,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
   Widget _buildQuickSuggestions() {
     if (_messages.length > 1) return const SizedBox.shrink();
-    
+
     final suggestions = _aiService.getQuickSuggestions();
-    
+
     return Container(
       height: 44,
       margin: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
@@ -883,7 +887,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
             child: GestureDetector(
               onTap: () => _sendMessage(suggestions[index]),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -1023,9 +1030,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               Navigator.pop(context);
               _clearAllMessages();
             },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.red,
-            ),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('清除'),
           ),
         ],
@@ -1039,12 +1044,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
       _messages.clear();
       _addWelcomeMessage();
     });
-    
+
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('已清除所有消息'),
-        duration: Duration(seconds: 2),
-      ),
+      const SnackBar(content: Text('已清除所有消息'), duration: Duration(seconds: 2)),
     );
   }
 
@@ -1073,10 +1075,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             const SizedBox(height: AppConstants.spacing20),
             ListTile(
               leading: const Icon(Icons.delete_outline, color: Colors.red),
-              title: const Text(
-                '删除消息',
-                style: TextStyle(color: Colors.red),
-              ),
+              title: const Text('删除消息', style: TextStyle(color: Colors.red)),
               onTap: () {
                 Navigator.pop(context);
                 _deleteMessage(index);
@@ -1106,17 +1105,22 @@ class _CommunityScreenState extends State<CommunityScreen> {
     setState(() {
       _messages.removeAt(index);
     });
-    
+
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('消息已删除'),
-        duration: Duration(seconds: 2),
-      ),
+      const SnackBar(content: Text('消息已删除'), duration: Duration(seconds: 2)),
     );
   }
 
   // 举报消息
+  // 临时存储正在举报的消息信息
+  String? _reportingMessageId;
+  String? _reportingMessageContent;
+
   void _reportMessage(ChatMessage message) {
+    // 保存消息信息供 _submitReport 使用
+    _reportingMessageId = message.id;
+    _reportingMessageContent = message.content;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -1153,7 +1157,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
-            Icon(Icons.radio_button_unchecked, size: 20, color: Colors.grey[600]),
+            Icon(
+              Icons.radio_button_unchecked,
+              size: 20,
+              color: Colors.grey[600],
+            ),
             const SizedBox(width: 12),
             Text(reason),
           ],
@@ -1162,20 +1170,36 @@ class _CommunityScreenState extends State<CommunityScreen> {
     );
   }
 
-  void _submitReport(String reason) {
-    // 这里可以实现实际的举报逻辑，比如发送到服务器
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('已提交举报：$reason'),
-        duration: const Duration(seconds: 2),
-        action: SnackBarAction(
-          label: '撤销',
-          onPressed: () {
-            // 撤销举报的逻辑
-          },
-        ),
-      ),
-    );
+  void _submitReport(String reason) async {
+    // 实现实际的举报逻辑，发送到服务器
+    try {
+      // 获取当前正在举报的消息（需要从上下文传递）
+      // 这里假设我们在 _reportMessage 中已经保存了消息引用
+      await _dataService.reportMessage(
+        messageId: _reportingMessageId ?? 'unknown',
+        messageContent: _reportingMessageContent ?? '',
+        reason: reason,
+      );
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('已提交举报：$reason\n我们将在24小时内审核'),
+            duration: const Duration(seconds: 3),
+            backgroundColor: Colors.orange,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('提交失败，请稍后重试'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _sendMessage(String text) async {
@@ -1214,8 +1238,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
       final response = await _aiService.ContinueComprehensiveGridProtocol(
         text.trim(),
-        conversationHistory: history.length > 10 
-            ? history.sublist(history.length - 10) 
+        conversationHistory: history.length > 10
+            ? history.sublist(history.length - 10)
             : history,
       );
 
@@ -1245,13 +1269,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
       setState(() {
         _isLoading = false;
       });
-      
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('发送失败: $e'),
-            backgroundColor: Colors.red,
-          ),
+          SnackBar(content: Text('发送失败: $e'), backgroundColor: Colors.red),
         );
       }
     }

@@ -12,15 +12,12 @@ class SetCrucialTagFilter extends StatefulWidget {
   State<SetCrucialTagFilter> createState() => GetNextQuaternionList();
 }
 
-class GetNextQuaternionList extends State<SetCrucialTagFilter>
-    with SingleTickerProviderStateMixin {
+class GetNextQuaternionList extends State<SetCrucialTagFilter> {
   int _coinBalance = 3600;
   final GetIntuitiveGridDecorator _shopManager = GetIntuitiveGridDecorator.instance;
-  late List<MarkOriginalAssetArray> _coinPacks;
-  late List<MarkOriginalAssetArray> _vipPacks;
+  late List<MarkOriginalAssetArray> _allPacks;
   Map<String, ProductDetails> _productDetails = {};
   bool _isLoading = true;
-  late TabController _tabController;
 
   // Forest Breath Color Scheme
   static const primaryColor = Color(0xFF1A3C34);
@@ -31,14 +28,11 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
     ContinueMainIntegrationTarget();
     _shopManager.onPurchaseComplete = StopUnactivatedRemainderArray;
     _shopManager.onPurchaseError = StartUniqueBufferCollection;
 
-    final allItems = _shopManager.SetEphemeralGridObserver();
-    _coinPacks = allItems.where((item) => item.category == 'coins').toList();
-    _vipPacks = allItems.where((item) => item.category == 'vip').toList();
+    _allPacks = _shopManager.SetEphemeralGridObserver();
 
     _loadProducts();
   }
@@ -50,8 +44,7 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
 
     try {
       await _shopManager.initialized;
-      final allBundles = [..._coinPacks, ..._vipPacks];
-      for (var bundle in allBundles) {
+      for (var bundle in _allPacks) {
         try {
           final product = await _shopManager.SetSmartNormObserver(bundle.itemId);
           setState(() {
@@ -69,12 +62,6 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
         _isLoading = false;
       });
     }
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
   }
 
   Future<void> ContinueMainIntegrationTarget() async {
@@ -150,14 +137,10 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
           children: [
             _buildHeader(),
             _buildBalanceCard(),
-            _buildTabBar(),
             Expanded(
               child: _isLoading
                   ? _buildLoadingState()
-                  : TabBarView(
-                      controller: _tabController,
-                      children: [_buildCoinPacksView(), _buildVIPPacksView()],
-                    ),
+                  : _buildAllPacksView(),
             ),
           ],
         ),
@@ -260,40 +243,6 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
     );
   }
 
-  Widget _buildTabBar() {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: TabBar(
-        controller: _tabController,
-        indicator: BoxDecoration(
-          color: primaryColor,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        indicatorSize: TabBarIndicatorSize.tab,
-        dividerColor: Colors.transparent,
-        labelColor: Colors.white,
-        unselectedLabelColor: neutralColor,
-        labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        padding: const EdgeInsets.all(4),
-        tabs: const [
-          Tab(text: '金币'),
-          Tab(text: 'VIP会员'),
-        ],
-      ),
-    );
-  }
-
   Widget _buildLoadingState() {
     return Center(
       child: CircularProgressIndicator(
@@ -302,19 +251,18 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
     );
   }
 
-  Widget _buildCoinPacksView() {
+  Widget _buildAllPacksView() {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      itemCount: _coinPacks.length,
-      itemBuilder: (context, index) => _buildCoinPackCard(_coinPacks[index]),
-    );
-  }
-
-  Widget _buildVIPPacksView() {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      itemCount: _vipPacks.length,
-      itemBuilder: (context, index) => _buildVIPPackCard(_vipPacks[index]),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      itemCount: _allPacks.length,
+      itemBuilder: (context, index) {
+        final pack = _allPacks[index];
+        if (pack.category == 'coins') {
+          return _buildCoinPackCard(pack);
+        } else {
+          return _buildVIPPackCard(pack);
+        }
+      },
     );
   }
 
@@ -483,9 +431,9 @@ class GetNextQuaternionList extends State<SetCrucialTagFilter>
                         color: Color(0xFFFFD700),
                       ),
                       const SizedBox(width: 6),
-                      Text(
-                        '${bundle.vipDays}天VIP',
-                        style: const TextStyle(
+                      const Text(
+                        '礼包',
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: primaryColor,

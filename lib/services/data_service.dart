@@ -1691,7 +1691,7 @@ class DataService {
             ],
             creatorId: userId,
             isPublic: true,
-              ),
+          ),
         ];
 
       case '14': // Beach Camper
@@ -1743,7 +1743,7 @@ class DataService {
             ],
             creatorId: userId,
             isPublic: true,
-              ),
+          ),
         ];
 
       case '15': // Vintage Camper
@@ -1795,7 +1795,7 @@ class DataService {
             ],
             creatorId: userId,
             isPublic: true,
-              ),
+          ),
         ];
 
       case '16': // Adventure Mom
@@ -1847,7 +1847,7 @@ class DataService {
             ],
             creatorId: userId,
             isPublic: true,
-              ),
+          ),
         ];
 
       case '17': // Desert Rat
@@ -1899,7 +1899,7 @@ class DataService {
             ],
             creatorId: userId,
             isPublic: true,
-              ),
+          ),
         ];
 
       case '18': // Camp Photographer
@@ -2794,67 +2794,38 @@ class DataService {
     final descriptions = {
       'plan_1_1': '专注于技能而非装备的极简野外生存配置。适合那些想要使用传统技术和轻量装备与自然连接的人。',
       'plan_1_2': '专为高山环境的风景和野生动物摄影设计。在相机装备重量和舒适露营必需品之间取得平衡，适合多日拍摄。',
-      'plan_2_1':
-          '真实世界装备测试配置，用于比较不同产品。完美适用于在实际野外条件下评测露营装备。',
-      'plan_2_2':
-          '经济实惠的入门套装，证明你不需要昂贵装备就能开始露营。每件物品都是为了在预算内获得价值和可靠性而选择。',
-      'plan_3_1':
-          '高海拔登顶露营装备。在严酷山地条件下测试的轻量但可靠的设备。每件装备都在海拔3000米以上证明了其价值。',
-      'plan_4_1':
-          '将任何营地转变为五星级户外厨房。这套配置将美食烹饪带入荒野，不妥协风味或技术。',
-      'plan_5_1':
-          '快速轻量越野跑露营系统。设计用于快速覆盖距离，同时在夜晚舒适露营。',
+      'plan_2_1': '真实世界装备测试配置，用于比较不同产品。完美适用于在实际野外条件下评测露营装备。',
+      'plan_2_2': '经济实惠的入门套装，证明你不需要昂贵装备就能开始露营。每件物品都是为了在预算内获得价值和可靠性而选择。',
+      'plan_3_1': '高海拔登顶露营装备。在严酷山地条件下测试的轻量但可靠的设备。每件装备都在海拔3000米以上证明了其价值。',
+      'plan_4_1': '将任何营地转变为五星级户外厨房。这套配置将美食烹饪带入荒野，不妥协风味或技术。',
+      'plan_5_1': '快速轻量越野跑露营系统。设计用于快速覆盖距离，同时在夜晚舒适露营。',
       'plan_6_1':
           '正确的豪华露营 - 舒适与风格遇见户外冒险。创造一个舒适、值得发朋友圈的大本营，拥有所有现代便利设施，同时与自然保持连接。',
-      'plan_7_1':
-          '为天体摄影和观星优化。用于在暗夜地点捕捉夜空的重型设备。',
-      'plan_8_1':
-          '为严肃背包客测试和完善的超轻系统。每克都计算在内，每件装备都有多重用途。包括庇护所在内基础重量不到6公斤。',
-      'plan_9_1':
-          '防水皮划艇露营系统，用于岛屿跳跃。即使在恶劣水况下，所有装备都能保持干燥。',
-      'plan_10_1':
-          '经过验证的极寒冬季露营系统。设计用于-30°C低温，内置安全冗余。在44次冬季探险中使用。',
-      'plan_11_1':
-          '配备先进导航工具的越野探索套装。专注安全的配置，用于进入未知领域。',
+      'plan_7_1': '为天体摄影和观星优化。用于在暗夜地点捕捉夜空的重型设备。',
+      'plan_8_1': '为严肃背包客测试和完善的超轻系统。每克都计算在内，每件装备都有多重用途。包括庇护所在内基础重量不到6公斤。',
+      'plan_9_1': '防水皮划艇露营系统，用于岛屿跳跃。即使在恶劣水况下，所有装备都能保持干燥。',
+      'plan_10_1': '经过验证的极寒冬季露营系统。设计用于-30°C低温，内置安全冗余。在44次冬季探险中使用。',
+      'plan_11_1': '配备先进导航工具的越野探索套装。专注安全的配置，用于进入未知领域。',
       'plan_12_1': '面向家庭的露营配置，专为孩子和父母设计。强调安全、舒适，以及共同创造持久的回忆。',
-      'plan_13_1':
-          '超极简徒步系统。精简到长距离步道的绝对必需品。实现了不到5公斤的基础重量。',
-      'plan_14_1':
-          '海滩和海岸露营专用装备。防沙、防水，为海边冒险优化。',
-      'plan_15_1':
-          '使用传统帆布和过去几十年经过时间考验的装备的经典复古露营体验。',
-      'plan_16_1':
-          '具有增强安全功能的独行女性背包配置。轻量但包含所有必要的应急设备。',
-      'plan_17_1':
-          '干旱环境的沙漠干露营系统。大容量储水和防晒保护，适用于炎热无水条件。',
-      'plan_18_1':
-          '专业风景摄影露营配置。保护性相机存储，配备多日拍摄所需的所有舒适设施。',
-      'plan_19_1':
-          '钓鱼者天堂露营套装，结合钓鱼装备和舒适大本营。新鲜渔获到餐桌的配置。',
-      'plan_20_1':
-          '用于长途公路旅行的完整房车生活系统。配备太阳能和完整设施的自给自足移动家园。',
-      'plan_21_1':
-          '为脚踏动力冒险设计的自行车包装旅行套装。平衡的重量分配，适合舒适的骑行和露营。',
-      'plan_22_1':
-          '专注觅食的露营配置，配备识别和采集野生食材的工具。野外生存遇见烹饪冒险。',
-      'plan_23_1':
-          '完整的吊床露营系统，证明帐篷是可选的。在任何林地区域舒适的高架睡眠。',
-      'plan_24_1':
-          '配备所有必需技术装备的攀岩大本营。重型但全面的多段攀岩旅行配置。',
-      'plan_25_1':
-          '为耐心观察野生动物优化的观鸟营地。长时间自然观察的舒适配置。',
-      'plan_26_1':
-          '专注技能和冗余的野外生存训练套装。为每项基本生存任务提供多种方法。',
-      'plan_27_1':
-          '瑜伽和健康静修露营配置。用正念工具创造宁静的户外练习空间。',
-      'plan_28_1':
-          '狗狗友好的露营套装，你的最好朋友也能一起来。宠物专用装备确保人类和犬类都舒适。',
-      'plan_29_1':
-          '具有教育重点的历史遗址露营。在探索遗产地点时学习的书籍和研究材料。',
-      'plan_30_1':
-          '用于在自然中创作的作家静修露营配置。高效工作空间结合荒野灵感。',
-      'plan_31_1':
-          '用于教授户外技能的团体教育营地。包含专业级安全设备和教学材料。',
+      'plan_13_1': '超极简徒步系统。精简到长距离步道的绝对必需品。实现了不到5公斤的基础重量。',
+      'plan_14_1': '海滩和海岸露营专用装备。防沙、防水，为海边冒险优化。',
+      'plan_15_1': '使用传统帆布和过去几十年经过时间考验的装备的经典复古露营体验。',
+      'plan_16_1': '具有增强安全功能的独行女性背包配置。轻量但包含所有必要的应急设备。',
+      'plan_17_1': '干旱环境的沙漠干露营系统。大容量储水和防晒保护，适用于炎热无水条件。',
+      'plan_18_1': '专业风景摄影露营配置。保护性相机存储，配备多日拍摄所需的所有舒适设施。',
+      'plan_19_1': '钓鱼者天堂露营套装，结合钓鱼装备和舒适大本营。新鲜渔获到餐桌的配置。',
+      'plan_20_1': '用于长途公路旅行的完整房车生活系统。配备太阳能和完整设施的自给自足移动家园。',
+      'plan_21_1': '为脚踏动力冒险设计的自行车包装旅行套装。平衡的重量分配，适合舒适的骑行和露营。',
+      'plan_22_1': '专注觅食的露营配置，配备识别和采集野生食材的工具。野外生存遇见烹饪冒险。',
+      'plan_23_1': '完整的吊床露营系统，证明帐篷是可选的。在任何林地区域舒适的高架睡眠。',
+      'plan_24_1': '配备所有必需技术装备的攀岩大本营。重型但全面的多段攀岩旅行配置。',
+      'plan_25_1': '为耐心观察野生动物优化的观鸟营地。长时间自然观察的舒适配置。',
+      'plan_26_1': '专注技能和冗余的野外生存训练套装。为每项基本生存任务提供多种方法。',
+      'plan_27_1': '瑜伽和健康静修露营配置。用正念工具创造宁静的户外练习空间。',
+      'plan_28_1': '狗狗友好的露营套装，你的最好朋友也能一起来。宠物专用装备确保人类和犬类都舒适。',
+      'plan_29_1': '具有教育重点的历史遗址露营。在探索遗产地点时学习的书籍和研究材料。',
+      'plan_30_1': '用于在自然中创作的作家静修露营配置。高效工作空间结合荒野灵感。',
+      'plan_31_1': '用于教授户外技能的团体教育营地。包含专业级安全设备和教学材料。',
     };
     return descriptions[planId];
   }
@@ -2885,17 +2856,8 @@ class DataService {
         ],
       },
       'plan_1_2': {
-        'highlights': [
-          '专用相机保护系统',
-          '装备防风雨庇护所',
-          '寒冷天气额外电池容量',
-          '长时间拍摄的舒适大本营',
-        ],
-        'tips': [
-          '夜晚将电池放在睡袋中保温',
-          '携带硅胶包防潮',
-          '围绕黄金时刻规划拍摄',
-        ],
+        'highlights': ['专用相机保护系统', '装备防风雨庇护所', '寒冷天气额外电池容量', '长时间拍摄的舒适大本营'],
+        'tips': ['夜晚将电池放在睡袋中保温', '携带硅胶包防潮', '围绕黄金时刻规划拍摄'],
       },
       'plan_3_1': {
         'highlights': [
@@ -2904,11 +2866,7 @@ class DataService {
           '快速搭建帐篷便于快速建营',
           '高海拔综合营养系统',
         ],
-        'tips': [
-          '适当适应高度 - 不要急于攀升',
-          '每日检查天气预报并制定撤离计划',
-          '日出前开始登顶以获得最佳条件',
-        ],
+        'tips': ['适当适应高度 - 不要急于攀升', '每日检查天气预报并制定撤离计划', '日出前开始登顶以获得最佳条件'],
       },
       'plan_4_1': {
         'highlights': [
@@ -2917,26 +2875,11 @@ class DataService {
           '汽车露营优化 - 开车到营地',
           '优质冷藏箱保存新鲜食物',
         ],
-        'tips': [
-          '出行前给铸铁调味',
-          '在家准备食材节省时间',
-          '为荷兰烤箱烹饪带额外木炭',
-          '将冷藏箱放在阴凉处并每日加冰',
-        ],
+        'tips': ['出行前给铸铁调味', '在家准备食材节省时间', '为荷兰烤箱烹饪带额外木炭', '将冷藏箱放在阴凉处并每日加冰'],
       },
       'plan_6_1': {
-        'highlights': [
-          '宽敞钟形帐篷可直立',
-          '舒适睡眠系统',
-          '环境照明营造氛围',
-          '优质咖啡设备享受晨光',
-        ],
-        'tips': [
-          '早到以便正确搭建',
-          '为营地电源带延长线',
-          '添加地毯和纺织品营造舒适内饰',
-          '定时灯串自动营造氛围',
-        ],
+        'highlights': ['宽敞钟形帐篷可直立', '舒适睡眠系统', '环境照明营造氛围', '优质咖啡设备享受晨光'],
+        'tips': ['早到以便正确搭建', '为营地电源带延长线', '添加地毯和纺织品营造舒适内饰', '定时灯串自动营造氛围'],
       },
       'plan_8_1': {
         'highlights': [
@@ -2945,12 +2888,7 @@ class DataService {
           '每件物品都有多重用途',
           'Dyneema面料节省重量',
         ],
-        'tips': [
-          '出行前称重所有物品',
-          '学习在不同配置下搭建帐篷',
-          '被子需要正确的睡眠技巧',
-          '酒精炉在无风条件下效果最佳',
-        ],
+        'tips': ['出行前称重所有物品', '学习在不同配置下搭建帐篷', '被子需要正确的睡眠技巧', '酒精炉在无风条件下效果最佳'],
       },
       'plan_10_1': {
         'highlights': [
@@ -2968,354 +2906,104 @@ class DataService {
         ],
       },
       'plan_2_1': {
-        'highlights': [
-          '真实世界测试条件',
-          '装备并排比较',
-          '客观性能数据收集',
-          '所有物品都有记录和评级',
-        ],
-        'tips': [
-          '带笔记本做详细记录',
-          '在各种天气条件下测试装备',
-          '客观记录优缺点',
-          '与社区分享发现',
-        ],
+        'highlights': ['真实世界测试条件', '装备并排比较', '客观性能数据收集', '所有物品都有记录和评级'],
+        'tips': ['带笔记本做详细记录', '在各种天气条件下测试装备', '客观记录优缺点', '与社区分享发现'],
       },
       'plan_5_1': {
-        'highlights': [
-          '超轻量低于7公斤总重量',
-          '跑步友好的最小背包',
-          '5分钟内快速建营',
-          '每日可覆盖40公里以上',
-        ],
-        'tips': [
-          '长跑前磨合鞋子',
-          '在路上持续补水',
-          '早起避开正午高温',
-          '打包电解质补充剂',
-        ],
+        'highlights': ['超轻量低于7公斤总重量', '跑步友好的最小背包', '5分钟内快速建营', '每日可覆盖40公里以上'],
+        'tips': ['长跑前磨合鞋子', '在路上持续补水', '早起避开正午高温', '打包电解质补充剂'],
       },
       'plan_7_1': {
-        'highlights': [
-          'Bortle 1-2级最佳位置',
-          '完整天体摄影设备',
-          '长曝光能力',
-          '整夜拍摄的保暖睡眠系统',
-        ],
-        'tips': [
-          '规划前检查月相',
-          '日落前到达进行设置',
-          '天黑后只使用红光',
-          '在睡袋中保存额外电池',
-        ],
+        'highlights': ['Bortle 1-2级最佳位置', '完整天体摄影设备', '长曝光能力', '整夜拍摄的保暖睡眠系统'],
+        'tips': ['规划前检查月相', '日落前到达进行设置', '天黑后只使用红光', '在睡袋中保存额外电池'],
       },
       'plan_9_1': {
-        'highlights': [
-          '完全防水打包系统',
-          '海滩登陆优化',
-          '轻量皮划艇装备',
-          '具备岛屿跳跃能力',
-        ],
-        'tips': [
-          '关键电子设备双重打包',
-          '出发前检查潮汐表',
-          '将最重物品放在皮划艇底部',
-          '携带备用桨浮',
-        ],
+        'highlights': ['完全防水打包系统', '海滩登陆优化', '轻量皮划艇装备', '具备岛屿跳跃能力'],
+        'tips': ['关键电子设备双重打包', '出发前检查潮汐表', '将最重物品放在皮划艇底部', '携带备用桨浮'],
       },
       'plan_11_1': {
-        'highlights': [
-          '先进GPS和卫星通信',
-          '传统和数字导航',
-          '包含应急定位信标',
-          '专为越野探索设计',
-        ],
-        'tips': [
-          '始终告知他人你的路线',
-          '携带实体地图作为备用',
-          '出行前测试所有电子设备',
-          '为GPS携带额外电池',
-        ],
+        'highlights': ['先进GPS和卫星通信', '传统和数字导航', '包含应急定位信标', '专为越野探索设计'],
+        'tips': ['始终告知他人你的路线', '携带实体地图作为备用', '出行前测试所有电子设备', '为GPS携带额外电池'],
       },
       'plan_12_1': {
-        'highlights': [
-          '包含儿童友好活动',
-          '额外安全设备',
-          '宽敞家庭帐篷',
-          '教育与乐趣的平衡',
-        ],
-        'tips': [
-          '让孩子参与营地搭建',
-          '带充足的零食',
-          '为小腿规划短途徒步',
-          '制作棉花糖是必做活动',
-        ],
+        'highlights': ['包含儿童友好活动', '额外安全设备', '宽敞家庭帐篷', '教育与乐趣的平衡'],
+        'tips': ['让孩子参与营地搭建', '带充足的零食', '为小腿规划短途徒步', '制作棉花糖是必做活动'],
       },
       'plan_13_1': {
-        'highlights': [
-          '实现低于5公斤基础重量',
-          '零奢侈品 - 纯必需品',
-          '数千英里步道验证',
-          '最大效率设计',
-        ],
-        'tips': [
-          '冷浸餐食节省炉子重量',
-          '修剪每个标签和多余带子',
-          '多用途物品是关键',
-          '舒适是心理的，不是物理的',
-        ],
+        'highlights': ['实现低于5公斤基础重量', '零奢侈品 - 纯必需品', '数千英里步道验证', '最大效率设计'],
+        'tips': ['冷浸餐食节省炉子重量', '修剪每个标签和多余带子', '多用途物品是关键', '舒适是心理的，不是物理的'],
       },
       'plan_14_1': {
-        'highlights': [
-          '防沙防水',
-          '海滩专用锚定系统',
-          '包含冲浪设备',
-          '海岸天气就绪',
-        ],
-        'tips': [
-          '在沙中深埋地钉',
-          '保持帐篷通风防潮',
-          '将食物存放在远离海鸥的地方',
-          '每日两次检查潮汐水位',
-        ],
+        'highlights': ['防沙防水', '海滩专用锚定系统', '包含冲浪设备', '海岸天气就绪'],
+        'tips': ['在沙中深埋地钉', '保持帐篷通风防潮', '将食物存放在远离海鸥的地方', '每日两次检查潮汐水位'],
       },
       'plan_15_1': {
-        'highlights': [
-          '正宗复古体验',
-          '帆布比尼龙透气性更好',
-          '经典美学和耐用性',
-          '传统露营方法',
-        ],
-        'tips': [
-          '出行前给帆布防水',
-          '接受更重的重量',
-          '学习正确的帆布护理',
-          '享受怀旧体验',
-        ],
+        'highlights': ['正宗复古体验', '帆布比尼龙透气性更好', '经典美学和耐用性', '传统露营方法'],
+        'tips': ['出行前给帆布防水', '接受更重的重量', '学习正确的帆布护理', '享受怀旧体验'],
       },
       'plan_16_1': {
-        'highlights': [
-          '增强个人安全功能',
-          '轻量但完整的系统',
-          '应急通信设备',
-          '独行优化装备选择',
-        ],
-        'tips': [
-          '尽可能在其他团体附近露营',
-          '始终相信你的直觉',
-          '保持手机充电以备紧急情况',
-          '告知朋友行程安排',
-        ],
+        'highlights': ['增强个人安全功能', '轻量但完整的系统', '应急通信设备', '独行优化装备选择'],
+        'tips': ['尽可能在其他团体附近露营', '始终相信你的直觉', '保持手机充电以备紧急情况', '告知朋友行程安排'],
       },
       'plan_17_1': {
-        'highlights': [
-          '20升储水容量',
-          '优先考虑防晒保护',
-          '耐热设备',
-          '沙漠专用通风',
-        ],
-        'tips': [
-          '感到口渴前就要喝水',
-          '正午时分搭建遮阳',
-          '注意山洪预警',
-          '保护电子设备免受沙尘',
-        ],
+        'highlights': ['20升储水容量', '优先考虑防晒保护', '耐热设备', '沙漠专用通风'],
+        'tips': ['感到口渴前就要喝水', '正午时分搭建遮阳', '注意山洪预警', '保护电子设备免受沙尘'],
       },
       'plan_18_1': {
-        'highlights': [
-          '专业相机保护',
-          '多镜头携带能力',
-          '防风雨密封存储',
-          '舒适的多日设置',
-        ],
-        'tips': [
-          '携带超细纤维布',
-          '提前侦察地点',
-          '在黄金时刻拍摄',
-          '每晚备份照片',
-        ],
+        'highlights': ['专业相机保护', '多镜头携带能力', '防风雨密封存储', '舒适的多日设置'],
+        'tips': ['携带超细纤维布', '提前侦察地点', '在黄金时刻拍摄', '每晚备份照片'],
       },
       'plan_19_1': {
-        'highlights': [
-          '完整钓鱼者工具包',
-          '新鲜鱼类烹饪设置',
-          '多种钓鱼方法',
-          '包含鱼类清理站',
-        ],
-        'tips': [
-          '检查当地钓鱼规定',
-          '携带钓鱼许可证',
-          '立即清理鱼类',
-          '有序存放钓具',
-        ],
+        'highlights': ['完整钓鱼者工具包', '新鲜鱼类烹饪设置', '多种钓鱼方法', '包含鱼类清理站'],
+        'tips': ['检查当地钓鱼规定', '携带钓鱼许可证', '立即清理鱼类', '有序存放钓具'],
       },
       'plan_20_1': {
-        'highlights': [
-          '自给自足的移动生活',
-          '400W太阳能发电系统',
-          '内置厨房和床铺',
-          '30天容量补给',
-        ],
-        'tips': [
-          '寻找平整的停车位',
-          '尊重房车生活社区',
-          '保持淡水供应',
-          '定期清空废水箱',
-        ],
+        'highlights': ['自给自足的移动生活', '400W太阳能发电系统', '内置厨房和床铺', '30天容量补给'],
+        'tips': ['寻找平整的停车位', '尊重房车生活社区', '保持淡水供应', '定期清空废水箱'],
       },
       'plan_21_1': {
-        'highlights': [
-          '空气动力学自行车包',
-          '骑行重量平衡',
-          '完整的自行车修理工具',
-          '7天食物容量',
-        ],
-        'tips': [
-          '先用负重自行车训练',
-          '轮胎充气至最大PSI',
-          '每2小时休息一次',
-          '骑行前固定所有绑带',
-        ],
+        'highlights': ['空气动力学自行车包', '骑行重量平衡', '完整的自行车修理工具', '7天食物容量'],
+        'tips': ['先用负重自行车训练', '轮胎充气至最大PSI', '每2小时休息一次', '骑行前固定所有绑带'],
       },
       'plan_22_1': {
-        'highlights': [
-          '包含觅食工具和指南',
-          '野生食物准备装备',
-          '蘑菇识别资源',
-          '专注可持续采集',
-        ],
-        'tips': [
-          '绝不食用未知植物',
-          '只取所需',
-          '向有经验的觅食者学习',
-          '尊重私人财产',
-        ],
+        'highlights': ['包含觅食工具和指南', '野生食物准备装备', '蘑菇识别资源', '专注可持续采集'],
+        'tips': ['绝不食用未知植物', '只取所需', '向有经验的觅食者学习', '尊重私人财产'],
       },
       'plan_23_1': {
-        'highlights': [
-          '无帐篷高架睡眠',
-          '适用于任何森林环境',
-          '比帐篷系统更轻',
-          '舒适的吊床人体工学',
-        ],
-        'tips': [
-          '在家练习搭建',
-          '寻找相距12-15英尺的树木',
-          '正确调节张力',
-          '斜躺睡觉更平坦',
-        ],
+        'highlights': ['无帐篷高架睡眠', '适用于任何森林环境', '比帐篷系统更轻', '舒适的吊床人体工学'],
+        'tips': ['在家练习搭建', '寻找相距12-15英尺的树木', '正确调节张力', '斜躺睡觉更平坦'],
       },
       'plan_24_1': {
-        'highlights': [
-          '完整传统攀岩装备',
-          '多段攀登能力',
-          '包含抱石垫',
-          '所有安全设备齐全',
-        ],
-        'tips': [
-          '攀登前检查所有装备',
-          '与有经验的伙伴攀登',
-          '了解自己的极限',
-          '检查绳索磨损情况',
-        ],
+        'highlights': ['完整传统攀岩装备', '多段攀登能力', '包含抱石垫', '所有安全设备齐全'],
+        'tips': ['攀登前检查所有装备', '与有经验的伙伴攀登', '了解自己的极限', '检查绳索磨损情况'],
       },
       'plan_25_1': {
-        'highlights': [
-          '观鸟高质量光学设备',
-          '舒适的观察装备',
-          '包含野外指南图书馆',
-          '鸟鸣录音设备',
-        ],
-        'tips': [
-          '在迁徙季节参观',
-          '保持安静和耐心',
-          '清晨活动最佳',
-          '记录野外笔记',
-        ],
+        'highlights': ['观鸟高质量光学设备', '舒适的观察装备', '包含野外指南图书馆', '鸟鸣录音设备'],
+        'tips': ['在迁徙季节参观', '保持安静和耐心', '清晨活动最佳', '记录野外笔记'],
       },
       'plan_26_1': {
-        'highlights': [
-          '多种生存方法',
-          '注重技能而非装备依赖',
-          '完整的应急准备',
-          '整合87次旅行经验',
-        ],
-        'tips': [
-          '在需要之前练习技能',
-          '冗余备份拯救生命',
-          '心理准备至关重要',
-          '分享生存知识',
-        ],
+        'highlights': ['多种生存方法', '注重技能而非装备依赖', '完整的应急准备', '整合87次旅行经验'],
+        'tips': ['在需要之前练习技能', '冗余备份拯救生命', '心理准备至关重要', '分享生存知识'],
       },
       'plan_27_1': {
-        'highlights': [
-          '瑜伽和冥想优化',
-          '包含正念工具',
-          '宁静地点选择',
-          '专注健康的日程安排',
-        ],
-        'tips': [
-          '在日出和日落时练习',
-          '带上额外的坐垫',
-          '手机保持飞行模式',
-          '每日反思日记',
-        ],
+        'highlights': ['瑜伽和冥想优化', '包含正念工具', '宁静地点选择', '专注健康的日程安排'],
+        'tips': ['在日出和日落时练习', '带上额外的坐垫', '手机保持飞行模式', '每日反思日记'],
       },
       'plan_28_1': {
-        'highlights': [
-          '包含狗狗装备和用品',
-          '宠物安全优先',
-          '对两个物种都舒适',
-          '与狗狗一起的步道测试',
-        ],
-        'tips': [
-          '携带狗狗急救包',
-          '检查步道宠物政策',
-          '带上额外的狗粮',
-          '在营地保持狗狗牵引',
-        ],
+        'highlights': ['包含狗狗装备和用品', '宠物安全优先', '对两个物种都舒适', '与狗狗一起的步道测试'],
+        'tips': ['携带狗狗急救包', '检查步道宠物政策', '带上额外的狗粮', '在营地保持狗狗牵引'],
       },
       'plan_29_1': {
-        'highlights': [
-          '包含教育材料',
-          '历史遗址访问',
-          '研究导向设置',
-          '舒适的阅读环境',
-        ],
-        'tips': [
-          '事先研究地点',
-          '尊重历史地点',
-          '拍照记录',
-          '与他人分享知识',
-        ],
+        'highlights': ['包含教育材料', '历史遗址访问', '研究导向设置', '舒适的阅读环境'],
+        'tips': ['事先研究地点', '尊重历史地点', '拍照记录', '与他人分享知识'],
       },
       'plan_30_1': {
-        'highlights': [
-          '高效工作空间设置',
-          '设备太阳能供电',
-          '无干扰环境',
-          '7天写作静修容量',
-        ],
-        'tips': [
-          '设定每日字数目标',
-          '将作品备份到云端',
-          '平衡写作与自然漫步',
-          '拥抱创意独处',
-        ],
+        'highlights': ['高效工作空间设置', '设备太阳能供电', '无干扰环境', '7天写作静修容量'],
+        'tips': ['设定每日字数目标', '将作品备份到云端', '平衡写作与自然漫步', '拥抱创意独处'],
       },
       'plan_31_1': {
-        'highlights': [
-          '专业教学材料',
-          '团体安全设备',
-          '专注不留痕迹教育',
-          '54次教育旅行经验',
-        ],
-        'tips': [
-          '规划适合年龄的活动',
-          '持续强调安全',
-          '让学习变得有趣',
-          '以身作则',
-        ],
+        'highlights': ['专业教学材料', '团体安全设备', '专注不留痕迹教育', '54次教育旅行经验'],
+        'tips': ['规划适合年龄的活动', '持续强调安全', '让学习变得有趣', '以身作则'],
       },
     };
     return details[planId] ?? defaultDetails;
@@ -3329,11 +3017,11 @@ class DataService {
   // Load logs from persistent storage
   Future<void> _loadLogs() async {
     if (_logsLoaded) return;
-    
+
     try {
       final prefs = await SharedPreferences.getInstance();
       final logsJson = prefs.getString(_logsKey);
-      
+
       if (logsJson != null) {
         final List<dynamic> logsList = json.decode(logsJson);
         _userLogs.clear();
@@ -3449,8 +3137,6 @@ class DataService {
     ];
   }
 
-
-
   // Follow state management
   final Set<String> _followedUsers = {};
 
@@ -3515,8 +3201,7 @@ class DataService {
           },
           {
             'title': '野外胶片摄影',
-            'description':
-                '在露营时用35mm胶片拍摄迫使你放慢脚步，真正观察周围环境。当你只有36张照片时，每一帧都变得珍贵。',
+            'description': '在露营时用35mm胶片拍摄迫使你放慢脚步，真正观察周围环境。当你只有36张照片时，每一帧都变得珍贵。',
             'category': 'Featured',
           },
           {
@@ -3527,14 +3212,12 @@ class DataService {
           },
           {
             'title': '独自露营安全贴士',
-            'description':
-                '独自出行不意味着毫无准备。这里是我在偏远地区独自露营时绝不妥协的5件事。',
+            'description': '独自出行不意味着毫无准备。这里是我在偏远地区独自露营时绝不妥协的5件事。',
             'category': 'Bushcraft',
           },
           {
             'title': '自然中的晨间仪式',
-            'description':
-                '醒来时帐篷上结着霜，一边煮咖啡一边看日出透过树林 - 这些时刻提醒我为什么要这样做。',
+            'description': '醒来时帐篷上结着霜，一边煮咖啡一边看日出透过树林 - 这些时刻提醒我为什么要这样做。',
             'category': 'Featured',
           },
         ];
@@ -3543,20 +3226,17 @@ class DataService {
         return [
           {
             'title': '装备测试：冬季版',
-            'description':
-                '刚刚完成了在零下温度测试5种不同睡袋。结果可能会让你惊讶 - 最昂贵的那个最先失效。',
+            'description': '刚刚完成了在零下温度测试5种不同睡袋。结果可能会让你惊讶 - 最昂贵的那个最先失效。',
             'category': 'Featured',
           },
           {
             'title': '我的装备箱进化史',
-            'description':
-                '从45公斤的"以防万一"物品到精简的12公斤配置。这是我在12次旅行中学到的装备选择经验。',
+            'description': '从45公斤的"以防万一"物品到精简的12公斤配置。这是我在12次旅行中学到的装备选择经验。',
             'category': 'Bushcraft',
           },
           {
             'title': '预算露营配置',
-            'description':
-                '你不需要花费数千元就能开始露营。我第一年的配置花费不到300美元，却带我去了令人惊叹的地方。',
+            'description': '你不需要花费数千元就能开始露营。我第一年的配置花费不到300美元，却带我去了令人惊叹的地方。',
             'category': 'Featured',
           },
         ];
@@ -3565,8 +3245,7 @@ class DataService {
         return [
           {
             'title': '追逐山间日出',
-            'description':
-                '凌晨4点醒来从山脊观看日出。黄金时刻照射在山峰上，让每个寒冷的早晨都值得。',
+            'description': '凌晨4点醒来从山脊观看日出。黄金时刻照射在山峰上，让每个寒冷的早晨都值得。',
             'category': 'Featured',
           },
           {
@@ -3577,14 +3256,12 @@ class DataService {
           },
           {
             'title': '步道故事：漫长的上山路',
-            'description':
-                '有时最艰难的步道通向最好的营地。到达这个山脊花了8小时，但360°的景观值得每一步。',
+            'description': '有时最艰难的步道通向最好的营地。到达这个山脊花了8小时，但360°的景观值得每一步。',
             'category': 'Featured',
           },
           {
             'title': '山地天气智慧',
-            'description':
-                '经过32次山地旅行，我学会了读懂云朵。这些是告诉你要快速收拾营地的警告信号。',
+            'description': '经过32次山地旅行，我学会了读懂云朵。这些是告诉你要快速收拾营地的警告信号。',
             'category': 'Bushcraft',
           },
         ];
@@ -3593,26 +3270,22 @@ class DataService {
         return [
           {
             'title': '铸铁牛排完美制作',
-            'description':
-                '人们问我为什么要带4公斤铸铁锅进入荒野。这就是原因：在星空下完美煎制的牛排值得每一克重量。',
+            'description': '人们问我为什么要带4公斤铸铁锅进入荒野。这就是原因：在星空下完美煎制的牛排值得每一克重量。',
             'category': 'Glamping',
           },
           {
             'title': '一锅露营餐',
-            'description':
-                '更少清洁，更多风味。这5个一锅食谱支撑我度过了无数次露营旅行，从未让人失望。',
+            'description': '更少清洁，更多风味。这5个一锅食谱支撑我度过了无数次露营旅行，从未让人失望。',
             'category': 'Featured',
           },
           {
             'title': '露营厨房配置',
-            'description':
-                '户外烹饪时组织是关键。这是我的模块化厨房系统，装在一个箱子里但能处理美食餐点。',
+            'description': '户外烹饪时组织是关键。这是我的模块化厨房系统，装在一个箱子里但能处理美食餐点。',
             'category': 'Glamping',
           },
           {
             'title': '篝火烘焙冒险',
-            'description':
-                '是的，你可以在露营时烘焙新鲜面包。荷兰烤箱面包烘焙是我多日旅行的冥想仪式。',
+            'description': '是的，你可以在露营时烘焙新鲜面包。荷兰烤箱面包烘焙是我多日旅行的冥想仪式。',
             'category': 'Featured',
           },
         ];
@@ -3621,20 +3294,17 @@ class DataService {
         return [
           {
             'title': '跑步到营地',
-            'description':
-                '既然可以跑步，为什么要徒步？超轻量越野跑进入深林营地将两种激情合并为一次冒险。',
+            'description': '既然可以跑步，为什么要徒步？超轻量越野跑进入深林营地将两种激情合并为一次冒险。',
             'category': 'Bushcraft',
           },
           {
             'title': '故意迷路',
-            'description':
-                '有时最好的营地是在你离开步道时发现的。这是我如何安全地探索越野路线同时不迷失的方法。',
+            'description': '有时最好的营地是在你离开步道时发现的。这是我如何安全地探索越野路线同时不迷失的方法。',
             'category': 'Featured',
           },
           {
             'title': '森林浴与露营',
-            'description':
-                '将日本森林浴与露营结合创造了冥想体验。森林以我们才开始理解的方式治愈着我们。',
+            'description': '将日本森林浴与露营结合创造了冥想体验。森林以我们才开始理解的方式治愈着我们。',
             'category': 'Bushcraft',
           },
         ];
@@ -3643,26 +3313,22 @@ class DataService {
         return [
           {
             'title': '奢华遇见荒野',
-            'description':
-                '谁说露营不能舒适？我最新的配置包括埃及棉床单、记忆泡沫床垫和仙女灯。是的，真的。',
+            'description': '谁说露营不能舒适？我最新的配置包括埃及棉床单、记忆泡沫床垫和仙女灯。是的，真的。',
             'category': 'Glamping',
           },
           {
             'title': '营地室内设计',
-            'description':
-                '作为室内设计师，我将美学感觉带入帐篷。温暖的照明、天然纺织品和周到的组织改造任何营地。',
+            'description': '作为室内设计师，我将美学感觉带入帐篷。温暖的照明、天然纺织品和周到的组织改造任何营地。',
             'category': 'Glamping',
           },
           {
             'title': '豪华露营装备指南',
-            'description':
-                '舒适不意味着牺牲真实性。这些是真正增强户外体验的奢侈品。',
+            'description': '舒适不意味着牺牲真实性。这些是真正增强户外体验的奢侈品。',
             'category': 'Featured',
           },
           {
             'title': '营造营地氛围',
-            'description':
-                '蜡烛灯笼、播放自然声音的便携音响和合适的营地家具将基本营地变成户外客厅。',
+            'description': '蜡烛灯笼、播放自然声音的便携音响和合适的营地家具将基本营地变成户外客厅。',
             'category': 'Glamping',
           },
         ];
@@ -3670,21 +3336,18 @@ class DataService {
       case '7': // Star Gazer
         return [
           {
-'title': '暗夜观星营地',
-            'description':
-                '上周发现了一个Bortle 1级地点 - 完全没有光污染。银河如此明亮，甚至投下了阴影。',
+            'title': '暗夜观星营地',
+            'description': '上周发现了一个Bortle 1级地点 - 完全没有光污染。银河如此明亮，甚至投下了阴影。',
             'category': 'Featured',
           },
           {
             'title': '营地天体摄影',
-            'description':
-                '露营给你数小时时间捕捉长曝光。昨晚我拍了200张星轨照片 - 每张都是4分钟曝光。',
+            'description': '露营给你数小时时间捕捉长曝光。昨晚我拍了200张星轨照片 - 每张都是4分钟曝光。',
             'category': 'Bushcraft',
           },
           {
             'title': '流星雨观测指南',
-            'description':
-                '围绕天文事件规划露营将体验提升到另一个层次。在海拔2500米观看英仙座流星雨令人难忘。',
+            'description': '围绕天文事件规划露营将体验提升到另一个层次。在海拔2500米观看英仙座流星雨令人难忘。',
             'category': 'Featured',
           },
         ];
@@ -3693,26 +3356,22 @@ class DataService {
         return [
           {
             'title': '帐篷对比：测试10款型号',
-            'description':
-                '在雨、风、雪中测试帐篷后，这是我基于数据的分析，哪些设计真正有效，哪些只是营销炒作。',
+            'description': '在雨、风、雪中测试帐篷后，这是我基于数据的分析，哪些设计真正有效，哪些只是营销炒作。',
             'category': 'Featured',
           },
           {
             'title': '超轻量vs耐用：权衡取舍',
-            'description':
-                '每节省一克都是一种妥协。经过65次旅行，这是我认为超轻量有意义和没意义的地方。',
+            'description': '每节省一克都是一种妥协。经过65次旅行，这是我认为超轻量有意义和没意义的地方。',
             'category': 'Bushcraft',
           },
           {
             'title': '野外科技装备',
-            'description':
-                '太阳能板、充电宝和GPS手表 - 现代科技可以增强露营体验而不破坏它。这是我的电子设备配置。',
+            'description': '太阳能板、充电宝和GPS手表 - 现代科技可以增强露营体验而不破坏它。这是我的电子设备配置。',
             'category': 'Featured',
           },
           {
             'title': '装备维护经验',
-            'description':
-                '那个500美元的帐篷能用5年还是50年取决于你如何保养。维护比初始质量更重要。',
+            'description': '那个500美元的帐篷能用5年还是50年取决于你如何保养。维护比初始质量更重要。',
             'category': 'Bushcraft',
           },
         ];
@@ -3721,20 +3380,17 @@ class DataService {
         return [
           {
             'title': '湖边晨间划桨',
-            'description':
-                '日出前划桨出去，从皮划艇上观看薄雾从平静水面升起，有种神奇的感觉。',
+            'description': '日出前划桨出去，从皮划艇上观看薄雾从平静水面升起，有种神奇的感觉。',
             'category': 'Featured',
           },
           {
             'title': '皮划艇露营必需品',
-            'description':
-                '防水不等于抗水。这是我的皮划艇露营打包系统，即使在恶劣水况下也能保持装备干燥。',
+            'description': '防水不等于抗水。这是我的皮划艇露营打包系统，即使在恶劣水况下也能保持装备干燥。',
             'category': 'Bushcraft',
           },
           {
             'title': '最佳湖泊营地',
-            'description':
-                '划桨进入的营地提供汽车露营永远无法提供的宁静。这些隐秘的湖泊地点值得额外努力到达。',
+            'description': '划桨进入的营地提供汽车露营永远无法提供的宁静。这些隐秘的湖泊地点值得额外努力到达。',
             'category': 'Featured',
           },
         ];
@@ -3743,26 +3399,22 @@ class DataService {
         return [
           {
             'title': '-20°C雪地露营',
-            'description':
-                '大多数人认为我疯了。但冬季露营有独特的宁静 - 寂静、雪覆盖的景观、挑战。',
+            'description': '大多数人认为我疯了。但冬季露营有独特的宁静 - 寂静、雪覆盖的景观、挑战。',
             'category': 'Bushcraft',
           },
           {
             'title': '寒冷天气生存技能',
-            'description':
-                '如果你知道自己在做什么，冬季露营并不危险。这些是让我在极寒中保持温暖和安全的关键技能。',
+            'description': '如果你知道自己在做什么，冬季露营并不危险。这些是让我在极寒中保持温暖和安全的关键技能。',
             'category': 'Bushcraft',
           },
           {
             'title': '冬季营地快速搭建',
-            'description':
-                '当温度是-15°C时，每分钟都很重要。我的营地搭建程序从到达到温暖帐篷只需12分钟。方法如下。',
+            'description': '当温度是-15°C时，每分钟都很重要。我的营地搭建程序从到达到温暖帐篷只需12分钟。方法如下。',
             'category': 'Featured',
           },
           {
             'title': '热帐篷炉子系统',
-            'description':
-                '便携式木炉改变了冬季露营。在雪花飘落时在温暖帐篷中醒来是纯粹的奢华。',
+            'description': '便携式木炉改变了冬季露营。在雪花飘落时在温暖帐篷中醒来是纯粹的奢华。',
             'category': 'Glamping',
           },
         ];
@@ -3772,20 +3424,17 @@ class DataService {
         return [
           {
             'title': '周末露营冒险',
-            'description':
-                '又一次成功的野外之旅。有时你只需要48小时远离一切来重置你的心灵。',
+            'description': '又一次成功的野外之旅。有时你只需要48小时远离一切来重置你的心灵。',
             'category': 'Featured',
           },
           {
             'title': '步道上的教训',
-            'description':
-                '每次露营旅行都会教给你新东西。这次我学到了带额外袜子的重要性。永远。额外的。袜子。',
+            'description': '每次露营旅行都会教给你新东西。这次我学到了带额外袜子的重要性。永远。额外的。袜子。',
             'category': 'Bushcraft',
           },
           {
             'title': '自然的疗法',
-            'description':
-                '森林里没有WiFi，但我保证你会找到更好的连接。露营让我们重新连接到重要的事物。',
+            'description': '森林里没有WiFi，但我保证你会找到更好的连接。露营让我们重新连接到重要的事物。',
             'category': 'Featured',
           },
         ];
@@ -3916,7 +3565,7 @@ class DataService {
         difficulty: TipDifficulty.intermediate,
         viewCount: 1560,
       ),
-      
+
       // 搭建技巧
       CampingTip(
         id: 'tip4',
@@ -3942,7 +3591,7 @@ class DataService {
         difficulty: TipDifficulty.beginner,
         viewCount: 2450,
       ),
-      
+
       // 烹饪相关
       CampingTip(
         id: 'tip7',
@@ -3968,7 +3617,7 @@ class DataService {
         difficulty: TipDifficulty.advanced,
         viewCount: 2890,
       ),
-      
+
       // 天气应对
       CampingTip(
         id: 'tip10',
@@ -3994,7 +3643,7 @@ class DataService {
         difficulty: TipDifficulty.intermediate,
         viewCount: 1890,
       ),
-      
+
       // 安全相关
       CampingTip(
         id: 'tip13',
@@ -4020,7 +3669,7 @@ class DataService {
         difficulty: TipDifficulty.advanced,
         viewCount: 1780,
       ),
-      
+
       // 营地推荐
       CampingTip(
         id: 'tip16',
@@ -4059,5 +3708,223 @@ class DataService {
     final tips = List<CampingTip>.from(getCampingTips());
     tips.sort((a, b) => b.viewCount.compareTo(a.viewCount));
     return tips.take(limit).toList();
+  }
+
+  // ============================================================================
+  // Content Moderation & User Safety Features (App Store Compliance)
+  // ============================================================================
+
+  // Blocked users storage
+  final Set<String> _blockedUserIds = {};
+
+  /// Block a user - removes their content from feed instantly
+  Future<void> blockUser(String userId) async {
+    _blockedUserIds.add(userId);
+
+    // Save to local storage
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('blocked_users', _blockedUserIds.toList());
+
+    // TODO: In production, also send to backend API
+    // await _apiService.blockUser(userId);
+  }
+
+  /// Unblock a user
+  Future<void> unblockUser(String userId) async {
+    _blockedUserIds.remove(userId);
+
+    // Save to local storage
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('blocked_users', _blockedUserIds.toList());
+
+    // TODO: In production, also send to backend API
+    // await _apiService.unblockUser(userId);
+  }
+
+  /// Check if a user is blocked
+  bool isUserBlocked(String userId) {
+    return _blockedUserIds.contains(userId);
+  }
+
+  /// Get list of blocked users
+  Future<List<String>> getBlockedUsers() async {
+    final prefs = await SharedPreferences.getInstance();
+    final blocked = prefs.getStringList('blocked_users') ?? [];
+    _blockedUserIds.addAll(blocked);
+    return blocked;
+  }
+
+  /// Notify developer when a user is blocked
+  /// This helps identify problematic users and content
+  Future<void> notifyDeveloperOfBlock({
+    required String blockedUserId,
+    required String blockedUsername,
+    required String reason,
+  }) async {
+    final reportData = {
+      'type': 'user_block',
+      'blocked_user_id': blockedUserId,
+      'blocked_username': blockedUsername,
+      'reason': reason,
+      'timestamp': DateTime.now().toIso8601String(),
+      'reporter_action': 'block',
+    };
+
+    // TODO: In production, send to backend API or analytics service
+    // This allows developers to track patterns and take action
+    // await _apiService.sendModerationAlert(reportData);
+
+    // For now, log locally
+    print(
+      '🚫 User Blocked - Developer Notification: ${jsonEncode(reportData)}',
+    );
+  }
+
+  /// Report a user for inappropriate behavior
+  Future<void> reportUser({
+    required String reportedUserId,
+    required String reportedUsername,
+    required String reason,
+    Map<String, dynamic>? reporterContext,
+  }) async {
+    final reportData = {
+      'type': 'user_report',
+      'reported_user_id': reportedUserId,
+      'reported_username': reportedUsername,
+      'reason': reason,
+      'timestamp': DateTime.now().toIso8601String(),
+      'context': reporterContext,
+    };
+
+    // Save report locally
+    final prefs = await SharedPreferences.getInstance();
+    final reports = prefs.getStringList('user_reports') ?? [];
+    reports.add(jsonEncode(reportData));
+    await prefs.setStringList('user_reports', reports);
+
+    // TODO: In production, send to backend API for review
+    // await _apiService.submitUserReport(reportData);
+  }
+
+  /// Notify developer of a new report
+  /// This ensures immediate visibility of inappropriate content
+  Future<void> notifyDeveloperOfReport({
+    required String reportedUserId,
+    required String reportedUsername,
+    required String reason,
+    required String contentType,
+  }) async {
+    final notificationData = {
+      'type': 'content_report',
+      'reported_user_id': reportedUserId,
+      'reported_username': reportedUsername,
+      'reason': reason,
+      'content_type': contentType,
+      'timestamp': DateTime.now().toIso8601String(),
+      'priority': _getReportPriority(reason),
+    };
+
+    // TODO: In production, send immediate notification to moderation team
+    // This could be via:
+    // - Push notification to admin dashboard
+    // - Email alert to moderation team
+    // - Slack/Discord webhook
+    // - Backend API endpoint
+    // await _apiService.sendUrgentModerationAlert(notificationData);
+
+    // For now, log with high visibility
+    print(
+      '⚠️ URGENT - Content Report - Developer Notification: ${jsonEncode(notificationData)}',
+    );
+  }
+
+  /// Report a post for inappropriate content
+  Future<void> reportPost({
+    required String postId,
+    required String postTitle,
+    required String authorId,
+    required String reason,
+  }) async {
+    final reportData = {
+      'type': 'post_report',
+      'post_id': postId,
+      'post_title': postTitle,
+      'author_id': authorId,
+      'reason': reason,
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+
+    // Save report locally
+    final prefs = await SharedPreferences.getInstance();
+    final reports = prefs.getStringList('post_reports') ?? [];
+    reports.add(jsonEncode(reportData));
+    await prefs.setStringList('post_reports', reports);
+
+    // Notify developer
+    await notifyDeveloperOfReport(
+      reportedUserId: authorId,
+      reportedUsername: 'Post Author',
+      reason: reason,
+      contentType: '动态内容',
+    );
+
+    // TODO: In production, send to backend API
+    // await _apiService.submitPostReport(reportData);
+  }
+
+  /// Report a message/comment for inappropriate content
+  Future<void> reportMessage({
+    required String messageId,
+    required String messageContent,
+    required String reason,
+  }) async {
+    final reportData = {
+      'type': 'message_report',
+      'message_id': messageId,
+      'message_preview': messageContent.substring(
+        0,
+        messageContent.length > 100 ? 100 : messageContent.length,
+      ),
+      'reason': reason,
+      'timestamp': DateTime.now().toIso8601String(),
+    };
+
+    // Save report locally
+    final prefs = await SharedPreferences.getInstance();
+    final reports = prefs.getStringList('message_reports') ?? [];
+    reports.add(jsonEncode(reportData));
+    await prefs.setStringList('message_reports', reports);
+
+    // Notify developer
+    print('⚠️ Message Reported: ${jsonEncode(reportData)}');
+
+    // TODO: In production, send to backend API
+    // await _apiService.submitMessageReport(reportData);
+  }
+
+  /// Determine report priority based on reason
+  String _getReportPriority(String reason) {
+    final highPriorityKeywords = ['不当内容', '骚扰', '暴力', '色情'];
+    for (final keyword in highPriorityKeywords) {
+      if (reason.contains(keyword)) {
+        return 'HIGH';
+      }
+    }
+    return 'MEDIUM';
+  }
+
+  /// Filter posts to exclude blocked users
+  List<Post> filterBlockedUserPosts(List<Post> posts) {
+    return posts.where((post) => !isUserBlocked(post.creatorId)).toList();
+  }
+
+  /// Get all reports for admin review (for testing/development)
+  Future<Map<String, List<String>>> getAllReports() async {
+    final prefs = await SharedPreferences.getInstance();
+    return {
+      'user_reports': prefs.getStringList('user_reports') ?? [],
+      'post_reports': prefs.getStringList('post_reports') ?? [],
+      'message_reports': prefs.getStringList('message_reports') ?? [],
+    };
   }
 }

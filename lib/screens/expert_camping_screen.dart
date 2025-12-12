@@ -390,8 +390,6 @@ class _ExpertCampingScreenState extends State<ExpertCampingScreen> {
     );
   }
 
-
-
   @override
   void dispose() {
     _scrollController.dispose();
@@ -1039,11 +1037,39 @@ class _ModernCampingPostCardState extends State<ModernCampingPostCard> {
     }
   }
 
-  void _reportPost(String reason) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('已举报：$reason'), backgroundColor: Colors.orange),
-    );
-    // TODO: 实际举报逻辑
+  void _reportPost(String reason) async {
+    try {
+      final dataService = DataService();
+      // 提交举报到服务器
+      await dataService.reportPost(
+        postId: widget.post.id,
+        postTitle: widget.post.content.substring(
+          0,
+          widget.post.content.length > 50 ? 50 : widget.post.content.length,
+        ),
+        authorId: widget.post.user.id,
+        reason: reason,
+      );
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('已举报：$reason\n我们将在24小时内审核'),
+            backgroundColor: Colors.orange,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('提交失败，请稍后重试'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   void _toggleLike() {

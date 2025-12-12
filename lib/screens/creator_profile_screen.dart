@@ -57,9 +57,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               _buildFixedAppBar(context),
               _buildProfileInfo(),
               _buildTabs(),
-              Expanded(
-                child: _buildScrollableTabContent(),
-              ),
+              Expanded(child: _buildScrollableTabContent()),
             ],
           ),
         ),
@@ -85,7 +83,11 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               ],
             ),
             child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios, color: Color(0xFF667EEA), size: 20),
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Color(0xFF667EEA),
+                size: 20,
+              ),
               onPressed: () => Navigator.pop(context),
             ),
           ),
@@ -99,13 +101,535 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
             ),
           ),
           const Spacer(),
-          const SizedBox(width: 48), // 平衡左侧按钮的空间
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.9),
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.more_vert,
+                color: Color(0xFF667EEA),
+                size: 20,
+              ),
+              onPressed: () => _showUserActionsMenu(context),
+            ),
+          ),
         ],
       ),
     );
   }
 
+  void _showUserActionsMenu(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+          ),
+          child: SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 12),
+                Container(
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.user.displayName ?? widget.user.username,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF1A1D29),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        '选择操作',
+                        style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                _buildActionMenuItem(
+                  icon: Icons.block_outlined,
+                  title: '屏蔽此用户',
+                  subtitle: '不再看到此用户的内容',
+                  color: Colors.orange,
+                  onTap: () {
+                    Navigator.pop(context);
+                    _showBlockConfirmDialog(context);
+                  },
+                ),
+                _buildActionMenuItem(
+                  icon: Icons.flag_outlined,
+                  title: '举报此用户',
+                  subtitle: '举报不当内容或行为',
+                  color: Colors.red,
+                  onTap: () {
+                    Navigator.pop(context);
+                    _showReportDialog(context);
+                  },
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
+  Widget _buildActionMenuItem({
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: color, size: 24),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: color,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.chevron_right, color: Colors.grey[400], size: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showBlockConfirmDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.15),
+                  blurRadius: 30,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.withValues(alpha: 0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.block,
+                      color: Colors.orange,
+                      size: 48,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    '屏蔽此用户？',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF1A1D29),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    '屏蔽后，你将不会再看到 ${widget.user.displayName ?? widget.user.username} 的任何内容，包括动态、评论等。',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey[600],
+                      height: 1.5,
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton(
+                          onPressed: () => Navigator.pop(context),
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            side: BorderSide(color: Colors.grey[300]!),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Text(
+                            '取消',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            _handleBlockUser();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.orange,
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: const Text(
+                            '确认屏蔽',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _showReportDialog(BuildContext context) {
+    final reportReasons = [
+      {'title': '垃圾信息', 'subtitle': '发布垃圾广告或无关内容'},
+      {'title': '不当内容', 'subtitle': '包含色情、暴力等不良信息'},
+      {'title': '骚扰他人', 'subtitle': '恶意骚扰或攻击其他用户'},
+      {'title': '虚假信息', 'subtitle': '发布虚假或误导性内容'},
+      {'title': '侵犯版权', 'subtitle': '未经授权使用他人作品'},
+      {'title': '其他原因', 'subtitle': '其他违规行为'},
+    ];
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          child: Container(
+            constraints: const BoxConstraints(maxHeight: 600),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.15),
+                  blurRadius: 30,
+                  offset: const Offset(0, 10),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.red.withValues(alpha: 0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.flag,
+                          color: Colors.red,
+                          size: 48,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        '举报此用户',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF1A1D29),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        '请选择举报原因',
+                        style: TextStyle(fontSize: 15, color: Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: reportReasons.length,
+                    itemBuilder: (context, index) {
+                      final reason = reportReasons[index];
+                      return Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                            _handleReportUser(reason['title']!);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 16,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border(
+                                top: BorderSide(
+                                  color: Colors.grey[200]!,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        reason['title']!,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF1A1D29),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        reason['subtitle']!,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.grey[600],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.grey[400],
+                                  size: 20,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        side: BorderSide(color: Colors.grey[300]!),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: Text(
+                        '取消',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _handleBlockUser() async {
+    // 实现屏蔽用户的逻辑
+    try {
+      // 1. 调用数据服务屏蔽用户
+      await _dataService.blockUser(widget.user.id);
+
+      // 2. 通知开发者有用户被屏蔽
+      await _dataService.notifyDeveloperOfBlock(
+        blockedUserId: widget.user.id,
+        blockedUsername: widget.user.displayName ?? widget.user.username,
+        reason: '用户主动屏蔽',
+      );
+
+      // 3. 显示成功提示
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              '已屏蔽 ${widget.user.displayName ?? widget.user.username}，其内容已从您的动态中移除',
+            ),
+            backgroundColor: Colors.orange,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+
+        // 4. 立即返回上一页，从用户的 feed 中移除此用户的内容
+        Navigator.pop(context);
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('屏蔽失败，请稍后重试'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  void _handleReportUser(String reason) async {
+    // 实现举报用户的逻辑，将举报信息发送到服务器
+    try {
+      // 1. 提交举报到服务器
+      await _dataService.reportUser(
+        reportedUserId: widget.user.id,
+        reportedUsername: widget.user.displayName ?? widget.user.username,
+        reason: reason,
+        reporterContext: {
+          'timestamp': DateTime.now().toIso8601String(),
+          'userProfile': widget.user.toJson(),
+        },
+      );
+
+      // 2. 通知开发者有新的举报
+      await _dataService.notifyDeveloperOfReport(
+        reportedUserId: widget.user.id,
+        reportedUsername: widget.user.displayName ?? widget.user.username,
+        reason: reason,
+        contentType: '用户资料',
+      );
+
+      // 3. 显示成功提示
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('已提交举报：$reason\n我们将在24小时内审核'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            duration: const Duration(seconds: 4),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('提交失败，请稍后重试'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        );
+      }
+    }
+  }
 
   Widget _buildProfileInfo() {
     return Container(
@@ -197,10 +721,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        _buildStat(
-                          _formatNumber(widget.user.followers),
-                          '粉丝',
-                        ),
+                        _buildStat(_formatNumber(widget.user.followers), '粉丝'),
                         const SizedBox(width: 20),
                         _buildStat(widget.user.trips.toString(), '旅行'),
                         const SizedBox(width: 20),
@@ -228,7 +749,9 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                         ? null
                         : [
                             BoxShadow(
-                              color: const Color(0xFF667EEA).withValues(alpha: 0.4),
+                              color: const Color(
+                                0xFF667EEA,
+                              ).withValues(alpha: 0.4),
                               blurRadius: 12,
                               offset: const Offset(0, 4),
                             ),
@@ -277,7 +800,6 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                   ),
                 ),
               ),
-
             ],
           ),
           if (widget.user.bio != null) ...[
@@ -398,10 +920,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
         indicatorPadding: const EdgeInsets.all(6),
         labelColor: Colors.white,
         unselectedLabelColor: Colors.grey[600],
-        labelStyle: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
+        labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
@@ -433,10 +952,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      Colors.grey[100]!,
-                      Colors.grey[50]!,
-                    ],
+                    colors: [Colors.grey[100]!, Colors.grey[50]!],
                   ),
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -458,10 +974,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               const SizedBox(height: 8),
               Text(
                 '这位达人还没有发布任何动态',
-                style: TextStyle(
-                  color: Colors.grey[400],
-                  fontSize: 14,
-                ),
+                style: TextStyle(color: Colors.grey[400], fontSize: 14),
               ),
             ],
           ),
@@ -508,17 +1021,26 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            _getCategoryColor(post.category).withValues(alpha: 0.1),
-                            _getCategoryColor(post.category).withValues(alpha: 0.2),
+                            _getCategoryColor(
+                              post.category,
+                            ).withValues(alpha: 0.1),
+                            _getCategoryColor(
+                              post.category,
+                            ).withValues(alpha: 0.2),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                          color: _getCategoryColor(post.category).withValues(alpha: 0.3),
+                          color: _getCategoryColor(
+                            post.category,
+                          ).withValues(alpha: 0.3),
                           width: 1,
                         ),
                       ),
@@ -533,7 +1055,10 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                     ),
                     const Spacer(),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.grey[100],
                         borderRadius: BorderRadius.circular(10),
@@ -576,7 +1101,10 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(12),
@@ -585,7 +1113,11 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.favorite_border, size: 16, color: Colors.grey[500]),
+                          Icon(
+                            Icons.favorite_border,
+                            size: 16,
+                            color: Colors.grey[500],
+                          ),
                           const SizedBox(width: 6),
                           Text(
                             '${post.likes}',
@@ -600,7 +1132,10 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                     ),
                     const SizedBox(width: 12),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(12),
@@ -609,7 +1144,11 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.comment_outlined, size: 16, color: Colors.grey[500]),
+                          Icon(
+                            Icons.comment_outlined,
+                            size: 16,
+                            color: Colors.grey[500],
+                          ),
                           const SizedBox(width: 6),
                           Text(
                             '${(index * 7 + 3) % 50}',
@@ -741,10 +1280,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      Colors.grey[100]!,
-                      Colors.grey[50]!,
-                    ],
+                    colors: [Colors.grey[100]!, Colors.grey[50]!],
                   ),
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -766,10 +1302,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               const SizedBox(height: 8),
               Text(
                 '这位达人还没有分享任何装备计划',
-                style: TextStyle(
-                  color: Colors.grey[400],
-                  fontSize: 14,
-                ),
+                style: TextStyle(color: Colors.grey[400], fontSize: 14),
               ),
             ],
           ),
@@ -830,7 +1363,9 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                         borderRadius: BorderRadius.circular(15),
                         boxShadow: [
                           BoxShadow(
-                            color: _getSeasonColor(plan.season).withValues(alpha: 0.3),
+                            color: _getSeasonColor(
+                              plan.season,
+                            ).withValues(alpha: 0.3),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -848,11 +1383,17 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                     const Spacer(),
                     if (plan.estimatedWeight != null)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.grey[100],
                           borderRadius: BorderRadius.circular(15),
-                          border: Border.all(color: Colors.grey[300]!, width: 1),
+                          border: Border.all(
+                            color: Colors.grey[300]!,
+                            width: 1,
+                          ),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -889,11 +1430,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(
-                      Icons.location_on,
-                      size: 16,
-                      color: Colors.grey[500],
-                    ),
+                    Icon(Icons.location_on, size: 16, color: Colors.grey[500]),
                     const SizedBox(width: 4),
                     Text(
                       plan.location,
@@ -908,20 +1445,20 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               ],
             ),
 
-          // Plan Description (when collapsed)
-          if (planDescription != null && !isExpanded) ...[
-            const SizedBox(height: AppConstants.spacing12),
-            Text(
-              planDescription,
-              style: TextStyle(
-                fontSize: AppConstants.fontSizeMedium,
-                color: Colors.grey[700],
-                height: 1.4,
+            // Plan Description (when collapsed)
+            if (planDescription != null && !isExpanded) ...[
+              const SizedBox(height: AppConstants.spacing12),
+              Text(
+                planDescription,
+                style: TextStyle(
+                  fontSize: AppConstants.fontSizeMedium,
+                  color: Colors.grey[700],
+                  height: 1.4,
+                ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+            ],
 
             // Gear Preview Icons
             if (plan.gearList.isNotEmpty && !isExpanded) ...[
@@ -968,7 +1505,9 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                       height: 56,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: plan.gearList.length > 5 ? 5 : plan.gearList.length,
+                        itemCount: plan.gearList.length > 5
+                            ? 5
+                            : plan.gearList.length,
                         itemBuilder: (context, index) {
                           if (index == 4 && plan.gearList.length > 5) {
                             return Container(
@@ -978,7 +1517,10 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: Colors.grey[300]!, width: 1),
+                                border: Border.all(
+                                  color: Colors.grey[300]!,
+                                  width: 1,
+                                ),
                               ),
                               child: Center(
                                 child: Text(
@@ -999,7 +1541,10 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.grey[300]!, width: 1),
+                              border: Border.all(
+                                color: Colors.grey[300]!,
+                                width: 1,
+                              ),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withValues(alpha: 0.05),
@@ -1023,11 +1568,11 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
               ),
             ],
 
-          // Expanded Content
-          if (isExpanded) ...[
-            const SizedBox(height: AppConstants.spacing16),
-            _buildExpandedPlanContent(plan, planDescription),
-          ],
+            // Expanded Content
+            if (isExpanded) ...[
+              const SizedBox(height: AppConstants.spacing16),
+              _buildExpandedPlanContent(plan, planDescription),
+            ],
 
             // Expand/Collapse Button
             const SizedBox(height: 20),
@@ -1076,8 +1621,6 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                 ),
               ),
             ),
-
-
           ],
         ),
       ),
@@ -1251,7 +1794,7 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
                     Icon(Icons.lightbulb, size: 18, color: Colors.yellow[700]),
                     const SizedBox(width: 8),
                     Text(
-'实用技巧',
+                      '实用技巧',
                       style: TextStyle(
                         fontSize: AppConstants.fontSizeMedium,
                         fontWeight: FontWeight.bold,
@@ -1281,5 +1824,4 @@ class _CreatorProfileScreenState extends State<CreatorProfileScreen>
       ],
     );
   }
-
 }
