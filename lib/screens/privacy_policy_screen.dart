@@ -15,9 +15,12 @@ class PrivacyPolicyScreen extends StatelessWidget {
         title: const Text("Privacy Policy", style: TextStyle(fontFamily: 'serif')),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
@@ -67,6 +70,8 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
           ],
+        ),
+      ),
         ),
       ),
     );

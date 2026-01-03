@@ -47,10 +47,13 @@ class BestiaryScreen extends StatelessWidget {
         elevation: 0,
         title: const Text("Bestiary", style: TextStyle(fontFamily: 'serif')),
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: _monsters.length,
-        itemBuilder: (context, index) {
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: ListView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: _monsters.length,
+            itemBuilder: (context, index) {
           final monster = _monsters[index];
           return GlassContainer(
             margin: const EdgeInsets.only(bottom: 16),
@@ -80,6 +83,8 @@ class BestiaryScreen extends StatelessWidget {
           );
         },
       ),
-    );
+    ),
+  ),
+);
   }
 }

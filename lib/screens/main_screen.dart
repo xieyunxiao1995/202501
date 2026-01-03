@@ -151,9 +151,14 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
         child: SafeArea(
-          child: IndexedStack(
-            index: _currentIndex,
-            children: pages,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: IndexedStack(
+                index: _currentIndex,
+                children: pages,
+              ),
+            ),
           ),
         ),
       ),

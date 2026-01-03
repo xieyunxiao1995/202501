@@ -162,9 +162,11 @@ class _EventScreenState extends State<EventScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
               Icon(_eventIcon, size: 100, color: _eventColor),
               const SizedBox(height: 30),
               Text(
@@ -208,6 +210,7 @@ class _EventScreenState extends State<EventScreen> {
           ),
         ),
       ),
-    );
+    ),
+  );
   }
 }

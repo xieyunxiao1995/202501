@@ -114,9 +114,12 @@ class _ShopScreenState extends State<ShopScreen> {
           ))
         ],
       ),
-      body: DefaultTabController(
-        length: 2,
-        child: Column(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: DefaultTabController(
+            length: 2,
+            child: Column(
           children: [
             const TabBar(
               indicatorColor: AppColors.accent,
@@ -190,6 +193,8 @@ class _ShopScreenState extends State<ShopScreen> {
           ],
         ),
       ),
-    );
+    ),
+  ),
+);
   }
 }

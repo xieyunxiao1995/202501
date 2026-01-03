@@ -24,10 +24,11 @@ class ItemDetailScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 40.0),
             child: Hero(
               tag: 'item_${item.id}',
-              child: GlassContainer(
-                width: 300,
-                // Remove fixed height to allow expansion
-                padding: const EdgeInsets.all(24),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 400, minWidth: 300),
+                child: GlassContainer(
+                  // Remove fixed height to allow expansion
+                  padding: const EdgeInsets.all(24),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -51,6 +52,7 @@ class ItemDetailScreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ],
+                ),
                 ),
               ),
             ),

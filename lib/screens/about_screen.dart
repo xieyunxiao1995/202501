@@ -15,9 +15,12 @@ class AboutScreen extends StatelessWidget {
         title: const Text("About", style: TextStyle(fontFamily: 'serif')),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
           children: [
             const SizedBox(height: 20),
             // Logo / Icon
@@ -112,6 +115,8 @@ class AboutScreen extends StatelessWidget {
               style: TextStyle(color: Colors.white24, fontSize: 12),
             ),
           ],
+        ),
+      ),
         ),
       ),
     );

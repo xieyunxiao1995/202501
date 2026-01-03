@@ -18,9 +18,12 @@ class StatisticsScreen extends StatelessWidget {
         title: const Text("Statistics", style: TextStyle(fontFamily: 'serif')),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
           children: [
             _buildStatCard("Enemies Defeated", stats.enemiesDefeated.toString(), Icons.close),
             _buildStatCard("Items Crafted", stats.itemsCrafted.toString(), Icons.science),
@@ -30,7 +33,9 @@ class StatisticsScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ),
+  ),
+);
   }
 
   Widget _buildStatCard(String title, String value, IconData icon) {

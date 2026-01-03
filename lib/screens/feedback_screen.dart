@@ -62,9 +62,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
         title: const Text("Feedback", style: TextStyle(fontFamily: 'serif')),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
           children: [
             const SizedBox(height: 20),
             const Text(
@@ -139,6 +142,8 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               ),
             ),
           ],
+        ),
+      ),
         ),
       ),
     );

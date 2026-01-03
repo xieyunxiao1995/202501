@@ -491,10 +491,13 @@ class _BattleScreenState extends State<BattleScreen>
               onPressed: () => Navigator.pop(context),
             ),
           ),
-          body: Column(
-            children: [
-              // Top HUD
-              GlassContainer(
+          body: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: Column(
+                children: [
+                  // Top HUD
+                  GlassContainer(
                 margin: const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(16),
                 borderRadius: BorderRadius.circular(16),
@@ -702,6 +705,8 @@ class _BattleScreenState extends State<BattleScreen>
               ),
             ],
           ),
+        ),
+      ),
         ),
 
         // FX Overlay
