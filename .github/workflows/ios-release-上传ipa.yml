@@ -64,9 +64,9 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           # IPA_FILE_NAME 来自 "Prepare IPA" 步骤中设置的 GITHUB_ENV
-          APPLE_USERNAME: luobinxing1988115@icloud.com
-          APPLE_PASSWORD: ylhd-frei-ikrq-gbvl
-          APPLE_ASC_PROVIDER: 2848R93TR8
+          APPLE_USERNAME: liaomin24@icloud.com
+          APPLE_PASSWORD: wwks-tivf-lrez-hfmv
+          APPLE_ASC_PROVIDER: N3GSN4H2J4
         run: |
           echo "当前工作目录: $(pwd)"
           echo "上传前列出当前目录中的文件:"
