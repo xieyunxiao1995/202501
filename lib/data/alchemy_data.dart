@@ -1,0 +1,157 @@
+import '../models/alchemy_model.dart';
+import '../models/enums.dart';
+
+const List<AlchemyMaterial> allMaterials = [
+  // Herbs (Forest)
+  AlchemyMaterial(
+    id: 'spirit_grass',
+    name: '千年灵草',
+    icon: '🌿',
+    type: MaterialType.herb,
+    rarity: Rarity.common,
+    description: '大荒中随处可见的草药，蕴含微量灵气。',
+  ),
+  AlchemyMaterial(
+    id: 'fire_lotus',
+    name: '地心火莲',
+    icon: '🌺',
+    type: MaterialType.herb,
+    rarity: Rarity.rare,
+    description: '诞生于地脉深处的奇花，炽热无比。',
+  ),
+  AlchemyMaterial(
+    id: 'snow_lotus',
+    name: '天山雪莲',
+    icon: '❄️',
+    type: MaterialType.herb,
+    rarity: Rarity.epic,
+    description: '生长在极寒之地的圣物，能活死人肉白骨。',
+  ),
+
+  // Ores (Volcano/Earth)
+  AlchemyMaterial(
+    id: 'iron_ore',
+    name: '玄铁精金',
+    icon: '🪨',
+    type: MaterialType.ore,
+    rarity: Rarity.common,
+    description: '坚固耐用的矿石，适合锻造法器。',
+  ),
+  AlchemyMaterial(
+    id: 'moon_stone',
+    name: '月光石',
+    icon: '🌙',
+    type: MaterialType.ore,
+    rarity: Rarity.rare,
+    description: '吸收了千年月华的矿石，散发着柔和的光芒。',
+  ),
+  AlchemyMaterial(
+    id: 'crimson_crystal',
+    name: '赤血晶石',
+    icon: '💎',
+    type: MaterialType.ore,
+    rarity: Rarity.epic,
+    description: '蕴含极强火焰灵力的晶石。',
+  ),
+
+  // Essences (Ocean/Void)
+  AlchemyMaterial(
+    id: 'aqua_drop',
+    name: '天一真水',
+    icon: '💧',
+    type: MaterialType.essence,
+    rarity: Rarity.common,
+    description: '纯净无比的水灵气凝结而成。',
+  ),
+  AlchemyMaterial(
+    id: 'dragon_scale',
+    name: '真龙逆鳞',
+    icon: '🐲',
+    type: MaterialType.essence,
+    rarity: Rarity.legendary,
+    description: '上古真龙遗留下的鳞片，蕴含无上威能。',
+  ),
+  AlchemyMaterial(
+    id: 'void_dust',
+    name: '混沌尘埃',
+    icon: '✨',
+    type: MaterialType.essence,
+    rarity: Rarity.legendary,
+    description: '宇宙初开时留下的神秘尘埃。',
+  ),
+];
+
+const List<Elixir> allElixirs = [
+  Elixir(
+    id: 'minor_healing_elixir',
+    name: '补气丹',
+    icon: '💊',
+    description: '下次冒险开始时气血 +20。',
+    rarity: Rarity.common,
+    recipe: {'spirit_grass': 3, 'aqua_drop': 1},
+    effects: {'start_max_hp': 20},
+  ),
+  Elixir(
+    id: 'strength_brew',
+    name: '壮骨丹',
+    icon: '🧪',
+    description: '下次冒险开始时灵力 +3。',
+    rarity: Rarity.common,
+    recipe: {'iron_ore': 3, 'fire_lotus': 1},
+    effects: {'start_power': 3},
+  ),
+  Elixir(
+    id: 'stoneskin_potion',
+    name: '金刚液',
+    icon: '🛡️',
+    description: '下次冒险开始时护身 +30。',
+    rarity: Rarity.rare,
+    recipe: {'iron_ore': 4, 'moon_stone': 1},
+    effects: {'start_shield': 30},
+  ),
+  Elixir(
+    id: 'wealth_potion',
+    name: '纳福液',
+    icon: '🏺',
+    description: '下次冒险开始时获得 100 灵石。',
+    rarity: Rarity.rare,
+    recipe: {'iron_ore': 2, 'spirit_grass': 2},
+    effects: {'start_gold': 100},
+  ),
+  Elixir(
+    id: 'enlightenment_tea',
+    name: '悟道茶',
+    icon: '🍵',
+    description: '下次冒险开始时获得 50 经验。',
+    rarity: Rarity.rare,
+    recipe: {'spirit_grass': 5, 'moon_stone': 1},
+    effects: {'start_xp': 50},
+  ),
+  Elixir(
+    id: 'phoenix_blood',
+    name: '涅槃丹',
+    icon: '🔥',
+    description: '下次冒险开始时气血 +100。',
+    rarity: Rarity.epic,
+    recipe: {'fire_lotus': 3, 'crimson_crystal': 1},
+    effects: {'start_max_hp': 100},
+  ),
+  Elixir(
+    id: 'dragon_force_pill',
+    name: '龙力丸',
+    icon: '🐉',
+    description: '下次冒险开始时灵力 +10。',
+    rarity: Rarity.epic,
+    recipe: {'dragon_scale': 1, 'crimson_crystal': 2, 'iron_ore': 5},
+    effects: {'start_power': 10},
+  ),
+  Elixir(
+    id: 'immortality_pill',
+    name: '九转金丹',
+    icon: '🌟',
+    description: '下次冒险开始时气血 +50 且灵力 +5。',
+    rarity: Rarity.legendary,
+    recipe: {'void_dust': 1, 'crimson_crystal': 1, 'fire_lotus': 2},
+    effects: {'start_max_hp': 50, 'start_power': 5},
+  ),
+];

@@ -1,0 +1,5 @@
+{
+  "name": "Mythic Dungeon Crawler",
+  "description": "A rogue-lite dungeon crawler where you flip cards to fight monsters, collect artifacts, and climb as many floors as possible.",
+  "requestFramePermissions": []
+}
