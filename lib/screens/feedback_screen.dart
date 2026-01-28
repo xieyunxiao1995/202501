@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/background_wrapper.dart';
 
 class FeedbackScreen extends StatefulWidget {
   final VoidCallback onClose;
@@ -47,11 +48,13 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF1F2937),
-        elevation: 0,
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         toolbarHeight: isSmallScreen ? 50 : 56,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white70, size: isSmallScreen ? 20 : 24),
@@ -82,14 +85,14 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1F2937),
+                        color: Colors.black.withValues(alpha: 0.4),
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.white10),
                       ),
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton<String>(
                           value: _feedbackType,
-                          dropdownColor: const Color(0xFF1F2937),
+                          dropdownColor: Colors.black.withValues(alpha: 0.8),
                           iconEnabledColor: Colors.amber,
                           style: const TextStyle(color: Colors.white),
                           isExpanded: true,
@@ -116,7 +119,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         hintText: "your@email.com",
                         hintStyle: const TextStyle(color: Colors.white38),
                         filled: true,
-                        fillColor: const Color(0xFF1F2937),
+                        fillColor: Colors.black.withValues(alpha: 0.4),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
@@ -154,7 +157,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                         hintText: "请详细描述您的建议或遇到的问题...",
                         hintStyle: const TextStyle(color: Colors.white38),
                         filled: true,
-                        fillColor: const Color(0xFF1F2937),
+                        fillColor: Colors.black.withValues(alpha: 0.4),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                           borderSide: BorderSide.none,
@@ -187,9 +190,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.1),
+                      color: Colors.blue.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.blue.withOpacity(0.3)),
+                      border: Border.all(color: Colors.blue.withValues(alpha: 0.3)),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,7 +235,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                         elevation: 8,
-                        shadowColor: Colors.amber.withOpacity(0.5),
+                        shadowColor: Colors.amber.withValues(alpha: 0.5),
                       ),
                       child: Text(
                         "提交反馈",
@@ -254,6 +257,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             _buildSuccessOverlay(isSmallScreen),
         ],
       ),
+      ),
     );
   }
 
@@ -267,9 +271,9 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
           width: isSmallScreen ? 280 : 320,
           padding: EdgeInsets.all(isSmallScreen ? 24 : 32),
           decoration: BoxDecoration(
-            color: const Color(0xFF1F2937),
+            color: Colors.black.withValues(alpha: 0.9),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.green.withOpacity(0.5), width: 2),
+            border: Border.all(color: Colors.green.withValues(alpha: 0.5), width: 2),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

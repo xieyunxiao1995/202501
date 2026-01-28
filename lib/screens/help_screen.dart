@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/background_wrapper.dart';
 
 class HelpScreen extends StatelessWidget {
   final VoidCallback onClose;
@@ -10,29 +11,31 @@ class HelpScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF1F2937),
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.white70, size: isSmallScreen ? 20 : 24),
-          onPressed: onClose,
-        ),
-        title: Text(
-          "使用帮助",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: isSmallScreen ? 18 : 20,
-            fontWeight: FontWeight.bold,
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_new, color: Colors.white70, size: isSmallScreen ? 20 : 24),
+            onPressed: onClose,
+          ),
+          title: Text(
+            "使用帮助",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: isSmallScreen ? 18 : 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(isSmallScreen ? 16.0 : 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(isSmallScreen ? 16.0 : 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             _buildHeader("修行指南", isSmallScreen),
             SizedBox(height: isSmallScreen ? 16 : 24),
             _buildSection(
@@ -91,7 +94,7 @@ class HelpScreen extends StatelessWidget {
                 _buildTip("万宝阁", "使用灵石购买永久天赋和临时增益", isSmallScreen),
                 _buildTip("乾坤炉", "收集材料炼制丹药，提升下次冒险属性", isSmallScreen),
                 _buildTip("七日礼", "每日登录签到，领取丰厚奖励", isSmallScreen),
-                _buildTip("山海志", "查看已收集的妖兽和道具图鉴", isSmallScreen),
+                _buildTip("图鉴", "查看已收集的妖兽和道具图鉴", isSmallScreen),
                 _buildTip("功业录", "查看成就进度，解锁特殊奖励", isSmallScreen),
                 _buildTip("秘境", "选择不同关卡进行挑战，解锁需要达到一定气运", isSmallScreen),
               ],
@@ -144,6 +147,7 @@ class HelpScreen extends StatelessWidget {
             SizedBox(height: isSmallScreen ? 24 : 32),
           ],
         ),
+      ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/campaign_data.dart';
+import '../widgets/background_wrapper.dart';
 
 class LevelLockedScreen extends StatelessWidget {
   final CampaignLevel level;
@@ -15,10 +16,12 @@ class LevelLockedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final neededScore = level.requiredScore - highScore;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      body: Stack(
-        children: [
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -163,6 +166,7 @@ class LevelLockedScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }

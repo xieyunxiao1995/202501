@@ -39,7 +39,7 @@ class EventDialog extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black38,
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.purpleAccent.withOpacity(0.3)),
+                border: Border.all(color: Colors.purpleAccent.withValues(alpha: 0.3)),
               ),
               child: Text(
                 event.icon,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/configs.dart';
+import '../widgets/background_wrapper.dart';
 import '../constants.dart';
-import '../utils/daily_login_manager.dart';
 
 class MainMenu extends StatelessWidget {
   final int highScore;
@@ -15,6 +15,7 @@ class MainMenu extends StatelessWidget {
   final VoidCallback onOpenSettings;
   final VoidCallback onOpenLevelSelect;
   final VoidCallback onOpenCultivation;
+  final VoidCallback onOpenTaskReward;
 
   final bool hasSave;
   final VoidCallback onContinue;
@@ -32,6 +33,7 @@ class MainMenu extends StatelessWidget {
     required this.onOpenSettings,
     required this.onOpenLevelSelect,
     required this.onOpenCultivation,
+    required this.onOpenTaskReward,
     this.hasSave = false,
     required this.onContinue,
   });
@@ -41,7 +43,9 @@ class MainMenu extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Stack(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Stack(
       children: [
         Center(
           child: SingleChildScrollView(
@@ -100,28 +104,28 @@ class MainMenu extends StatelessWidget {
                         onPressed: onOpenLevelSelect,
                         icon: Icons.map_rounded,
                         label: "秘境",
-                        color: Colors.cyan.shade900,
+                        color: Colors.cyanAccent,
                         isSmallScreen: isSmallScreen,
                       ),
                       _buildSmallMenuButton(
                         onPressed: onOpenStore,
                         icon: Icons.auto_awesome_motion_rounded,
                         label: "万宝阁",
-                        color: Colors.amber.shade900,
+                        color: Colors.amber,
                         isSmallScreen: isSmallScreen,
                       ),
                       _buildSmallMenuButton(
                         onPressed: onOpenCompendium,
                         icon: Icons.menu_book_rounded,
-                        label: "山海志",
-                        color: Colors.blue.shade900,
+                        label: "图鉴",
+                        color: Colors.lightBlueAccent,
                         isSmallScreen: isSmallScreen,
                       ),
                       _buildSmallMenuButton(
                         onPressed: onOpenAchievements,
                         icon: Icons.emoji_events_rounded,
                         label: "功业录",
-                        color: Colors.red.shade900,
+                        color: Colors.redAccent,
                         isSmallScreen: isSmallScreen,
                       ),
                       _buildSmallMenuButton(
@@ -142,7 +146,14 @@ class MainMenu extends StatelessWidget {
                         onPressed: onOpenDailyLogin,
                         icon: Icons.calendar_today_rounded,
                         label: "七日礼",
-                        color: Colors.purple.shade900,
+                        color: Colors.purpleAccent,
+                        isSmallScreen: isSmallScreen,
+                      ),
+                      _buildSmallMenuButton(
+                        onPressed: onOpenTaskReward,
+                        icon: Icons.task_alt,
+                        label: "限时活动",
+                        color: Colors.orangeAccent,
                         isSmallScreen: isSmallScreen,
                       ),
                     ],
@@ -206,6 +217,7 @@ class MainMenu extends StatelessWidget {
           ),
         ),
       ],
+      ),
     );
   }
 
@@ -216,9 +228,16 @@ class MainMenu extends StatelessWidget {
         vertical: isSmallScreen ? 12 : 16,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
+        color: Colors.black54, // Darker background for visibility
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: Colors.amber.withValues(alpha: 0.3), width: 1.5), // Colored border
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -275,39 +294,6 @@ class MainMenu extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuButton({
-    required VoidCallback onPressed,
-    required IconData icon,
-    required String label,
-    required Color color,
-  }) {
-    return SizedBox(
-      width: 240,
-      child: ElevatedButton.icon(
-        onPressed: onPressed,
-        icon: Icon(icon, size: 24),
-        label: Text(
-          label,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 1,
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          elevation: 8,
-          shadowColor: color.withValues(alpha: 0.5),
-        ),
-      ),
-    );
-  }
-
   Widget _buildSmallMenuButton({
     required VoidCallback onPressed,
     required IconData icon,
@@ -326,20 +312,33 @@ class MainMenu extends StatelessWidget {
             width: isSmallScreen ? 85 : 100,
             padding: EdgeInsets.symmetric(vertical: isSmallScreen ? 8 : 12),
             decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.2),
+              color: Colors.black87, // Darker background for better contrast
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: color.withValues(alpha: 0.5)),
+              border: Border.all(color: color, width: 2), // Thicker colored border
+              boxShadow: [
+                BoxShadow(
+                  color: color.withValues(alpha: 0.3),
+                  blurRadius: 8,
+                  spreadRadius: 1,
+                ),
+              ],
             ),
             child: Column(
               children: [
-                Icon(icon, color: color, size: isSmallScreen ? 20 : 24),
-                const SizedBox(height: 4),
+                Icon(icon, color: color, size: isSmallScreen ? 24 : 28), // Slightly larger icon
+                const SizedBox(height: 6),
                 Text(
                   label,
                   style: TextStyle(
                     color: color,
-                    fontSize: isSmallScreen ? 11 : 12,
+                    fontSize: isSmallScreen ? 12 : 13,
                     fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        color: color.withValues(alpha: 0.5),
+                        blurRadius: 4,
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -391,13 +390,13 @@ class MainMenu extends StatelessWidget {
             width: isSmallScreen ? 140 : 160,
             padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
             decoration: BoxDecoration(
-              color: isLocked ? Colors.grey[950] : Colors.grey[900],
+              color: isLocked ? Colors.black54 : Colors.black87,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
                 color: isLocked
-                    ? Colors.red.withValues(alpha: 0.2)
-                    : Colors.white10,
-                width: 1.5,
+                    ? Colors.red.withValues(alpha: 0.3)
+                    : Colors.white24,
+                width: 2,
               ),
               boxShadow: [
                 if (!isLocked)

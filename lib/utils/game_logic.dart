@@ -277,19 +277,19 @@ CardData generateSingleCard(int floor, {bool excludeBoss = false, bool forcePort
       if (typeRoll < 0.33) {
         enemyType = EnemyType.ranged;
         typeIcon = "🏹";
-        namePrefix = "${namePrefix}影袭";
+        namePrefix = "$namePrefix影袭";
         monsterPower = (monsterPower * 0.9).floor();
       } else if (typeRoll < 0.66) {
         enemyType = EnemyType.tank;
         typeIcon = "🐢";
-        namePrefix = "${namePrefix}玄甲";
+        namePrefix = "$namePrefix玄甲";
         monsterPower = (monsterPower * 1.2).floor();
         maxHp = 1;
         currentHp = 1;
       } else {
         enemyType = EnemyType.summoner;
         typeIcon = "🧙";
-        namePrefix = "${namePrefix}祝师";
+        namePrefix = "$namePrefix祝师";
         monsterPower = (monsterPower * 0.8).floor();
       }
     }

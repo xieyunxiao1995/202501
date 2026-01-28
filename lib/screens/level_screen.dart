@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../data/campaign_data.dart';
-import '../models/enums.dart';
 import 'help_screen.dart';
 import 'level_detail_screen.dart';
 import 'level_locked_screen.dart';
+import '../widgets/background_wrapper.dart';
 
 class LevelScreen extends StatelessWidget {
   final int highScore;
@@ -21,9 +21,11 @@ class LevelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Stack(
+        children: [
+          Center(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
@@ -156,6 +158,7 @@ class LevelScreen extends StatelessWidget {
           ),
         ),
       ],
+    ),
     );
   }
 
@@ -163,9 +166,16 @@ class LevelScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.05),
+        color: Colors.black54, // Darker background
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white10),
+        border: Border.all(color: Colors.amber.withValues(alpha: 0.3), width: 1.5),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.3),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -214,14 +224,14 @@ class LevelScreen extends StatelessWidget {
     bool isUnlocked,
     int stars,
   ) {
-    Color borderColor = Colors.white10;
-    Color bgColor = Colors.grey[900]!;
+    Color borderColor = Colors.white24;
+    Color bgColor = Colors.black54;
 
     if (isUnlocked) {
-      borderColor = Colors.amber.withValues(alpha: 0.5);
-      bgColor = Colors.grey[850]!;
+      borderColor = Colors.amber.withValues(alpha: 0.8);
+      bgColor = Colors.black87;
     } else {
-      borderColor = Colors.red.withValues(alpha: 0.3);
+      borderColor = Colors.red.withValues(alpha: 0.5);
     }
 
     return GestureDetector(

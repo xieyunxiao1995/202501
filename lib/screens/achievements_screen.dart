@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/configs.dart';
 import '../data/achievements_data.dart';
 import '../utils/achievement_manager.dart';
+import '../widgets/background_wrapper.dart';
 
 class AchievementsScreen extends StatelessWidget {
   final VoidCallback onClose;
@@ -16,10 +17,12 @@ class AchievementsScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF121212),
-      appBar: AppBar(
-        title: Text("山海志", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold, fontSize: isSmallScreen ? 18 : 20)),
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+        title: Text("功业录", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold, fontSize: isSmallScreen ? 18 : 20)),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
@@ -35,8 +38,8 @@ class AchievementsScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.redAccent.withOpacity(0.05),
-              Colors.black,
+              Colors.redAccent.withValues(alpha: 0.05),
+              Colors.transparent,
             ],
           ),
         ),
@@ -95,6 +98,7 @@ class AchievementsScreen extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -103,10 +107,10 @@ class AchievementsScreen extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: isSmallScreen ? 4 : 8),
       padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
       decoration: BoxDecoration(
-        color: isUnlocked ? Colors.redAccent.withOpacity(0.1) : Colors.white.withOpacity(0.05),
+        color: isUnlocked ? Colors.redAccent.withValues(alpha: 0.1) : Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isUnlocked ? Colors.redAccent.withOpacity(0.5) : Colors.white10,
+          color: isUnlocked ? Colors.redAccent.withValues(alpha: 0.5) : Colors.white10,
           width: 1,
         ),
       ),
@@ -116,10 +120,10 @@ class AchievementsScreen extends StatelessWidget {
             width: isSmallScreen ? 44 : 56,
             height: isSmallScreen ? 44 : 56,
             decoration: BoxDecoration(
-              color: isUnlocked ? Colors.redAccent.withOpacity(0.2) : Colors.black26,
+              color: isUnlocked ? Colors.redAccent.withValues(alpha: 0.2) : Colors.black26,
               shape: BoxShape.circle,
             ),
-            child: Center(child: Text(achievement.icon, style: TextStyle(fontSize: isSmallScreen ? 24 : 32, color: isUnlocked ? null : Colors.white.withOpacity(0.2)))),
+            child: Center(child: Text(achievement.icon, style: TextStyle(fontSize: isSmallScreen ? 24 : 32, color: isUnlocked ? null : Colors.white.withValues(alpha: 0.2)))),
           ),
           SizedBox(width: isSmallScreen ? 12 : 16),
           Expanded(

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import '../models/player_stats.dart';
 import '../models/configs.dart';
 import '../constants.dart';
-import '../models/soul_model.dart';
 import '../data/souls_data.dart';
 import '../models/enums.dart';
+import '../widgets/background_wrapper.dart';
 
 class CultivationScreen extends StatelessWidget {
   final PlayerStats player;
@@ -42,9 +42,11 @@ class CultivationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
         title: const Text(
           "洞府修行",
           style: TextStyle(color: Colors.cyanAccent, fontWeight: FontWeight.bold),
@@ -63,7 +65,7 @@ class CultivationScreen extends StatelessWidget {
           gradient: RadialGradient(
             center: const Alignment(0, -0.2),
             radius: 1.5,
-            colors: [Colors.cyan.withOpacity(0.05), const Color(0xFF111827)],
+            colors: [Colors.cyan.withValues(alpha: 0.05), Colors.transparent],
           ),
         ),
         child: SingleChildScrollView(
@@ -88,6 +90,7 @@ class CultivationScreen extends StatelessWidget {
             ],
           ),
         ),
+        ),
       ),
     );
   }
@@ -99,16 +102,16 @@ class CultivationScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+        border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
       ),
       child: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.cyanAccent.withOpacity(0.1),
+              color: Colors.cyanAccent.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: const Text("🧘", style: TextStyle(fontSize: 40)),
@@ -132,7 +135,7 @@ class CultivationScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       decoration: BoxDecoration(
-                        color: Colors.purpleAccent.withOpacity(0.2),
+                        color: Colors.purpleAccent.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
@@ -191,7 +194,7 @@ class CultivationScreen extends StatelessWidget {
   Widget _buildStatCard(String label, String value, Color color) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -217,9 +220,9 @@ class CultivationScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.amberAccent.withOpacity(0.2)),
+        border: Border.all(color: Colors.amberAccent.withValues(alpha: 0.2)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,9 +301,9 @@ class CultivationScreen extends StatelessWidget {
           width: 100,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: getRarityColor(perk.rarity).withOpacity(0.3)),
+            border: Border.all(color: getRarityColor(perk.rarity).withValues(alpha: 0.3)),
           ),
           child: Column(
             children: [
@@ -341,7 +344,7 @@ class CultivationScreen extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: Colors.white10),
           ),

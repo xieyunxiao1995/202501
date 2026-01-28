@@ -47,6 +47,7 @@ enum GameState {
   settings,
   dailyLogin,
   cultivation,
+  taskReward,
 }
 
 enum Rarity { common, rare, epic, legendary }

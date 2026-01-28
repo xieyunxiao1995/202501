@@ -4,9 +4,6 @@ import '../data/alchemy_data.dart';
 import '../data/souls_data.dart';
 import '../data/events_data.dart';
 import '../models/alchemy_model.dart';
-import '../models/soul_model.dart';
-import '../models/event_model.dart';
-import '../models/configs.dart';
 import '../models/enums.dart';
 
 class CompendiumDialog extends StatefulWidget {
@@ -164,7 +161,7 @@ class _CompendiumDialogState extends State<CompendiumDialog>
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isBoss
-                  ? Colors.redAccent.withOpacity(0.5)
+                  ? Colors.redAccent.withValues(alpha: 0.5)
                   : Colors.white10,
             ),
           ),
@@ -297,8 +294,8 @@ class _CompendiumDialogState extends State<CompendiumDialog>
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          collapsedBackgroundColor: Colors.white.withOpacity(0.05),
-          backgroundColor: Colors.white.withOpacity(0.08),
+          collapsedBackgroundColor: Colors.white.withValues(alpha: 0.05),
+          backgroundColor: Colors.white.withValues(alpha: 0.08),
           leading: Text(event.icon, style: const TextStyle(fontSize: 28)),
           title: Text(
             event.title,
@@ -380,11 +377,11 @@ class _CompendiumDialogState extends State<CompendiumDialog>
       itemBuilder: (context, index) {
         final cls = classes[index];
         return Card(
-          color: Colors.white.withOpacity(0.05),
+          color: Colors.white.withValues(alpha: 0.05),
           margin: const EdgeInsets.only(bottom: 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: BorderSide(color: Colors.amber.withOpacity(0.3)),
+            side: BorderSide(color: Colors.amber.withValues(alpha: 0.3)),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -471,7 +468,7 @@ class _CompendiumDialogState extends State<CompendiumDialog>
                   label: Text(name),
                   backgroundColor: Colors.white10,
                   labelStyle: const TextStyle(color: Colors.white),
-                  side: BorderSide(color: Colors.white.withOpacity(0.2)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
                 ),
               )
               .toList(),
@@ -498,7 +495,7 @@ class _CompendiumDialogState extends State<CompendiumDialog>
                   label: Text(name),
                   backgroundColor: Colors.white10,
                   labelStyle: const TextStyle(color: Colors.white),
-                  side: BorderSide(color: Colors.white.withOpacity(0.2)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
                 ),
               )
               .toList(),
@@ -514,7 +511,7 @@ class _CompendiumDialogState extends State<CompendiumDialog>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
           decoration: BoxDecoration(
-            color: Colors.amber.withOpacity(0.2),
+            color: Colors.amber.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Text(
@@ -565,17 +562,17 @@ class _CompendiumDialogState extends State<CompendiumDialog>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isHighlight
-              ? [color.withOpacity(0.4), const Color(0xFF1F2937)]
+              ? [color.withValues(alpha: 0.4), const Color(0xFF1F2937)]
               : [
-                  const Color(0xFF1F2937).withOpacity(0.5),
-                  const Color(0xFF374151).withOpacity(0.5),
+                  const Color(0xFF1F2937).withValues(alpha: 0.5),
+                  const Color(0xFF374151).withValues(alpha: 0.5),
                 ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isHighlight ? Colors.amberAccent : color.withOpacity(0.3),
+          color: isHighlight ? Colors.amberAccent : color.withValues(alpha: 0.3),
           width: isHighlight ? 2 : 1,
         ),
       ),
@@ -605,10 +602,10 @@ class _CompendiumDialogState extends State<CompendiumDialog>
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: (tagColor ?? Colors.grey).withOpacity(0.2),
+                  color: (tagColor ?? Colors.grey).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
-                    color: (tagColor ?? Colors.grey).withOpacity(0.5),
+                    color: (tagColor ?? Colors.grey).withValues(alpha: 0.5),
                   ),
                 ),
                 child: Text(
@@ -642,20 +639,18 @@ class _CompendiumDialogState extends State<CompendiumDialog>
       case Rarity.legendary:
         return "神品";
     }
-    return "";
   }
 
   Color _getRarityColor(Rarity rarity) {
     switch (rarity) {
       case Rarity.common:
-        return const Color(0xFF9CA3AF);
+        return Colors.grey;
       case Rarity.rare:
-        return const Color(0xFF60A5FA);
+        return Colors.blue;
       case Rarity.epic:
-        return const Color(0xFFA78BFA);
+        return Colors.purple;
       case Rarity.legendary:
-        return const Color(0xFFFBBF24);
+        return Colors.orange;
     }
-    return Colors.grey;
   }
 }

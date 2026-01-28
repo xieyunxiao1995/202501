@@ -18,7 +18,7 @@ class AchievementsDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              "山海志",
+              "功业录",
               style: TextStyle(color: Colors.amber, fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),

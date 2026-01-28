@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class DailyLoginManager {
   static const String _storageKey = 'mythic_daily_login';
 
-  static int currentDay = 1; // 1-7
+  static int currentDay = 1; // 1-8
   static bool isClaimedToday = false;
   static String lastLoginDate = "";
 
@@ -31,7 +31,7 @@ class DailyLoginManager {
         if (difference == 1) {
           // Consecutive day
           currentDay++;
-          if (currentDay > 7) currentDay = 1; // Loop 7 days
+          if (currentDay > 8) currentDay = 1; // Loop 8 days
         } else {
           // Missed a day or more, reset to day 1
           currentDay = 1;

@@ -4,10 +4,10 @@ import '../data/alchemy_data.dart';
 import '../data/souls_data.dart';
 import '../data/events_data.dart';
 import '../models/alchemy_model.dart';
-import '../models/soul_model.dart';
-import '../models/event_model.dart';
-import '../models/configs.dart';
 import '../models/enums.dart';
+import '../widgets/background_wrapper.dart';
+import '../widgets/character_card.dart';
+import '../widgets/character_detail_dialog.dart';
 
 class CompendiumScreen extends StatefulWidget {
   final VoidCallback onClose;
@@ -57,9 +57,11 @@ class _CompendiumScreenState extends State<CompendiumScreen>
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
         title: Text(
           "山海图鉴",
           style: TextStyle(
@@ -104,7 +106,7 @@ class _CompendiumScreenState extends State<CompendiumScreen>
           gradient: RadialGradient(
             center: const Alignment(0, -0.2),
             radius: 1.5,
-            colors: [Colors.amber.withOpacity(0.05), const Color(0xFF111827)],
+            colors: [Colors.amber.withValues(alpha: 0.05), Colors.transparent],
           ),
         ),
         child: TabBarView(
@@ -120,80 +122,73 @@ class _CompendiumScreenState extends State<CompendiumScreen>
             _buildEquipment(isSmallScreen),
           ],
         ),
+        ),
       ),
     );
   }
 
   Widget _buildBestiary(bool isSmallScreen) {
-    return ListView.builder(
+    final allNames = [...monsterNames, ...bossNames];
+    
+    return GridView.builder(
       padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-      itemCount: monsterNames.length + bossNames.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: isSmallScreen ? 3 : 5,
+        childAspectRatio: 0.55, // Tall cards
+        crossAxisSpacing: isSmallScreen ? 8 : 12,
+        mainAxisSpacing: isSmallScreen ? 8 : 12,
+      ),
+      itemCount: allNames.length,
       itemBuilder: (context, index) {
-        final bool isBoss = index >= monsterNames.length;
-        final name = isBoss
-            ? bossNames[index - monsterNames.length]
-            : monsterNames[index];
+        final name = allNames[index];
+        final bool isBoss = bossNames.contains(name);
+        
+        // Deterministic attributes based on name hash
+        final int hash = name.hashCode.abs();
+        
+        // Image: Role2 - Role20
+        final int imgIndex = (hash % 19) + 2;
+        final String imagePath = 'assets/role/Role$imgIndex.png';
+        
+        // Element: Metal, Wood, Water, Fire, Earth
+        final GameElement element = GameElement.values[(hash % 5) + 1];
+        
+        // Rarity
+        Rarity rarity;
+        if (isBoss) {
+          rarity = Rarity.legendary;
+        } else {
+          final int r = hash % 100;
+          if (r < 50) rarity = Rarity.common; // R
+          else if (r < 85) rarity = Rarity.rare; // SR
+          else rarity = Rarity.epic; // SSR
+        }
+        
+        // Stars: 3-5
+        int stars = 3;
+        if (rarity == Rarity.epic) stars = 4;
+        if (rarity == Rarity.legendary) stars = 5;
 
-        return Container(
-          margin: EdgeInsets.only(bottom: isSmallScreen ? 8 : 12),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: isBoss
-                  ? [const Color(0xFF7F1D1D), const Color(0xFF374151)]
-                  : [const Color(0xFF1F2937), const Color(0xFF374151)],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(
-              color: isBoss
-                  ? Colors.redAccent.withOpacity(0.5)
-                  : Colors.white10,
-            ),
-          ),
-          child: ListTile(
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: isSmallScreen ? 12 : 16,
-              vertical: isSmallScreen ? 4 : 8,
-            ),
-            leading: Container(
-              padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
-              decoration: BoxDecoration(
-                color: Colors.black26,
-                shape: BoxShape.circle,
-                border: Border.all(color: isBoss ? Colors.red : Colors.grey),
+        return CharacterCard(
+          name: name,
+          imagePath: imagePath,
+          element: element,
+          rarity: rarity,
+          stars: stars,
+          isBoss: isBoss,
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) => CharacterDetailDialog(
+                name: name,
+                imagePath: imagePath,
+                element: element,
+                rarity: rarity,
+                stars: stars,
+                isBoss: isBoss,
               ),
-              child: Text(
-                isBoss ? "👹" : "👾",
-                style: TextStyle(fontSize: isSmallScreen ? 20 : 24),
-              ),
-            ),
-            title: Text(
-              name,
-              style: TextStyle(
-                color: isBoss ? Colors.redAccent : Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: isSmallScreen ? 16 : 18,
-              ),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: isSmallScreen ? 2 : 4),
-                Text(
-                  isBoss ? "大荒领主 - 极度危险" : "大荒妖兽 - 常见威胁",
-                  style: TextStyle(color: Colors.white54, fontSize: isSmallScreen ? 11 : 13),
-                ),
-              ],
-            ),
-            trailing: isBoss
-                ? Icon(
-                    Icons.warning_amber_rounded,
-                    color: Colors.redAccent,
-                    size: isSmallScreen ? 20 : 24,
-                  )
-                : null,
-          ),
+            );
+          },
         );
       },
     );
@@ -206,9 +201,13 @@ class _CompendiumScreenState extends State<CompendiumScreen>
       itemBuilder: (context, index) {
         final relic = relics[index];
         final isEquipped = widget.currentRelics.contains(relic.id);
+        
+        final int imgIndex = (relic.name.hashCode.abs() % 39) + 1;
+        final String imagePath = 'assets/item/item$imgIndex.png';
 
         return _buildCard(
           icon: relic.icon,
+          imagePath: imagePath,
           title: relic.name,
           subtitle: relic.desc,
           tag: "${relic.cost} 灵石",
@@ -257,9 +256,13 @@ class _CompendiumScreenState extends State<CompendiumScreen>
             : (item as Elixir).description;
         Rarity rarity = isMaterial ? item.rarity : (item as Elixir).rarity;
         String typeLabel = isMaterial ? "材料" : "丹药";
+        
+        final int imgIndex = (name.hashCode.abs() % 39) + 1;
+        final String imagePath = 'assets/item/item$imgIndex.png';
 
         return _buildCard(
           icon: icon,
+          imagePath: imagePath,
           title: name,
           subtitle: desc,
           tag: typeLabel,
@@ -284,8 +287,8 @@ class _CompendiumScreenState extends State<CompendiumScreen>
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          collapsedBackgroundColor: Colors.white.withOpacity(0.05),
-          backgroundColor: Colors.white.withOpacity(0.08),
+          collapsedBackgroundColor: Colors.white.withValues(alpha: 0.05),
+          backgroundColor: Colors.white.withValues(alpha: 0.08),
           leading: Text(event.icon, style: TextStyle(fontSize: isSmallScreen ? 24 : 28)),
           title: Text(
             event.title,
@@ -369,11 +372,11 @@ class _CompendiumScreenState extends State<CompendiumScreen>
       itemBuilder: (context, index) {
         final cls = classes[index];
         return Card(
-          color: Colors.white.withOpacity(0.05),
+          color: Colors.white.withValues(alpha: 0.05),
           margin: EdgeInsets.only(bottom: isSmallScreen ? 8 : 12),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: BorderSide(color: Colors.amber.withOpacity(0.3)),
+            side: BorderSide(color: Colors.amber.withValues(alpha: 0.3)),
           ),
           child: Padding(
             padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
@@ -458,22 +461,30 @@ class _CompendiumScreenState extends State<CompendiumScreen>
           runSpacing: isSmallScreen ? 4 : 8,
           children: weaponNames
               .map(
-                (name) => Chip(
-                  avatar: Text(isSmallScreen ? "" : "⚔️"),
-                  label: Text(
-                    name,
+                (name) {
+                  final int imgIndex = (name.hashCode.abs() % 39) + 1;
+                  return Chip(
+                    avatar: Image.asset(
+                      'assets/item/item$imgIndex.png',
+                      width: 24,
+                      height: 24,
+                      errorBuilder: (context, error, stackTrace) =>
+                          Text(isSmallScreen ? "" : "⚔️"),
+                    ),
+                    label: Text(
+                      name,
                     style: TextStyle(fontSize: isSmallScreen ? 12 : 14),
                   ),
                   backgroundColor: Colors.white10,
                   labelStyle: const TextStyle(color: Colors.white),
-                  side: BorderSide(color: Colors.white.withOpacity(0.2)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
                   padding: EdgeInsets.symmetric(
                     horizontal: isSmallScreen ? 4 : 8,
                     vertical: isSmallScreen ? 0 : 4,
                   ),
                   materialTapTargetSize: isSmallScreen ? MaterialTapTargetSize.shrinkWrap : null,
-                ),
-              )
+                );
+              })
               .toList(),
         ),
         SizedBox(height: isSmallScreen ? 16 : 24),
@@ -493,22 +504,30 @@ class _CompendiumScreenState extends State<CompendiumScreen>
           runSpacing: isSmallScreen ? 4 : 8,
           children: shieldNames
               .map(
-                (name) => Chip(
-                  avatar: Text(isSmallScreen ? "" : "🛡️"),
-                  label: Text(
-                    name,
+                (name) {
+                  final int imgIndex = (name.hashCode.abs() % 39) + 1;
+                  return Chip(
+                    avatar: Image.asset(
+                      'assets/item/item$imgIndex.png',
+                      width: 24,
+                      height: 24,
+                      errorBuilder: (context, error, stackTrace) =>
+                          Text(isSmallScreen ? "" : "🛡️"),
+                    ),
+                    label: Text(
+                      name,
                     style: TextStyle(fontSize: isSmallScreen ? 12 : 14),
                   ),
                   backgroundColor: Colors.white10,
                   labelStyle: const TextStyle(color: Colors.white),
-                  side: BorderSide(color: Colors.white.withOpacity(0.2)),
+                  side: BorderSide(color: Colors.white.withValues(alpha: 0.2)),
                   padding: EdgeInsets.symmetric(
                     horizontal: isSmallScreen ? 4 : 8,
                     vertical: isSmallScreen ? 0 : 4,
                   ),
                   materialTapTargetSize: isSmallScreen ? MaterialTapTargetSize.shrinkWrap : null,
-                ),
-              )
+                );
+              })
               .toList(),
         ),
       ],
@@ -522,7 +541,7 @@ class _CompendiumScreenState extends State<CompendiumScreen>
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
           decoration: BoxDecoration(
-            color: Colors.amber.withOpacity(0.2),
+            color: Colors.amber.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Text(
@@ -561,6 +580,7 @@ class _CompendiumScreenState extends State<CompendiumScreen>
 
   Widget _buildCard({
     required String icon,
+    String? imagePath,
     required String title,
     required String subtitle,
     String? tag,
@@ -574,17 +594,17 @@ class _CompendiumScreenState extends State<CompendiumScreen>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: isHighlight
-              ? [color.withOpacity(0.4), const Color(0xFF1F2937)]
+              ? [color.withValues(alpha: 0.4), const Color(0xFF1F2937)]
               : [
-                  const Color(0xFF1F2937).withOpacity(0.5),
-                  const Color(0xFF374151).withOpacity(0.5),
+                  const Color(0xFF1F2937).withValues(alpha: 0.5),
+                  const Color(0xFF374151).withValues(alpha: 0.5),
                 ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isHighlight ? Colors.amberAccent : color.withOpacity(0.3),
+          color: isHighlight ? Colors.amberAccent : color.withValues(alpha: 0.3),
           width: isHighlight ? 2 : 1,
         ),
       ),
@@ -600,7 +620,15 @@ class _CompendiumScreenState extends State<CompendiumScreen>
             shape: BoxShape.circle,
             border: Border.all(color: color),
           ),
-          child: Text(icon, style: TextStyle(fontSize: isSmallScreen ? 20 : 24)),
+          child: imagePath != null
+              ? Image.asset(
+                  imagePath,
+                  width: isSmallScreen ? 24 : 32,
+                  height: isSmallScreen ? 24 : 32,
+                  errorBuilder: (context, error, stackTrace) =>
+                      Text(icon, style: TextStyle(fontSize: isSmallScreen ? 20 : 24)),
+                )
+              : Text(icon, style: TextStyle(fontSize: isSmallScreen ? 20 : 24)),
         ),
         title: Row(
           children: [
@@ -617,10 +645,10 @@ class _CompendiumScreenState extends State<CompendiumScreen>
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: (tagColor ?? Colors.grey).withOpacity(0.2),
+                  color: (tagColor ?? Colors.grey).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
-                    color: (tagColor ?? Colors.grey).withOpacity(0.5),
+                    color: (tagColor ?? Colors.grey).withValues(alpha: 0.5),
                   ),
                 ),
                 child: Text(

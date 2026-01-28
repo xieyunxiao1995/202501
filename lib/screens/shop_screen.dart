@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/configs.dart';
 
+import '../widgets/background_wrapper.dart';
+
 class ShopScreen extends StatelessWidget {
   final List<ShopItem> items;
   final int playerGold;
@@ -20,8 +22,10 @@ class ShopScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: const Text(
           "灵宝游商",
@@ -55,7 +59,7 @@ class ShopScreen extends StatelessWidget {
           gradient: RadialGradient(
             center: const Alignment(0, -0.2),
             radius: 1.5,
-            colors: [Colors.amber.withOpacity(0.05), const Color(0xFF111827)],
+            colors: [Colors.amber.withValues(alpha: 0.05), Colors.transparent],
           ),
         ),
         child: Column(
@@ -84,7 +88,7 @@ class ShopScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: onClose,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber.withOpacity(0.2),
+                    backgroundColor: Colors.amber.withValues(alpha: 0.2),
                     foregroundColor: Colors.amber,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
@@ -102,6 +106,7 @@ class ShopScreen extends StatelessWidget {
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -112,10 +117,10 @@ class ShopScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.05),
+          color: Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: item.isSold ? Colors.grey.withOpacity(0.3) : Colors.amber.withOpacity(0.3),
+            color: item.isSold ? Colors.grey.withValues(alpha: 0.3) : Colors.amber.withValues(alpha: 0.3),
             width: 1,
           ),
         ),

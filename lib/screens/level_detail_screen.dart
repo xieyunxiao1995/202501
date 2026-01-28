@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/campaign_data.dart';
 import '../models/enums.dart';
+import '../widgets/background_wrapper.dart';
 
 class LevelDetailScreen extends StatelessWidget {
   final CampaignLevel level;
@@ -16,9 +17,11 @@ class LevelDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      body: Stack(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
         children: [
           // Background decoration (optional)
           Positioned.fill(
@@ -291,7 +294,8 @@ class LevelDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 
   Widget _buildStar(bool filled, {double size = 24}) {

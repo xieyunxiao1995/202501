@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/event_model.dart';
 
+import '../widgets/background_wrapper.dart';
+
 class EventScreen extends StatelessWidget {
   final GameEvent event;
   final Function(EventOption) onOptionSelected;
@@ -16,8 +18,10 @@ class EventScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -26,8 +30,8 @@ class EventScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              const Color(0xFF2D1B2E),
-              const Color(0xFF111827),
+              const Color(0xFF2D1B2E).withValues(alpha: 0.8),
+              Colors.transparent,
             ],
           ),
         ),
@@ -46,12 +50,12 @@ class EventScreen extends StatelessWidget {
                         color: Colors.black38,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.purpleAccent.withOpacity(0.3),
+                          color: Colors.purpleAccent.withValues(alpha: 0.3),
                           width: 2,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.purpleAccent.withOpacity(0.1),
+                            color: Colors.purpleAccent.withValues(alpha: 0.1),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -85,12 +89,12 @@ class EventScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.black45,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: Colors.purpleAccent.withOpacity(0.1)),
+                    border: Border.all(color: Colors.purpleAccent.withValues(alpha: 0.1)),
                   ),
                   child: Text(
                     event.description,
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.85),
+                      color: Colors.white.withValues(alpha: 0.85),
                       fontSize: isSmallScreen ? 14 : 16,
                       height: 1.6,
                       letterSpacing: 0.5,
@@ -117,6 +121,7 @@ class EventScreen extends StatelessWidget {
           ),
         ),
       ),
+      ),
     );
   }
 
@@ -135,12 +140,12 @@ class EventScreen extends StatelessWidget {
               horizontal: 16,
             ),
             decoration: BoxDecoration(
-              color: Colors.purple.withOpacity(0.15),
+              color: Colors.purple.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.purpleAccent.withOpacity(0.3)),
+              border: Border.all(color: Colors.purpleAccent.withValues(alpha: 0.3)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withValues(alpha: 0.2),
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),
@@ -165,7 +170,7 @@ class EventScreen extends StatelessWidget {
                         Text(
                           option.description,
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.6),
+                            color: Colors.white.withValues(alpha: 0.6),
                             fontSize: isSmallScreen ? 12 : 13,
                           ),
                         ),
@@ -175,7 +180,7 @@ class EventScreen extends StatelessWidget {
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
-                  color: Colors.purpleAccent.withOpacity(0.5),
+                  color: Colors.purpleAccent.withValues(alpha: 0.5),
                   size: 16,
                 ),
               ],

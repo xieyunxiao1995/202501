@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/card_data.dart';
 import '../models/enums.dart';
 import '../constants.dart';
+import '../utils/asset_helper.dart';
 
 class GameCard extends StatefulWidget {
   final CardData card;
@@ -130,6 +131,8 @@ class _GameCardState extends State<GameCard> with SingleTickerProviderStateMixin
   }
 
   Widget _buildCardContent(BuildContext context, Color color) {
+    final imagePath = AssetHelper.getCardImage(widget.card);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -138,10 +141,27 @@ class _GameCardState extends State<GameCard> with SingleTickerProviderStateMixin
             "大妖",
             style: TextStyle(color: Colors.red, fontSize: 10, fontWeight: FontWeight.bold),
           ),
-        Text(
-          widget.card.icon,
-          style: TextStyle(fontSize: 32),
-        ),
+        if (imagePath != null)
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return Text(
+                    widget.card.icon,
+                    style: TextStyle(fontSize: 32),
+                  );
+                },
+              ),
+            ),
+          )
+        else
+          Text(
+            widget.card.icon,
+            style: TextStyle(fontSize: 32),
+          ),
         SizedBox(height: 4),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2.0),

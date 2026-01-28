@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/animated_counter.dart';
+import '../widgets/background_wrapper.dart';
 
 class MetaStoreScreen extends StatelessWidget {
   final int totalGold;
@@ -20,9 +21,11 @@ class MetaStoreScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF1A1A1A),
-      appBar: AppBar(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
         title: Text("万宝阁", style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: isSmallScreen ? 18 : 20)),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -54,8 +57,8 @@ class MetaStoreScreen extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.black.withOpacity(0.8),
-              const Color(0xFF1A1A1A),
+              Colors.black.withValues(alpha: 0.8),
+              Colors.transparent,
             ],
           ),
         ),
@@ -101,6 +104,7 @@ class MetaStoreScreen extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 
@@ -125,10 +129,10 @@ class MetaStoreScreen extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: isSmallScreen ? 4 : 8),
       padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isUnlocked ? Colors.green.withOpacity(0.5) : (canAfford && !locked ? Colors.amber.withOpacity(0.5) : Colors.white10),
+          color: isUnlocked ? Colors.green.withValues(alpha: 0.5) : (canAfford && !locked ? Colors.amber.withValues(alpha: 0.5) : Colors.white10),
           width: 1,
         ),
       ),

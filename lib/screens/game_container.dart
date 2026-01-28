@@ -35,13 +35,13 @@ import 'splash_screen.dart';
 import '../widgets/particle_layer.dart';
 import '../utils/daily_login_manager.dart';
 import 'level_screen.dart';
-import '../data/campaign_data.dart';
-import '../data/levels_data.dart';
 import 'daily_login_screen.dart';
+import 'task_reward_screen.dart';
 import 'event_screen.dart';
 import 'game_over_screen.dart';
 import 'settings_screen.dart';
 import 'cultivation_screen.dart';
+import '../widgets/background_wrapper.dart';
 
 class GameContainer extends StatefulWidget {
   const GameContainer({super.key});
@@ -69,9 +69,15 @@ class _GameContainerState extends State<GameContainer>
   int _totalGold = 0;
   List<String> _unlockedPerks = [];
   bool _hasSave = false;
-
+  
+  // GameState extensions
+  // Note: We can add new states to enum, but for now let's just use a bool overlay or existing state mechanism
+  // Let's add 'taskReward' to GameState in models/enums.dart ideally, but here we can check if we want to modify enum.
+  // Assuming we can't easily modify enum across files without reading it first, let's check enums.dart.
+  // Actually, I'll just use a separate boolean or existing state if possible. 
+  // Wait, I can modify enums.dart easily. Let's do that first.
+  
   // Level System
-  int? _currentLevelId;
   Map<int, int> _levelStars = {};
 
   // Effects
@@ -306,13 +312,7 @@ class _GameContainerState extends State<GameContainer>
   }
 
   void _selectLevel(int levelId) {
-    final level = campaignLevels.firstWhere(
-      (l) => l.id == levelId,
-      orElse: () => campaignLevels[0],
-    );
-
     setState(() {
-      _currentLevelId = levelId;
       _gameState = GameState.playing;
     });
 
@@ -1553,21 +1553,34 @@ class _GameContainerState extends State<GameContainer>
     _autoSave();
   }
 
+  String _getBackgroundImage() {
+    if (_gameState == GameState.splash) return 'assets/bg/Bg1.jpeg';
+    if (_gameState == GameState.menu) return 'assets/bg/Bg2.jpeg';
+    
+    // Map floor to background image (Bg3 - Bg31)
+    // We reserve Bg1 and Bg2 for Splash/Menu if we want, or just cycle all.
+    // Let's cycle all 31.
+    int index = ((_player.floor - 1) % 31) + 1;
+    return 'assets/bg/Bg$index.jpeg';
+  }
+
   @override
   Widget build(BuildContext context) {
     // Determine dynamic background color or overlay based on Flash
     // We can use a Stack for the entire screen
 
     return Scaffold(
-      backgroundColor: Color(0xFF111827), // gray-900
-      body: ShakeWidget(
-        controller: _shakeController,
-        child: Stack(
-          children: [
-            // Main Content
-            _buildContent(),
+      backgroundColor: Colors.transparent,
+      body: BackgroundWrapper(
+        backgroundImage: _getBackgroundImage(),
+        child: ShakeWidget(
+          controller: _shakeController,
+          child: Stack(
+            children: [
+              // Main Content
+              _buildContent(),
 
-            // Effects Layer
+              // Effects Layer
             if (_flashColor != null)
               IgnorePointer(
                 child: Container(color: _flashColor!.withValues(alpha: 0.3)),
@@ -1631,6 +1644,15 @@ class _GameContainerState extends State<GameContainer>
                 onClaim: _claimDailyReward,
               ),
 
+            if (_gameState == GameState.taskReward)
+              TaskRewardScreen(
+                onClose: () => setState(() => _gameState = GameState.menu),
+                onClaim: (rewards) {
+                  // Reuse daily reward claim logic or similar
+                  _claimDailyReward(0, rewards); 
+                },
+              ),
+
             if (_gameState == GameState.event && _currentEvent != null)
               EventScreen(
                 event: _currentEvent!,
@@ -1678,6 +1700,7 @@ class _GameContainerState extends State<GameContainer>
           ],
         ),
       ),
+      ),
     );
   }
 
@@ -1706,6 +1729,8 @@ class _GameContainerState extends State<GameContainer>
             setState(() => _gameState = GameState.levelSelect),
         onOpenCultivation: () =>
             setState(() => _gameState = GameState.cultivation),
+        onOpenTaskReward: () =>
+            setState(() => _gameState = GameState.taskReward),
         hasSave: _hasSave,
         onContinue: _continueGame,
       );
@@ -1718,6 +1743,10 @@ class _GameContainerState extends State<GameContainer>
         onLevelSelect: _selectLevel,
         onClose: () => setState(() => _gameState = GameState.menu),
       );
+    }
+
+    if (_gameState != GameState.playing) {
+      return const SizedBox.shrink();
     }
 
     return Column(

@@ -111,10 +111,10 @@ class _DailyLoginDialogState extends State<DailyLoginDialog>
         decoration: BoxDecoration(
           color: const Color(0xFF1F2937),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.amber.withOpacity(0.5), width: 2),
+          border: Border.all(color: Colors.amber.withValues(alpha: 0.5), width: 2),
           boxShadow: [
             BoxShadow(
-              color: Colors.amber.withOpacity(0.1),
+              color: Colors.amber.withValues(alpha: 0.1),
               blurRadius: 20,
               spreadRadius: 5,
             ),
@@ -200,7 +200,7 @@ class _DailyLoginDialogState extends State<DailyLoginDialog>
                       borderRadius: BorderRadius.circular(24),
                     ),
                     elevation: DailyLoginManager.isClaimedToday ? 0 : 8,
-                    shadowColor: Colors.amber.withOpacity(0.5),
+                    shadowColor: Colors.amber.withValues(alpha: 0.5),
                   ),
                   child: Text(
                     DailyLoginManager.isClaimedToday ? "今日已领" : "领取奖励",
@@ -228,18 +228,18 @@ class _DailyLoginDialogState extends State<DailyLoginDialog>
 
     if (isToday) {
       borderColor = Colors.amber;
-      bgColor = Colors.amber.withOpacity(0.15);
+      bgColor = Colors.amber.withValues(alpha: 0.15);
       iconColor = Colors.white;
     } else if (isClaimed) {
-      borderColor = Colors.green.withOpacity(0.5);
-      bgColor = Colors.green.withOpacity(0.1);
+      borderColor = Colors.green.withValues(alpha: 0.5);
+      bgColor = Colors.green.withValues(alpha: 0.1);
       iconColor = Colors.white38;
     }
 
     // Special styling for day 7
     if (reward.day == 7 && !isClaimed) {
       borderColor = Colors.purpleAccent;
-      bgColor = Colors.purple.withOpacity(0.2);
+      bgColor = Colors.purple.withValues(alpha: 0.2);
     }
 
     return Container(
@@ -250,7 +250,7 @@ class _DailyLoginDialogState extends State<DailyLoginDialog>
         boxShadow: isToday
             ? [
                 BoxShadow(
-                  color: Colors.amber.withOpacity(0.2),
+                  color: Colors.amber.withValues(alpha: 0.2),
                   blurRadius: 8,
                   spreadRadius: 1,
                 ),

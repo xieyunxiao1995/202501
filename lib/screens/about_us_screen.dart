@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/background_wrapper.dart';
 
 class AboutUsScreen extends StatelessWidget {
   final VoidCallback onClose;
@@ -10,11 +11,13 @@ class AboutUsScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF1F2937),
-        elevation: 0,
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new, color: Colors.white70, size: isSmallScreen ? 20 : 24),
           onPressed: onClose,
@@ -171,14 +174,14 @@ class AboutUsScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 
   Widget _buildSection(String title, String content, IconData icon, bool isSmallScreen) {
     return Container(
       padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F2937),
+        color: Colors.black.withValues(alpha: 0.4),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.white10),
       ),

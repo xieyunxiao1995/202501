@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/configs.dart';
 import '../constants.dart';
+import '../widgets/background_wrapper.dart';
 
 class LevelUpScreen extends StatelessWidget {
   final List<Perk> options;
@@ -17,8 +18,10 @@ class LevelUpScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg1.jpeg',
+      child: Scaffold(
+      backgroundColor: Colors.transparent,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -26,7 +29,7 @@ class LevelUpScreen extends StatelessWidget {
           gradient: RadialGradient(
             center: const Alignment(0, -0.2),
             radius: 1.5,
-            colors: [Colors.cyan.withOpacity(0.1), const Color(0xFF111827)],
+            colors: [Colors.cyan.withValues(alpha: 0.1), Colors.transparent],
           ),
         ),
         child: SafeArea(
@@ -61,6 +64,7 @@ class LevelUpScreen extends StatelessWidget {
           ),
         ),
       ),
+      ),
     );
   }
 
@@ -73,12 +77,12 @@ class LevelUpScreen extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 16),
         padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.05),
+          color: Colors.white.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: rarityColor.withOpacity(0.5), width: 2),
+          border: Border.all(color: rarityColor.withValues(alpha: 0.5), width: 2),
           boxShadow: [
             BoxShadow(
-              color: rarityColor.withOpacity(0.1),
+              color: rarityColor.withValues(alpha: 0.1),
               blurRadius: 10,
               spreadRadius: 1,
             ),
@@ -119,7 +123,7 @@ class LevelUpScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.arrow_forward_ios, color: rarityColor.withOpacity(0.5), size: 16),
+            Icon(Icons.arrow_forward_ios, color: rarityColor.withValues(alpha: 0.5), size: 16),
           ],
         ),
       ),

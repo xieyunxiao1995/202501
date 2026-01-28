@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/background_wrapper.dart';
 
 class GameOverScreen extends StatelessWidget {
   final int floor;
@@ -17,9 +18,11 @@ class GameOverScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Container(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg1.jpeg',
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
@@ -27,8 +30,8 @@ class GameOverScreen extends StatelessWidget {
             center: Alignment.center,
             radius: 1.5,
             colors: [
-              const Color(0xFF3B0A0A),
-              Colors.black,
+              const Color(0xFF3B0A0A).withValues(alpha: 0.8),
+              Colors.transparent,
             ],
           ),
         ),
@@ -43,10 +46,10 @@ class GameOverScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.redAccent.withOpacity(0.5), width: 2),
+                  border: Border.all(color: Colors.redAccent.withValues(alpha: 0.5), width: 2),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.red.withOpacity(0.2),
+                      color: Colors.red.withValues(alpha: 0.2),
                       blurRadius: 30,
                       spreadRadius: 10,
                     ),
@@ -90,7 +93,7 @@ class GameOverScreen extends StatelessWidget {
                 width: size.width * 0.8,
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.05),
+                  color: Colors.white.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: Colors.white10),
                 ),
@@ -123,7 +126,7 @@ class GameOverScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       elevation: 10,
-                      shadowColor: Colors.red.withOpacity(0.5),
+                      shadowColor: Colors.red.withValues(alpha: 0.5),
                     ),
                     child: Text(
                       "重回大荒",
@@ -142,7 +145,8 @@ class GameOverScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ),
+  );
   }
 
   Widget _buildStatRow(String label, String value, Color valueColor) {

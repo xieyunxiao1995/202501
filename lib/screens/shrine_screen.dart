@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/background_wrapper.dart';
+
 class ShrineScreen extends StatelessWidget {
   final int playerGold;
   final int playerHp;
@@ -19,90 +21,99 @@ class ShrineScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFF111827),
-      appBar: AppBar(
-        title: const Text(
-          "远古祭坛",
-          style: TextStyle(color: Colors.purpleAccent, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Scaffold(
         backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.purpleAccent),
-          onPressed: () => onOptionSelected('leave'),
-        ),
-      ),
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            center: const Alignment(0, -0.2),
-            radius: 1.5,
-            colors: [Colors.purple.withOpacity(0.1), const Color(0xFF111827)],
+        appBar: AppBar(
+          title: const Text(
+            "远古祭坛",
+            style: TextStyle(
+              color: Colors.purpleAccent,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.purpleAccent,
+            ),
+            onPressed: () => onOptionSelected('leave'),
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "⛩️",
-                style: TextStyle(fontSize: 80),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                "进行献祭或祈愿...",
-                style: TextStyle(color: Colors.grey[400], fontSize: 18),
-              ),
-              const SizedBox(height: 48),
-              
-              // Option 1: Pray (Gold)
-              _buildOption(
-                context,
-                icon: "🙏",
-                title: "祈愿",
-                cost: "50 灵石",
-                desc: "70% 几率获得天赐仙缘\n(愈合伤势或增强灵力)",
-                canAfford: playerGold >= 50,
-                onTap: () => onOptionSelected('pray'),
-                color: Colors.amber,
-                isSmallScreen: isSmallScreen,
-              ),
-              
-              const SizedBox(height: 20),
-              
-              // Option 2: Sacrifice (HP)
-              _buildOption(
-                context,
-                icon: "🩸",
-                title: "血祭",
-                cost: "25% 精血",
-                desc: "必得稀有大荒奖励\n(奇珍 / 命格 / 灵石)",
-                canAfford: playerHp > (playerMaxHp * 0.25).ceil(),
-                onTap: () => onOptionSelected('sacrifice'),
-                color: Colors.redAccent,
-                isSmallScreen: isSmallScreen,
-              ),
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: RadialGradient(
+              center: const Alignment(0, -0.2),
+              radius: 1.5,
+              colors: [
+                Colors.purple.withValues(alpha: 0.1),
+                Colors.transparent,
+              ],
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("⛩️", style: TextStyle(fontSize: 80)),
+                const SizedBox(height: 16),
+                Text(
+                  "进行献祭或祈愿...",
+                  style: TextStyle(color: Colors.grey[400], fontSize: 18),
+                ),
+                const SizedBox(height: 48),
 
-              const SizedBox(height: 48),
-              
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () => onOptionSelected('leave'),
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                  ),
-                  child: const Text(
-                    "辞别祭坛",
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                // Option 1: Pray (Gold)
+                _buildOption(
+                  context,
+                  icon: "🙏",
+                  title: "祈愿",
+                  cost: "50 灵石",
+                  desc: "70% 几率获得天赐仙缘\n(愈合伤势或增强灵力)",
+                  canAfford: playerGold >= 50,
+                  onTap: () => onOptionSelected('pray'),
+                  color: Colors.amber,
+                  isSmallScreen: isSmallScreen,
+                ),
+
+                const SizedBox(height: 20),
+
+                // Option 2: Sacrifice (HP)
+                _buildOption(
+                  context,
+                  icon: "🩸",
+                  title: "血祭",
+                  cost: "25% 精血",
+                  desc: "必得稀有大荒奖励\n(奇珍 / 命格 / 灵石)",
+                  canAfford: playerHp > (playerMaxHp * 0.25).ceil(),
+                  onTap: () => onOptionSelected('sacrifice'),
+                  color: Colors.redAccent,
+                  isSmallScreen: isSmallScreen,
+                ),
+
+                const SizedBox(height: 48),
+
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () => onOptionSelected('leave'),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    child: const Text(
+                      "辞别祭坛",
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -129,11 +140,13 @@ class ShrineScreen extends StatelessWidget {
           padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
           decoration: BoxDecoration(
             border: Border.all(
-              color: canAfford ? color.withOpacity(0.5) : Colors.grey.withOpacity(0.2),
+              color: canAfford
+                  ? color.withValues(alpha: 0.5)
+                  : Colors.grey.withValues(alpha: 0.2),
               width: 2,
             ),
             borderRadius: BorderRadius.circular(16),
-            color: canAfford ? color.withOpacity(0.05) : Colors.black26,
+            color: canAfford ? color.withValues(alpha: 0.05) : Colors.black26,
           ),
           child: Row(
             children: [

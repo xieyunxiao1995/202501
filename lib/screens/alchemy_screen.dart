@@ -3,6 +3,7 @@ import '../models/alchemy_model.dart';
 import '../data/alchemy_data.dart';
 import '../utils/alchemy_manager.dart';
 import '../models/enums.dart';
+import '../widgets/background_wrapper.dart';
 
 class AlchemyScreen extends StatefulWidget {
   final VoidCallback onClose;
@@ -64,7 +65,7 @@ class _AlchemyScreenState extends State<AlchemyScreen>
                   border: Border.all(color: Colors.orangeAccent, width: 2),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.orangeAccent.withOpacity(0.5),
+                      color: Colors.orangeAccent.withValues(alpha: 0.5),
                       blurRadius: 20 * value,
                       spreadRadius: 5 * value,
                     ),
@@ -133,8 +134,6 @@ class _AlchemyScreenState extends State<AlchemyScreen>
         return Colors.purpleAccent;
       case Rarity.legendary:
         return Colors.orangeAccent;
-      default:
-        return Colors.white;
     }
   }
 
@@ -143,10 +142,12 @@ class _AlchemyScreenState extends State<AlchemyScreen>
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.height < 700;
 
-    return Stack(
+    return BackgroundWrapper(
+      backgroundImage: 'assets/bg/Bg2.jpeg',
+      child: Stack(
       children: [
         Scaffold(
-          backgroundColor: const Color(0xFF111827),
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
               "乾坤炉",
@@ -183,7 +184,7 @@ class _AlchemyScreenState extends State<AlchemyScreen>
               gradient: RadialGradient(
                 center: const Alignment(0, -0.2),
                 radius: 1.5,
-                colors: [Colors.orange.withOpacity(0.1), const Color(0xFF111827)],
+                colors: [Colors.orange.withValues(alpha: 0.1), Colors.transparent],
               ),
             ),
             child: TabBarView(
@@ -198,6 +199,7 @@ class _AlchemyScreenState extends State<AlchemyScreen>
         if (_showSuccess && _lastCraftedElixir != null)
           _buildSuccessOverlay(_lastCraftedElixir!, isSmallScreen),
       ],
+    ),
     );
   }
 
@@ -216,14 +218,14 @@ class _AlchemyScreenState extends State<AlchemyScreen>
           margin: EdgeInsets.only(bottom: isSmallScreen ? 8 : 12),
           decoration: BoxDecoration(
             color: isActive
-                ? Colors.amber.withOpacity(0.1)
-                : Colors.white.withOpacity(0.05),
+                ? Colors.amber.withValues(alpha: 0.1)
+                : Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: isActive
                   ? Colors.amber
                   : (isExpanded
-                        ? Colors.amber.withOpacity(0.5)
+                        ? Colors.amber.withValues(alpha: 0.5)
                         : Colors.transparent),
               width: isActive ? 2 : 1,
             ),
@@ -266,7 +268,7 @@ class _AlchemyScreenState extends State<AlchemyScreen>
                         isExpanded
                             ? Icons.keyboard_arrow_up
                             : Icons.keyboard_arrow_down,
-                        color: Colors.white38,
+                            color: Colors.white38,
                         size: isSmallScreen ? 20 : 24,
                       ),
                 onTap: () {
@@ -335,10 +337,10 @@ class _AlchemyScreenState extends State<AlchemyScreen>
                           width: double.infinity,
                           padding: EdgeInsets.symmetric(vertical: isSmallScreen ? 10 : 12),
                           decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.2),
+                            color: Colors.green.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                              color: Colors.green.withOpacity(0.5),
+                              color: Colors.green.withValues(alpha: 0.5),
                             ),
                           ),
                           child: Center(
@@ -464,10 +466,10 @@ class _AlchemyScreenState extends State<AlchemyScreen>
 
                 return Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.05),
+                    color: Colors.white.withValues(alpha: 0.05),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: _getRarityColor(mat.rarity).withOpacity(0.3),
+                      color: _getRarityColor(mat.rarity).withValues(alpha: 0.3),
                     ),
                   ),
                   child: Column(
