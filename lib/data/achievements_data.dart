@@ -67,7 +67,7 @@ const List<Achievement> achievements = [
   ),
   Achievement(
     id: 'legend',
-    name: '山海遁根',
+    name: '少年名将',
     desc: '到达秘境第 50 层',
     icon: '🌟',
     targetValue: 50,

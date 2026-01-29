@@ -46,177 +46,178 @@ class MainMenu extends StatelessWidget {
     return BackgroundWrapper(
       backgroundImage: 'assets/bg/Bg2.jpeg',
       child: Stack(
-      children: [
-        Center(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.0,
-                vertical: isSmallScreen ? 20.0 : 40.0,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "山海遁根",
-                    style: TextStyle(
-                      fontSize: isSmallScreen ? 36 : 48,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.redAccent,
-                      letterSpacing: isSmallScreen ? 4 : 8,
-                      shadows: const [
-                        Shadow(
-                          blurRadius: 15,
-                          color: Colors.black,
-                          offset: Offset(2, 2),
+        children: [
+          Center(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: isSmallScreen ? 20.0 : 40.0,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "少年名将",
+                      style: TextStyle(
+                        fontSize: isSmallScreen ? 36 : 48,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.redAccent,
+                        letterSpacing: isSmallScreen ? 4 : 8,
+                        shadows: const [
+                          Shadow(
+                            blurRadius: 15,
+                            color: Colors.black,
+                            offset: Offset(2, 2),
+                          ),
+                          Shadow(
+                            blurRadius: 5,
+                            color: Colors.red,
+                            offset: Offset(0, 0),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      "山 海 奇 谭",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white24,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                    SizedBox(height: isSmallScreen ? 16 : 32),
+
+                    _buildScoreBoard(isSmallScreen),
+
+                    SizedBox(height: isSmallScreen ? 16 : 32),
+
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 12,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        _buildSmallMenuButton(
+                          onPressed: onOpenLevelSelect,
+                          icon: Icons.map_rounded,
+                          label: "秘境",
+                          color: Colors.cyanAccent,
+                          isSmallScreen: isSmallScreen,
                         ),
-                        Shadow(
-                          blurRadius: 5,
-                          color: Colors.red,
-                          offset: Offset(0, 0),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenStore,
+                          icon: Icons.auto_awesome_motion_rounded,
+                          label: "万宝阁",
+                          color: Colors.amber,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenCompendium,
+                          icon: Icons.menu_book_rounded,
+                          label: "图鉴",
+                          color: Colors.lightBlueAccent,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenAchievements,
+                          icon: Icons.emoji_events_rounded,
+                          label: "功业录",
+                          color: Colors.redAccent,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenAlchemy,
+                          icon: Icons.science_rounded,
+                          label: "炼丹",
+                          color: Colors.greenAccent,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenCultivation,
+                          icon: Icons.self_improvement,
+                          label: "修行",
+                          color: Colors.cyanAccent,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenDailyLogin,
+                          icon: Icons.calendar_today_rounded,
+                          label: "七日礼",
+                          color: Colors.purpleAccent,
+                          isSmallScreen: isSmallScreen,
+                        ),
+                        _buildSmallMenuButton(
+                          onPressed: onOpenTaskReward,
+                          icon: Icons.task_alt,
+                          label: "限时活动",
+                          color: Colors.orangeAccent,
+                          isSmallScreen: isSmallScreen,
                         ),
                       ],
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    "山 海 奇 谭",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white24,
-                      letterSpacing: 2,
+
+                    SizedBox(height: isSmallScreen ? 24 : 48),
+                    const Text(
+                      "—— 选择你的传承 ——",
+                      style: TextStyle(
+                        color: Colors.white38,
+                        fontSize: 14,
+                        letterSpacing: 2,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: isSmallScreen ? 16 : 32),
+                    SizedBox(height: isSmallScreen ? 12 : 24),
 
-                  _buildScoreBoard(isSmallScreen),
-
-                  SizedBox(height: isSmallScreen ? 16 : 32),
-
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      _buildSmallMenuButton(
-                        onPressed: onOpenLevelSelect,
-                        icon: Icons.map_rounded,
-                        label: "秘境",
-                        color: Colors.cyanAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenStore,
-                        icon: Icons.auto_awesome_motion_rounded,
-                        label: "万宝阁",
-                        color: Colors.amber,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenCompendium,
-                        icon: Icons.menu_book_rounded,
-                        label: "图鉴",
-                        color: Colors.lightBlueAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenAchievements,
-                        icon: Icons.emoji_events_rounded,
-                        label: "功业录",
-                        color: Colors.redAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenAlchemy,
-                        icon: Icons.science_rounded,
-                        label: "炼丹",
-                        color: Colors.greenAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenCultivation,
-                        icon: Icons.self_improvement,
-                        label: "修行",
-                        color: Colors.cyanAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenDailyLogin,
-                        icon: Icons.calendar_today_rounded,
-                        label: "七日礼",
-                        color: Colors.purpleAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                      _buildSmallMenuButton(
-                        onPressed: onOpenTaskReward,
-                        icon: Icons.task_alt,
-                        label: "限时活动",
-                        color: Colors.orangeAccent,
-                        isSmallScreen: isSmallScreen,
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: isSmallScreen ? 24 : 48),
-                  const Text(
-                    "—— 选择你的传承 ——",
-                    style: TextStyle(
-                      color: Colors.white38,
-                      fontSize: 14,
-                      letterSpacing: 2,
+                    Wrap(
+                      spacing: 16,
+                      runSpacing: 16,
+                      alignment: WrapAlignment.center,
+                      children: classes
+                          .map(
+                            (cls) =>
+                                _buildClassCard(context, cls, isSmallScreen),
+                          )
+                          .toList(),
                     ),
-                  ),
-                  SizedBox(height: isSmallScreen ? 12 : 24),
-
-                  Wrap(
-                    spacing: 16,
-                    runSpacing: 16,
-                    alignment: WrapAlignment.center,
-                    children: classes
-                        .map(
-                          (cls) => _buildClassCard(context, cls, isSmallScreen),
-                        )
-                        .toList(),
-                  ),
-                  SizedBox(height: isSmallScreen ? 20 : 40),
-                ],
+                    SizedBox(height: isSmallScreen ? 20 : 40),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
 
-        // Settings Button (Top Right)
-        Positioned(
-          top: 16,
-          right: 16,
-          child: SafeArea(
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: onOpenSettings,
-                borderRadius: BorderRadius.circular(12),
-                splashColor: Colors.white.withValues(alpha: 0.2),
-                child: Container(
-                  width: 48,
-                  height: 48,
-                  padding: const EdgeInsets.all(12.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Icon(
-                    Icons.settings,
-                    color: Colors.white70,
-                    size: 24,
+          // Settings Button (Top Right)
+          Positioned(
+            top: 16,
+            right: 16,
+            child: SafeArea(
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: onOpenSettings,
+                  borderRadius: BorderRadius.circular(12),
+                  splashColor: Colors.white.withValues(alpha: 0.2),
+                  child: Container(
+                    width: 48,
+                    height: 48,
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.settings,
+                      color: Colors.white70,
+                      size: 24,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
       ),
     );
   }
@@ -230,7 +231,10 @@ class MainMenu extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.black54, // Darker background for visibility
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.amber.withValues(alpha: 0.3), width: 1.5), // Colored border
+        border: Border.all(
+          color: Colors.amber.withValues(alpha: 0.3),
+          width: 1.5,
+        ), // Colored border
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.3),
@@ -314,7 +318,10 @@ class MainMenu extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.black87, // Darker background for better contrast
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: color, width: 2), // Thicker colored border
+              border: Border.all(
+                color: color,
+                width: 2,
+              ), // Thicker colored border
               boxShadow: [
                 BoxShadow(
                   color: color.withValues(alpha: 0.3),
@@ -325,7 +332,11 @@ class MainMenu extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Icon(icon, color: color, size: isSmallScreen ? 24 : 28), // Slightly larger icon
+                Icon(
+                  icon,
+                  color: color,
+                  size: isSmallScreen ? 24 : 28,
+                ), // Slightly larger icon
                 const SizedBox(height: 6),
                 Text(
                   label,

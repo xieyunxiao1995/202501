@@ -96,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen>
                         onEnd:
                             () {}, // Handled by repeating tween if needed, but simple scale is fine for splash
                         child: const Text(
-                          "山海遁根",
+                          "少年名将",
                           style: TextStyle(
                             fontSize: 48,
                             fontWeight: FontWeight.bold,

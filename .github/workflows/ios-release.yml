@@ -46,7 +46,7 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           WORKING_DIRECTORY: build/ios/ipa
-          IPA_FILE_NAME: 山海遁根.ipa
+          IPA_FILE_NAME: 少年名将.ipa
           APPLE_USERNAME: nguyenduyhau9199@icloud.com
           APPLE_PASSWORD: jgjs-xhmi-wmgm-guae
           APPLE_ASC_PROVIDER: CY3LM363W4
