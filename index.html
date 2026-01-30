@@ -1,0 +1,862 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Flame, 
+  Ghost, 
+  Map, 
+  Swords, 
+  Zap, 
+  Droplet, 
+  Dna,
+  ChevronRight,
+  RefreshCcw,
+  Sparkles,
+  Skull,
+  Timer,
+  ShoppingBag,
+  Shield,
+  Target,
+  Gem,
+  Lock,
+  X,
+  Play,
+  Pause,
+  FastForward,
+  Activity,
+  Menu,
+  Trophy,
+  AlertTriangle
+} from 'lucide-react';
+
+/**
+ * 游戏数据与常量定义
+ */
+const THEME = {
+  bg: "bg-slate-950",
+  primary: "text-amber-500",
+  secondary: "text-teal-400",
+  danger: "text-rose-500",
+  card: "bg-slate-900/60 backdrop-blur-md border border-slate-700/50",
+  gradientText: "bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-500",
+};
+
+const MOCK_LOGS = [
+  { id: 1, text: "探索雷泽：发现一只受伤的 [百年·旋龟]。", type: "event" },
+  { id: 2, text: "获得：灵气 +120", type: "gain" },
+  { id: 3, text: "你的 [驳] 吞噬了枯骨，略感不适。", type: "neutral" },
+  { id: 4, text: "天气突变，天降血雨，所有火系异兽活性下降。", type: "danger" },
+  { id: 5, text: "获得：血食 +50", type: "gain" },
+];
+
+const MOCK_BEASTS = [
+  { 
+    id: 101, 
+    name: "驳", 
+    tier: "百年", 
+    tierColor: "text-emerald-400",
+    parts: ["马身", "虎爪", "独角"],
+    desc: "中曲之山，有兽焉，其状如马而白身黑尾。",
+    img: "https://images.unsplash.com/photo-1550747545-c896b5f8933c?q=80&w=600&auto=format&fit=crop"
+  },
+  { 
+    id: 102, 
+    name: "九尾狐", 
+    tier: "千年", 
+    tierColor: "text-blue-400",
+    parts: ["狐身", "九尾", "人音"],
+    desc: "青丘之山，有兽焉，其状如狐而九尾。",
+    img: "https://images.unsplash.com/photo-1516916759473-600c07bc5d5f?q=80&w=600&auto=format&fit=crop"
+  },
+  { 
+    id: 103, 
+    name: "陆吾", 
+    tier: "万年", 
+    tierColor: "text-purple-400",
+    parts: ["虎身", "九尾", "人面"],
+    desc: "昆仑之丘，是实惟帝之下都，神陆吾司之。",
+    img: "https://images.unsplash.com/photo-1629812456605-4a044aa38fbc?q=80&w=600&auto=format&fit=crop"
+  }
+];
+
+const MOCK_DUNGEONS = [
+  { id: 1, name: "雷泽·外围", level: "简单", power: 1200, drop: ["灵气", "百年兽蛋"], bg: "from-slate-800 to-teal-900", status: "unlocked", boss: "雷泽兽王" },
+  { id: 2, name: "昆仑·虚空", level: "困难", power: 5800, drop: ["千年兽骨", "异火"], bg: "from-slate-800 to-purple-900", status: "unlocked", boss: "虚空之主" },
+  { id: 3, name: "不周山·遗迹", level: "地狱", power: 15000, drop: ["万年神魂"], bg: "from-slate-800 to-rose-900", status: "locked", boss: "刑天残魂" },
+];
+
+const MOCK_TOTEMS = [
+  { id: 1, name: "蛮荒之力", icon: <Swords size={18} />, desc: "所有异兽攻击 +5%", level: 3, cost: 500 },
+  { id: 2, name: "灵脉感知", icon: <Zap size={18} />, desc: "挂机灵气收益 +10%", level: 5, cost: 800 },
+  { id: 3, name: "血肉吞噬", icon: <Droplet size={18} />, desc: "吞噬成功率 +2%", level: 1, cost: 2000 },
+];
+
+const BATTLE_SKILLS = [
+  { name: "撕咬", type: "physical", color: "text-slate-300" },
+  { name: "践踏", type: "physical", color: "text-slate-300" },
+  { name: "雷击", type: "magical", color: "text-purple-400" },
+  { name: "毒雾", type: "dot", color: "text-emerald-400" },
+  { name: "业火", type: "magical", color: "text-rose-400" },
+];
+
+/**
+ * 组件：iPhone 15 Pro 状态栏
+ */
+const StatusBar = () => (
+  <div className="flex justify-between items-center px-6 py-3 text-white text-xs font-medium z-50 relative">
+    <span>9:41</span>
+    <div className="bg-black w-[120px] h-[35px] absolute left-1/2 -translate-x-1/2 top-2 rounded-full flex items-center justify-center space-x-2">
+      <div className="w-2 h-2 rounded-full bg-green-500/20"></div>
+    </div>
+    <div className="flex items-center space-x-2">
+      <span className="opacity-80">5G</span>
+      <div className="w-6 h-3 border border-white/30 rounded-sm relative">
+        <div className="absolute left-0 top-0 h-full w-3/4 bg-white"></div>
+      </div>
+    </div>
+  </div>
+);
+
+/**
+ * 组件：资源顶栏
+ */
+const ResourceHeader = () => (
+  <div className="px-4 py-3 flex justify-between items-center bg-gradient-to-b from-slate-900 to-transparent z-40">
+    <div className="flex space-x-3">
+      <div className="flex items-center space-x-1 bg-slate-800/80 px-3 py-1 rounded-full border border-teal-900/50 backdrop-blur-sm">
+        <Zap size={14} className="text-teal-400" />
+        <span className="text-xs font-mono text-teal-100">12,450</span>
+      </div>
+      <div className="flex items-center space-x-1 bg-slate-800/80 px-3 py-1 rounded-full border border-rose-900/50 backdrop-blur-sm">
+        <Droplet size={14} className="text-rose-400" />
+        <span className="text-xs font-mono text-rose-100">840</span>
+      </div>
+    </div>
+    <div className="flex items-center space-x-1 bg-slate-800/80 px-3 py-1 rounded-full border border-amber-900/50 backdrop-blur-sm">
+        <span className="text-xs font-bold text-amber-500">炼气三层</span>
+    </div>
+  </div>
+);
+
+/**
+ * 页面：探索 (首页)
+ */
+const ExploreView = () => {
+  const scrollRef = useRef(null);
+
+  return (
+    <div className="flex flex-col h-full relative overflow-hidden">
+      {/* 沉浸式背景图 */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" 
+          className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+          alt="Wilderness"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+      </div>
+
+      <div className="z-10 flex-1 flex flex-col p-5">
+        <div className="mt-4 mb-8 text-center">
+          <h2 className="text-xs tracking-[0.5em] text-slate-400 mb-1 uppercase">Current Region</h2>
+          <h1 className={`text-3xl font-serif font-bold ${THEME.gradientText}`}>雷泽 · 荒原</h1>
+          <div className="flex justify-center mt-2 space-x-1">
+             {[...Array(5)].map((_, i) => (
+               <div key={i} className={`h-1 w-6 rounded-full ${i < 3 ? 'bg-teal-500' : 'bg-slate-700'}`}></div>
+             ))}
+          </div>
+        </div>
+
+        {/* 核心挂机动画 */}
+        <div className="flex-1 flex items-center justify-center relative my-4">
+           {/* 呼吸光环 */}
+           <div className="absolute w-48 h-48 bg-teal-500/10 rounded-full animate-pulse blur-xl"></div>
+           <div className="absolute w-32 h-32 border border-teal-500/30 rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 bg-slate-900/90 rounded-full border border-teal-500/50 flex items-center justify-center shadow-[0_0_15px_rgba(20,184,166,0.3)]">
+                <span className="text-2xl animate-pulse">🧘</span>
+              </div>
+           </div>
+           
+           {/* 漂浮的收益文字 */}
+           <div className="absolute top-0 right-10 animate-bounce duration-[3000ms]">
+              <span className="text-xs text-teal-300 font-mono">+12 灵气/s</span>
+           </div>
+        </div>
+
+        {/* MUD 日志区域 */}
+        <div className="h-1/3 bg-black/40 backdrop-blur-sm rounded-xl border border-slate-800 p-4 overflow-hidden flex flex-col">
+          <div className="flex justify-between items-center mb-2 border-b border-slate-800 pb-2">
+            <span className="text-xs text-slate-400 uppercase tracking-widest">System Log</span>
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+          </div>
+          <div className="flex-1 overflow-y-auto space-y-3 mask-image-gradient" ref={scrollRef}>
+            {MOCK_LOGS.map((log) => (
+              <div key={log.id} className="text-xs leading-relaxed animate-fade-in-up">
+                <span className="text-slate-500 font-mono mr-2">[{new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}]</span>
+                <span className={
+                  log.type === 'gain' ? 'text-teal-400' : 
+                  log.type === 'danger' ? 'text-rose-400 font-bold' : 
+                  'text-slate-300'
+                }>{log.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * 页面：炼妖 (核心玩法)
+ */
+const ForgeView = () => {
+  const [isRefining, setIsRefining] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const handleRefine = () => {
+    setIsRefining(true);
+    setResult(null);
+    setTimeout(() => {
+      setIsRefining(false);
+      setResult({
+        name: "鸟首·驳",
+        type: "MUTATION",
+        desc: "融合了旋龟的基因，获得了水性与坚硬的甲壳。"
+      });
+    }, 2000);
+  };
+
+  return (
+    <div className="flex flex-col h-full p-5 relative overflow-hidden">
+      {/* 炼妖结果弹窗 */}
+      {result && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in">
+           <div className="w-[85%] bg-slate-900 border border-amber-500/50 rounded-2xl p-6 flex flex-col items-center shadow-[0_0_30px_rgba(245,158,11,0.2)] transform scale-100 transition-all">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-amber-600 to-rose-600 flex items-center justify-center mb-4 animate-bounce">
+                 <Dna size={40} className="text-white" />
+              </div>
+              <h2 className="text-xl font-bold text-amber-400 mb-1">炼化成功</h2>
+              <p className="text-xs text-amber-200/60 tracking-widest uppercase mb-4">Mutation Complete</p>
+              
+              <div className="w-full bg-slate-800/50 rounded-lg p-3 text-center mb-4 border border-slate-700">
+                 <span className="text-lg text-white font-serif">{result.name}</span>
+                 <p className="text-xs text-slate-400 mt-2 leading-relaxed">{result.desc}</p>
+              </div>
+
+              <button 
+                onClick={() => setResult(null)}
+                className="w-full py-3 bg-amber-600 hover:bg-amber-500 rounded-xl text-white font-bold text-sm tracking-wide transition-colors"
+              >
+                收纳
+              </button>
+           </div>
+        </div>
+      )}
+
+      {/* 背景装饰 */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+         <div className="absolute -top-[20%] -right-[20%] w-[80%] h-[80%] bg-rose-900/10 rounded-full blur-3xl"></div>
+         <div className="absolute top-[40%] -left-[10%] w-[60%] h-[60%] bg-amber-900/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="z-10 relative">
+        <h1 className="text-xl font-serif text-white mb-6 flex items-center">
+          <Flame className="text-rose-500 mr-2" size={20} />
+          天地熔炉 <span className="text-xs ml-auto text-slate-500 font-sans tracking-wide">CHIMERA FORGE</span>
+        </h1>
+
+        {/* 炼妖槽位 */}
+        <div className="flex justify-between items-center mb-8 relative">
+          {/* 主体卡槽 */}
+          <div className="flex flex-col items-center gap-3">
+             <div className="w-28 h-40 bg-slate-800/50 border-2 border-amber-500/30 rounded-xl flex flex-col items-center justify-center relative overflow-hidden group hover:border-amber-500 transition-colors cursor-pointer">
+                <img src={MOCK_BEASTS[0].img} className="absolute inset-0 w-full h-full object-cover opacity-60" alt="" />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black p-2 text-center">
+                   <span className="text-sm font-bold text-amber-100">驳</span>
+                </div>
+                <div className="absolute top-2 left-2 px-1.5 py-0.5 bg-black/60 rounded text-[10px] text-amber-400 border border-amber-500/30">主体</div>
+             </div>
+             <span className="text-xs text-slate-400">保留意识</span>
+          </div>
+
+          {/* 链接符文 */}
+          <div className="flex flex-col items-center">
+             <ChevronRight className="text-slate-600 mb-1" />
+             <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center border border-slate-700 relative">
+               <Dna size={14} className={`text-slate-400 ${isRefining ? 'animate-spin' : ''}`} />
+               {isRefining && <div className="absolute inset-0 bg-amber-500/50 blur-lg rounded-full animate-pulse"></div>}
+             </div>
+             <ChevronRight className="text-slate-600 mt-1" />
+          </div>
+
+          {/* 祭品卡槽 */}
+          <div className="flex flex-col items-center gap-3">
+             <div className="w-28 h-40 bg-slate-800/30 border-2 border-dashed border-slate-600 rounded-xl flex flex-col items-center justify-center relative cursor-pointer hover:bg-slate-800/50 transition-colors">
+                <span className="text-4xl text-slate-700 font-thin">+</span>
+                <span className="text-xs text-slate-500 mt-2">选择祭品</span>
+             </div>
+             <span className="text-xs text-rose-500">将会消失</span>
+          </div>
+        </div>
+
+        {/* 概率展示 */}
+        <div className="bg-slate-900/50 rounded-lg p-4 mb-6 border border-slate-800">
+           <div className="flex justify-between text-xs mb-2">
+              <span className="text-slate-400">融合成功率</span>
+              <span className="text-emerald-400">30%</span>
+           </div>
+           <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div className="bg-gradient-to-r from-rose-500 via-amber-500 to-emerald-500 h-full w-full opacity-80"></div>
+           </div>
+           <div className="flex justify-between text-[10px] text-slate-500 mt-2 font-mono">
+              <span>反噬(10%)</span>
+              <span>变异(30%)</span>
+              <span>完美(5%)</span>
+           </div>
+        </div>
+
+        {/* 炼化按钮 */}
+        <button 
+          onClick={handleRefine}
+          disabled={isRefining}
+          className="w-full relative group overflow-hidden rounded-xl"
+        >
+          <div className={`absolute inset-0 bg-gradient-to-r from-rose-600 to-amber-600 transition-transform duration-300 ${isRefining ? 'scale-110' : ''}`}></div>
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
+          
+          <div className="relative py-4 flex flex-col items-center justify-center">
+             {isRefining ? (
+               <RefreshCcw className="animate-spin text-white mb-1" />
+             ) : (
+               <>
+                <span className="text-lg font-bold text-white tracking-[0.2em] font-serif group-hover:scale-105 transition-transform">开始炼妖</span>
+                <span className="text-[10px] text-amber-200 opacity-80 mt-1">消耗: 500 灵气</span>
+               </>
+             )}
+          </div>
+        </button>
+
+        <p className="text-center text-[10px] text-slate-500 mt-4 max-w-[80%] mx-auto leading-normal">
+          提示：若融合失败，主体可能发生不可逆的 [肢体残缺] 或 [境界跌落]。
+        </p>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * 页面：异兽录
+ */
+const BeastListView = () => {
+  return (
+    <div className="flex flex-col h-full p-5 relative">
+       <div className="flex justify-between items-end mb-6">
+          <h1 className="text-xl font-serif text-white">山海异兽录</h1>
+          <span className="text-xs font-mono text-slate-400">3/50 收集</span>
+       </div>
+
+       <div className="grid grid-cols-1 gap-4 overflow-y-auto pb-20 no-scrollbar">
+          {MOCK_BEASTS.map((beast) => (
+            <div key={beast.id} className={`${THEME.card} p-3 rounded-xl flex gap-4 hover:bg-slate-800/80 transition-colors cursor-pointer group`}>
+               {/* 异兽头像 */}
+               <div className="w-20 h-20 rounded-lg overflow-hidden relative shrink-0 border border-slate-600 group-hover:border-amber-500/50 transition-colors">
+                  <img src={beast.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt={beast.name} />
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-[10px] text-center text-white py-0.5">
+                    Lv.12
+                  </div>
+               </div>
+               
+               {/* 信息区域 */}
+               <div className="flex-1 flex flex-col justify-between py-0.5">
+                  <div className="flex justify-between items-start">
+                     <div>
+                        <h3 className="text-base font-bold text-slate-100 group-hover:text-amber-400 transition-colors">{beast.name}</h3>
+                        <span className={`text-[10px] border border-current px-1 rounded ${beast.tierColor} opacity-80`}>{beast.tier}</span>
+                     </div>
+                     <button className="text-slate-400 hover:text-white">
+                        <Menu size={16} />
+                     </button>
+                  </div>
+                  
+                  {/* 肢体标签 */}
+                  <div className="flex flex-wrap gap-1 mt-2">
+                     {beast.parts.map((part, idx) => (
+                       <span key={idx} className="text-[10px] bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded border border-slate-700/50">
+                         {part}
+                       </span>
+                     ))}
+                  </div>
+               </div>
+            </div>
+          ))}
+
+          {/* 空插槽占位 */}
+          <div className="border border-dashed border-slate-700 rounded-xl p-4 flex flex-col items-center justify-center text-slate-600 h-24">
+             <span className="text-xs">捕捉更多异兽以解锁</span>
+          </div>
+       </div>
+    </div>
+  );
+};
+
+/**
+ * 页面：征伐 (副本与战斗) - 动态战斗版
+ */
+const ConquestView = () => {
+  // 状态：'map' (地图选择) | 'battle' (战斗中)
+  const [mode, setMode] = useState('map');
+  const [activeDungeon, setActiveDungeon] = useState(null);
+
+  // 战斗状态
+  const [turn, setTurn] = useState(1);
+  const [logs, setLogs] = useState([]);
+  const [playerHp, setPlayerHp] = useState(100);
+  const [enemyHp, setEnemyHp] = useState(100);
+  const [speed, setSpeed] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+  const [battleResult, setBattleResult] = useState(null); // 'VICTORY' | 'DEFEAT'
+  const [currentAction, setCurrentAction] = useState(null); // 视觉展示当前动作
+
+  const logEndRef = useRef(null);
+
+  // 滚动日志到底部
+  useEffect(() => {
+    logEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [logs]);
+
+  // 开始战斗初始化
+  const startBattle = (dungeon) => {
+    setActiveDungeon(dungeon);
+    setMode('battle');
+    setTurn(1);
+    setLogs([`遭遇 ${dungeon.boss}！战斗开始！`]);
+    setPlayerHp(100);
+    setEnemyHp(100);
+    setBattleResult(null);
+    setIsPaused(false);
+  };
+
+  // 战斗核心循环
+  useEffect(() => {
+    if (mode !== 'battle' || battleResult || isPaused) return;
+
+    const battleLoop = setInterval(() => {
+      handleTurn();
+    }, 2000 / speed);
+
+    return () => clearInterval(battleLoop);
+  }, [mode, turn, battleResult, isPaused, speed]);
+
+  const handleTurn = () => {
+    // 简单的回合逻辑：玩家先手，然后敌方后手
+    // 实际游戏中这应该根据"速度"属性来决定
+
+    const isPlayerTurn = turn % 2 !== 0;
+    const attacker = isPlayerTurn ? "驳" : activeDungeon.boss;
+    const defender = isPlayerTurn ? activeDungeon.boss : "驳";
+    
+    // 随机技能
+    const skill = BATTLE_SKILLS[Math.floor(Math.random() * BATTLE_SKILLS.length)];
+    // 随机伤害 10-25
+    const damage = Math.floor(Math.random() * 15) + 10;
+    const isCrit = Math.random() > 0.8;
+    const finalDamage = isCrit ? Math.floor(damage * 1.5) : damage;
+
+    // 更新动作状态用于UI显示
+    setCurrentAction({ attacker, skill: skill.name, damage: finalDamage, isCrit });
+
+    // 更新血量
+    if (isPlayerTurn) {
+        setEnemyHp(prev => Math.max(0, prev - finalDamage));
+    } else {
+        setPlayerHp(prev => Math.max(0, prev - finalDamage));
+    }
+
+    // 添加日志
+    const logMsg = isPlayerTurn 
+        ? <><span className="text-teal-400">[{attacker}]</span> 使用 <span className={skill.color}>{skill.name}</span> 对 [{defender}] 造成了 {finalDamage} 点伤害 {isCrit && <span className="text-amber-500 font-bold">CRIT!</span>}</>
+        : <><span className="text-rose-400">[{attacker}]</span> 使用 <span className={skill.color}>{skill.name}</span> 对 [{defender}] 造成了 {finalDamage} 点伤害 {isCrit && <span className="text-rose-500 font-bold">CRIT!</span>}</>;
+
+    setLogs(prev => [...prev, logMsg]);
+
+    // 检查胜负
+    if (isPlayerTurn && enemyHp - finalDamage <= 0) {
+        setBattleResult('VICTORY');
+        setLogs(prev => [...prev, <span className="text-amber-400 font-bold">战斗胜利！获得战利品！</span>]);
+    } else if (!isPlayerTurn && playerHp - finalDamage <= 0) {
+        setBattleResult('DEFEAT');
+        setLogs(prev => [...prev, <span className="text-rose-500 font-bold">战斗失败！你的异兽重伤倒地...</span>]);
+    } else {
+        setTurn(prev => prev + 1);
+    }
+
+    // 动作展示文字在1秒后消失
+    setTimeout(() => setCurrentAction(null), 1000 / speed);
+  };
+
+  // 战斗界面组件
+  const BattleInterface = () => (
+    <div className="flex flex-col h-full relative">
+       {/* 结算弹窗 */}
+       {battleResult && (
+           <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in">
+               <div className="w-[80%] bg-slate-900 border border-slate-700 p-6 rounded-2xl flex flex-col items-center">
+                   {battleResult === 'VICTORY' ? (
+                       <>
+                           <Trophy size={48} className="text-amber-500 mb-4 animate-bounce" />
+                           <h2 className="text-2xl font-bold text-amber-500 mb-2">征伐胜利</h2>
+                           <div className="flex gap-2 mb-6">
+                               {activeDungeon.drop.map((item, i) => (
+                                   <span key={i} className="text-xs bg-slate-800 px-2 py-1 rounded text-amber-200 border border-amber-500/20">{item}</span>
+                               ))}
+                           </div>
+                       </>
+                   ) : (
+                       <>
+                           <Skull size={48} className="text-rose-600 mb-4 animate-pulse" />
+                           <h2 className="text-2xl font-bold text-rose-500 mb-2">征伐失败</h2>
+                           <p className="text-xs text-slate-400 mb-6">你的异兽受到重创，灵力流失...</p>
+                       </>
+                   )}
+                   <button onClick={() => setMode('map')} className="w-full py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-white font-bold transition-colors">
+                       返回地图
+                   </button>
+               </div>
+           </div>
+       )}
+
+       {/* 顶部：敌方信息 */}
+       <div className="bg-slate-900/40 p-4 border-b border-slate-800">
+          <div className="flex justify-between items-center mb-2">
+             <div className="flex items-center gap-2">
+                <span className="text-xs text-rose-500 font-bold">ENEMY</span>
+                <span className="text-sm text-slate-300 font-bold">{activeDungeon?.boss || "Unknown"}</span>
+             </div>
+             <span className="text-xs text-slate-500 font-mono">HP: {enemyHp}%</span>
+          </div>
+          {/* 敌方血条 */}
+          <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden relative">
+             <div className="h-full bg-rose-600 transition-all duration-300" style={{ width: `${enemyHp}%` }}></div>
+          </div>
+          <div className="flex justify-center gap-2 mt-3 opacity-60">
+             {[...Array(6)].map((_, i) => (
+               <div key={i} className="w-8 h-8 bg-slate-800 rounded border border-slate-700 relative">
+                  {i === 2 ? <div className="absolute inset-0 bg-rose-900/50 flex items-center justify-center"><Skull size={14} className="text-rose-400"/></div> : null}
+               </div>
+             ))}
+          </div>
+       </div>
+
+       {/* 中间：战场可视区 */}
+       <div className="flex-1 relative flex flex-col items-center justify-center bg-black/20 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none">
+             <Swords size={150} />
+          </div>
+          
+          {/* 回合指示器 */}
+          <div className="absolute top-4 bg-slate-800/80 px-4 py-1 rounded-full border border-slate-600 flex items-center gap-2">
+             <Activity size={14} className="text-amber-500" />
+             <span className="text-xs text-amber-100 font-mono">TURN {turn}</span>
+          </div>
+
+          {/* 战斗文字动效 - 只有有动作时显示 */}
+          {currentAction && (
+             <div className="space-y-2 text-center w-full px-8 animate-fade-in-up z-10">
+                <div className="text-sm text-slate-300 bg-black/40 py-1 px-4 rounded-full inline-block backdrop-blur-sm border border-slate-700">
+                    <span className={currentAction.attacker === "驳" ? "text-teal-400 font-bold" : "text-rose-400 font-bold"}>
+                        {currentAction.attacker}
+                    </span> 
+                    <span className="mx-1">释放了</span>
+                    <span className="text-amber-200 font-bold">{currentAction.skill}</span>
+                </div>
+                <div className={`text-xl font-mono font-bold ${currentAction.isCrit ? 'scale-125 text-amber-400' : 'text-slate-200'} transition-all`}>
+                   -{currentAction.damage} {currentAction.isCrit && "!"}
+                </div>
+             </div>
+          )}
+       </div>
+
+       {/* 底部：我方 & 控制区 */}
+       <div className="bg-slate-900/80 backdrop-blur-md p-4 border-t border-slate-700">
+          {/* 我方状态 */}
+          <div className="mb-2 flex justify-between text-xs text-teal-400 font-bold">
+              <span>PLAYER: 驳</span>
+              <span>HP: {playerHp}%</span>
+          </div>
+          <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-4 relative">
+             <div className="h-full bg-teal-500 transition-all duration-300" style={{ width: `${playerHp}%` }}></div>
+          </div>
+
+          {/* 我方阵容 */}
+          <div className="flex justify-center gap-2 mb-4">
+             {[...Array(6)].map((_, i) => (
+               <div key={i} className={`w-10 h-10 bg-slate-800 rounded-lg border ${i < 3 ? 'border-teal-500/50' : 'border-slate-700 border-dashed'} relative overflow-hidden transition-all ${turn % 2 !== 0 && i === 0 ? 'ring-2 ring-amber-500 scale-105' : ''}`}>
+                  {i < 3 && <img src={MOCK_BEASTS[i].img} className="w-full h-full object-cover opacity-80" alt=""/>}
+               </div>
+             ))}
+          </div>
+
+          {/* 战斗日志 - 自动滚动 */}
+          <div className="h-24 bg-black/40 rounded-lg p-2 overflow-y-auto mb-3 border border-slate-800 text-[10px] font-mono leading-relaxed space-y-1 scroll-smooth">
+             {logs.map((log, idx) => (
+                <div key={idx} className="text-slate-400 border-l-2 border-slate-700 pl-2 animate-fade-in">{log}</div>
+             ))}
+             <div ref={logEndRef} />
+          </div>
+
+          {/* 控制按钮 */}
+          <div className="flex justify-between items-center">
+             <button 
+                onClick={() => setMode('map')} 
+                className="px-4 py-2 bg-slate-800 hover:bg-rose-900/50 rounded-lg text-xs text-slate-300 border border-slate-700 flex items-center gap-1"
+             >
+                <X size={14} /> 撤退
+             </button>
+             <div className="flex gap-2">
+                <button 
+                    onClick={() => setIsPaused(!isPaused)}
+                    className="p-2 bg-slate-800 rounded-lg text-slate-400 border border-slate-700 hover:text-white"
+                >
+                    {isPaused ? <Play size={16}/> : <Pause size={16}/>}
+                </button>
+                <button 
+                    onClick={() => setSpeed(speed === 1 ? 2 : 1)}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold shadow-lg flex items-center gap-1 transition-colors ${speed === 2 ? 'bg-amber-600 text-white' : 'bg-slate-700 text-slate-300'}`}
+                >
+                   <FastForward size={14} /> {speed}.0x
+                </button>
+             </div>
+          </div>
+       </div>
+    </div>
+  );
+
+  // 地图选择界面 (原代码逻辑)
+  if (mode === 'battle') {
+    return <BattleInterface />;
+  }
+
+  return (
+    <div className="flex flex-col h-full p-5 relative">
+      {/* 顶部大劫倒计时 */}
+      <div className="w-full bg-rose-950/30 border border-rose-900/50 rounded-xl p-4 mb-6 flex items-center justify-between relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diagmonds-light.png')] opacity-10"></div>
+        <div className="z-10 flex flex-col">
+           <span className="text-[10px] text-rose-400 tracking-widest uppercase mb-1">Apocalypse Timer</span>
+           <span className="text-lg font-serif text-rose-100 font-bold flex items-center gap-2">
+              <Skull className="text-rose-500 animate-pulse" size={18} />
+              天道大劫 · 倒计时
+           </span>
+        </div>
+        <div className="z-10 text-right">
+           <div className="text-2xl font-mono text-rose-500 font-bold">92<span className="text-xs text-rose-400/80 ml-1">年</span></div>
+        </div>
+      </div>
+
+      <h2 className="text-sm text-slate-400 mb-3 font-medium flex items-center gap-2">
+        <Target size={14} /> 征伐目标
+      </h2>
+      
+      {/* 副本列表 */}
+      <div className="space-y-4 overflow-y-auto pb-20 no-scrollbar">
+         {MOCK_DUNGEONS.map((dungeon) => (
+           <div key={dungeon.id} className={`relative group overflow-hidden rounded-xl border border-slate-700 ${dungeon.status === 'locked' ? 'opacity-60 grayscale' : ''}`}>
+              {/* 卡片背景 */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${dungeon.bg} opacity-20`}></div>
+              
+              <div className="relative p-4 flex justify-between items-center z-10">
+                 <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-slate-100">{dungeon.name}</h3>
+                      {dungeon.status === 'locked' && <Lock size={12} className="text-slate-500" />}
+                    </div>
+                    <span className="text-xs text-slate-400 font-mono">推荐战力: {dungeon.power}</span>
+                    <div className="flex gap-2 mt-2">
+                       {dungeon.drop.map((item, i) => (
+                          <span key={i} className="text-[10px] px-1.5 py-0.5 bg-black/40 rounded text-amber-200/80 border border-amber-500/10">
+                             {item}
+                          </span>
+                       ))}
+                    </div>
+                 </div>
+                 
+                 <div className="flex flex-col items-end">
+                    <span className={`text-xs px-2 py-1 rounded font-medium mb-3 ${
+                       dungeon.level === '简单' ? 'bg-teal-900/40 text-teal-400' :
+                       dungeon.level === '困难' ? 'bg-purple-900/40 text-purple-400' :
+                       'bg-rose-900/40 text-rose-400'
+                    }`}>
+                       {dungeon.level}
+                    </span>
+                    <button 
+                       disabled={dungeon.status === 'locked'} 
+                       onClick={() => startBattle(dungeon)}
+                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${dungeon.status === 'locked' ? 'bg-slate-800 text-slate-600' : 'bg-slate-700 hover:bg-amber-600 text-white shadow-lg'}`}
+                    >
+                       <Swords size={18} />
+                    </button>
+                 </div>
+              </div>
+           </div>
+         ))}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * 页面：部落 (经营与科技)
+ */
+const TribeView = () => {
+  return (
+    <div className="flex flex-col h-full relative">
+       {/* 顶部背景装饰 */}
+       <div className="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-amber-900/20 to-transparent pointer-events-none"></div>
+
+       <div className="p-5 flex-1 overflow-y-auto pb-20 no-scrollbar">
+          {/* 图腾展示 */}
+          <div className="flex flex-col items-center justify-center py-6 mb-8 relative">
+             <div className="w-32 h-32 relative flex items-center justify-center">
+                <div className="absolute inset-0 border-[3px] border-amber-500/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                <div className="absolute inset-2 border border-amber-500/40 rounded-full"></div>
+                <Sparkles className="text-amber-500 relative z-10" size={48} strokeWidth={1} />
+                <div className="absolute -bottom-6 text-center w-full">
+                   <h2 className="text-lg font-serif font-bold text-amber-500">九黎部落</h2>
+                   <p className="text-[10px] text-amber-200/60 tracking-widest">LV.5 TRIBE</p>
+                </div>
+             </div>
+          </div>
+
+          {/* 科技树部分 */}
+          <div className="mb-8">
+             <div className="flex justify-between items-center mb-4">
+               <h3 className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <Shield size={14} className="text-teal-400" /> 图腾赐福
+               </h3>
+               <span className="text-[10px] text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full">3/12 已激活</span>
+             </div>
+
+             <div className="grid grid-cols-1 gap-3">
+                {MOCK_TOTEMS.map(totem => (
+                   <div key={totem.id} className="bg-slate-900/50 border border-slate-700 p-3 rounded-xl flex items-center gap-4 hover:border-amber-500/50 transition-colors cursor-pointer group">
+                      <div className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-amber-400 transition-colors">
+                         {totem.icon}
+                      </div>
+                      <div className="flex-1">
+                         <div className="flex justify-between">
+                            <h4 className="text-sm text-slate-200 font-medium">{totem.name}</h4>
+                            <span className="text-[10px] text-amber-500 font-mono">Lv.{totem.level}</span>
+                         </div>
+                         <p className="text-[10px] text-slate-500 mt-0.5">{totem.desc}</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-1">
+                         <button className="text-[10px] bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded text-slate-300 border border-slate-600">
+                           升级
+                         </button>
+                         <span className="text-[9px] text-slate-500">{totem.cost} 灵气</span>
+                      </div>
+                   </div>
+                ))}
+             </div>
+          </div>
+
+          {/* 集市部分 */}
+          <div>
+             <div className="flex justify-between items-center mb-4">
+               <h3 className="text-sm font-medium text-slate-300 flex items-center gap-2">
+                  <ShoppingBag size={14} className="text-amber-400" /> 部落集市
+               </h3>
+             </div>
+             
+             <div className="grid grid-cols-2 gap-3">
+                <div className="bg-slate-900/40 p-3 rounded-lg border border-slate-800 flex flex-col items-center text-center">
+                   <div className="w-8 h-8 rounded-full bg-emerald-900/30 flex items-center justify-center mb-2 text-emerald-400">
+                      <Gem size={16} />
+                   </div>
+                   <span className="text-xs text-slate-300 mb-1">灵石袋</span>
+                   <span className="text-[10px] text-slate-500">售价: 100 功德</span>
+                </div>
+                <div className="bg-slate-900/40 p-3 rounded-lg border border-slate-800 flex flex-col items-center text-center">
+                   <div className="w-8 h-8 rounded-full bg-rose-900/30 flex items-center justify-center mb-2 text-rose-400">
+                      <Dna size={16} />
+                   </div>
+                   <span className="text-xs text-slate-300 mb-1">变异诱发剂</span>
+                   <span className="text-[10px] text-slate-500">售价: 500 功德</span>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  );
+}
+
+/**
+ * 主程序入口
+ */
+const App = () => {
+  const [activeTab, setActiveTab] = useState('explore');
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'explore': return <ExploreView />;
+      case 'forge': return <ForgeView />;
+      case 'beasts': return <BeastListView />;
+      case 'battle': return <ConquestView />;
+      case 'tribe': return <TribeView />;
+      default: return <ExploreView />;
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-neutral-900 p-4 sm:p-8 font-sans antialiased selection:bg-teal-500/30">
+      {/* iPhone 15 Pro Frame */}
+      <div className="relative w-[393px] h-[852px] bg-slate-950 rounded-[55px] shadow-[0_0_0_12px_#2d2d2d,0_0_0_13px_#1a1a1a,0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col border-[6px] border-slate-900 ring-1 ring-white/10">
+        
+        {/* Dynamic Island Area */}
+        <div className="absolute top-0 w-full h-12 z-50 pointer-events-none"></div> 
+
+        <StatusBar />
+        <ResourceHeader />
+        
+        {/* Main Content Area */}
+        <main className="flex-1 relative overflow-hidden bg-slate-950 text-slate-200">
+           {renderContent()}
+        </main>
+
+        {/* Bottom Navigation */}
+        <div className="h-20 bg-slate-900/90 backdrop-blur-xl border-t border-slate-800/50 px-6 pb-6 pt-2 flex justify-between items-center z-50">
+           <button onClick={() => setActiveTab('explore')} className={`flex flex-col items-center space-y-1 transition-colors ${activeTab === 'explore' ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300'}`}>
+              <Map size={24} strokeWidth={activeTab === 'explore' ? 2.5 : 2} />
+              <span className="text-[10px]">山海</span>
+           </button>
+           
+           <button onClick={() => setActiveTab('beasts')} className={`flex flex-col items-center space-y-1 transition-colors ${activeTab === 'beasts' ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300'}`}>
+              <Ghost size={24} strokeWidth={activeTab === 'beasts' ? 2.5 : 2} />
+              <span className="text-[10px]">异兽</span>
+           </button>
+
+           {/* 突出的炼妖按钮 */}
+           <div className="-mt-8 relative group cursor-pointer" onClick={() => setActiveTab('forge')}>
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 border-slate-900 shadow-lg transition-all duration-300 ${activeTab === 'forge' ? 'bg-gradient-to-tr from-rose-600 to-amber-500 scale-110 shadow-rose-900/50' : 'bg-slate-700 hover:bg-slate-600'}`}>
+                 <Flame size={28} className="text-white" fill={activeTab === 'forge' ? "currentColor" : "none"} />
+              </div>
+           </div>
+
+           <button onClick={() => setActiveTab('battle')} className={`flex flex-col items-center space-y-1 transition-colors ${activeTab === 'battle' ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300'}`}>
+              <Swords size={24} strokeWidth={activeTab === 'battle' ? 2.5 : 2} />
+              <span className="text-[10px]">征伐</span>
+           </button>
+
+           <button onClick={() => setActiveTab('tribe')} className={`flex flex-col items-center space-y-1 transition-colors ${activeTab === 'tribe' ? 'text-teal-400' : 'text-slate-500 hover:text-slate-300'}`}>
+              <Sparkles size={24} strokeWidth={activeTab === 'tribe' ? 2.5 : 2} />
+              <span className="text-[10px]">部落</span>
+           </button>
+        </div>
+
+        {/* iOS Home Indicator */}
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[130px] h-[5px] bg-white/30 rounded-full z-50"></div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
