@@ -9,7 +9,7 @@ import AppTrackingTransparency
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-      NSException(name:NSExceptionName(rawValue: "Crash"), reason:"Crash.", userInfo:nil).raise()
+//      NSException(name:NSExceptionName(rawValue: "Crash"), reason:"Crash.", userInfo:nil).raise()
       // 唯一且优化的ATT请求（延迟3.5秒）
          DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
              if #available(iOS 14, *) {
