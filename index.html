@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>山海残卷：墨骨 (Ink & Bone)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 字体引入 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700;900&family=Ma+Shan+Zheng&display=swap');
+
+        :root {
+            --bg-paper: #eaddcf;
+            --ink-black: #0a0a0a;
+            --ink-red: #8a1c1c; 
+            --wood-dark: #3e2723;
+            --wood-light: #5d4037;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-paper);
+            color: var(--ink-black);
+            overflow: hidden;
+            touch-action: manipulation;
+            user-select: none;
+        }
+
+        .font-ink { font-family: 'Ma Shan Zheng', cursive; }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 0.15em; }
+
+        /* 纹理与滤镜 */
+        .paper-texture {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 0;
+        }
+        
+        .ink-effect { filter: url(#ink-spread); }
+
+        /* 动画 */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
+        .slide-up { animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .breathe { animation: breathe 4s ease-in-out infinite; }
+        .shake { animation: shake 0.4s both; }
+        .float { animation: float 6s ease-in-out infinite; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.02); opacity: 1; } }
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+        /* --- 活字特效 --- */
+        .word-fire { color: #c0392b; text-shadow: 0 0 5px #e74c3c; animation: burn 1.5s infinite alternate; }
+        @keyframes burn { from { opacity: 1; text-shadow: 0 0 5px #e74c3c; } to { opacity: 0.8; text-shadow: 0 -3px 10px #f39c12; } }
+
+        .word-water { color: #2980b9; animation: drip 3s infinite; }
+        @keyframes drip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); opacity: 0.8; } }
+
+        .word-thunder { color: #8e44ad; animation: flash 0.2s infinite; font-weight: 900; }
+        @keyframes flash { 0%, 100% { opacity: 1; color: #8e44ad; } 50% { opacity: 0.5; color: #fff; } }
+
+        .word-chaos { color: #000; font-weight: 900; animation: shiver 0.2s infinite; display: inline-block; }
+        @keyframes shiver { 0% { transform: translate(0,0); } 25% { transform: translate(-1px, 1px); } 50% { transform: translate(1px, -1px); } 75% { transform: translate(-1px, -1px); } }
+
+        /* --- UI 组件 --- */
+        .red-stamp {
+            border: 3px double var(--ink-red);
+            color: var(--ink-red);
+            font-weight: bold;
+            padding: 4px 16px;
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            transform: rotate(-2deg);
+            background: rgba(138, 28, 28, 0.05);
+            transition: all 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(138,28,28,0.1);
+        }
+        .red-stamp:active { transform: scale(0.95) rotate(-2deg); background: rgba(138, 28, 28, 0.15); }
+
+        /* 竹简样式 */
+        .bamboo-slip {
+            background-color: #d7c484;
+            border-right: 1px solid #bba560;
+            box-shadow: inset 2px 0 5px rgba(0,0,0,0.05);
+            writing-mode: vertical-rl;
+            padding: 1rem 0.5rem;
+            min-height: 200px;
+            color: #3e2723;
+            font-family: 'Noto Serif SC', serif;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .bamboo-slip:hover { transform: translateY(-5px); }
+        .bamboo-slip::before { content: ''; position: absolute; top: 10%; left: -2px; width: 4px; height: 4px; background: #3e2723; border-radius: 50%; opacity: 0.5; }
+        .bamboo-slip::after { content: ''; position: absolute; bottom: 10%; left: -2px; width: 4px; height: 4px; background: #3e2723; border-radius: 50%; opacity: 0.5; }
+
+        /* 石碑样式 */
+        .stele {
+            background: #444;
+            color: #888;
+            border-radius: 8px 8px 0 0;
+            border: 2px solid #333;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            min-width: 120px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+        .stele.unlocked {
+            background: #2a2a2a;
+            color: #d4af37; /* 金字 */
+            border-color: #d4af37;
+            text-shadow: 0 0 5px #d4af37;
+        }
+
+        /* 隐藏滚动条 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 缝合线特效 */
+        .suture-line {
+            position: absolute;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #333 0, #333 5px, transparent 5px, transparent 10px);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-[#eaddcf]">
+
+    <!-- SVG Filters -->
+    <svg style="display: none;">
+        <defs>
+            <filter id="ink-spread">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+                <feGaussianBlur stdDeviation="0.4" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div class="paper-texture"></div>
+
+    <div id="game-container" class="relative w-full h-screen max-w-md mx-auto overflow-hidden shadow-2xl bg-[#eaddcf] border-x border-[#d6cbb5]">
+
+        <!-- === 1. 标题 (Title) === -->
+        <div id="screen-title" class="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#111] text-[#eaddcf] transition-transform duration-1000">
+            <div class="flex flex-row-reverse h-3/5 border-r border-[#8a1c1c] pr-8 gap-6">
+                <h1 class="font-ink text-7xl vertical-text text-white ink-effect">山海残卷</h1>
+                <div class="h-full pt-16 flex gap-4">
+                    <span class="vertical-text text-stone-500 tracking-widest text-sm">墨骨 · 补天绘师</span>
+                    <span class="vertical-text text-[#8a1c1c] font-bold text-lg">封印之中</span>
+                </div>
+            </div>
+            <div class="mt-16" onclick="Game.start()">
+                <div class="red-stamp text-2xl px-10 py-4 hover:bg-[#8a1c1c] hover:text-[#eaddcf]">解印</div>
+            </div>
+        </div>
+
+        <!-- === 2. 案台 (Hub - The Atelier) === -->
+        <div id="screen-hub" class="absolute inset-0 z-40 hidden bg-[#eaddcf] flex flex-col transition-opacity duration-500">
+            <!-- 案台背景模拟 -->
+            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] pointer-events-none"></div>
+
+            <!-- 顶部状态 -->
+            <div class="relative z-10 p-6 flex justify-between items-start">
+                <div>
+                    <div class="text-3xl font-ink mb-1">案台</div>
+                    <div class="text-xs text-stone-600 font-serif space-x-3">
+                        <span>精神 <b id="hub-san" class="text-black text-lg">100</b></span>
+                        <span>墨魂 <b id="hub-ink" class="text-black text-lg">50</b></span>
+                    </div>
+                </div>
+                <div class="border border-black px-2 py-1 bg-white/50">
+                    <div class="text-xs vertical-text h-8 leading-none">庚午</div>
+                </div>
+            </div>
+
+            <!-- 案台物品交互区 (物理隐喻) -->
+            <div class="flex-1 relative">
+                
+                <!-- 1. 中央：残卷 (Map) -->
+                <div onclick="Game.toMap()" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-40 bg-[#f3efe6] shadow-xl cursor-pointer hover:scale-105 transition-transform flex flex-col items-center justify-center border-y-8 border-[#3e2723] group">
+                    <div class="absolute inset-0 opacity-5 font-ink text-8xl overflow-hidden pointer-events-none select-none">山海</div>
+                    <div class="font-ink text-5xl z-10 ink-effect group-hover:text-[#8a1c1c] transition-colors">出击</div>
+                    <div class="w-12 h-[1px] bg-black my-2"></div>
+                    <div class="text-xs tracking-[0.4em] text-stone-500">南山经</div>
+                    <!-- 卷轴轴头 -->
+                    <div class="absolute -left-4 top-0 bottom-0 w-4 bg-[#2d1b18] rounded-l-md"></div>
+                    <div class="absolute -right-4 top-0 bottom-0 w-4 bg-[#2d1b18] rounded-r-md"></div>
+                </div>
+
+                <!-- 2. 左侧：异兽录 (Evolution) -->
+                <div onclick="Game.toEvo()" class="absolute left-4 bottom-20 w-24 h-32 bg-[#5d4037] shadow-lg -rotate-6 cursor-pointer hover:-translate-y-2 transition-transform border-l-4 border-[#3e2723] flex items-center justify-center group">
+                    <div class="w-20 h-28 bg-[#eaddcf] flex items-center justify-center border border-stone-400">
+                        <span class="vertical-text font-ink text-2xl group-hover:text-[#8a1c1c]">异兽录</span>
+                    </div>
+                </div>
+
+                <!-- 3. 右上：笔筒 (Skills) -->
+                <div onclick="Game.toSkills()" class="absolute right-6 top-0 w-20 h-24 cursor-pointer hover:scale-105 transition-transform flex flex-col items-center justify-end">
+                    <!-- 笔 -->
+                    <div class="w-2 h-20 bg-black absolute -top-4 rotate-12 left-6"></div>
+                    <div class="w-2 h-16 bg-[#8a1c1c] absolute -top-2 -rotate-6 right-8"></div>
+                    <!-- 筒 -->
+                    <div class="w-16 h-20 bg-[#3e2723] rounded-b-lg border-t-4 border-[#5d4037] shadow-lg relative z-10 flex items-center justify-center">
+                        <span class="font-ink text-white text-xl">笔冢</span>
+                    </div>
+                </div>
+
+                <!-- 4. 左上：竹简 (Quests) -->
+                <div onclick="Game.toQuests()" class="absolute left-6 top-0 w-32 h-16 cursor-pointer hover:translate-y-2 transition-transform">
+                    <div class="w-full h-full flex overflow-hidden shadow-md">
+                        <div class="w-4 h-full bg-[#d7c484] border-r border-[#bba560]"></div>
+                        <div class="w-4 h-full bg-[#d7c484] border-r border-[#bba560]"></div>
+                        <div class="w-4 h-full bg-[#d7c484] border-r border-[#bba560]"></div>
+                        <div class="w-4 h-full bg-[#d7c484] border-r border-[#bba560]"></div>
+                        <div class="flex-1 bg-[#d7c484] flex items-center justify-center">
+                            <span class="vertical-text text-xs font-bold text-[#3e2723]">天命</span>
+                        </div>
+                    </div>
+                    <div class="absolute -top-2 left-1/2 w-32 h-1 bg-red-900 -rotate-3 opacity-80"></div>
+                </div>
+
+                <!-- 5. 右下：鬼市 (Market) -->
+                <div onclick="Game.toMarket()" class="absolute right-4 bottom-20 cursor-pointer hover:scale-110 transition-transform">
+                    <div class="w-16 h-16 rounded-full bg-black border-2 border-[#8a1c1c] flex items-center justify-center shadow-lg relative">
+                        <span class="font-ink text-[#eaddcf] text-2xl">鬼</span>
+                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
+                    </div>
+                </div>
+                
+                <!-- 6. 悬挂：碑林 (Achievements) -->
+                <div onclick="Game.toSteles()" class="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-24 bg-stone-700 rounded-l-lg border-l border-y border-stone-500 shadow-md cursor-pointer hover:w-12 transition-all flex items-center justify-center">
+                    <span class="vertical-text text-[10px] text-stone-300">碑林</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- === 3. 地图 (Map) === -->
+        <div id="screen-map" class="absolute inset-0 z-30 hidden bg-[#e3dccb] flex flex-col">
+            <div class="h-12 flex items-center justify-between px-4 border-b border-[#cbb] bg-[#eaddcf]">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm font-bold hover:text-[#8a1c1c]">← 归案</div>
+                <div class="flex gap-4 text-sm font-serif">
+                    <span>SAN <span id="map-san">100</span></span>
+                    <span>INK <span id="map-ink">50</span></span>
+                </div>
+            </div>
+
+            <div class="flex-1 flex flex-col items-center justify-center bg-[#dcd7c9] relative overflow-hidden">
+                <div class="absolute left-4 top-10 text-stone-400 font-ink text-8xl opacity-10 vertical-text pointer-events-none">南山经</div>
+                <!-- 网格容器 -->
+                <div id="map-grid-container" class="grid grid-cols-5 gap-2 p-4 bg-[#f0ebd8] shadow-2xl border border-stone-300 relative z-10 w-[90%] max-w-[360px]">
+                    <!-- JS 生成 -->
+                </div>
+            </div>
+
+            <div class="h-36 bg-[#111] text-[#ccc] p-4 flex flex-col justify-between border-t-4 border-[#8a1c1c]">
+                <div id="map-log" class="font-serif text-sm leading-relaxed h-20 overflow-y-auto no-scrollbar space-y-1 opacity-90">
+                    <p class="text-stone-500 italic">>> 踏入【基山】...</p>
+                </div>
+                <div class="flex justify-center gap-8 pt-2 border-t border-stone-800">
+                    <div onclick="Game.pulseMap()" class="text-center cursor-pointer hover:text-white transition-colors group">
+                        <div class="font-ink text-xl group-hover:scale-110 transition-transform">感知</div>
+                        <div class="text-[10px] text-stone-600">消耗精神</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === 4. 战斗 (Battle) === -->
+        <div id="screen-battle" class="absolute inset-0 z-50 hidden bg-[#1a1a1a] flex flex-col text-stone-200">
+            <!-- 战场 -->
+            <div class="flex-1 relative flex flex-col">
+                <!-- 敌方 -->
+                <div class="flex-1 flex items-center justify-center relative bg-[#202020] border-b border-stone-800 overflow-hidden">
+                    <div class="absolute top-4 right-4 vertical-text text-xs tracking-widest text-[#8a1c1c]">敌方</div>
+                    <div class="relative flex flex-col items-center z-10">
+                        <div id="enemy-sprite" class="font-ink text-8xl text-stone-300 vertical-text ink-effect breathe select-none"></div>
+                        <div class="text-xs text-stone-500 mt-2 font-serif" id="enemy-attr"></div>
+                        <div class="w-32 h-1 bg-stone-800 mt-4 relative">
+                            <div id="enemy-hp" class="absolute left-0 top-0 h-full bg-[#8a1c1c] w-full transition-all duration-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 我方 -->
+                <div class="flex-1 flex items-center justify-center relative bg-[#151515]">
+                    <div class="absolute top-4 left-4 vertical-text text-xs tracking-widest text-stone-500">绘师</div>
+                    <div class="flex items-center gap-6 w-full justify-center px-4">
+                        <div id="player-parts" class="flex flex-col gap-1 text-[10px] font-serif text-stone-500 border-r border-stone-700 pr-4 text-right"></div>
+                        <div class="flex flex-col items-center">
+                            <div id="player-core" class="font-ink text-6xl text-white ink-effect breathe">狐</div>
+                            <div class="w-32 h-1 bg-stone-800 mt-4 relative">
+                                <div id="player-hp" class="absolute left-0 top-0 h-full bg-stone-300 w-full transition-all duration-300"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="battle-effect" class="absolute inset-0 pointer-events-none flex items-center justify-center z-50"></div>
+            </div>
+
+            <!-- 言灵手牌区 -->
+            <div class="h-48 bg-[#0a0a0a] border-t border-[#8a1c1c] p-4 flex flex-col">
+                <div id="battle-log" class="text-xs text-stone-500 text-center mb-2 font-serif min-h-[1rem]">战斗开始...</div>
+                <div class="text-[10px] text-stone-600 text-center mb-2 tracking-widest">—— 言灵手牌 ——</div>
+                <div id="hand-cards" class="flex-1 flex justify-center gap-3 items-center px-2 overflow-x-auto">
+                    <!-- JS 生成卡牌 -->
+                </div>
+                <div class="flex justify-between mt-2 px-4">
+                     <button onclick="Battle.action('attack')" class="text-xs text-stone-400 hover:text-white">[ 墨击 ]</button>
+                     <button onclick="Battle.action('flee')" class="text-xs text-stone-400 hover:text-white">[ 遁走 ]</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- === 5. 衍化 (Evo) - 手术台风格 === -->
+        <div id="screen-evo" class="absolute inset-0 z-30 hidden bg-[#eaddcf] flex flex-col">
+             <div class="h-14 flex items-center justify-between px-4 border-b border-stone-400">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm font-bold">← 返回</div>
+                <div class="text-xl font-ink">缝尸·衍化</div>
+                <div class="w-8"></div>
+            </div>
+            <div class="flex-1 flex flex-col items-center justify-center relative">
+                <!-- 背景网格 -->
+                <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 20px 20px;"></div>
+                
+                <div class="relative w-64 h-64 flex items-center justify-center my-8">
+                    <!-- 缝合线视觉 -->
+                    <div class="suture-line w-full top-1/2 -translate-y-1/2"></div>
+                    <div class="suture-line h-full left-1/2 -translate-x-1/2 w-[2px]"></div>
+
+                    <div id="evo-core" class="relative z-10 font-ink text-7xl bg-[#eaddcf] p-4 rounded-full border-2 border-dashed border-stone-600">狐</div>
+                    
+                    <!-- 部位 -->
+                    <div class="absolute top-0 bg-white border border-black px-2 py-1 text-xs text-center min-w-[3rem] shadow"><div class="text-[8px] text-stone-400">首</div><span id="part-head">凡·狐</span></div>
+                    <div class="absolute bottom-0 bg-white border border-black px-2 py-1 text-xs text-center min-w-[3rem] shadow"><div class="text-[8px] text-stone-400">足</div><span id="part-feet">凡·足</span></div>
+                    <div class="absolute left-0 bg-white border border-black px-2 py-1 text-xs text-center min-w-[3rem] shadow"><div class="text-[8px] text-stone-400">身</div><span id="part-body">凡·躯</span></div>
+                    <div class="absolute right-0 bg-white border border-black px-2 py-1 text-xs text-center min-w-[3rem] shadow"><div class="text-[8px] text-stone-400">尾</div><span id="part-tail">凡·尾</span></div>
+                </div>
+
+                <div class="w-72 px-4 py-4 bg-[#fdfbf7] border border-stone-300 shadow-sm text-sm font-serif relative">
+                    <div class="absolute -top-3 left-4 bg-[#eaddcf] px-2 text-xs text-[#8a1c1c] font-bold">解剖数据</div>
+                    <div class="flex justify-between mb-2"><span>攻击力</span><span id="evo-atk" class="font-bold">15</span></div>
+                    <div class="flex justify-between mb-2"><span>速度</span><span id="evo-spd" class="font-bold">10</span></div>
+                    <div class="flex justify-between mb-4 text-[#8a1c1c]"><span>排异反应</span><span id="evo-reject" class="font-bold">0%</span></div>
+                    
+                    <button onclick="Game.evolve()" class="w-full border-2 border-[#8a1c1c] text-[#8a1c1c] py-2 hover:bg-[#8a1c1c] hover:text-white transition-colors flex justify-center items-center gap-2">
+                        <span>缝合素材 (消耗30墨)</span>
+                    </button>
+                    <div id="evo-msg" class="text-center text-xs text-[#8a1c1c] mt-2 h-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === 6. 天命竹简 (Quests) === -->
+        <div id="screen-quests" class="absolute inset-0 z-30 hidden bg-[#3e2723] flex flex-col overflow-hidden">
+            <div class="h-14 flex items-center justify-between px-4 bg-[#2d1b18] text-[#d7c484]">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm">← 卷起</div>
+                <div class="text-xl font-ink">天命竹简</div>
+                <div class="w-8"></div>
+            </div>
+            <div class="flex-1 p-6 flex gap-4 overflow-x-auto items-center">
+                <!-- 竹简任务列表 -->
+                <div class="bamboo-slip" onclick="Game.completeQuest(this, 1)">
+                    <span class="text-xs mb-4 opacity-50">壹</span>
+                    <span>探索南山经</span>
+                    <span class="text-red-900 mt-auto text-xs border border-red-900 px-1 rounded">未阅</span>
+                </div>
+                <div class="bamboo-slip" onclick="Game.completeQuest(this, 2)">
+                    <span class="text-xs mb-4 opacity-50">贰</span>
+                    <span>吞噬一次</span>
+                    <span class="text-red-900 mt-auto text-xs border border-red-900 px-1 rounded">未阅</span>
+                </div>
+                <div class="bamboo-slip" onclick="Game.completeQuest(this, 3)">
+                    <span class="text-xs mb-4 opacity-50">叁</span>
+                    <span>收集三古字</span>
+                    <span class="text-red-900 mt-auto text-xs border border-red-900 px-1 rounded">未阅</span>
+                </div>
+            </div>
+            <div class="h-12 bg-[#2d1b18] text-center text-[#d7c484] text-xs flex items-center justify-center italic">
+                “朱笔画圈，天命已定”
+            </div>
+        </div>
+
+        <!-- === 7. 山海碑林 (Achievements) === -->
+        <div id="screen-steles" class="absolute inset-0 z-30 hidden bg-[#111] flex flex-col">
+            <div class="h-14 flex items-center justify-between px-4 border-b border-stone-800 text-stone-400">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm">← 离去</div>
+                <div class="text-xl font-ink text-stone-200">山海碑林</div>
+                <div class="w-8"></div>
+            </div>
+            <div class="flex-1 flex items-end pb-20 gap-8 overflow-x-auto px-8 no-scrollbar bg-gradient-to-t from-[#222] to-[#111]">
+                <!-- 石碑列表 -->
+                <div class="stele unlocked">
+                    <div class="vertical-text text-xl font-ink mx-auto mt-4">初入山海</div>
+                    <div class="text-xs mt-4 opacity-70">首次探索</div>
+                </div>
+                <div class="stele">
+                    <div class="vertical-text text-xl font-ink mx-auto mt-4 opacity-30">异兽猎手</div>
+                    <div class="text-xs mt-4 opacity-30">???</div>
+                </div>
+                <div class="stele">
+                    <div class="vertical-text text-xl font-ink mx-auto mt-4 opacity-30">完美墨骨</div>
+                    <div class="text-xs mt-4 opacity-30">???</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === 8. 鬼市 & 笔冢 (Placeholder updated visuals) === -->
+        <div id="screen-market" class="absolute inset-0 z-30 hidden bg-[#050505] flex flex-col text-[#90a4ae]">
+            <div class="h-14 flex items-center justify-between px-4 border-b border-green-900/30">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm">← 离市</div>
+                <div class="text-xl font-ink text-green-700">鬼市</div>
+                <div class="text-xs">墨魂: <span id="market-ink">0</span></div>
+            </div>
+            <div class="flex-1 p-6 space-y-4" id="market-list"></div>
+        </div>
+
+        <div id="screen-skills" class="absolute inset-0 z-30 hidden bg-[#eaddcf] flex flex-col">
+            <div class="h-14 flex items-center justify-between px-4 border-b border-stone-400">
+                <div onclick="Game.toHub()" class="cursor-pointer text-sm font-bold">← 收笔</div>
+                <div class="text-xl font-ink">笔冢</div>
+                <div class="w-8"></div>
+            </div>
+            <div class="p-6 grid grid-cols-4 gap-4" id="skill-grid"></div>
+        </div>
+
+        <!-- === 9. 事件弹窗 (Event Modal) === -->
+        <div id="modal-event" class="absolute inset-0 z-[60] hidden bg-black/90 flex items-center justify-center backdrop-blur-sm p-6">
+            <div class="bg-[#eaddcf] w-full max-w-sm border-2 border-stone-600 p-6 shadow-2xl relative slide-up">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#111] text-[#eaddcf] px-3 py-1 text-xs font-bold" id="event-type">奇遇</div>
+                <div class="font-ink text-4xl text-center mb-4 mt-2" id="event-title"></div>
+                <p class="text-sm font-serif text-stone-800 leading-relaxed mb-6" id="event-desc"></p>
+                <div class="space-y-3" id="event-choices"></div>
+            </div>
+        </div>
+
+        <!-- === 10. 结算弹窗 === -->
+        <div id="modal-loot" class="absolute inset-0 z-[60] hidden bg-black/80 flex items-center justify-center backdrop-blur-sm">
+            <div class="bg-[#eaddcf] p-8 w-4/5 border-4 border-double border-stone-800 relative slide-up text-center">
+                <div class="red-stamp text-xl mb-4 rotate-0">大捷</div>
+                <div class="font-ink text-3xl mb-2" id="loot-name"></div>
+                <div class="text-xs text-stone-500 mb-6">[ 素材 ]</div>
+                <button onclick="Game.closeLoot()" class="w-full bg-black text-[#eaddcf] py-3 hover:bg-[#8a1c1c]">收录</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // === 数据状态 ===
+        const State = {
+            san: 100,
+            ink: 100,
+            hp: 100, maxHp: 100,
+            parts: {
+                head: { name: '凡·狐', atk: 5 },
+                body: { name: '凡·躯', hp: 20 },
+                feet: { name: '凡·足', spd: 5 },
+                tail: { name: '凡·尾', skill: '无' }
+            },
+            wordCollection: ['雷', '定', '愈', '水'], // 增加了 水
+            deck: ['雷', '雷', '水', '定', '火'], 
+            playerPos: { x: 2, y: 6 },
+            grid: [],
+            combat: { active: false, enemy: null }
+        };
+
+        const GRID_W = 5;
+        const GRID_H = 7;
+
+        // === 核心逻辑 ===
+        const Game = {
+            start: () => {
+                document.getElementById('screen-title').classList.add('-translate-y-full');
+                Game.toHub();
+            },
+            toHub: () => {
+                showScreen('screen-hub');
+                updateHubUI();
+            },
+            toMap: () => {
+                State.san = 100;
+                State.playerPos = { x: 2, y: 6 };
+                generateGrid();
+                showScreen('screen-map');
+                logMap("绘师展开残卷，墨迹未干...");
+                updateMapUI();
+            },
+            toEvo: () => { showScreen('screen-evo'); updateEvoUI(); },
+            toMarket: () => { showScreen('screen-market'); renderMarket(); },
+            toSkills: () => { showScreen('screen-skills'); renderSkills(); },
+            toQuests: () => { showScreen('screen-quests'); },
+            toSteles: () => { showScreen('screen-steles'); },
+
+            // 地图逻辑
+            pulseMap: () => {
+                if(State.san < 5) return;
+                State.san -= 5;
+                updateMapUI();
+                logMap("闭目感知...");
+                let c = 0;
+                State.grid.forEach(r => r.forEach(cell => {
+                    if(!cell.revealed && Math.random() < 0.3 && c < 2) { cell.revealed = true; c++; }
+                }));
+                renderGrid();
+            },
+            movePlayer: (x, y) => {
+                const dx = Math.abs(x - State.playerPos.x);
+                const dy = Math.abs(y - State.playerPos.y);
+                if (dx + dy !== 1) return;
+
+                const target = State.grid[y][x];
+                State.san -= 2;
+                State.playerPos = { x, y };
+                revealAround(x, y);
+                renderGrid();
+                updateMapUI();
+
+                logMap(`行至 ${target.char} (${target.desc})`);
+
+                // 事件触发逻辑
+                if (target.event === 'combat' || target.event === 'boss') {
+                    // BOSS战前预警
+                    if(target.event === 'boss') logMap("凶气逼人！！", "text-red-800 font-bold");
+                    setTimeout(() => Battle.start(target.event === 'boss'), 500);
+                } else if (target.event === 'mystery') {
+                    showEventModal('问', '破庙古碑', '一座残破的石碑立于荒野，字迹模糊，隐约可见古文。', [
+                        { text: '拓印文字 (-10精神)', action: () => { 
+                            State.san -= 10; State.ink += 30; 
+                            logMap("获得古文残片，墨魂 +30"); updateMapUI(); closeEventModal();
+                        }},
+                        { text: '无视离开', action: () => closeEventModal() }
+                    ]);
+                } else if (target.event === 'trap') {
+                    showEventModal('火', '野火燎原', '文字化作烈火，灼烧你的衣角。', [
+                        { text: '强行穿越 (-10生命)', action: () => {
+                            State.hp -= 10; logMap("受到火焰灼烧，气血受损"); closeEventModal();
+                        }},
+                        { text: '使用言灵·水 (需习得)', disabled: !State.wordCollection.includes('水'), action: () => {
+                             logMap("言灵化雨，浇灭野火。"); closeEventModal();
+                        }}
+                    ]);
+                } else if (target.event === 'loot') {
+                    State.ink += 20;
+                    logMap("拾取古字残片，墨魂 +20");
+                    target.char = '空'; target.event = null; target.class = '';
+                    renderGrid(); updateMapUI();
+                }
+                
+                if(State.san <= 0) {
+                    logMap("精神耗尽，强制遣返...");
+                    setTimeout(Game.toHub, 1500);
+                }
+            },
+            
+            // 衍化逻辑
+            evolve: () => {
+                const msg = document.getElementById('evo-msg');
+                if(State.ink < 30) { msg.innerText = "墨魂不足"; return; }
+                if(State.parts.head.name.includes('狼')) { msg.innerText = "已达上限"; return; }
+                
+                State.ink -= 30;
+                State.parts.head = { name: '异·狼', atk: 12 };
+                State.parts.feet = { name: '异·豹', spd: 8 };
+                updateEvoUI();
+                msg.innerText = "缝合成功！排异反应稳定。";
+                
+                const core = document.getElementById('evo-core');
+                core.classList.add('shake');
+                setTimeout(()=>core.classList.remove('shake'), 400);
+            },
+            
+            // 任务完成逻辑
+            completeQuest: (el, id) => {
+                if(el.classList.contains('completed')) return;
+                // 模拟朱笔画圈效果
+                el.classList.add('completed');
+                const mark = document.createElement('div');
+                mark.className = "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border-4 border-[#8a1c1c] rounded-full opacity-0 scale-150 transition-all duration-300";
+                el.appendChild(mark);
+                
+                setTimeout(() => {
+                    mark.classList.remove('opacity-0', 'scale-150');
+                    mark.classList.add('opacity-80', 'scale-100');
+                    el.querySelector('.text-red-900').innerText = "已阅";
+                    State.ink += 50;
+                    updateHubUI();
+                }, 100);
+            },
+
+            closeLoot: () => {
+                document.getElementById('modal-loot').classList.add('hidden');
+                const {x,y} = State.playerPos;
+                State.grid[y][x].char = '尸';
+                State.grid[y][x].event = null;
+                State.grid[y][x].class = 'word-chaos font-ink';
+                renderGrid();
+                showScreen('screen-map');
+            }
+        };
+
+        // === 战斗系统 (五行卡牌) ===
+        const Battle = {
+            start: (isBoss) => {
+                State.combat.active = true;
+                const enemy = { 
+                    name: isBoss ? '烛龙' : '猼訑', 
+                    char: isBoss ? '烛<br>龙' : '猼<br>訑',
+                    element: isBoss ? '火' : '木', // 设定属性
+                    hp: isBoss ? 200 : 80, 
+                    maxHp: isBoss ? 200 : 80 
+                };
+                State.combat.enemy = enemy;
+                
+                showScreen('screen-battle');
+                document.getElementById('enemy-sprite').innerHTML = enemy.char;
+                document.getElementById('enemy-attr').innerText = `[属性: ${enemy.element}]`;
+                updateBattleUI();
+                renderHand();
+                
+                document.getElementById('battle-log').innerText = `遭遇 ${enemy.name} (${enemy.element}) !`;
+                document.getElementById('player-parts').innerHTML = `
+                    <div>[首:${State.parts.head.name.slice(2)}]</div>
+                    <div>[身:${State.parts.body.name.slice(2)}]</div>
+                    <div>[足:${State.parts.feet.name.slice(2)}]</div>
+                `;
+            },
+            
+            playCard: (cardName, index) => {
+                if(!State.combat.active) return;
+                
+                // 移除卡牌动画
+                const btn = document.getElementById(`card-${index}`);
+                btn.classList.add('opacity-0', '-translate-y-10');
+                setTimeout(() => btn.remove(), 200);
+
+                let dmg = 0;
+                let effect = "";
+                let msg = "";
+                
+                // 五行克制逻辑 (简化版)
+                const enemyEl = State.combat.enemy.element;
+                let multiplier = 1;
+                
+                if (cardName === '水' && enemyEl === '火') multiplier = 2;
+                if (cardName === '火' && enemyEl === '木') multiplier = 2;
+                if (cardName === '雷' && enemyEl === '水') multiplier = 2; // 设定雷克水
+
+                // 卡牌效果
+                if(cardName === '雷') {
+                    dmg = 30 * multiplier;
+                    effect = "雷";
+                    showBattleEffect(effect, "word-thunder");
+                } else if (cardName === '火') {
+                    dmg = 40 * multiplier;
+                    effect = "火";
+                    showBattleEffect(effect, "word-fire");
+                } else if (cardName === '水') {
+                    dmg = 25 * multiplier;
+                    effect = "水";
+                    showBattleEffect(effect, "word-water");
+                } else if (cardName === '定') {
+                    dmg = 10;
+                    effect = "定";
+                    showBattleEffect(effect, "text-stone-500 font-bold");
+                    msg = "敌方被定身！";
+                } else if (cardName === '愈') {
+                    State.hp = Math.min(State.maxHp, State.hp + 30);
+                    effect = "愈";
+                    showBattleEffect(effect, "text-green-600 font-bold");
+                    updateBattleUI();
+                    return; 
+                }
+
+                if(dmg > 0) {
+                    const enemy = State.combat.enemy;
+                    enemy.hp -= dmg;
+                    msg = `言灵·${cardName} 造成 ${dmg} 伤害`;
+                    if(multiplier > 1) msg += " (克制!)";
+                }
+                
+                document.getElementById('battle-log').innerText = `> ${msg}`;
+                updateBattleUI();
+
+                if(State.combat.enemy.hp <= 0) {
+                    setTimeout(Battle.win, 800);
+                } else {
+                    setTimeout(Battle.enemyTurn, 800);
+                }
+            },
+            
+            action: (type) => {
+                if(!State.combat.active) return;
+                if(type === 'attack') {
+                    const dmg = State.parts.head.atk + 5;
+                    State.combat.enemy.hp -= dmg;
+                    showBattleEffect("墨", "text-black");
+                    document.getElementById('battle-log').innerText = `> 墨击造成 ${dmg} 伤害`;
+                    updateBattleUI();
+                    if(State.combat.enemy.hp <= 0) setTimeout(Battle.win, 800);
+                    else setTimeout(Battle.enemyTurn, 800);
+                } else {
+                    State.combat.active = false;
+                    Game.toMap();
+                }
+            },
+            
+            enemyTurn: () => {
+                if(!State.combat.active) return;
+                const dmg = 10;
+                State.hp -= dmg;
+                document.getElementById('battle-log').innerText = `> 受到反击，气血 -${dmg}`;
+                document.getElementById('screen-battle').classList.add('shake');
+                setTimeout(() => document.getElementById('screen-battle').classList.remove('shake'), 400);
+                
+                updateBattleUI();
+                if(State.hp <= 0) {
+                    alert("胜败乃兵家常事 (Demo重置)");
+                    State.hp = 100;
+                    Game.toHub();
+                } else {
+                    // 补牌逻辑
+                    if(document.getElementById('hand-cards').children.length < 3) renderHand();
+                }
+            },
+            
+            win: () => {
+                State.combat.active = false;
+                document.getElementById('loot-name').innerText = "异兽残肢";
+                document.getElementById('modal-loot').classList.remove('hidden');
+            }
+        };
+
+        // === 辅助函数 ===
+        
+        function showScreen(id) {
+            document.querySelectorAll('[id^="screen-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('fade-in');
+        }
+
+        function generateGrid() {
+            State.grid = [];
+            const types = [
+                { char:'林', desc:'枯林', class:'text-stone-600 font-ink' },
+                { char:'山', desc:'荒山', class:'text-stone-800 font-bold' },
+                { char:'泽', desc:'泥沼', class:'text-blue-800 word-water font-ink' },
+                { char:'村', desc:'荒村', class:'text-stone-500' }
+            ];
+            for(let y=0; y<GRID_H; y++) {
+                let row = [];
+                for(let x=0; x<GRID_W; x++) {
+                    if(y===6 && x===2) { row.push({char:'师', desc:'起点', revealed:true, class:'text-[#8a1c1c] font-bold'}); continue; }
+                    
+                    let cell = { ...types[Math.floor(Math.random()*types.length)], revealed:false };
+                    const r = Math.random();
+                    if(r < 0.15) { cell.char='兽'; cell.desc='异兽'; cell.event='combat'; cell.class='text-[#8a1c1c] font-ink word-chaos'; }
+                    else if(r < 0.25) { cell.char='问'; cell.desc='奇遇'; cell.event='mystery'; cell.class='text-black font-bold'; }
+                    else if(r < 0.35) { cell.char='火'; cell.desc='野火'; cell.event='trap'; cell.class='word-fire font-ink'; }
+                    else if(r < 0.40) { cell.char='尸'; cell.desc='尸骨'; cell.event=null; cell.class='word-chaos font-ink'; }
+                    else if(r < 0.45) { cell.char='碑'; cell.desc='古碑'; cell.event='loot'; cell.class='text-stone-900 font-bold'; }
+                    
+                    if(y===0 && x===2) { cell.char='凶'; cell.desc='BOSS'; cell.event='boss'; cell.class='text-2xl font-black word-chaos'; }
+                    row.push(cell);
+                }
+                State.grid.push(row);
+            }
+            revealAround(2, 6);
+        }
+
+        function revealAround(px, py) {
+            [[0,1],[0,-1],[1,0],[-1,0]].forEach(([dx,dy]) => {
+                const nx=px+dx, ny=py+dy;
+                if(nx>=0 && nx<GRID_W && ny>=0 && ny<GRID_H) State.grid[ny][nx].revealed = true;
+            });
+        }
+
+        function renderGrid() {
+            const el = document.getElementById('map-grid-container');
+            el.innerHTML = '';
+            State.grid.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    const div = document.createElement('div');
+                    div.className = 'aspect-square flex items-center justify-center text-xl cursor-pointer border border-stone-300/50 bg-[#fdfbf7] transition-all';
+                    if(x === State.playerPos.x && y === State.playerPos.y) {
+                        div.innerHTML = '师'; div.className += ' text-[#8a1c1c] font-bold border-[#8a1c1c]';
+                    } else if (cell.revealed) {
+                        div.innerHTML = cell.char; div.className += ` ${cell.class || ''} ink-effect`;
+                        div.onclick = () => Game.movePlayer(x, y);
+                    } else {
+                        div.className += ' bg-[#e3dccb]'; // 迷雾
+                        div.innerHTML = '<span class="opacity-20 text-xs">☁</span>';
+                    }
+                    el.appendChild(div);
+                });
+            });
+        }
+
+        function renderMarket() {
+            const list = document.getElementById('market-list');
+            list.innerHTML = '';
+            const items = [
+                { name: '古字·雷', price: 50, desc: '克制水属异兽' },
+                { name: '古字·盾', price: 40, desc: '抵挡一次攻击' },
+                { name: '异兽残肢·翼', price: 100, desc: '增加速度' }
+            ];
+            document.getElementById('market-ink').innerText = State.ink;
+            items.forEach(item => {
+                const row = document.createElement('div');
+                row.className = "flex justify-between items-center border border-green-900/30 p-3 bg-black/40";
+                row.innerHTML = `
+                    <div><div class="text-[#eaddcf] font-bold">${item.name}</div><div class="text-xs text-stone-500">${item.desc}</div></div>
+                    <button class="border border-green-700 text-green-700 px-3 py-1 text-xs hover:bg-green-900 hover:text-white" onclick="alert('鬼市老板只是冷冷地看着你...')">${item.price} 墨</button>
+                `;
+                list.appendChild(row);
+            });
+        }
+
+        function renderSkills() {
+            const grid = document.getElementById('skill-grid');
+            grid.innerHTML = '';
+            State.wordCollection.forEach(word => {
+                const div = document.createElement('div');
+                div.className = "aspect-square border border-stone-500 flex items-center justify-center font-ink text-2xl bg-[#fdfbf7] hover:border-[#8a1c1c] cursor-pointer shadow-sm";
+                div.innerText = word;
+                grid.appendChild(div);
+            });
+        }
+
+        function renderHand() {
+            const container = document.getElementById('hand-cards');
+            container.innerHTML = '';
+            const hand = [];
+            for(let i=0; i<3; i++) hand.push(State.deck[Math.floor(Math.random()*State.deck.length)]);
+            
+            hand.forEach((card, idx) => {
+                const div = document.createElement('div');
+                div.id = `card-${idx}`;
+                div.className = "w-14 h-20 border border-stone-600 bg-[#fdfbf7] flex flex-col items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform shadow-md relative";
+                div.innerHTML = `<div class="font-ink text-2xl">${card}</div><div class="text-[8px] text-stone-500 mt-1">言灵</div>`;
+                div.onclick = () => Battle.playCard(card, idx);
+                container.appendChild(div);
+            });
+        }
+
+        function updateHubUI() {
+            document.getElementById('hub-san').innerText = State.san;
+            document.getElementById('hub-ink').innerText = State.ink;
+        }
+        function updateMapUI() {
+            document.getElementById('map-san').innerText = State.san;
+            document.getElementById('map-ink').innerText = State.ink;
+        }
+        function updateEvoUI() {
+            const p = State.parts;
+            document.getElementById('evo-core').innerText = p.head.name.includes('狼') ? '狼' : '狐';
+            document.getElementById('part-head').innerText = p.head.name;
+            document.getElementById('evo-atk').innerText = p.head.atk + 10;
+        }
+        function updateBattleUI() {
+            const e = State.combat.enemy;
+            document.getElementById('enemy-hp').style.width = Math.max(0, (e.hp/e.maxHp)*100) + "%";
+            document.getElementById('player-hp').style.width = Math.max(0, (State.hp/State.maxHp)*100) + "%";
+        }
+        function showBattleEffect(char, cls) {
+            const el = document.getElementById('battle-effect');
+            el.innerHTML = `<div class="font-ink text-9xl ${cls} animate-[ping_0.5s_cubic-bezier(0,0,0.2,1)_1]">${char}</div>`;
+            setTimeout(() => el.innerHTML = '', 600);
+        }
+        function logMap(msg, cls="") {
+            const log = document.getElementById('map-log');
+            const p = document.createElement('p');
+            p.className = cls; p.innerText = `> ${msg}`;
+            log.prepend(p);
+        }
+        function showEventModal(typeChar, title, desc, choices) {
+            document.getElementById('event-type').innerText = typeChar;
+            document.getElementById('event-title').innerText = title;
+            document.getElementById('event-desc').innerText = desc;
+            const cContainer = document.getElementById('event-choices');
+            cContainer.innerHTML = '';
+            choices.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = "w-full border border-black py-2 text-sm hover:bg-[#8a1c1c] hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+                btn.innerText = c.text;
+                if(c.disabled) btn.disabled = true; else btn.onclick = c.action;
+                cContainer.appendChild(btn);
+            });
+            document.getElementById('modal-event').classList.remove('hidden');
+        }
+        function closeEventModal() { document.getElementById('modal-event').classList.add('hidden'); }
+    </script>
+</body>
+</html>
