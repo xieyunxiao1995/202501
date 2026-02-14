@@ -29,6 +29,11 @@ class Role {
   final RoleRarity rarity;
   final int stars;
   final String description;
+  // Base Stats
+  final int baseHp;
+  final int baseAttack;
+  final int baseDefense;
+  final int baseSpeed;
 
   const Role({
     required this.id,
@@ -39,6 +44,10 @@ class Role {
     required this.rarity,
     required this.stars,
     required this.description,
+    this.baseHp = 100,
+    this.baseAttack = 20,
+    this.baseDefense = 10,
+    this.baseSpeed = 10,
   });
 
   Color get elementColor {

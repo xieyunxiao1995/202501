@@ -18,6 +18,8 @@ class Player {
   List<Skill> skills;
   List<Item> items;
   List<String> contractedBeasts; // IDs of contracted beasts
+  List<String> ownedRoles; // IDs of owned roles
+  Map<int, String> formation; // Index 0-8 -> Role ID
 
   Player({
     this.sanity = 100,
@@ -34,13 +36,17 @@ class Player {
     List<Skill>? skills,
     List<Item>? items,
     List<String>? contractedBeasts,
+    List<String>? ownedRoles,
+    Map<int, String>? formation,
   })  : parts = parts ?? {},
         deck = deck ?? [],
         hand = hand ?? [],
         inventory = inventory ?? [],
         skills = skills ?? [],
         items = items ?? [],
-        contractedBeasts = contractedBeasts ?? [];
+        contractedBeasts = contractedBeasts ?? [],
+        ownedRoles = ownedRoles ?? [],
+        formation = formation ?? {};
 
   Map<String, dynamic> toJson() {
     return {
@@ -57,6 +63,8 @@ class Player {
       'skills': skills.map((e) => e.toJson()).toList(),
       'items': items.map((e) => e.toJson()).toList(),
       'contractedBeasts': contractedBeasts,
+      'ownedRoles': ownedRoles,
+      'formation': formation.map((k, v) => MapEntry(k.toString(), v)),
     };
   }
 
@@ -67,6 +75,12 @@ class Player {
       if (value != null) {
         loadedParts[PartType.values[int.parse(key)]] = Part.fromJson(value);
       }
+    });
+    
+    final Map<String, dynamic> formationJson = json['formation'] ?? {};
+    final Map<int, String> loadedFormation = {};
+    formationJson.forEach((key, value) {
+      loadedFormation[int.parse(key)] = value;
     });
 
     return Player(
@@ -83,6 +97,8 @@ class Player {
       skills: (json['skills'] as List?)?.map((e) => Skill.fromJson(e)).toList(),
       items: (json['items'] as List?)?.map((e) => Item.fromJson(e)).toList(),
       contractedBeasts: (json['contractedBeasts'] as List?)?.map((e) => e.toString()).toList(),
+      ownedRoles: (json['ownedRoles'] as List?)?.map((e) => e.toString()).toList(),
+      formation: loadedFormation,
     );
   }
 

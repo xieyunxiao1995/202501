@@ -8,6 +8,7 @@ import 'package:uuid/uuid.dart';
 
 import '../models/skill.dart';
 import '../models/item.dart';
+import '../models/role.dart';
 
 class GameService extends ChangeNotifier {
   Player? _player;
@@ -25,9 +26,30 @@ class GameService extends ChangeNotifier {
     _player = await _storage.loadPlayer();
     
     // Migration: Initialize skills for existing players if missing
-    if (_player != null && _player!.skills.isEmpty) {
-      _player!.skills = _getInitialSkills();
-      await saveGame();
+    if (_player != null) {
+      bool changed = false;
+      if (_player!.skills.isEmpty) {
+        _player!.skills = _getInitialSkills();
+        changed = true;
+      }
+      
+      // Migration: Give default roles if none
+      if (_player!.ownedRoles.isEmpty) {
+        _player!.ownedRoles = ['monkey_king', 'nezha', 'nuwa'];
+        // Auto deploy first 3
+        if (_player!.formation.isEmpty) {
+             _player!.formation = {
+               3: 'monkey_king',
+               4: 'nezha',
+               5: 'nuwa',
+             };
+        }
+        changed = true;
+      }
+      
+      if (changed) {
+        await saveGame();
+      }
     }
     
     _isLoading = false;

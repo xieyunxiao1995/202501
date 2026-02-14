@@ -12,7 +12,8 @@ class CompendiumScreen extends StatefulWidget {
   State<CompendiumScreen> createState() => _CompendiumScreenState();
 }
 
-class _CompendiumScreenState extends State<CompendiumScreen> with SingleTickerProviderStateMixin {
+class _CompendiumScreenState extends State<CompendiumScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -38,75 +39,91 @@ class _CompendiumScreenState extends State<CompendiumScreen> with SingleTickerPr
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              backgroundColor: AppColors.bgPaper.withOpacity(0.9),
-                  title: Text(
-                    '山海图鉴', 
-                    style: GoogleFonts.maShanZheng(
-                      color: AppColors.inkBlack, 
-                      fontSize: isSmallScreen ? 22 : (isTablet ? 32 : 26),
-                      fontWeight: FontWeight.bold
-                    )
-                  ),
-                  centerTitle: true,
-                  floating: true,
-                  pinned: true,
-                  elevation: 0,
-                  iconTheme: const IconThemeData(color: AppColors.inkBlack),
-                  bottom: TabBar(
-                    controller: _tabController,
-                    labelColor: AppColors.inkRed,
-                    unselectedLabelColor: AppColors.inkBlack.withOpacity(0.6),
-                    indicatorColor: AppColors.inkRed,
-                    indicatorWeight: 3,
-                    labelStyle: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 16 : (isTablet ? 24 : 20)),
-                    unselectedLabelStyle: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 18)),
-                    tabs: const [
-                      Tab(text: '角色'),
-                      Tab(text: '异兽'),
-                      Tab(text: '奇物'),
-                      Tab(text: '灵言'),
-                    ],
-                  ),
+              backgroundColor: const Color(
+                0xFFF3E5D8,
+              ).withOpacity(0.95), // 米色背景，配合整体色调
+              title: Text(
+                '山海图鉴',
+                style: GoogleFonts.maShanZheng(
+                  color: AppColors.inkBlack,
+                  fontSize: isSmallScreen ? 22 : (isTablet ? 32 : 26),
+                  fontWeight: FontWeight.bold,
                 ),
-              ];
-            },
-            body: TabBarView(
-              controller: _tabController,
-              children: [
-                _RoleTab(isTablet: isTablet),
-                _BeastTab(isTablet: isTablet),
-                _RelicTab(isTablet: isTablet),
-                _WordTab(isTablet: isTablet),
-              ],
+              ),
+              centerTitle: true,
+              floating: true,
+              pinned: true,
+              elevation: 0,
+              iconTheme: const IconThemeData(color: AppColors.inkBlack),
+              bottom: TabBar(
+                controller: _tabController,
+                labelColor: AppColors.inkRed,
+                unselectedLabelColor: AppColors.inkBlack.withOpacity(0.6),
+                indicatorColor: AppColors.inkRed,
+                indicatorWeight: 3,
+                labelStyle: GoogleFonts.maShanZheng(
+                  fontSize: isSmallScreen ? 16 : (isTablet ? 24 : 20),
+                ),
+                unselectedLabelStyle: GoogleFonts.maShanZheng(
+                  fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 18),
+                ),
+                tabs: const [
+                  Tab(text: '角色'),
+                  Tab(text: '异兽'),
+                  Tab(text: '奇物'),
+                  Tab(text: '灵言'),
+                ],
+              ),
             ),
+          ];
+        },
+        body: Container(
+          color: const Color(0xFFEBE2D5).withOpacity(0.5), // 背景稍微加深一点，衬托白色卡片
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              _RoleTab(isTablet: isTablet),
+              _BeastTab(isTablet: isTablet),
+              _RelicTab(isTablet: isTablet),
+              _WordTab(isTablet: isTablet),
+            ],
           ),
+        ),
+      ),
     );
   }
 }
 
 class _RoleTab extends StatelessWidget {
   final bool isTablet;
-  
+
   const _RoleTab({this.isTablet = false});
 
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 380;
-    final double cardWidth = isSmallScreen ? 140 : (isTablet ? 220 : 160);
-    final double cardHeight = isSmallScreen ? 200 : (isTablet ? 300 : 240);
+    // 关键调整：减小 maxCrossAxisExtent 以强制显示更多列
+    // 在普通手机上（宽度~390-430），设置为 100 左右可以容纳 4 列 (4*90 + spacing)
+    final double cardWidth = isSmallScreen ? 85 : (isTablet ? 160 : 98);
+    // 调整长宽比，使其更像竖长的卡牌，底部留白给名字
+    const double childAspectRatio = 0.65;
 
     return GridView.builder(
-      padding: EdgeInsets.all(isSmallScreen ? 12 : (isTablet ? 24 : 16)),
+      padding: EdgeInsets.all(isSmallScreen ? 8 : (isTablet ? 24 : 10)),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: cardWidth,
-        childAspectRatio: cardWidth / cardHeight,
-        crossAxisSpacing: isSmallScreen ? 12 : (isTablet ? 20 : 16),
-        mainAxisSpacing: isSmallScreen ? 12 : (isTablet ? 20 : 16),
+        childAspectRatio: childAspectRatio,
+        crossAxisSpacing: isSmallScreen ? 6 : (isTablet ? 16 : 8),
+        mainAxisSpacing: isSmallScreen ? 6 : (isTablet ? 16 : 8),
       ),
       itemCount: allRoles.length,
       itemBuilder: (context, index) {
         final role = allRoles[index];
-        return _RoleCard(role: role, isSmallScreen: isSmallScreen, isTablet: isTablet);
+        return _RoleCard(
+          role: role,
+          isSmallScreen: isSmallScreen,
+          isTablet: isTablet,
+        );
       },
     );
   }
@@ -125,115 +142,120 @@ class _RoleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 底部白色区域的高度
+    final double footerHeight = isSmallScreen ? 32 : 38;
+
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => RoleDetailScreen(role: role),
-          ),
+          MaterialPageRoute(builder: (context) => RoleDetailScreen(role: role)),
         );
       },
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.bgPaper,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.woodDark.withOpacity(0.3)),
+          color: Colors.white, // 卡片整体背景设为白色
+          borderRadius: BorderRadius.circular(6),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
+              blurRadius: 3,
               offset: const Offset(0, 2),
             ),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(6),
           child: Stack(
-            fit: StackFit.expand,
             children: [
-              // Background pattern or gradient
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      role.elementColor.withOpacity(0.1),
-                      AppColors.bgPaper,
+              // 1. 上半部分：图片背景 + 图片
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: footerHeight, // 留出底部白色区域
+                child: Container(
+                  decoration: BoxDecoration(
+                    // 修改点：使用角色元素颜色作为背景基调，更接近图1效果
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        role.elementColor.withOpacity(0.15),
+                        role.elementColor.withOpacity(0.3),
+                      ],
+                    ),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(6),
+                    ),
+                  ),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      // 背景装饰圆圈（模拟图1中的背景纹理）
+                      Positioned(
+                        top: -20,
+                        right: -20,
+                        child: Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white.withOpacity(0.2),
+                          ),
+                        ),
+                      ),
+                      // 图片
+                      Hero(
+                        tag: 'role_image_${role.id}',
+                        child: Image.asset(
+                          role.assetPath,
+                          fit: BoxFit.cover,
+                          alignment: Alignment.topCenter,
+                        ),
+                      ),
+                      // 底部渐变，防止图片底部太生硬
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: 20,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                role.elementColor.withOpacity(0.1),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-              
-              // Character Image
-              Positioned(
-                top: 10,
-                left: 0,
-                right: 0,
-                bottom: 60,
-                child: Hero(
-                  tag: 'role_image_${role.id}',
-                  child: Image.asset(
-                    role.assetPath,
-                    fit: BoxFit.contain,
-                    alignment: Alignment.topCenter,
-                  ),
-                ),
-              ),
 
-              // Element Icon (Top Left)
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
-                    shape: BoxShape.circle,
-                    border: Border.all(color: role.elementColor),
-                  ),
-                  child: Icon(
-                    _getElementIcon(role.element),
-                    size: isSmallScreen ? 12 : 16,
-                    color: role.elementColor,
-                  ),
-                ),
-              ),
-
-              // Rarity (Top Right)
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Text(
-                  role.rarityLabel,
-                  style: GoogleFonts.notoSerifSc(
-                    color: AppColors.inkRed,
-                    fontWeight: FontWeight.bold,
-                    fontSize: isSmallScreen ? 10 : 12,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ),
-
-              // Name and Stars (Bottom)
+              // 2. 底部白色区域：名字 + 星星
               Positioned(
                 bottom: 0,
                 left: 0,
                 right: 0,
+                height: footerHeight,
                 child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.9),
-                    border: Border(top: BorderSide(color: AppColors.woodDark.withOpacity(0.1))),
-                  ),
+                  color: Colors.white,
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         role.name,
                         style: GoogleFonts.maShanZheng(
-                          fontSize: isSmallScreen ? 16 : 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: isSmallScreen ? 13 : 15,
+                          fontWeight: FontWeight.w900,
+                          color: const Color(0xFF2D2D2D), // 深墨色
+                          height: 1.0,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -241,25 +263,162 @@ class _RoleCard extends StatelessWidget {
                       const SizedBox(height: 2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(role.stars, (index) => Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: isSmallScreen ? 10 : 12,
-                        )),
+                        children: List.generate(
+                          role.stars,
+                          (index) => Icon(
+                            Icons.star,
+                            color: const Color(0xFFFFC107), // 明亮的金色
+                            size: isSmallScreen ? 10 : 12,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
-              
-              // Search Icon (Bottom Right Overlay)
+
+              // 3. 左上角：元素图标
               Positioned(
-                bottom: 8,
-                right: 8,
-                child: Icon(
-                  Icons.search,
-                  size: isSmallScreen ? 14 : 16,
-                  color: AppColors.woodLight,
+                top: 4,
+                left: 4,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: role.elementColor.withOpacity(0.5),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    _getElementIcon(role.element),
+                    size: isSmallScreen ? 10 : 12,
+                    color: role.elementColor,
+                  ),
+                ),
+              ),
+
+              // 4. 左上角：“核”字印章 (修改为圆形印章样式)
+              Positioned(
+                top: isSmallScreen ? 20 : 24,
+                left: 2,
+                child: Transform.rotate(
+                  angle: -0.2, // 稍微倾斜，更像盖章
+                  child: Container(
+                    width: isSmallScreen ? 16 : 18,
+                    height: isSmallScreen ? 16 : 18,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFD32F2F), // 鲜艳的印泥红
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.8),
+                        width: 1,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 1,
+                        ),
+                      ],
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.3),
+                          width: 0.5,
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '核',
+                          style: GoogleFonts.maShanZheng(
+                            color: Colors.white,
+                            fontSize: 9,
+                            fontWeight: FontWeight.bold,
+                            height: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // 5. 右上角：稀有度 (艺术字风格增强)
+              Positioned(
+                top: 2,
+                right: 4,
+                child: Text(
+                  role.rarityLabel,
+                  style: GoogleFonts.notoSerif(
+                    color: role.rarityLabel == 'UR'
+                        ? const Color(0xFFD32F2F) // UR 用鲜红
+                        : const Color(0xFFE64A19), // SSR 用橘红
+                    fontWeight: FontWeight.w900,
+                    fontSize: isSmallScreen ? 12 : 14,
+                    fontStyle: FontStyle.italic,
+                    shadows: [
+                      const Shadow(
+                        color: Colors.white,
+                        offset: Offset(-1, -1),
+                        blurRadius: 0,
+                      ),
+                      const Shadow(
+                        color: Colors.white,
+                        offset: Offset(1, -1),
+                        blurRadius: 0,
+                      ),
+                      const Shadow(
+                        color: Colors.white,
+                        offset: Offset(-1, 1),
+                        blurRadius: 0,
+                      ),
+                      const Shadow(
+                        color: Colors.white,
+                        offset: Offset(1, 1),
+                        blurRadius: 0,
+                      ),
+                      Shadow(
+                        color: Colors.black.withOpacity(0.2),
+                        offset: const Offset(1, 2),
+                        blurRadius: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // 6. 右下角：搜索图标 (颜色调整为深色底)
+              Positioned(
+                bottom: 4,
+                right: 4,
+                child: Container(
+                  width: isSmallScreen ? 16 : 18,
+                  height: isSmallScreen ? 16 : 18,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF37474F), // 深蓝灰色，类似图1
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    Icons.search,
+                    size: isSmallScreen ? 9 : 11,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -271,22 +430,34 @@ class _RoleCard extends StatelessWidget {
 
   IconData _getElementIcon(RoleElement element) {
     switch (element) {
-      case RoleElement.metal: return Icons.gavel;
-      case RoleElement.wood: return Icons.forest;
-      case RoleElement.water: return Icons.water_drop;
-      case RoleElement.fire: return Icons.local_fire_department;
-      case RoleElement.earth: return Icons.landscape;
-      case RoleElement.wind: return Icons.air;
-      case RoleElement.thunder: return Icons.flash_on;
-      case RoleElement.yin: return Icons.dark_mode;
-      case RoleElement.yang: return Icons.light_mode;
+      case RoleElement.metal:
+        return Icons.gavel;
+      case RoleElement.wood:
+        return Icons.forest;
+      case RoleElement.water:
+        return Icons.water_drop;
+      case RoleElement.fire:
+        return Icons.local_fire_department;
+      case RoleElement.earth:
+        return Icons.landscape;
+      case RoleElement.wind:
+        return Icons.air;
+      case RoleElement.thunder:
+        return Icons.flash_on;
+      case RoleElement.yin:
+        return Icons.dark_mode;
+      case RoleElement.yang:
+        return Icons.light_mode;
     }
   }
 }
 
+// 保持原来的 BeastTab, RelicTab, WordTab 不变，或者按需微调
+// 为了代码完整性，这里包含它们，但主要改动在上面
+
 class _BeastTab extends StatelessWidget {
   final bool isTablet;
-  
+
   _BeastTab({this.isTablet = false});
 
   final List<Map<String, dynamic>> beasts = [
@@ -294,7 +465,8 @@ class _BeastTab extends StatelessWidget {
       'name': '混沌',
       'title': '太古四凶',
       'desc': '其状如犬，长毛，四足，似罴而无爪，有目而不见，行不开，有两耳而不闻。',
-      'detail': '混沌是天地未开之时的朦胧状态，象征着无序与混乱。在山海经中，它被描述为一种没有面目、浑浑噩噩的生物。它厌恶高尚的人，却会听从恶人的指挥。',
+      'detail':
+          '混沌是天地未开之时的朦胧状态，象征着无序与混乱。在山海经中，它被描述为一种没有面目、浑浑噩噩的生物。它厌恶高尚的人，却会听从恶人的指挥。',
       'danger': 5,
       'icon': Icons.cloud,
     },
@@ -310,7 +482,8 @@ class _BeastTab extends StatelessWidget {
       'name': '穷奇',
       'title': '惩善扬恶',
       'desc': '状如虎，有翼，食人从首始，所食被发，在犬北。',
-      'detail': '穷奇是一种会飞的老虎，它性格怪异，看到有人打架，它会去吃掉有理的一方；听说有人忠信，它就去咬掉他的鼻子。它是背信弃义的象征。',
+      'detail':
+          '穷奇是一种会飞的老虎，它性格怪异，看到有人打架，它会去吃掉有理的一方；听说有人忠信，它就去咬掉他的鼻子。它是背信弃义的象征。',
       'danger': 4,
       'icon': Icons.catching_pokemon,
     },
@@ -363,7 +536,11 @@ class _BeastTab extends StatelessWidget {
     );
   }
 
-  void _showDetail(BuildContext context, Map<String, dynamic> data, {required String type}) {
+  void _showDetail(
+    BuildContext context,
+    Map<String, dynamic> data, {
+    required String type,
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -375,7 +552,7 @@ class _BeastTab extends StatelessWidget {
 
 class _RelicTab extends StatelessWidget {
   final bool isTablet;
-  
+
   _RelicTab({this.isTablet = false});
 
   final List<Map<String, dynamic>> relics = [
@@ -432,7 +609,7 @@ class _RelicTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 380;
-    
+
     return GridView.builder(
       padding: EdgeInsets.all(isSmallScreen ? 12 : (isTablet ? 24 : 16)),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -457,7 +634,11 @@ class _RelicTab extends StatelessWidget {
     );
   }
 
-  void _showDetail(BuildContext context, Map<String, dynamic> data, {required String type}) {
+  void _showDetail(
+    BuildContext context,
+    Map<String, dynamic> data, {
+    required String type,
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -469,7 +650,7 @@ class _RelicTab extends StatelessWidget {
 
 class _WordTab extends StatelessWidget {
   final bool isTablet;
-  
+
   _WordTab({this.isTablet = false});
 
   final List<Map<String, dynamic>> words = [
@@ -543,7 +724,11 @@ class _WordTab extends StatelessWidget {
     );
   }
 
-  void _showDetail(BuildContext context, Map<String, dynamic> data, {required String type}) {
+  void _showDetail(
+    BuildContext context,
+    Map<String, dynamic> data, {
+    required String type,
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -577,7 +762,9 @@ class _CompendiumCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : (isTablet ? 20 : 16)),
+      margin: EdgeInsets.only(
+        bottom: isSmallScreen ? 12 : (isTablet ? 20 : 16),
+      ),
       color: AppColors.bgPaper,
       elevation: 4,
       shadowColor: color.withOpacity(0.3),
@@ -600,7 +787,11 @@ class _CompendiumCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: color.withOpacity(0.5)),
                 ),
-                child: Icon(icon, color: color, size: isSmallScreen ? 24 : (isTablet ? 36 : 30)),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: isSmallScreen ? 24 : (isTablet ? 36 : 30),
+                ),
               ),
               SizedBox(width: isSmallScreen ? 12 : (isTablet ? 24 : 16)),
               Expanded(
@@ -610,28 +801,52 @@ class _CompendiumCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(title, style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 18 : (isTablet ? 26 : 22), fontWeight: FontWeight.bold)),
+                        Text(
+                          title,
+                          style: GoogleFonts.maShanZheng(
+                            fontSize: isSmallScreen ? 18 : (isTablet ? 26 : 22),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: isTablet ? 12 : 8, vertical: isTablet ? 4 : 2),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isTablet ? 12 : 8,
+                            vertical: isTablet ? 4 : 2,
+                          ),
                           decoration: BoxDecoration(
                             color: color.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          child: Text(subtitle, style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 10 : (isTablet ? 14 : 12), color: color)),
+                          child: Text(
+                            subtitle,
+                            style: GoogleFonts.notoSerifSc(
+                              fontSize: isSmallScreen
+                                  ? 10
+                                  : (isTablet ? 14 : 12),
+                              color: color,
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     SizedBox(height: isSmallScreen ? 4 : (isTablet ? 12 : 8)),
                     Text(
                       description,
-                      style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 12 : (isTablet ? 16 : 14), color: Colors.grey[700]),
+                      style: GoogleFonts.notoSerifSc(
+                        fontSize: isSmallScreen ? 12 : (isTablet ? 16 : 14),
+                        color: Colors.grey[700],
+                      ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: Colors.grey, size: isSmallScreen ? 20 : (isTablet ? 32 : 24)),
+              Icon(
+                Icons.chevron_right,
+                color: Colors.grey,
+                size: isSmallScreen ? 20 : (isTablet ? 32 : 24),
+              ),
             ],
           ),
         ),
@@ -685,18 +900,28 @@ class _CompendiumGridCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: color.withOpacity(0.5)),
                 ),
-                child: Icon(icon, color: color, size: isSmallScreen ? 22 : (isTablet ? 36 : 28)),
+                child: Icon(
+                  icon,
+                  color: color,
+                  size: isSmallScreen ? 22 : (isTablet ? 36 : 28),
+                ),
               ),
               SizedBox(height: isSmallScreen ? 8 : (isTablet ? 16 : 12)),
               Text(
                 title,
-                style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 16 : (isTablet ? 22 : 18), fontWeight: FontWeight.bold),
+                style: GoogleFonts.maShanZheng(
+                  fontSize: isSmallScreen ? 16 : (isTablet ? 22 : 18),
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: isSmallScreen ? 2 : (isTablet ? 8 : 4)),
               Text(
                 subtitle,
-                style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 10 : (isTablet ? 14 : 12), color: Colors.grey[700]),
+                style: GoogleFonts.notoSerifSc(
+                  fontSize: isSmallScreen ? 10 : (isTablet ? 14 : 12),
+                  color: Colors.grey[700],
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
@@ -717,9 +942,11 @@ class _DetailModal extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSmallScreen = MediaQuery.of(context).size.width < 380;
     final isTablet = MediaQuery.of(context).size.width > 600;
-    
+
     return Container(
-      height: MediaQuery.of(context).size.height * (isSmallScreen ? 0.75 : (isTablet ? 0.6 : 0.7)),
+      height:
+          MediaQuery.of(context).size.height *
+          (isSmallScreen ? 0.75 : (isTablet ? 0.6 : 0.7)),
       decoration: const BoxDecoration(
         color: AppColors.bgPaper,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
@@ -738,10 +965,12 @@ class _DetailModal extends StatelessWidget {
               ),
             ),
           ),
-          
+
           Expanded(
             child: SingleChildScrollView(
-              padding: EdgeInsets.all(isSmallScreen ? 16 : (isTablet ? 32 : 24)),
+              padding: EdgeInsets.all(
+                isSmallScreen ? 16 : (isTablet ? 32 : 24),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -749,7 +978,9 @@ class _DetailModal extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.all(isSmallScreen ? 12 : (isTablet ? 24 : 16)),
+                        padding: EdgeInsets.all(
+                          isSmallScreen ? 12 : (isTablet ? 24 : 16),
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.woodLight.withOpacity(0.3),
                           shape: BoxShape.circle,
@@ -761,68 +992,110 @@ class _DetailModal extends StatelessWidget {
                           color: AppColors.inkBlack,
                         ),
                       ),
-                      SizedBox(width: isSmallScreen ? 16 : (isTablet ? 32 : 20)),
+                      SizedBox(
+                        width: isSmallScreen ? 16 : (isTablet ? 32 : 20),
+                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               data['name'],
-                              style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 26 : (isTablet ? 42 : 32), fontWeight: FontWeight.bold),
+                              style: GoogleFonts.maShanZheng(
+                                fontSize: isSmallScreen
+                                    ? 26
+                                    : (isTablet ? 42 : 32),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             Text(
                               data['title'],
-                              style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 16), color: AppColors.inkRed),
+                              style: GoogleFonts.notoSerifSc(
+                                fontSize: isSmallScreen
+                                    ? 14
+                                    : (isTablet ? 20 : 16),
+                                color: AppColors.inkRed,
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  
-                  Divider(height: isSmallScreen ? 30 : (isTablet ? 50 : 40), color: AppColors.inkBlack),
-                  
+
+                  Divider(
+                    height: isSmallScreen ? 30 : (isTablet ? 50 : 40),
+                    color: AppColors.inkBlack,
+                  ),
+
                   // Content
                   Text(
                     '【古籍记载】',
-                    style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 18 : (isTablet ? 24 : 20), fontWeight: FontWeight.bold),
+                    style: GoogleFonts.maShanZheng(
+                      fontSize: isSmallScreen ? 18 : (isTablet ? 24 : 20),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: isSmallScreen ? 6 : (isTablet ? 12 : 8)),
                   Container(
-                    padding: EdgeInsets.all(isSmallScreen ? 12 : (isTablet ? 24 : 16)),
+                    padding: EdgeInsets.all(
+                      isSmallScreen ? 12 : (isTablet ? 24 : 16),
+                    ),
                     decoration: BoxDecoration(
                       color: AppColors.woodLight.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: AppColors.woodDark.withOpacity(0.2)),
+                      border: Border.all(
+                        color: AppColors.woodDark.withOpacity(0.2),
+                      ),
                     ),
                     child: Text(
                       data['desc'],
-                      style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 16), height: 1.6, fontStyle: FontStyle.italic),
+                      style: GoogleFonts.notoSerifSc(
+                        fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 16),
+                        height: 1.6,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
                   ),
-                  
+
                   SizedBox(height: isSmallScreen ? 16 : (isTablet ? 32 : 24)),
-                  
+
                   Text(
                     '【墨世研析】',
-                    style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 18 : (isTablet ? 24 : 20), fontWeight: FontWeight.bold),
+                    style: GoogleFonts.maShanZheng(
+                      fontSize: isSmallScreen ? 18 : (isTablet ? 24 : 20),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   SizedBox(height: isSmallScreen ? 6 : (isTablet ? 12 : 8)),
                   Text(
                     data['detail'] ?? '',
-                    style: GoogleFonts.notoSerifSc(fontSize: isSmallScreen ? 14 : (isTablet ? 18 : 16), height: 1.6),
+                    style: GoogleFonts.notoSerifSc(
+                      fontSize: isSmallScreen ? 14 : (isTablet ? 18 : 16),
+                      height: 1.6,
+                    ),
                   ),
-                  
+
                   if (type == 'beast' && data['danger'] != null) ...[
                     SizedBox(height: isSmallScreen ? 16 : (isTablet ? 32 : 24)),
                     Row(
                       children: [
-                        Text('危险等级：', style: GoogleFonts.maShanZheng(fontSize: isSmallScreen ? 16 : (isTablet ? 22 : 18))),
-                        ...List.generate(5, (index) => Icon(
-                          index < (data['danger'] as int) ? Icons.star : Icons.star_border,
-                          color: AppColors.inkRed,
-                          size: isSmallScreen ? 18 : (isTablet ? 28 : 20),
-                        )),
+                        Text(
+                          '危险等级：',
+                          style: GoogleFonts.maShanZheng(
+                            fontSize: isSmallScreen ? 16 : (isTablet ? 22 : 18),
+                          ),
+                        ),
+                        ...List.generate(
+                          5,
+                          (index) => Icon(
+                            index < (data['danger'] as int)
+                                ? Icons.star
+                                : Icons.star_border,
+                            color: AppColors.inkRed,
+                            size: isSmallScreen ? 18 : (isTablet ? 28 : 20),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -830,30 +1103,41 @@ class _DetailModal extends StatelessWidget {
                   if (type == 'word' && data['effect'] != null) ...[
                     SizedBox(height: isSmallScreen ? 16 : (isTablet ? 32 : 24)),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: isSmallScreen ? 12 : (isTablet ? 24 : 16), vertical: isSmallScreen ? 6 : (isTablet ? 12 : 8)),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 12 : (isTablet ? 24 : 16),
+                        vertical: isSmallScreen ? 6 : (isTablet ? 12 : 8),
+                      ),
                       decoration: BoxDecoration(
                         color: (data['color'] as Color).withOpacity(0.1),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: (data['color'] as Color).withOpacity(0.5)),
+                        border: Border.all(
+                          color: (data['color'] as Color).withOpacity(0.5),
+                        ),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.flash_on, size: isSmallScreen ? 16 : (isTablet ? 24 : 18), color: data['color']),
+                          Icon(
+                            Icons.flash_on,
+                            size: isSmallScreen ? 16 : (isTablet ? 24 : 18),
+                            color: data['color'],
+                          ),
                           SizedBox(width: isTablet ? 16 : 8),
                           Text(
                             '特性：${data['effect']}',
                             style: GoogleFonts.notoSerifSc(
-                              fontSize: isSmallScreen ? 14 : (isTablet ? 20 : 16), 
+                              fontSize: isSmallScreen
+                                  ? 14
+                                  : (isTablet ? 20 : 16),
                               color: Colors.black87,
-                              fontWeight: FontWeight.bold
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ],
                       ),
                     ),
                   ],
-                  
+
                   const SizedBox(height: 40),
                 ],
               ),
