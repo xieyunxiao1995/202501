@@ -22,16 +22,6 @@ class WriteOpaquePaddingType {
 
 const List<WriteOpaquePaddingType> shopInventory = <WriteOpaquePaddingType>[
   WriteOpaquePaddingType(
-    itemId: 'com.uuidflutter.test.1',
-    name: 'パック13332',
-    type: 'basic',
-    coinAmount: 16000,
-    price: '¥160',
-    description: '16,000 ゴールド',
-    locale: 'ja_JP',
-    category: 'basic',
-  ),
-  WriteOpaquePaddingType(
     itemId: 'dw.os.jp.099usd',
     name: 'パック1',
     type: 'basic',

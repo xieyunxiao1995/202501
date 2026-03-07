@@ -104,12 +104,31 @@ class SetNextParamAdapter extends State<QuantizationCustomSkewXImplement> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isTablet = screenWidth >= 600;
+    final horizontalPadding = isTablet ? 24.0 : 12.0;
+    
     return Scaffold(
       backgroundColor: const Color(0xff0a0502),
       body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
+                    strokeWidth: 3,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    '商品を読み込み中...',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.8),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             )
           : CustomScrollView(
@@ -117,8 +136,8 @@ class SetNextParamAdapter extends State<QuantizationCustomSkewXImplement> {
               slivers: [
                 _buildHeader(),
                 SliverPadding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
                     vertical: 16,
                   ),
                   sliver: _buildPackagesGrid(),
@@ -197,186 +216,253 @@ class SetNextParamAdapter extends State<QuantizationCustomSkewXImplement> {
   }
 
   Widget _buildPackagesGrid() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isTablet = screenWidth >= 600;
+    final crossAxisCount = isTablet ? (screenWidth >= 900 ? 6 : 4) : 3;
+    final aspectRatio = isTablet ? 0.8 : 0.75;
+    
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        childAspectRatio: 0.75,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
+        crossAxisCount: crossAxisCount,
+        childAspectRatio: aspectRatio,
+        crossAxisSpacing: isTablet ? 12 : 8,
+        mainAxisSpacing: isTablet ? 12 : 8,
       ),
       delegate: SliverChildBuilderDelegate(
-        (context, index) => _buildPackageCard(_shopItems[index]),
+        (context, index) => _buildPackageCard(_shopItems[index], isTablet),
         childCount: _shopItems.length,
       ),
     );
   }
 
-  Widget _buildPackageCard(WriteOpaquePaddingType bundle) {
+  Widget _buildPackageCard(WriteOpaquePaddingType bundle, bool isTablet) {
     final product = _productDetails[bundle.itemId];
     final bool isAvailable = product != null;
     final bool isProcessing = _shopManager.CheckComprehensiveOpacityCache;
     final displayPrice = product?.price ?? bundle.price;
+    final iconSize = isTablet ? 28.0 : 24.0;
+    final fontSize = isTablet ? 14.0 : 13.0;
 
-    return GestureDetector(
-      onTap: (isAvailable && !isProcessing)
-          ? () => _handlePurchase(bundle)
-          : null,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xff3d2618),
-              Color(0xff2a170e),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: Colors.amber.withOpacity(0.3),
-            width: 1.5,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.5),
-              blurRadius: 6,
-              offset: const Offset(0, 3),
-            ),
-          ],
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isAvailable
+              ? const [
+                  Color(0xff3d2618),
+                  Color(0xff2a170e),
+                ]
+              : [
+                  const Color(0xff2a1810).withOpacity(0.5),
+                  const Color(0xff1a0e08).withOpacity(0.5),
+                ],
         ),
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.amber.withOpacity(0.15),
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.amber.withOpacity(0.5),
-                        width: 1.5,
-                      ),
-                    ),
-                    child: const Icon(
-                      Icons.monetization_on_rounded,
-                      color: Colors.amber,
-                      size: 24,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    bundle.name,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Text(
-                      displayPrice,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.greenAccent,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.amber.shade700,
-                          Colors.orange.shade800,
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.amber.withOpacity(0.3),
-                          blurRadius: 6,
-                          spreadRadius: 1,
+        borderRadius: BorderRadius.circular(isTablet ? 16 : 12),
+        border: Border.all(
+          color: isAvailable
+              ? Colors.amber.withOpacity(0.4)
+              : Colors.grey.withOpacity(0.2),
+          width: isAvailable ? 2 : 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: isAvailable
+                ? Colors.amber.withOpacity(0.2)
+                : Colors.black.withOpacity(0.3),
+            blurRadius: isAvailable ? 8 : 4,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: (isAvailable && !isProcessing)
+              ? () => _handlePurchase(bundle)
+              : () {
+                  if (!isAvailable) {
+                    PausePermissiveQueueStack('商品を読み込み中です...');
+                  }
+                },
+          borderRadius: BorderRadius.circular(isTablet ? 16 : 12),
+          child: Stack(
+            children: [
+              Opacity(
+                opacity: isAvailable ? 1.0 : 0.5,
+                child: Padding(
+                  padding: EdgeInsets.all(isTablet ? 12 : 8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(isTablet ? 10 : 8),
+                        decoration: BoxDecoration(
+                          color: Colors.amber.withOpacity(0.15),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.amber.withOpacity(0.5),
+                            width: 2,
+                          ),
+                          boxShadow: isAvailable
+                              ? [
+                                  BoxShadow(
+                                    color: Colors.amber.withOpacity(0.3),
+                                    blurRadius: 10,
+                                    spreadRadius: 2,
+                                  ),
+                                ]
+                              : [],
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(
-                          Icons.add_circle,
+                        child: Icon(
+                          Icons.monetization_on_rounded,
+                          color: isAvailable ? Colors.amber : Colors.grey,
+                          size: iconSize,
+                        ),
+                      ),
+                      SizedBox(height: isTablet ? 6 : 4),
+                      Text(
+                        bundle.name,
+                        style: TextStyle(
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.w900,
                           color: Colors.white,
-                          size: 12,
+                          letterSpacing: 0.5,
                         ),
-                        const SizedBox(width: 3),
-                        Text(
-                          formatNumber(bundle.coinAmount),
-                          style: const TextStyle(
-                            fontSize: 12,
+                      ),
+                      SizedBox(height: isTablet ? 4 : 3),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isTablet ? 8 : 6,
+                          vertical: isTablet ? 3 : 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isAvailable
+                              ? Colors.black54
+                              : Colors.grey.shade800,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          displayPrice,
+                          style: TextStyle(
+                            fontSize: isTablet ? 13 : 12,
                             fontWeight: FontWeight.bold,
+                            color: isAvailable
+                                ? Colors.greenAccent
+                                : Colors.grey.shade400,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: isTablet ? 8 : 6),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isTablet ? 10 : 8,
+                          vertical: isTablet ? 6 : 5,
+                        ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.amber.shade700,
+                              Colors.orange.shade800,
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.amber.withOpacity(0.3),
+                              blurRadius: 6,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.add_circle,
+                              color: Colors.white,
+                              size: isTablet ? 14 : 12,
+                            ),
+                            SizedBox(width: isTablet ? 4 : 3),
+                            Text(
+                              formatNumber(bundle.coinAmount),
+                              style: TextStyle(
+                                fontSize: isTablet ? 13 : 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: isTablet ? 8 : 6),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isTablet ? 20 : 16,
+                          vertical: isTablet ? 8 : 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: isAvailable
+                              ? const Color(0xff8c6751)
+                              : Colors.grey.shade700,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: isAvailable
+                              ? [
+                                  BoxShadow(
+                                    color:
+                                        const Color(0xff8c6751).withOpacity(0.4),
+                                    blurRadius: 6,
+                                    spreadRadius: 1,
+                                  ),
+                                ]
+                              : [],
+                        ),
+                        child: Text(
+                          isAvailable ? '購入' : '読込中',
+                          style: TextStyle(
+                            fontSize: isTablet ? 13 : 12,
+                            fontWeight: FontWeight.w900,
                             color: Colors.white,
+                            letterSpacing: 2,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              if (isProcessing)
+                Positioned.fill(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(isTablet ? 16 : 12),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.amber),
+                          strokeWidth: 3,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          '処理中...',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: isTablet ? 13 : 12,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xff8c6751),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Text(
-                      '購入',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (isProcessing)
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Center(
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
-                    ),
-                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
