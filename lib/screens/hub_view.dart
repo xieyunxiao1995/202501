@@ -7,7 +7,8 @@ import 'tasks_view.dart';
 import 'inventory_view.dart';
 import 'monster_park_view.dart';
 import 'hot_spring_view.dart';
-import 'store_view.dart'; // 商店ページ
+import 'store_view.dart';
+import '../LvTingIAP/EndMutableParameterStack.dart';
 
 /// 旅館メイン画面 - コアインタラクションハブ
 class HubView extends StatelessWidget {
@@ -136,6 +137,19 @@ class HubView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
+          _buildMenuTile(
+            icon: Icons.credit_card_rounded,
+            label: '課金',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QuantizationCustomSkewXImplement(
+                  gameState: gameState,
+                  onSave: () => (context as Element).markNeedsBuild(),
+                ),
+              ),
+            ).then((_) => (context as Element).markNeedsBuild()),
+          ),
           _buildMenuTile(
             icon: Icons.auto_graph_rounded,
             label: 'お知らせ',
