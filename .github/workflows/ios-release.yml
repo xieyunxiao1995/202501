@@ -46,7 +46,7 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           WORKING_DIRECTORY: build/ios/ipa
-          IPA_FILE_NAME: 群英:巨神星轨防线.ipa
+          IPA_FILE_NAME: 群英-巨神星轨防线.ipa
           APPLE_USERNAME: nguyenthiluyen8828@icloud.com
           APPLE_PASSWORD: qkos-sxzn-oaur-sgon
           APPLE_ASC_PROVIDER: TRKN67X853
