@@ -10,8 +10,8 @@
 	<string>app-store-connect</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>ccom.xinyue.life</key>
-		<string>DRBVQ44593.ccom.xinyue.life</string>
+		<key>com.xinyue.life</key>
+		<string>DRBVQ44593.com.xinyue.life</string>
 	</dict>
 	<key>signingCertificate</key>
 	<string>Apple Distribution</string>
