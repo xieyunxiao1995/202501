@@ -622,13 +622,15 @@ class _HomePageState extends State<HomePage> {
                       item.timestamp.day == day,
                 );
 
-                final moodData = mockTimelineData.firstWhere(
-                  (item) =>
-                      item.timestamp.year == year &&
-                      item.timestamp.month == month &&
-                      item.timestamp.day == day,
-                  orElse: () => mockTimelineData.first,
-                );
+                final moodData = mockTimelineData.isEmpty
+                    ? null
+                    : mockTimelineData.firstWhere(
+                        (item) =>
+                            item.timestamp.year == year &&
+                            item.timestamp.month == month &&
+                            item.timestamp.day == day,
+                        orElse: () => mockTimelineData.first,
+                      );
                 return _buildCalendarDay(
                   day,
                   isToday,
@@ -670,7 +672,9 @@ class _HomePageState extends State<HomePage> {
     bool hasEntry,
     dynamic moodData,
   ) {
-    final moodColor = _getMoodColorForType(moodData.mood.type);
+    final moodColor = moodData != null
+        ? _getMoodColorForType(moodData.mood.type)
+        : Colors.grey.shade300;
 
     return GestureDetector(
       onTap: () {

@@ -72,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
                 _NavItem(
                   icon: Icons.diversity_3_outlined,
                   activeIcon: Icons.diversity_3_rounded,
-                  label: '社区',
+                  label: '穿搭创意',
                   isActive: _currentIndex == 1,
                   activeGradient: const [
                     AppColors.gradientPinkStart,

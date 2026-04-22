@@ -1,0 +1,324 @@
+{
+  "images": [
+    {
+      "short_name": "dapei_01.png",
+      "original_name": "jimeng-2026-04-21-1042-雅痞休闲： 一位中国年轻男性在露天酒吧，穿着灰色休闲西装外套，黑色圆领T恤.png",
+      "scene": "雅痞休闲",
+      "description": "露天酒吧场景，灰色休闲西装外套搭配黑色圆领T恤",
+      "gender": "male",
+      "copy": "灰色休闲西装搭配黑色T恤，雅痞范十足的酒吧穿搭"
+    },
+    {
+      "short_name": "dapei_02.png",
+      "original_name": "jimeng-2026-04-21-1075-初秋日常： 一位中国年轻女性在银杏树下，穿着浅棕色灯芯绒外套，内搭白色高领打底衫.png",
+      "scene": "初秋日常",
+      "description": "银杏树下，浅棕色灯芯绒外套配白色高领打底衫",
+      "gender": "female",
+      "copy": "初秋的银杏树下，灯芯绒外套带来温暖质感"
+    },
+    {
+      "short_name": "dapei_03.png",
+      "original_name": "jimeng-2026-04-21-1396-高级极简风： 一位中国年轻女性在会议室内做展示，穿着无袖黑色V领连衣裙.png",
+      "scene": "高级极简",
+      "description": "会议室展示，无袖黑色V领连衣裙",
+      "gender": "female",
+      "copy": "极简黑色V领裙，会议室里的优雅力量"
+    },
+    {
+      "short_name": "dapei_04.png",
+      "original_name": "jimeng-2026-04-21-1706-海岛度假： 一位中国年轻女性在海边木栈道上，穿着白色亚麻衬衫（下摆打结），牛仔短裤.png",
+      "scene": "海岛度假",
+      "description": "海边木栈道，白色亚麻衬衫配牛仔短裤",
+      "gender": "female",
+      "copy": "海风拂面，亚麻衬衫与牛仔短裤的度假公式"
+    },
+    {
+      "short_name": "dapei_05.png",
+      "original_name": "jimeng-2026-04-21-1911-极简Cityboy： 一位中国年轻男性在咖啡店，穿着极简的白色半高领T恤.png",
+      "scene": "极简Cityboy",
+      "description": "咖啡店，白色半高领T恤",
+      "gender": "male",
+      "copy": "一杯咖啡，一件白T，Cityboy的极简哲学"
+    },
+    {
+      "short_name": "dapei_06.png",
+      "original_name": "jimeng-2026-04-21-1917-互联网休闲风： 一位中国年轻女性在科技公司休息区，穿着浅蓝色条纹牛津纺衬衫.png",
+      "scene": "互联网休闲",
+      "description": "科技公司休息区，浅蓝色条纹牛津纺衬衫",
+      "gender": "female",
+      "copy": "互联网人的休闲穿搭，舒适与专业并存"
+    },
+    {
+      "short_name": "dapei_07.png",
+      "original_name": "jimeng-2026-04-21-2043-秋冬暖男风： 一位中国年轻男性在咖啡店看书，穿着厚实的北欧风粗绞花米色毛衣.png",
+      "scene": "秋冬暖男",
+      "description": "咖啡店看书，北欧风粗绞花米色毛衣",
+      "gender": "male",
+      "copy": "秋冬的咖啡店，粗绞花毛衣带来满满温暖感"
+    },
+    {
+      "short_name": "dapei_08.png",
+      "original_name": "jimeng-2026-04-21-2475-日系盐系休闲： 一位中国年轻女性在书店挑选书籍，穿着藏青色半高领长袖T恤.png",
+      "scene": "日系盐系",
+      "description": "书店，藏青色半高领长袖T恤",
+      "gender": "female",
+      "copy": "书店里的盐系女孩，藏青色T恤的文艺气息"
+    },
+    {
+      "short_name": "dapei_09.png",
+      "original_name": "jimeng-2026-04-21-2593-冬日氛围： 一位中国年轻男性在阳台上，穿着厚重的深灰羊毛大衣.png",
+      "scene": "冬日氛围",
+      "description": "阳台，深灰羊毛大衣配灰色圆领毛衣",
+      "gender": "male",
+      "copy": "冬日阳台，羊毛大衣抵御寒冷"
+    },
+    {
+      "short_name": "dapei_10.png",
+      "original_name": "jimeng-2026-04-21-2723-晚间散步： 一位中国年轻女性在江边步道散步，穿着Oversize连帽深色卫衣.png",
+      "scene": "晚间散步",
+      "description": "江边步道，Oversize连帽深色卫衣",
+      "gender": "female",
+      "copy": "江边夜步，Oversize卫衣的自在与舒适"
+    },
+    {
+      "short_name": "dapei_11.png",
+      "original_name": "jimeng-2026-04-21-3228-滑板少年： 一位中国年轻男性在滑板公园，穿着宽松的印花T恤，水洗做旧阔腿牛仔裤.png",
+      "scene": "滑板少年",
+      "description": "滑板公园，印花T恤配水洗做旧阔腿牛仔裤",
+      "gender": "male",
+      "copy": "滑板公园的街头少年，印花T恤与阔腿牛仔裤"
+    },
+    {
+      "short_name": "dapei_12.png",
+      "original_name": "jimeng-2026-04-21-3384-夏日清爽办公： 一位中国年轻男性在会议室，穿着修身的浅蓝色短袖衬衫.png",
+      "scene": "夏日办公",
+      "description": "会议室，浅蓝色短袖衬衫配深灰色西装长裤",
+      "gender": "male",
+      "copy": "夏日会议室，浅蓝衬衫的清爽职场范"
+    },
+    {
+      "short_name": "dapei_13.png",
+      "original_name": "jimeng-2026-04-21-3718-复古美式休闲： 一位中国年轻男性在机车旁，穿着经典水洗蓝色牛仔夹克.png",
+      "scene": "复古美式",
+      "description": "机车旁，水洗蓝色牛仔夹克配白色印花T恤",
+      "gender": "male",
+      "copy": "机车旁的复古美式风，牛仔夹克永远经典"
+    },
+    {
+      "short_name": "dapei_14.png",
+      "original_name": "jimeng-2026-04-21-3776-复古街头： 一位中国年轻女性走在城市街道上，穿着Oversize复古做旧皮夹克.png",
+      "scene": "复古街头",
+      "description": "城市街道，Oversize复古做旧皮夹克",
+      "gender": "female",
+      "copy": "城市街头的复古皮衣，酷感十足的OOTD"
+    },
+    {
+      "short_name": "dapei_15.png",
+      "original_name": "jimeng-2026-04-21-4125-痞帅机车： 一位中国年轻男性站在跑车旁，穿着经典棕色做旧皮质飞行员夹克.png",
+      "scene": "痞帅机车",
+      "description": "跑车旁，棕色做旧皮质飞行员夹克配黑色高领毛衣",
+      "gender": "male",
+      "copy": "跑车旁的痞帅机车风，棕色皮衣的魅力"
+    },
+    {
+      "short_name": "dapei_16.png",
+      "original_name": "jimeng-2026-04-21-4146-公园野餐： 一位中国年轻女性坐在草地的格纹布上，穿着法式方领泡泡袖碎花连衣裙.png",
+      "scene": "公园野餐",
+      "description": "草地野餐，法式方领泡泡袖碎花连衣裙",
+      "gender": "female",
+      "copy": "公园野餐的法式浪漫，碎花裙与阳光绝配"
+    },
+    {
+      "short_name": "dapei_17.png",
+      "original_name": "jimeng-2026-04-21-4514-居家慵懒： 一位中国年轻女性盘腿坐在沙发上，穿着舒适的浅灰色纯棉针织家居服套装.png",
+      "scene": "居家慵懒",
+      "description": "沙发，浅灰色纯棉针织家居服套装",
+      "gender": "female",
+      "copy": "周末居家，灰色针织家居服的慵懒时光"
+    },
+    {
+      "short_name": "dapei_18.png",
+      "original_name": "jimeng-2026-04-21-4592-工装机能： 一位中国年轻女性靠在砖墙上，穿着宽松的印花T恤，搭配多口袋军绿色工装裤.png",
+      "scene": "工装机能",
+      "description": "砖墙，印花T恤配多口袋军绿色工装裤",
+      "gender": "female",
+      "copy": "工装机能风，军绿工装裤的酷帅态度"
+    },
+    {
+      "short_name": "dapei_19.png",
+      "original_name": "jimeng-2026-04-21-4767-现代互联网风： 一位中国年轻男性在工位前敲击电脑，穿着深色拉链摇粒绒马甲.png",
+      "scene": "互联网风",
+      "description": "工位，深色拉链摇粒绒马甲配浅蓝色衬衫",
+      "gender": "male",
+      "copy": "互联网人工位穿搭，摇粒绒马甲的实用主义"
+    },
+    {
+      "short_name": "dapei_20.png",
+      "original_name": "jimeng-2026-04-21-4804-温柔韩系： 一位中国年轻女性坐在咖啡馆里，穿着米色粗针织宽松毛衣.png",
+      "scene": "温柔韩系",
+      "description": "咖啡馆，米色粗针织宽松毛衣配百褶超短裙",
+      "gender": "female",
+      "copy": "咖啡馆里的韩系温柔，粗针织毛衣的秋日氛围"
+    },
+    {
+      "short_name": "dapei_21.png",
+      "original_name": "jimeng-2026-04-21-4873-温柔知性风： 一位中国年轻女性在图书馆办公，穿着浅杏色V领针织开衫.png",
+      "scene": "温柔知性",
+      "description": "图书馆，浅杏色V领针织开衫配深棕色百褶裙",
+      "gender": "female",
+      "copy": "图书馆的知性女孩，杏色开衫的温柔力量"
+    },
+    {
+      "short_name": "dapei_22.png",
+      "original_name": "jimeng-2026-04-21-4941-清新春日： 一位中国年轻女性在公园里，穿着碎花吊带连衣裙，肩上披着浅蓝色牛仔夹克.png",
+      "scene": "清新春日",
+      "description": "公园，碎花吊带连衣裙配浅蓝色牛仔夹克",
+      "gender": "female",
+      "copy": "春日公园，碎花裙与牛仔夹克的清新组合"
+    },
+    {
+      "short_name": "dapei_23.png",
+      "original_name": "jimeng-2026-04-21-5046-周末咖啡馆： 一位中国年轻女性坐在露天咖啡座，穿着宽松的粗麻花米色毛衣.png",
+      "scene": "周末咖啡馆",
+      "description": "露天咖啡座，粗麻花米色毛衣配碎花半身裙",
+      "gender": "female",
+      "copy": "周末露天咖啡座，粗麻花毛衣的惬意时光"
+    },
+    {
+      "short_name": "dapei_24.png",
+      "original_name": "jimeng-2026-04-21-5087-雅痞轻熟风： 一位中国年轻男性手握咖啡走在商务区，穿着灰色休闲西装外套.png",
+      "scene": "雅痞轻熟",
+      "description": "商务区，灰色休闲西装外套配白色T恤",
+      "gender": "male",
+      "copy": "商务区的轻熟雅痞，灰色西装的从容自信"
+    },
+    {
+      "short_name": "dapei_25.png",
+      "original_name": "jimeng-2026-04-21-5215-商务出差： 一位中国年轻男性在机场候机室，穿着抗皱防风风衣外套.png",
+      "scene": "商务出差",
+      "description": "机场候机室，抗皱防风风衣配藏青色Polo衫",
+      "gender": "male",
+      "copy": "机场候机，风衣的商务出差必备款"
+    },
+    {
+      "short_name": "dapei_26.png",
+      "original_name": "jimeng-2026-04-21-5270-夏日度假： 一位中国年轻男性在音乐节，穿着短袖印花丝绸衬衫.png",
+      "scene": "夏日度假",
+      "description": "音乐节，短袖印花丝绸衬衫配白色坎肩",
+      "gender": "male",
+      "copy": "音乐节的夏日度假风，印花丝绸衬衫的洒脱"
+    },
+    {
+      "short_name": "dapei_27.png",
+      "original_name": "jimeng-2026-04-21-5343-创意行业穿搭： 一位中国年轻女性在设计工作室里，穿着Oversize黑色西装外套.png",
+      "scene": "创意行业",
+      "description": "设计工作室，Oversize黑色西装外套",
+      "gender": "female",
+      "copy": "设计工作室的创意穿搭，Oversize西装的态度"
+    },
+    {
+      "short_name": "dapei_28.png",
+      "original_name": "jimeng-2026-04-21-5364-周五半正式（Smart Casual）： 一位中国年轻女性在办公桌前，穿着粗花呢外套.png",
+      "scene": "周五半正式",
+      "description": "办公桌，粗花呢外套配白色真丝吊带裙",
+      "gender": "female",
+      "copy": "周五Smart Casual，粗花呢外套的精致平衡"
+    },
+    {
+      "short_name": "dapei_29.png",
+      "original_name": "jimeng-2026-04-21-5461-法式优雅职场： 一位中国年轻女性走在通勤路上，穿着米色双排扣风衣.png",
+      "scene": "法式职场",
+      "description": "通勤路，米色双排扣风衣配黑色高领针织衫",
+      "gender": "female",
+      "copy": "通勤路上的法式优雅，米色风衣的经典魅力"
+    },
+    {
+      "short_name": "dapei_30.png",
+      "original_name": "jimeng-2026-04-21-5501-滑板街头风： 一位中国年轻男性在滑板场，穿着黑色连帽卫衣.png",
+      "scene": "滑板街头",
+      "description": "滑板场，黑色连帽卫衣配水洗做旧阔腿牛仔裤",
+      "gender": "male",
+      "copy": "滑板场的街头风，黑色卫衣的酷感态度"
+    },
+    {
+      "short_name": "dapei_31.png",
+      "original_name": "jimeng-2026-04-21-5787-商场购物： 一位中国年轻女性在繁华的商场里，穿着短款修身针织短袖.png",
+      "scene": "商场购物",
+      "description": "商场，短款修身针织短袖配高腰A字牛仔裙",
+      "gender": "female",
+      "copy": "商场购物穿搭，针织短袖与牛仔裙的活力组合"
+    },
+    {
+      "short_name": "dapei_32.png",
+      "original_name": "jimeng-2026-04-21-6736-运动休闲： 一位中国年轻女性在天台上，穿着运动风黑色防风外套和同款运动裤.png",
+      "scene": "运动休闲",
+      "description": "天台，运动风黑色防风外套配同款运动裤",
+      "gender": "female",
+      "copy": "天台运动风，黑色防风套装的利落感"
+    },
+    {
+      "short_name": "dapei_33.png",
+      "original_name": "jimeng-2026-04-21-7141-运动高街： 一位中国年轻男性在等待地铁，穿着运动风拼色防风外套.png",
+      "scene": "运动高街",
+      "description": "地铁站，运动风拼色防风外套配黑色束脚裤",
+      "gender": "male",
+      "copy": "地铁站的运动高街风，拼色外套的潮流态度"
+    },
+    {
+      "short_name": "dapei_34.png",
+      "original_name": "jimeng-2026-04-21-8022-干练商务： 一位中国年轻女性在现代写字楼内，穿着剪裁合体的深灰色西服套装.png",
+      "scene": "干练商务",
+      "description": "写字楼，深灰色西服套装配白色衬衫",
+      "gender": "female",
+      "copy": "写字楼里的干练商务，灰色西装的专业气场"
+    },
+    {
+      "short_name": "dapei_35.png",
+      "original_name": "jimeng-2026-04-21-8393-老钱风职场： 一位中国年轻男性在高端写字楼大堂，穿着米色羊毛混纺开衫毛衣.png",
+      "scene": "老钱风职场",
+      "description": "写字楼大堂，米色羊毛混纺开衫配白色牛津纺衬衫",
+      "gender": "male",
+      "copy": "老钱风职场穿搭，米色开衫的低调奢华"
+    },
+    {
+      "short_name": "dapei_36.png",
+      "original_name": "jimeng-2026-04-21-8438-运动休闲混搭： 一位中国年轻女性刚从健身房出来，穿着黑色短款防风夹克.png",
+      "scene": "运动混搭",
+      "description": "健身房外，黑色短款防风夹克配深灰色瑜伽裤",
+      "gender": "female",
+      "copy": "健身房出来的运动混搭，短款夹克的时尚感"
+    },
+    {
+      "short_name": "dapei_37.png",
+      "original_name": "jimeng-2026-04-21-8460-现代商务： 一位中国年轻男性在现代办公室，穿着剪裁利落的藏青色西装.png",
+      "scene": "现代商务",
+      "description": "办公室，藏青色西装配白色正装衬衫",
+      "gender": "male",
+      "copy": "现代办公室的商务范，藏青西装的经典魅力"
+    },
+    {
+      "short_name": "dapei_38.png",
+      "original_name": "jimeng-2026-04-21-9155-创意总监风： 一位中国年轻男性在设计公司，穿着深棕色灯芯绒长袖衬衫.png",
+      "scene": "创意总监",
+      "description": "设计公司，深棕色灯芯绒衬衫配白色打底T恤",
+      "gender": "male",
+      "copy": "设计公司的创意总监范，灯芯绒衬衫的质感"
+    },
+    {
+      "short_name": "dapei_39.png",
+      "original_name": "jimeng-2026-04-21-9666-复古学院： 一位中国年轻男性在书店里，穿着Oversize菱格纹针织开衫.png",
+      "scene": "复古学院",
+      "description": "书店，Oversize菱格纹针织开衫配白色衬衫",
+      "gender": "male",
+      "copy": "书店里的复古学院风，菱格纹开衫的文艺气息"
+    },
+    {
+      "short_name": "dapei_40.png",
+      "original_name": "jimeng-2026-04-21-8460-现代商务： 一位中国年轻男性在现代办公室，穿着剪裁利落的藏青色西装.png",
+      "scene": "现代商务",
+      "description": "办公室，藏青色西装配白色正装衬衫",
+      "gender": "male",
+      "copy": "现代商务穿搭，藏青西装的职场标配"
+    }
+  ]
+}

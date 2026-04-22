@@ -12,6 +12,7 @@ class StorageKeys {
   static const String users = 'users';
   static const String isInitialized = 'is_initialized';
   static const String blockedUsers = 'blocked_users';
+  static const String outfitFavorites = 'outfit_favorites';
 }
 
 /// 数据持久化服务类
@@ -187,6 +188,19 @@ class StorageService {
   List<String>? getBlockedUsers() {
     final data = _box.get(StorageKeys.blockedUsers) as List?;
     return data?.cast<String>();
+  }
+
+  // ==================== Outfit Favorites 操作 ====================
+
+  /// 保存穿搭收藏索引列表
+  Future<void> saveOutfitFavorites(List<int> favorites) async {
+    await _box.put(StorageKeys.outfitFavorites, favorites);
+  }
+
+  /// 读取穿搭收藏索引列表
+  List<int>? getOutfitFavorites() {
+    final data = _box.get(StorageKeys.outfitFavorites) as List?;
+    return data?.cast<int>();
   }
 
   // ==================== 初始化状态 ====================
