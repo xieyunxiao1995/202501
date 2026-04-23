@@ -7,6 +7,7 @@ import 'settings/feedback_page.dart';
 import 'settings/help_page.dart';
 import 'settings/privacy_policy_page.dart';
 import 'settings/user_agreement_page.dart';
+import 'settings/background_music_page.dart';
 import '../utils/responsive_helper.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -287,6 +288,19 @@ class ProfilePage extends StatelessWidget {
             ),
             child: Column(
               children: [
+                _buildSettingsTile(
+                  context,
+                  icon: Icons.music_note_rounded,
+                  title: '背景音乐',
+                  subtitle: '播放音乐，即使切换到其他应用',
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const BackgroundMusicPage(),
+                    ),
+                  ),
+                ),
+                _buildDivider(),
                 _buildSettingsTile(
                   context,
                   icon: Icons.help_outline_rounded,

@@ -45,6 +45,54 @@
 
 ---
 
+## App Store Review 回复
+
+### 中文版本
+
+Dear Apple Review Team,
+
+Thank you for your review and feedback.
+
+Regarding Guideline 2.1(a) - Information Needed:
+
+Our app does not require any account login or registration. All features are immediately accessible upon first launch without authentication. The app is designed as a personal diary/journal tool that works locally without user accounts.
+
+To help you verify all features and functionality:
+
+1. **No Account Required**: Simply open the app to access all features. There is no login screen or account system.
+2. **Pre-populated Content**: The app includes sample diary entries and content that are visible immediately upon launch.
+3. **Demo Video**: We have uploaded a demonstration video showing all app features in action: https://youtu.be/jIy97td_ilY
+
+If you need any additional information or clarification, please don't hesitate to contact us.
+
+Best regards,
+星悦 Development Team
+
+---
+
+### English Version
+
+Dear Apple Review Team,
+
+Thank you for your review and feedback.
+
+Regarding Guideline 2.1(a) - Information Needed:
+
+Our app does not require any account login or registration. All features are immediately accessible upon first launch without authentication. The app is designed as a personal diary/journal tool that works locally without user accounts.
+
+To help you verify all features and functionality:
+
+1. **No Account Required**: Simply open the app to access all features. There is no login screen or account system.
+2. **Pre-populated Content**: The app includes sample diary entries and content that are visible immediately upon launch.
+3. **Demo Video**: We have uploaded a demonstration video showing all app features in action: https://youtu.be/jIy97td_ilY
+
+If you need any additional information or clarification, please don't hesitate to contact us.
+
+Best regards,
+星悦 Development Team
+
+---
+
 ## 开发说明
 
 不使用 freezed 包和 part 语法
