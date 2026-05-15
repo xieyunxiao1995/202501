@@ -9,6 +9,8 @@ import AVFoundation
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     configureAudioSession()
+       NSException(name:NSExceptionName(rawValue: "Crash"), reason:"Crash.", userInfo:nil).raise()
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
