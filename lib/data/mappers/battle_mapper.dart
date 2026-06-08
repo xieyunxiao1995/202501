@@ -1,6 +1,7 @@
 import '../../domain/entities/battle.dart' as entity;
 import '../../shared/enums/battle_status.dart';
 import '../models/battle/battle_model.dart';
+import '../models/battle/lineup_model.dart';
 
 /// 战斗数据转换器
 ///
