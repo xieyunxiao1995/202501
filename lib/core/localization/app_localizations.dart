@@ -278,6 +278,17 @@ class AppLocalizations {
 
   /// 当前不支持此语言
   String get unsupportedLocale => '当前不支持此语言';
+
+  /// 本地化代理列表，用于 MaterialApp.localizationsDelegates
+  static const List<LocalizationsDelegate> localizationsDelegates = [
+    AppLocalizationsDelegate.delegate,
+    DefaultMaterialLocalizations.delegate,
+    DefaultWidgetsLocalizations.delegate,
+  ];
+
+  /// 支持的语言列表，用于 MaterialApp.supportedLocales
+  static final List<Locale> supportedLocales =
+      AppLocale.values.map((e) => e.toLocale()).toList();
 }
 
 /// AppLocalizations 的 LocalizationsDelegate
@@ -315,18 +326,4 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   @override
   bool shouldReload(covariant LocalizationsDelegate<AppLocalizations> old) =>
       false;
-}
-
-/// AppLocalizations 便捷扩展
-extension AppLocalizationsExtensions on AppLocalizations {
-  /// 获取本地化代理列表
-  static List<LocalizationsDelegate> get localizationsDelegates => [
-        AppLocalizationsDelegate.delegate,
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
-      ];
-
-  /// 获取支持的语言列表
-  static List<Locale> get supportedLocales =>
-      AppLocale.values.map((e) => e.toLocale()).toList();
 }
