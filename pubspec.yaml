@@ -1,0 +1,126 @@
+name: sanguogame
+description: "三国谋定天下 - 三国策略卡牌RPG"
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.9.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 状态管理
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.3.5
+
+  # 网络
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.0
+
+  # 路由
+  go_router: ^14.0.0
+
+  # 本地存储
+  hive_ce: ^2.0.0
+  hive_ce_flutter: ^2.0.0
+  shared_preferences: ^2.2.2
+  flutter_secure_storage: ^9.0.0
+
+  # 序列化
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # 游戏引擎
+  flame: ^1.18.0
+  flame_audio: ^2.10.6
+
+  # 动画
+  rive: ^0.13.0
+  lottie: ^3.0.0
+
+  # UI
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  flutter_svg: ^2.0.9
+  scrollable_positioned_list: ^0.3.8
+
+  # 音频
+  audioplayers: ^6.7.1
+  just_audio: ^0.9.36
+
+  # 工具
+  get_it: ^7.6.7
+  injectable: ^2.3.2
+  logger: ^2.0.2
+  intl: ^0.19.0
+  crypto: ^3.0.3
+  uuid: ^4.3.0
+
+  # 设备
+  device_info_plus: ^10.0.0
+  package_info_plus: ^8.0.0
+  connectivity_plus: ^6.0.0
+
+  # 支付
+  in_app_purchase: ^3.1.13
+
+  # 推送
+  firebase_messaging: ^14.7.10
+
+  # 统计与崩溃
+  firebase_analytics: ^10.8.0
+  firebase_crashlytics: ^3.4.9
+
+  # 中文字体支持
+  google_fonts: ^6.1.0
+
+  # 拼音（武将搜索）
+  pinyin: ^3.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.8
+  freezed: ^2.5.0
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.11
+  injectable_generator: ^2.4.1
+  mocktail: ^1.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data/
+    - assets/images/ui/
+    - assets/images/generals/normal/
+    - assets/images/generals/awakened/
+    - assets/images/generals/avatars/
+    - assets/images/scenes/
+    - assets/images/battlefields/
+    - assets/images/effects/
+    - assets/images/formations/
+    - assets/images/tactics/
+    - assets/images/equipment/
+    - assets/audio/bgm/
+    - assets/audio/sfx/
+    - assets/audio/voice/
+    - assets/audio/ambient/
+    - assets/animations/rive/
+    - assets/animations/spine/
+    - assets/animations/lottie/
+    - assets/fonts/
+    - assets/shaders/
+
+  # fonts:
+  #   - family: Calligraphy
+  #     fonts:
+  #       - asset: assets/fonts/calligraphy.ttf
+  #   - family: SongTi
+  #     fonts:
+  #       - asset: assets/fonts/songti.ttf
+  #   - family: KaiTi
+  #     fonts:
+  #       - asset: assets/fonts/kaiti.ttf
