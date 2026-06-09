@@ -14,6 +14,7 @@ import 'route_guard.dart';
 import 'route_observer.dart';
 import 'route_paths.dart';
 
+import '../../pages/general_list_page.dart';
 import '../../pages/login_page.dart';
 import '../../pages/splash_page.dart';
 
@@ -133,7 +134,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             path: RoutePaths.generalList,
             name: 'generalList',
             builder: (context, state) =>
-                const _PlaceholderPage(title: '武将列表'),
+                const GeneralListPage(),
             routes: [
               GoRoute(
                 path: ':id',

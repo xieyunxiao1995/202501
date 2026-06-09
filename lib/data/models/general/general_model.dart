@@ -8,7 +8,6 @@ part 'general_model.g.dart';
 /// 对应 [General] 实体，面向 API 契约的武将数据传输对象。
 /// 包含武将基础属性、阵营、职业、稀有度、星级、等级、战斗属性等。
 @freezed
-@JsonSerializable()
 class GeneralModel with _$GeneralModel {
   const factory GeneralModel({
     /// 武将唯一标识

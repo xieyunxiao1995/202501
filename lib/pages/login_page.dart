@@ -1,8 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/router/route_guard.dart';
 import '../core/router/route_paths.dart';
+
+/// 登录偏好存储 key
+class _LoginPrefs {
+  static const _accountKey = 'login_account';
+  static const _rememberPwdKey = 'login_remember_pwd';
+  static const _agreedTermsKey = 'login_agreed_terms';
+
+  /// 保存登录偏好
+  static Future<void> save({
+    required String account,
+    required bool rememberPassword,
+    required bool agreedToTerms,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_accountKey, account);
+    await prefs.setBool(_rememberPwdKey, rememberPassword);
+    await prefs.setBool(_agreedTermsKey, agreedToTerms);
+  }
+
+  /// 加载登录偏好，返回 (account, rememberPassword, agreedToTerms)
+  static Future<(String, bool, bool)> load() async {
+    final prefs = await SharedPreferences.getInstance();
+    return (
+      prefs.getString(_accountKey) ?? '',
+      prefs.getBool(_rememberPwdKey) ?? false,
+      prefs.getBool(_agreedTermsKey) ?? false,
+    );
+  }
+}
 
 /// 登录页
 ///
@@ -18,8 +48,27 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _accountController = TextEditingController();
   final _accountFocusNode = FocusNode();
+  bool _rememberPassword = false;
   bool _agreedToTerms = false;
   bool _isLoggingIn = false;
+  bool _prefsLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPrefs();
+  }
+
+  Future<void> _loadPrefs() async {
+    final (account, rememberPwd, agreed) = await _LoginPrefs.load();
+    if (!mounted) return;
+    _accountController.text = account;
+    setState(() {
+      _rememberPassword = rememberPwd;
+      _agreedToTerms = agreed;
+      _prefsLoaded = true;
+    });
+  }
 
   @override
   void dispose() {
@@ -39,6 +88,13 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     setState(() => _isLoggingIn = true);
+
+    // 保存偏好
+    await _LoginPrefs.save(
+      account: _accountController.text.trim(),
+      rememberPassword: _rememberPassword,
+      agreedToTerms: _agreedToTerms,
+    );
 
     // TODO: 接入 AuthApi / LoginUseCase 进行真实登录
     await Future.delayed(const Duration(seconds: 1));
@@ -99,7 +155,10 @@ class _LoginPageState extends State<LoginPage> {
 
                     // ---- 记住密码 & 协议 ----
                     _LoginOptions(
+                      rememberPassword: _rememberPassword,
                       agreedToTerms: _agreedToTerms,
+                      onToggleRemember: (v) =>
+                          setState(() => _rememberPassword = v!),
                       onToggleAgreement: (v) =>
                           setState(() => _agreedToTerms = v!),
                     ),
@@ -277,11 +336,15 @@ class _InputField extends StatelessWidget {
 /// 记住密码和用户协议勾选行
 class _LoginOptions extends StatelessWidget {
   const _LoginOptions({
+    required this.rememberPassword,
     required this.agreedToTerms,
+    required this.onToggleRemember,
     required this.onToggleAgreement,
   });
 
+  final bool rememberPassword;
   final bool agreedToTerms;
+  final ValueChanged<bool?> onToggleRemember;
   final ValueChanged<bool?> onToggleAgreement;
 
   @override
