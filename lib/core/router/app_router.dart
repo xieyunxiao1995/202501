@@ -14,6 +14,9 @@ import 'route_guard.dart';
 import 'route_observer.dart';
 import 'route_paths.dart';
 
+import '../../pages/login_page.dart';
+import '../../pages/splash_page.dart';
+
 /// GoRouter Provider
 ///
 /// 通过 Riverpod 管理路由实例，确保全局唯一。
@@ -37,14 +40,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: RoutePaths.splash,
         name: 'splash',
-        builder: (context, state) => const _PlaceholderPage(title: '闪屏页'),
+        builder: (context, state) => const SplashPage(),
       ),
 
       /// 登录页
       GoRoute(
         path: RoutePaths.login,
         name: 'login',
-        builder: (context, state) => const _PlaceholderPage(title: '登录页'),
+        builder: (context, state) => const LoginPage(),
       ),
 
       /// 更新页
@@ -879,9 +882,6 @@ class _PlaceholderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
