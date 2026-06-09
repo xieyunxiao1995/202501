@@ -14,9 +14,12 @@ import 'route_guard.dart';
 import 'route_observer.dart';
 import 'route_paths.dart';
 
-import '../../pages/general_list_page.dart';
+import '../../pages/general/general_detail_page.dart';
+import '../../pages/general/general_list_page.dart';
 import '../../pages/login_page.dart';
+import '../../pages/maincity_page.dart';
 import '../../pages/splash_page.dart';
+import '../../pages/story_page.dart';
 
 /// GoRouter Provider
 ///
@@ -125,8 +128,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.home,
             name: 'home',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '主页'),
+            builder: (context, state) => const MainCityPage(),
           ),
 
           // ---------- 武将 ----------
@@ -141,7 +143,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 name: 'generalDetail',
                 builder: (context, state) {
                   final id = state.pathParameters['id'] ?? '';
-                  return _PlaceholderPage(title: '武将详情 #$id');
+                  return GeneralDetailPage(generalId: id);
                 },
                 routes: [
                   GoRoute(
@@ -307,6 +309,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     const _PlaceholderPage(title: '资源副本'),
               ),
             ],
+          ),
+
+          // ---------- 剧情 ----------
+          GoRoute(
+            path: RoutePaths.story,
+            name: 'story',
+            builder: (context, state) => const StoryPage(),
           ),
 
           // ---------- 城池 ----------
@@ -825,7 +834,7 @@ class _BottomNavBar extends StatelessWidget {
         NavigationDestination(
           icon: Icon(Icons.location_city_outlined),
           selectedIcon: Icon(Icons.location_city),
-          label: '城池',
+          label: '剧情',
         ),
         NavigationDestination(
           icon: Icon(Icons.casino_outlined),
@@ -846,7 +855,7 @@ class _BottomNavBar extends StatelessWidget {
     final location = GoRouterState.of(context).matchedLocation;
     if (location == RoutePaths.home) return 0;
     if (location.startsWith('/generals')) return 1;
-    if (location.startsWith('/city')) return 2;
+    if (location.startsWith('/story')) return 2;
     if (location.startsWith('/recruit')) return 3;
     return 4;
   }
@@ -859,7 +868,7 @@ class _BottomNavBar extends StatelessWidget {
       case 1:
         GoRouter.of(context).go(RoutePaths.generalList);
       case 2:
-        GoRouter.of(context).go(RoutePaths.city);
+        GoRouter.of(context).go(RoutePaths.story);
       case 3:
         GoRouter.of(context).go(RoutePaths.recruit);
       case 4:

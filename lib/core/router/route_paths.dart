@@ -30,6 +30,11 @@ class RoutePaths {
   /// 主页
   static const String home = '/home';
 
+  // ==================== 剧情 ====================
+
+  /// 剧情主界面
+  static const String story = '/story';
+
   // ==================== 武将 ====================
 
   /// 武将列表
