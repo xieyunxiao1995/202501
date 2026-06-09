@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -124,18 +125,14 @@ class _LoginPageState extends State<LoginPage> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: DecoratedBox(
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF120D0D),
-                Color(0xFF241616),
-                Color(0xFF090909),
-              ],
+            image: DecorationImage(
+              image: AssetImage('assets/images/ui/start_bg.png'),
+              fit: BoxFit.cover,
             ),
           ),
           child: SafeArea(
-            child: Center(
+            child: Align(
+              alignment: const Alignment(0, -0.4),
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
@@ -151,6 +148,13 @@ class _LoginPageState extends State<LoginPage> {
                       accountFocusNode: _accountFocusNode,
                       onToggleObscure: () {},
                     ),
+                    const SizedBox(height: 24),
+
+                    // ---- 登录按钮 ----
+                    _LoginButton(
+                      isLoading: _isLoggingIn,
+                      onPressed: _handleLogin,
+                    ),
                     const SizedBox(height: 12),
 
                     // ---- 记住密码 & 协议 ----
@@ -161,13 +165,6 @@ class _LoginPageState extends State<LoginPage> {
                           setState(() => _rememberPassword = v!),
                       onToggleAgreement: (v) =>
                           setState(() => _agreedToTerms = v!),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // ---- 登录按钮 ----
-                    _LoginButton(
-                      isLoading: _isLoggingIn,
-                      onPressed: _handleLogin,
                     ),
                     const SizedBox(height: 32),
                   ],
@@ -192,15 +189,13 @@ class _GameTitle extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Text(
+        Text(
           '三国天下',
-          style: TextStyle(
-            fontSize: 32,
+          style: GoogleFonts.liuJianMaoCao(
+            fontSize: 72,
             height: 1.2,
-            fontWeight: FontWeight.w700,
-            color: Color(0xFFE2D9CD),
-            fontFamily: 'STKaiti, Kaiti SC, KaiTi, serif',
-            shadows: [
+            color: const Color(0xFFE2D9CD),
+            shadows: const [
               Shadow(
                 color: Color(0xCC7A0D0D),
                 blurRadius: 12,
@@ -228,9 +223,9 @@ class _GameTitle extends StatelessWidget {
         const Text(
           '运筹帷幄 · 逐鹿中原',
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 19,
             letterSpacing: 4,
-            color: Color(0x998B7E6A),
+            color: Color.fromARGB(153, 177, 14, 17),
           ),
         ),
       ],
@@ -312,7 +307,7 @@ class _InputField extends StatelessWidget {
         prefixIcon: Icon(prefixIcon, size: 20, color: const Color(0x998B7E6A)),
         suffixIcon: suffixIcon,
         filled: true,
-        fillColor: const Color(0x18FFFFFF),
+        fillColor: const Color(0xCC1A1A2A),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -320,7 +315,7 @@ class _InputField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color(0x306A0F0F)),
+          borderSide: const BorderSide(color: Color(0x404A4A6A)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -349,40 +344,42 @@ class _LoginOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 32,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                width: 20,
-                height: 20,
-                child: Checkbox(
-                  value: agreedToTerms,
-                  onChanged: onToggleAgreement,
-                  activeColor: const Color(0xFFA11717),
-                  side: const BorderSide(color: Color(0x55A11717)),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  visualDensity: VisualDensity.compact,
-                ),
-              ),
-              const SizedBox(width: 4),
-              GestureDetector(
-                onTap: () => onToggleAgreement(!agreedToTerms),
-                child: const Text(
-                  '同意《用户协议》和《隐私政策》',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Color(0x998B7E6A),
-                  ),
-                ),
-              ),
-            ],
-          ),
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: const Color(0xCC1A1A2A),
+          borderRadius: BorderRadius.circular(6),
         ),
-      ],
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 20,
+              height: 20,
+              child: Checkbox(
+                value: agreedToTerms,
+                onChanged: onToggleAgreement,
+                activeColor: const Color(0xFFA11717),
+                side: const BorderSide(color: Color(0x55A11717)),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
+              ),
+            ),
+            const SizedBox(width: 4),
+            GestureDetector(
+              onTap: () => onToggleAgreement(!agreedToTerms),
+              child: const Text(
+                '同意《用户协议》和《隐私政策》',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xCCB8B0A0),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
