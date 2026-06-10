@@ -97,6 +97,7 @@ flutter:
   assets:
     - assets/data/
     - assets/images/ui/
+    - assets/images/city/
     - assets/images/generals/normal/
     - assets/images/generals/awakened/
     - assets/images/generals/avatars/

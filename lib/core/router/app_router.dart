@@ -350,7 +350,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/city',
             name: 'city',
-            redirect: (context, state) => RoutePaths.lordMansion,
+            // redirect: (context, state) => RoutePaths.lordMansion,
+            builder: (context, state) => const MainCityPage(),
             routes: [
               // 主公府
               GoRoute(

@@ -12,9 +12,8 @@ class LordMansionPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('主公府'),
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFF1A1111),
         elevation: 0,
-        foregroundColor: const Color(0xFFE2D9CD),
       ),
       body: DecoratedBox(
         decoration: const BoxDecoration(
