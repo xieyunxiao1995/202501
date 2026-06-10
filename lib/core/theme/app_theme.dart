@@ -79,10 +79,10 @@ class AppTheme {
 
       // ==================== 底部导航栏 ====================
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: isDark ? AppColors.surface : Colors.white,
-        indicatorColor: AppColors.accent.withValues(alpha: 0.2),
+        backgroundColor: const Color(0xE63E2723),
+        indicatorColor: AppColors.accent.withValues(alpha: 0.3),
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        elevation: 8,
+        elevation: 0,
         shadowColor: Colors.black.withValues(alpha: 0.3),
       ),
 

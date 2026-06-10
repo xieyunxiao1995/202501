@@ -844,9 +844,14 @@ class MainShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: const _BottomNavBar(),
+    // 移除底部安全区域，缩小导航栏高度
+    return MediaQuery.removePadding(
+      context: context,
+      removeBottom: true,
+      child: Scaffold(
+        body: child,
+        bottomNavigationBar: const _BottomNavBar(),
+      ),
     );
   }
 }
@@ -862,6 +867,7 @@ class _BottomNavBar extends StatelessWidget {
     final currentIndex = _calculateSelectedIndex(context);
 
     return NavigationBar(
+      height: 60,
       selectedIndex: currentIndex,
       onDestinationSelected: (index) => _onItemTapped(context, index),
       destinations: const [
