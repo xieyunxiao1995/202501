@@ -47,9 +47,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     navigatorKey: NavigationService.instance.navigatorKey,
     initialLocation: RoutePaths.splash,
     redirect: RouteGuard.guard,
-    observers: [
-      _GoRouterObserver(),
-    ],
+    observers: [_GoRouterObserver()],
     routes: [
       // ==================== 独立页面（无Shell） ====================
 
@@ -133,7 +131,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
 
       // ==================== 主布局 Shell ====================
-
       ShellRoute(
         builder: (context, state, child) => MainShell(child: child),
         routes: [
@@ -151,7 +148,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.personal,
             name: 'personal',
-            builder: (context, state) => const PersonalPage(),
+            pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+              key: state.pageKey,
+              startRect: state.extra as Rect?,
+              child: const PersonalPage(),
+            ),
           ),
 
           // ---------- 武将 ----------
@@ -252,8 +253,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.lineup,
             name: 'lineup',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '阵容编组'),
+            builder: (context, state) => const _PlaceholderPage(title: '阵容编组'),
             routes: [
               GoRoute(
                 path: 'formation',
@@ -280,15 +280,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.chapterList,
             name: 'chapterList',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '章节列表'),
+            builder: (context, state) => const _PlaceholderPage(title: '章节列表'),
             routes: [
               GoRoute(
                 path: 'chapters/:chapterId',
                 name: 'stageList',
                 builder: (context, state) {
-                  final chapterId =
-                      state.pathParameters['chapterId'] ?? '';
+                  final chapterId = state.pathParameters['chapterId'] ?? '';
                   return _PlaceholderPage(title: '关卡列表 章节#$chapterId');
                 },
                 routes: [
@@ -296,10 +294,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                     path: 'stages/:stageId',
                     name: 'stageDetail',
                     builder: (context, state) {
-                      final chapterId =
-                          state.pathParameters['chapterId'] ?? '';
-                      final stageId =
-                          state.pathParameters['stageId'] ?? '';
+                      final chapterId = state.pathParameters['chapterId'] ?? '';
+                      final stageId = state.pathParameters['stageId'] ?? '';
                       return _PlaceholderPage(
                         title: '关卡详情 章节#$chapterId 关卡#$stageId',
                       );
@@ -357,67 +353,111 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'lord-mansion',
                 name: 'lordMansion',
-                builder: (context, state) => const LordMansionPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const LordMansionPage(),
+                ),
               ),
               // 校场
               GoRoute(
                 path: 'training-ground',
                 name: 'trainingGround',
-                builder: (context, state) => const TrainingGroundPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const TrainingGroundPage(),
+                ),
               ),
               // 议事厅
               GoRoute(
                 path: 'council-hall',
                 name: 'councilHall',
-                builder: (context, state) => const CouncilHallPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const CouncilHallPage(),
+                ),
               ),
               // 武器坊
               GoRoute(
                 path: 'weapon-workshop',
                 name: 'weaponWorkshop',
-                builder: (context, state) => const WeaponWorkshopPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const WeaponWorkshopPage(),
+                ),
               ),
               // 马厩
               GoRoute(
                 path: 'stable',
                 name: 'stable',
-                builder: (context, state) => const StablePage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const StablePage(),
+                ),
               ),
               // 酒馆
               GoRoute(
                 path: 'tavern',
                 name: 'tavern',
-                builder: (context, state) => const TavernPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const TavernPage(),
+                ),
               ),
               // 粮仓
               GoRoute(
                 path: 'granary',
                 name: 'granary',
-                builder: (context, state) => const GranaryPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const GranaryPage(),
+                ),
               ),
               // 铸币司
               GoRoute(
                 path: 'mint',
                 name: 'mint',
-                builder: (context, state) => const MintPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const MintPage(),
+                ),
               ),
               // 学堂
               GoRoute(
                 path: 'academy',
                 name: 'academy',
-                builder: (context, state) => const AcademyPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const AcademyPage(),
+                ),
               ),
               // 观星台
               GoRoute(
                 path: 'observatory',
                 name: 'observatory',
-                builder: (context, state) => const ObservatoryPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const ObservatoryPage(),
+                ),
               ),
               // 演武场
               GoRoute(
                 path: 'arena',
                 name: 'cityArena',
-                builder: (context, state) => const ArenaPage(),
+                pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+                  key: state.pageKey,
+                  startRect: state.extra as Rect?,
+                  child: const ArenaPage(),
+                ),
               ),
               // 建筑详情（:id 为建筑ID）
               GoRoute(
@@ -483,8 +523,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.shop,
             name: 'shop',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '商店'),
+            builder: (context, state) => const _PlaceholderPage(title: '商店'),
             routes: [
               GoRoute(
                 path: 'recharge',
@@ -529,8 +568,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.bag,
             name: 'bag',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '背包'),
+            builder: (context, state) => const _PlaceholderPage(title: '背包'),
             routes: [
               GoRoute(
                 path: 'items/:id',
@@ -727,8 +765,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.activityList,
             name: 'activityList',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '活动列表'),
+            builder: (context, state) => const _PlaceholderPage(title: '活动列表'),
             routes: [
               GoRoute(
                 path: ':id',
@@ -761,23 +798,20 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.biographyCollection,
             name: 'biographyCollection',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '传记收集'),
+            builder: (context, state) => const _PlaceholderPage(title: '传记收集'),
           ),
 
           GoRoute(
             path: RoutePaths.divination,
             name: 'divination',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '占卜'),
+            builder: (context, state) => const _PlaceholderPage(title: '占卜'),
           ),
 
           // ---------- 排行榜 ----------
           GoRoute(
             path: RoutePaths.rank,
             name: 'rank',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '排行榜'),
+            builder: (context, state) => const _PlaceholderPage(title: '排行榜'),
             routes: [
               GoRoute(
                 path: 'power',
@@ -891,32 +925,66 @@ class _GoRouterObserver extends NavigatorObserver {
 ///
 /// 用于底部导航栏页面切换时产生从屏幕中央弹出的效果。
 class _ScaleTransitionPage extends CustomTransitionPage<void> {
-  _ScaleTransitionPage({
+  _ScaleTransitionPage({required super.key, required super.child})
+    : super(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return ScaleTransition(
+            scale: Tween<double>(begin: 0.85, end: 1.0).animate(
+              CurvedAnimation(parent: animation, curve: Curves.easeOutBack),
+            ),
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeOut),
+              ),
+              child: child,
+            ),
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 300),
+      );
+}
+
+/// 从按钮区域弹出的缩放过渡动画页面
+///
+/// 页面从用户点击的按钮位置展开至全屏，
+/// 用于城池建筑入口的页面切换效果。
+class _ExpandFromRectTransitionPage extends CustomTransitionPage<void> {
+  _ExpandFromRectTransitionPage({
     required super.key,
     required super.child,
+    Rect? startRect,
   }) : super(
-          transitionsBuilder:
-              (context, animation, secondaryAnimation, child) {
-            return ScaleTransition(
-              scale: Tween<double>(begin: 0.85, end: 1.0).animate(
-                CurvedAnimation(
-                  parent: animation,
-                  curve: Curves.easeOutBack,
-                ),
-              ),
-              child: FadeTransition(
-                opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
-                  CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.easeOut,
-                  ),
-                ),
-                child: child,
-              ),
-            );
-          },
-          transitionDuration: const Duration(milliseconds: 300),
-        );
+         transitionsBuilder: (context, animation, secondaryAnimation, child) {
+           final screenSize = MediaQuery.of(context).size;
+           final rect = startRect;
+
+           // 计算缩放原点（相对于屏幕的 Alignment）
+           final origin = rect != null
+               ? Alignment(
+                   (rect.center.dx / screenSize.width) * 2 - 1,
+                   (rect.center.dy / screenSize.height) * 2 - 1,
+                 )
+               : Alignment.center;
+
+           return ScaleTransition(
+             scale: Tween<double>(begin: 0.01, end: 1.0).animate(
+               CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+             ),
+             alignment: origin,
+             child: FadeTransition(
+               opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
+                 CurvedAnimation(
+                   parent: animation,
+                   curve: Interval(0.0, 0.4, curve: Curves.easeOut),
+                 ),
+               ),
+               child: child,
+             ),
+           );
+         },
+         transitionDuration: const Duration(milliseconds: 350),
+         reverseTransitionDuration: const Duration(milliseconds: 250),
+       );
 }
 
 /// 主布局壳组件
@@ -935,10 +1003,7 @@ class MainShell extends StatelessWidget {
     return MediaQuery.removePadding(
       context: context,
       removeBottom: true,
-      child: Scaffold(
-        body: child,
-        bottomNavigationBar: const _BottomNavBar(),
-      ),
+      child: Scaffold(body: child, bottomNavigationBar: const _BottomNavBar()),
     );
   }
 }
@@ -1033,22 +1098,15 @@ class _PlaceholderPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.construction,
-              size: 64,
-              color: Colors.amber,
-            ),
+            const Icon(Icons.construction, size: 64, color: Colors.amber),
             const SizedBox(height: 16),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+            Text(title, style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
             Text(
               '页面开发中...',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.grey,
-                  ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: Colors.grey),
             ),
           ],
         ),

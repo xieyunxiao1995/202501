@@ -20,17 +20,72 @@ class _Building {
 
 /// 主城建筑列表
 const _kBuildings = <_Building>[
-  _Building(name: '主公府', icon: Icons.account_balance, func: '主城等级', route: RoutePaths.lordMansion),
-  _Building(name: '校场', icon: Icons.fitness_center, func: '训练士兵', route: RoutePaths.trainingGround),
-  _Building(name: '议事厅', icon: Icons.assignment, func: '接取任务', route: RoutePaths.councilHall),
-  _Building(name: '武器坊', icon: Icons.build_circle, func: '打造装备', route: RoutePaths.weaponWorkshop),
-  _Building(name: '马厩', icon: Icons.nature_people, func: '培养战马', route: RoutePaths.stable),
-  _Building(name: '酒馆', icon: Icons.local_bar, func: '招募武将', route: RoutePaths.tavern),
-  _Building(name: '粮仓', icon: Icons.grass, func: '储存粮食', route: RoutePaths.granary),
-  _Building(name: '铸币司', icon: Icons.monetization_on, func: '产出金币', route: RoutePaths.mint),
-  _Building(name: '学堂', icon: Icons.menu_book, func: '研究战法', route: RoutePaths.academy),
-  _Building(name: '观星台', icon: Icons.auto_awesome, func: '占卜抽奖', route: RoutePaths.observatory),
-  _Building(name: '演武场', icon: Icons.sports_kabaddi, func: '竞技 PVP', route: RoutePaths.cityArena),
+  _Building(
+    name: '主公府',
+    icon: Icons.account_balance,
+    func: '主城等级',
+    route: RoutePaths.lordMansion,
+  ),
+  _Building(
+    name: '校场',
+    icon: Icons.fitness_center,
+    func: '训练士兵',
+    route: RoutePaths.trainingGround,
+  ),
+  _Building(
+    name: '议事厅',
+    icon: Icons.assignment,
+    func: '接取任务',
+    route: RoutePaths.councilHall,
+  ),
+  _Building(
+    name: '武器坊',
+    icon: Icons.build_circle,
+    func: '打造装备',
+    route: RoutePaths.weaponWorkshop,
+  ),
+  _Building(
+    name: '马厩',
+    icon: Icons.nature_people,
+    func: '培养战马',
+    route: RoutePaths.stable,
+  ),
+  _Building(
+    name: '酒馆',
+    icon: Icons.local_bar,
+    func: '招募武将',
+    route: RoutePaths.tavern,
+  ),
+  _Building(
+    name: '粮仓',
+    icon: Icons.grass,
+    func: '储存粮食',
+    route: RoutePaths.granary,
+  ),
+  _Building(
+    name: '铸币司',
+    icon: Icons.monetization_on,
+    func: '产出金币',
+    route: RoutePaths.mint,
+  ),
+  _Building(
+    name: '学堂',
+    icon: Icons.menu_book,
+    func: '研究战法',
+    route: RoutePaths.academy,
+  ),
+  _Building(
+    name: '观星台',
+    icon: Icons.auto_awesome,
+    func: '占卜抽奖',
+    route: RoutePaths.observatory,
+  ),
+  _Building(
+    name: '演武场',
+    icon: Icons.sports_kabaddi,
+    func: '竞技 PVP',
+    route: RoutePaths.cityArena,
+  ),
 ];
 
 /// 主城页面
@@ -54,9 +109,7 @@ class MainCityPage extends StatelessWidget {
           child: Column(
             children: [
               // ---- 个人中心入口 ----
-              _PersonalCenterBar(
-                onTap: () => context.push(RoutePaths.personal),
-              ),
+              const _PersonalCenterBar(),
 
               const SizedBox(height: 4),
 
@@ -94,7 +147,8 @@ class _BuildingGrid extends StatelessWidget {
         final crossAxisCount = 4;
         final spacing = 6.0;
         final totalSpacing = spacing * (crossAxisCount + 1);
-        final itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
+        final itemWidth =
+            (constraints.maxWidth - totalSpacing) / crossAxisCount;
 
         return Wrap(
           spacing: spacing,
@@ -130,21 +184,14 @@ class _BuildingItem extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color(0xCC1A1A2A),
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: const Color(0x306A0F0F),
-              width: 0.5,
-            ),
+            border: Border.all(color: const Color(0x306A0F0F), width: 0.5),
           ),
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 4),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               // 图标
-              Icon(
-                building.icon,
-                size: 26,
-                color: const Color(0xFFD4A84B),
-              ),
+              Icon(building.icon, size: 26, color: const Color(0xFFD4A84B)),
               const SizedBox(height: 6),
               // 建筑名
               Text(
@@ -162,10 +209,7 @@ class _BuildingItem extends StatelessWidget {
               // 功能描述
               Text(
                 building.func,
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: Color(0x998B7E6A),
-                ),
+                style: const TextStyle(fontSize: 10, color: Color(0x998B7E6A)),
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -178,7 +222,9 @@ class _BuildingItem extends StatelessWidget {
   }
 
   void _onTap(BuildContext context) {
-    context.push(building.route);
+    final renderBox = context.findRenderObject() as RenderBox;
+    final rect = renderBox.localToGlobal(Offset.zero) & renderBox.size;
+    context.push(building.route, extra: rect);
   }
 }
 
@@ -189,15 +235,18 @@ class _BuildingItem extends StatelessWidget {
 /// 显示角色头像、等级、关卡进度等信息。
 /// 点击可跳转到个人中心详情页。
 class _PersonalCenterBar extends StatelessWidget {
-  const _PersonalCenterBar({this.onTap});
-
-  /// 点击回调
-  final VoidCallback? onTap;
+  const _PersonalCenterBar();
 
   /// 模拟数据 — 后续替换为实际数据源
   static const _playerLevel = 1;
   static const _chapterName = '第1章';
   static const _playerName = '主公';
+
+  void _onTap(BuildContext context) {
+    final renderBox = context.findRenderObject() as RenderBox;
+    final rect = renderBox.localToGlobal(Offset.zero) & renderBox.size;
+    context.push(RoutePaths.personal, extra: rect);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +260,7 @@ class _PersonalCenterBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(26),
             child: InkWell(
               borderRadius: BorderRadius.circular(26),
-              onTap: onTap,
+              onTap: () => _onTap(context),
               child: Container(
                 padding: const EdgeInsets.only(
                   left: 4,
@@ -264,10 +313,7 @@ class _PersonalCenterBar extends StatelessWidget {
                               text: 'Lv.$_playerLevel',
                             ),
                             const SizedBox(width: 6),
-                            _InfoTag(
-                              icon: Icons.map,
-                              text: _chapterName,
-                            ),
+                            _InfoTag(icon: Icons.map, text: _chapterName),
                           ],
                         ),
                       ],
@@ -301,21 +347,13 @@ class _InfoTag extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
-          icon,
-          size: 10,
-          color: const Color(0xFFD4A84B),
-        ),
+        Icon(icon, size: 10, color: const Color(0xFFD4A84B)),
         const SizedBox(width: 2),
         Text(
           text,
-          style: const TextStyle(
-            fontSize: 10,
-            color: Color(0x998B7E6A),
-          ),
+          style: const TextStyle(fontSize: 10, color: Color(0x998B7E6A)),
         ),
       ],
     );
   }
 }
-
