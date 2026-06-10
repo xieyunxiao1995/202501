@@ -7,7 +7,6 @@ part 'equipment_model.g.dart';
 ///
 /// 表示武将可穿戴的装备数据，包含装备类型、稀有度和各项属性加成。
 @freezed
-@JsonSerializable()
 class EquipmentModel with _$EquipmentModel {
   const factory EquipmentModel({
     /// 装备唯一标识

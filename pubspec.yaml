@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # 状态管理
   flutter_riverpod: ^2.6.1
@@ -53,7 +55,7 @@ dependencies:
   get_it: ^7.6.7
   injectable: ^2.3.2
   logger: ^2.0.2
-  intl: ^0.19.0
+  intl: ^0.20.2
   crypto: ^3.0.3
   uuid: ^4.3.0
 

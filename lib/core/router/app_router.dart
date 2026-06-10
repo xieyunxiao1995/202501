@@ -128,15 +128,20 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.home,
             name: 'home',
-            builder: (context, state) => const MainCityPage(),
+            pageBuilder: (context, state) => _ScaleTransitionPage(
+              key: state.pageKey,
+              child: const MainCityPage(),
+            ),
           ),
 
           // ---------- 武将 ----------
           GoRoute(
             path: RoutePaths.generalList,
             name: 'generalList',
-            builder: (context, state) =>
-                const GeneralListPage(),
+            pageBuilder: (context, state) => _ScaleTransitionPage(
+              key: state.pageKey,
+              child: const GeneralListPage(),
+            ),
             routes: [
               GoRoute(
                 path: ':id',
@@ -315,7 +320,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.story,
             name: 'story',
-            builder: (context, state) => const StoryPage(),
+            pageBuilder: (context, state) => _ScaleTransitionPage(
+              key: state.pageKey,
+              child: const StoryPage(),
+            ),
           ),
 
           // ---------- 城池 ----------
@@ -362,8 +370,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.recruit,
             name: 'recruit',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '招募'),
+            pageBuilder: (context, state) => _ScaleTransitionPage(
+              key: state.pageKey,
+              child: const _PlaceholderPage(title: '招募'),
+            ),
             routes: [
               GoRoute(
                 path: 'pool/:id',
@@ -719,8 +729,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.settings,
             name: 'settings',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '设置'),
+            pageBuilder: (context, state) => _ScaleTransitionPage(
+              key: state.pageKey,
+              child: const _PlaceholderPage(title: '设置'),
+            ),
             routes: [
               GoRoute(
                 path: 'account',
@@ -787,6 +799,38 @@ class _GoRouterObserver extends NavigatorObserver {
 }
 
 // ==================== 主布局 Shell ====================
+
+/// 从中间弹出的缩放过渡动画页面
+///
+/// 用于底部导航栏页面切换时产生从屏幕中央弹出的效果。
+class _ScaleTransitionPage extends CustomTransitionPage<void> {
+  _ScaleTransitionPage({
+    required super.key,
+    required super.child,
+  }) : super(
+          transitionsBuilder:
+              (context, animation, secondaryAnimation, child) {
+            return ScaleTransition(
+              scale: Tween<double>(begin: 0.85, end: 1.0).animate(
+                CurvedAnimation(
+                  parent: animation,
+                  curve: Curves.easeOutBack,
+                ),
+              ),
+              child: FadeTransition(
+                opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeOut,
+                  ),
+                ),
+                child: child,
+              ),
+            );
+          },
+          transitionDuration: const Duration(milliseconds: 300),
+        );
+}
 
 /// 主布局壳组件
 ///

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 /// 支持的语言
 enum AppLocale {
@@ -282,8 +283,9 @@ class AppLocalizations {
   /// 本地化代理列表，用于 MaterialApp.localizationsDelegates
   static const List<LocalizationsDelegate> localizationsDelegates = [
     AppLocalizationsDelegate.delegate,
-    DefaultMaterialLocalizations.delegate,
-    DefaultWidgetsLocalizations.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
   ];
 
   /// 支持的语言列表，用于 MaterialApp.supportedLocales

@@ -7,7 +7,6 @@ part 'skill_model.g.dart';
 ///
 /// 表示武将技能的配置数据，包含技能类型、描述、伤害倍率、怒气消耗和目标数量等。
 @freezed
-@JsonSerializable()
 class SkillModel with _$SkillModel {
   const factory SkillModel({
     /// 技能唯一标识
