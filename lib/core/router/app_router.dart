@@ -18,8 +18,21 @@ import '../../pages/general/general_detail_page.dart';
 import '../../pages/general/general_list_page.dart';
 import '../../pages/login_page.dart';
 import '../../pages/maincity_page.dart';
+import '../../pages/personal_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/story_page.dart';
+
+import '../../pages/city/lord_mansion_page.dart';
+import '../../pages/city/training_ground_page.dart';
+import '../../pages/city/council_hall_page.dart';
+import '../../pages/city/weapon_workshop_page.dart';
+import '../../pages/city/stable_page.dart';
+import '../../pages/city/tavern_page.dart';
+import '../../pages/city/granary_page.dart';
+import '../../pages/city/mint_page.dart';
+import '../../pages/city/academy_page.dart';
+import '../../pages/city/observatory_page.dart';
+import '../../pages/city/arena_page.dart';
 
 /// GoRouter Provider
 ///
@@ -132,6 +145,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               key: state.pageKey,
               child: const MainCityPage(),
             ),
+          ),
+
+          // ---------- 个人中心 ----------
+          GoRoute(
+            path: RoutePaths.personal,
+            name: 'personal',
+            builder: (context, state) => const PersonalPage(),
           ),
 
           // ---------- 武将 ----------
@@ -328,11 +348,77 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 
           // ---------- 城池 ----------
           GoRoute(
-            path: RoutePaths.city,
+            path: '/city',
             name: 'city',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: '城池'),
+            redirect: (context, state) => RoutePaths.lordMansion,
             routes: [
+              // 主公府
+              GoRoute(
+                path: 'lord-mansion',
+                name: 'lordMansion',
+                builder: (context, state) => const LordMansionPage(),
+              ),
+              // 校场
+              GoRoute(
+                path: 'training-ground',
+                name: 'trainingGround',
+                builder: (context, state) => const TrainingGroundPage(),
+              ),
+              // 议事厅
+              GoRoute(
+                path: 'council-hall',
+                name: 'councilHall',
+                builder: (context, state) => const CouncilHallPage(),
+              ),
+              // 武器坊
+              GoRoute(
+                path: 'weapon-workshop',
+                name: 'weaponWorkshop',
+                builder: (context, state) => const WeaponWorkshopPage(),
+              ),
+              // 马厩
+              GoRoute(
+                path: 'stable',
+                name: 'stable',
+                builder: (context, state) => const StablePage(),
+              ),
+              // 酒馆
+              GoRoute(
+                path: 'tavern',
+                name: 'tavern',
+                builder: (context, state) => const TavernPage(),
+              ),
+              // 粮仓
+              GoRoute(
+                path: 'granary',
+                name: 'granary',
+                builder: (context, state) => const GranaryPage(),
+              ),
+              // 铸币司
+              GoRoute(
+                path: 'mint',
+                name: 'mint',
+                builder: (context, state) => const MintPage(),
+              ),
+              // 学堂
+              GoRoute(
+                path: 'academy',
+                name: 'academy',
+                builder: (context, state) => const AcademyPage(),
+              ),
+              // 观星台
+              GoRoute(
+                path: 'observatory',
+                name: 'observatory',
+                builder: (context, state) => const ObservatoryPage(),
+              ),
+              // 演武场
+              GoRoute(
+                path: 'arena',
+                name: 'cityArena',
+                builder: (context, state) => const ArenaPage(),
+              ),
+              // 建筑详情（:id 为建筑ID）
               GoRoute(
                 path: 'buildings/:id',
                 name: 'buildingDetail',

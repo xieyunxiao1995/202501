@@ -30,6 +30,9 @@ class RoutePaths {
   /// 主页
   static const String home = '/home';
 
+  /// 个人中心
+  static const String personal = '/personal';
+
   // ==================== 剧情 ====================
 
   /// 剧情主界面
@@ -117,6 +120,39 @@ class RoutePaths {
 
   /// 城池主界面
   static const String city = '/city';
+
+  /// 主公府
+  static const String lordMansion = '/city/lord-mansion';
+
+  /// 校场
+  static const String trainingGround = '/city/training-ground';
+
+  /// 议事厅
+  static const String councilHall = '/city/council-hall';
+
+  /// 武器坊
+  static const String weaponWorkshop = '/city/weapon-workshop';
+
+  /// 马厩
+  static const String stable = '/city/stable';
+
+  /// 酒馆
+  static const String tavern = '/city/tavern';
+
+  /// 粮仓
+  static const String granary = '/city/granary';
+
+  /// 铸币司
+  static const String mint = '/city/mint';
+
+  /// 学堂
+  static const String academy = '/city/academy';
+
+  /// 观星台
+  static const String observatory = '/city/observatory';
+
+  /// 演武场
+  static const String cityArena = '/city/arena';
 
   /// 建筑详情（:id 为建筑ID）
   static const String buildingDetail = '/city/buildings/:id';

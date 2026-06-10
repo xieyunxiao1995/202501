@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../core/router/route_paths.dart';
 
 /// 建筑数据
 class _Building {
@@ -6,28 +9,28 @@ class _Building {
     required this.name,
     required this.icon,
     required this.func,
-    this.route,
+    required this.route,
   });
 
   final String name;
   final IconData icon;
   final String func;
-  final String? route; // 预留：后续用于路由跳转
+  final String route;
 }
 
 /// 主城建筑列表
 const _kBuildings = <_Building>[
-  _Building(name: '主公府', icon: Icons.account_balance, func: '主城等级'),
-  _Building(name: '校场', icon: Icons.fitness_center, func: '训练士兵'),
-  _Building(name: '议事厅', icon: Icons.assignment, func: '接取任务'),
-  _Building(name: '武器坊', icon: Icons.build_circle, func: '打造装备'),
-  _Building(name: '马厩', icon: Icons.nature_people, func: '培养战马'),
-  _Building(name: '酒馆', icon: Icons.local_bar, func: '招募武将'),
-  _Building(name: '粮仓', icon: Icons.grass, func: '储存粮食'),
-  _Building(name: '铸币司', icon: Icons.monetization_on, func: '产出金币'),
-  _Building(name: '学堂', icon: Icons.menu_book, func: '研究战法'),
-  _Building(name: '观星台', icon: Icons.auto_awesome, func: '占卜抽奖'),
-  _Building(name: '演武场', icon: Icons.sports_kabaddi, func: '竞技 PVP'),
+  _Building(name: '主公府', icon: Icons.account_balance, func: '主城等级', route: RoutePaths.lordMansion),
+  _Building(name: '校场', icon: Icons.fitness_center, func: '训练士兵', route: RoutePaths.trainingGround),
+  _Building(name: '议事厅', icon: Icons.assignment, func: '接取任务', route: RoutePaths.councilHall),
+  _Building(name: '武器坊', icon: Icons.build_circle, func: '打造装备', route: RoutePaths.weaponWorkshop),
+  _Building(name: '马厩', icon: Icons.nature_people, func: '培养战马', route: RoutePaths.stable),
+  _Building(name: '酒馆', icon: Icons.local_bar, func: '招募武将', route: RoutePaths.tavern),
+  _Building(name: '粮仓', icon: Icons.grass, func: '储存粮食', route: RoutePaths.granary),
+  _Building(name: '铸币司', icon: Icons.monetization_on, func: '产出金币', route: RoutePaths.mint),
+  _Building(name: '学堂', icon: Icons.menu_book, func: '研究战法', route: RoutePaths.academy),
+  _Building(name: '观星台', icon: Icons.auto_awesome, func: '占卜抽奖', route: RoutePaths.observatory),
+  _Building(name: '演武场', icon: Icons.sports_kabaddi, func: '竞技 PVP', route: RoutePaths.cityArena),
 ];
 
 /// 主城页面
@@ -50,8 +53,12 @@ class MainCityPage extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              // ---- 顶部资源栏占位（后续添加） ----
-              const SizedBox(height: 8),
+              // ---- 个人中心入口 ----
+              _PersonalCenterBar(
+                onTap: () => context.push(RoutePaths.personal),
+              ),
+
+              const SizedBox(height: 4),
 
               // ---- 建筑入口网格 ----
               Padding(
@@ -171,15 +178,144 @@ class _BuildingItem extends StatelessWidget {
   }
 
   void _onTap(BuildContext context) {
-    // TODO: 根据 building.route 跳转到对应功能页面
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text('${building.name} — 即将开放'),
-          duration: const Duration(seconds: 1),
+    context.push(building.route);
+  }
+}
+
+// ==================== 个人中心入口 ====================
+
+/// 左上角个人中心入口
+///
+/// 显示角色头像、等级、关卡进度等信息。
+/// 点击可跳转到个人中心详情页。
+class _PersonalCenterBar extends StatelessWidget {
+  const _PersonalCenterBar({this.onTap});
+
+  /// 点击回调
+  final VoidCallback? onTap;
+
+  /// 模拟数据 — 后续替换为实际数据源
+  static const _playerLevel = 1;
+  static const _chapterName = '第1章';
+  static const _playerName = '主公';
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      child: Row(
+        children: [
+          // ---- 个人中心按钮 ----
+          Material(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(26),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(26),
+              onTap: onTap,
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 4,
+                  right: 14,
+                  top: 6,
+                  bottom: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xCC1A1A2A),
+                  borderRadius: BorderRadius.circular(26),
+                  border: Border.all(
+                    color: const Color(0x306A0F0F),
+                    width: 0.5,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // 头像
+                    CircleAvatar(
+                      radius: 17,
+                      backgroundColor: const Color(0x406A0F0F),
+                      child: const Icon(
+                        Icons.person,
+                        color: Color(0xFFD4A84B),
+                        size: 18,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    // 名字 + 等级
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // 玩家名
+                        Text(
+                          _playerName,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFFE2D9CD),
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        // 等级 + 关卡进度
+                        Row(
+                          children: [
+                            _InfoTag(
+                              icon: Icons.star,
+                              text: 'Lv.$_playerLevel',
+                            ),
+                            const SizedBox(width: 6),
+                            _InfoTag(
+                              icon: Icons.map,
+                              text: _chapterName,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          const Spacer(),
+
+          // ---- 右侧资源栏占位 ----
+        ],
+      ),
+    );
+  }
+}
+
+/// 信息标签
+///
+/// 用于显示等级、关卡等短信息，带图标前缀。
+class _InfoTag extends StatelessWidget {
+  const _InfoTag({required this.icon, required this.text});
+
+  final IconData icon;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: 10,
+          color: const Color(0xFFD4A84B),
         ),
-      );
+        const SizedBox(width: 2),
+        Text(
+          text,
+          style: const TextStyle(
+            fontSize: 10,
+            color: Color(0x998B7E6A),
+          ),
+        ),
+      ],
+    );
   }
 }
 
