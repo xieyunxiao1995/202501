@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /// 剧情章节数据
-class _Chapter {
-  const _Chapter({
+class ChapterData {
+  const ChapterData({
     required this.index,
     required this.title,
     required this.name,
@@ -22,24 +23,24 @@ class _Chapter {
   bool get isStoryOnly => boss == '剧情章节';
 }
 
-/// 剧情主线 15 个章节
-const _kChapters = <_Chapter>[
-  _Chapter(index: '序章', title: '黄巾之乱', name: '序章', year: '184年', plot: '黄巾起义，玩家初出茅庐', boss: '张角'),
-  _Chapter(index: '第一章', title: '十常侍乱政', name: '第一章', year: '189年', plot: '朝堂倾轧，何进被杀', boss: '十常侍'),
-  _Chapter(index: '第二章', title: '董卓进京', name: '第二章', year: '189年', plot: '废立皇帝，火烧洛阳', boss: '董卓、吕布'),
-  _Chapter(index: '第三章', title: '十八路诸侯讨董', name: '第三章', year: '190年', plot: '虎牢关前会群雄', boss: '吕布（虎牢关）'),
-  _Chapter(index: '第四章', title: '群雄割据', name: '第四章', year: '191-194年', plot: '诸侯混战，争夺地盘', boss: '多个诸侯'),
-  _Chapter(index: '第五章', title: '衣带诏', name: '第五章', year: '200年', plot: '曹操挟天子以令诸侯', boss: '曹操'),
-  _Chapter(index: '第六章', title: '官渡之战', name: '第六章', year: '200年', plot: '曹袁决战', boss: '袁绍'),
-  _Chapter(index: '第七章', title: '三顾茅庐', name: '第七章', year: '207年', plot: '刘备得诸葛亮', boss: '剧情章节'),
-  _Chapter(index: '第八章', title: '赤壁之战', name: '第八章', year: '208年', plot: '孙刘联合抗曹', boss: '曹操水军'),
-  _Chapter(index: '第九章', title: '入主西川', name: '第九章', year: '211-214年', plot: '刘备夺益州', boss: '刘璋、张鲁'),
-  _Chapter(index: '第十章', title: '汉中之战', name: '第十章', year: '219年', plot: '刘曹争汉中', boss: '夏侯渊、曹操'),
-  _Chapter(index: '第十一章', title: '荆州之失', name: '第十一章', year: '219年', plot: '关羽走麦城', boss: '吕蒙、陆逊'),
-  _Chapter(index: '第十二章', title: '夷陵之战', name: '第十二章', year: '222年', plot: '刘备伐吴', boss: '陆逊'),
-  _Chapter(index: '第十三章', title: '七擒孟获', name: '第十三章', year: '225年', plot: '诸葛亮南征', boss: '孟获'),
-  _Chapter(index: '第十四章', title: '六出祁山', name: '第十四章', year: '228-234年', plot: '诸葛北伐', boss: '司马懿'),
-  _Chapter(index: '第十五章', title: '三家归晋', name: '第十五章', year: '280年', plot: '历史终章', boss: '司马炎'),
+/// 剧情主线 16 个章节
+const kChapters = <ChapterData>[
+  ChapterData(index: '序章', title: '黄巾之乱', name: '序章', year: '184年', plot: '黄巾起义，玩家初出茅庐', boss: '张角'),
+  ChapterData(index: '第一章', title: '十常侍乱政', name: '第一章', year: '189年', plot: '朝堂倾轧，何进被杀', boss: '十常侍'),
+  ChapterData(index: '第二章', title: '董卓进京', name: '第二章', year: '189年', plot: '废立皇帝，火烧洛阳', boss: '董卓、吕布'),
+  ChapterData(index: '第三章', title: '十八路诸侯讨董', name: '第三章', year: '190年', plot: '虎牢关前会群雄', boss: '吕布（虎牢关）'),
+  ChapterData(index: '第四章', title: '群雄割据', name: '第四章', year: '191-194年', plot: '诸侯混战，争夺地盘', boss: '多个诸侯'),
+  ChapterData(index: '第五章', title: '衣带诏', name: '第五章', year: '200年', plot: '曹操挟天子以令诸侯', boss: '曹操'),
+  ChapterData(index: '第六章', title: '官渡之战', name: '第六章', year: '200年', plot: '曹袁决战', boss: '袁绍'),
+  ChapterData(index: '第七章', title: '三顾茅庐', name: '第七章', year: '207年', plot: '刘备得诸葛亮', boss: '剧情章节'),
+  ChapterData(index: '第八章', title: '赤壁之战', name: '第八章', year: '208年', plot: '孙刘联合抗曹', boss: '曹操水军'),
+  ChapterData(index: '第九章', title: '入主西川', name: '第九章', year: '211-214年', plot: '刘备夺益州', boss: '刘璋、张鲁'),
+  ChapterData(index: '第十章', title: '汉中之战', name: '第十章', year: '219年', plot: '刘曹争汉中', boss: '夏侯渊、曹操'),
+  ChapterData(index: '第十一章', title: '荆州之失', name: '第十一章', year: '219年', plot: '关羽走麦城', boss: '吕蒙、陆逊'),
+  ChapterData(index: '第十二章', title: '夷陵之战', name: '第十二章', year: '222年', plot: '刘备伐吴', boss: '陆逊'),
+  ChapterData(index: '第十三章', title: '七擒孟获', name: '第十三章', year: '225年', plot: '诸葛亮南征', boss: '孟获'),
+  ChapterData(index: '第十四章', title: '六出祁山', name: '第十四章', year: '228-234年', plot: '诸葛北伐', boss: '司马懿'),
+  ChapterData(index: '第十五章', title: '三家归晋', name: '第十五章', year: '280年', plot: '历史终章', boss: '司马炎'),
 ];
 
 /// 剧情页面
@@ -68,11 +69,12 @@ class StoryPage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-                  itemCount: _kChapters.length,
+                  itemCount: kChapters.length,
                   itemBuilder: (context, index) {
                     return _ChapterCard(
-                      chapter: _kChapters[index],
-                      isLast: index == _kChapters.length - 1,
+                      chapter: kChapters[index],
+                      chapterIndex: index,
+                      isLast: index == kChapters.length - 1,
                     );
                   },
                 ),
@@ -129,7 +131,7 @@ class _StoryHeader extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               letterSpacing: 4,
-              color: Color(0x998B7E6A),
+              color: Color.fromARGB(153, 159, 37, 37),
             ),
           ),
         ],
@@ -140,17 +142,30 @@ class _StoryHeader extends StatelessWidget {
 
 // ==================== 章节卡片 ====================
 
-class _ChapterCard extends StatelessWidget {
-  const _ChapterCard({required this.chapter, required this.isLast});
+class _ChapterCard extends StatefulWidget {
+  const _ChapterCard({
+    required this.chapter,
+    required this.chapterIndex,
+    required this.isLast,
+  });
 
-  final _Chapter chapter;
+  final ChapterData chapter;
+  final int chapterIndex;
   final bool isLast;
+
+  @override
+  State<_ChapterCard> createState() => _ChapterCardState();
+}
+
+class _ChapterCardState extends State<_ChapterCard> {
+  final GlobalKey _cardKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: isLast ? 16 : 10),
+      padding: EdgeInsets.only(bottom: widget.isLast ? 16 : 10),
       child: Container(
+        key: _cardKey,
         decoration: BoxDecoration(
           color: const Color(0xCC1A1A2A),
           borderRadius: BorderRadius.circular(10),
@@ -170,7 +185,7 @@ class _ChapterCard extends StatelessWidget {
               child: Row(
                 children: [
                   // ---- 左侧：章节序号圆圈 ----
-                  _ChapterBadge(index: chapter.index),
+                  _ChapterBadge(index: widget.chapter.index),
                   const SizedBox(width: 14),
                   // ---- 中间：章节信息 ----
                   Expanded(
@@ -181,7 +196,7 @@ class _ChapterCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              chapter.title,
+                              widget.chapter.title,
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -196,7 +211,7 @@ class _ChapterCard extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Text(
-                                chapter.year,
+                                widget.chapter.year,
                                 style: const TextStyle(
                                   fontSize: 10,
                                   color: Color(0xCCA11717),
@@ -208,14 +223,14 @@ class _ChapterCard extends StatelessWidget {
                         const SizedBox(height: 6),
                         // 剧情描述
                         Text(
-                          chapter.plot,
+                          widget.chapter.plot,
                           style: const TextStyle(
                             fontSize: 13,
                             color: Color(0x998B7E6A),
                             height: 1.4,
                           ),
                         ),
-                        if (!chapter.isStoryOnly) ...[
+                        if (!widget.chapter.isStoryOnly) ...[
                           const SizedBox(height: 6),
                           // BOSS 标签
                           Row(
@@ -223,7 +238,7 @@ class _ChapterCard extends StatelessWidget {
                               const Icon(Icons.gavel, size: 13, color: Color(0x99A11717)),
                               const SizedBox(width: 4),
                               Text(
-                                'BOSS: ${chapter.boss}',
+                                'BOSS: ${widget.chapter.boss}',
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Color(0xCCA11717),
@@ -268,15 +283,18 @@ class _ChapterCard extends StatelessWidget {
   }
 
   void _onChapterTap(BuildContext context) {
-    // TODO: 跳转到章节关卡列表
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text('${chapter.name} · ${chapter.title} — 即将开放'),
-          duration: const Duration(seconds: 1),
-        ),
-      );
+    // 获取当前 item 在屏幕上的矩形区域，用于展开过渡动画
+    final renderBox = _cardKey.currentContext?.findRenderObject() as RenderBox?;
+    final offset = renderBox?.localToGlobal(Offset.zero);
+    final rect = offset != null && renderBox != null
+        ? offset & renderBox.size
+        : null;
+
+    GoRouter.of(context).pushNamed(
+      'storyChapter',
+      pathParameters: {'chapterIndex': widget.chapterIndex.toString()},
+      extra: rect,
+    );
   }
 }
 

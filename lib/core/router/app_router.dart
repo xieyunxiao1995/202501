@@ -21,6 +21,7 @@ import '../../pages/maincity_page.dart';
 import '../../pages/personal_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/story_page.dart';
+import '../../pages/story/story_chapter_page.dart';
 
 import '../../pages/city/lord_mansion_page.dart';
 import '../../pages/city/training_ground_page.dart';
@@ -336,10 +337,28 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.story,
             name: 'story',
-            pageBuilder: (context, state) => _ScaleTransitionPage(
+            pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
               key: state.pageKey,
+              startRect: state.extra as Rect?,
               child: const StoryPage(),
             ),
+            routes: [
+              GoRoute(
+                path: 'chapter/:chapterIndex',
+                name: 'storyChapter',
+                pageBuilder: (context, state) {
+                  final chapterIndex = int.tryParse(
+                        state.pathParameters['chapterIndex'] ?? '0',
+                      ) ??
+                      0;
+                  return _ExpandFromRectTransitionPage(
+                    key: state.pageKey,
+                    startRect: state.extra as Rect?,
+                    child: StoryChapterPage(chapterIndex: chapterIndex),
+                  );
+                },
+              ),
+            ],
           ),
 
           // ---------- 城池 ----------

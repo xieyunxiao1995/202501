@@ -38,6 +38,9 @@ class RoutePaths {
   /// 剧情主界面
   static const String story = '/story';
 
+  /// 剧情章节详情（:chapterIndex 为章节索引 0~15）
+  static const String storyChapter = '/story/chapter/:chapterIndex';
+
   // ==================== 武将 ====================
 
   /// 武将列表
