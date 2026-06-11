@@ -1098,7 +1098,7 @@ class _BottomNavBar extends StatelessWidget {
         NavigationDestination(
           icon: Icon(Icons.more_horiz),
           selectedIcon: Icon(Icons.more_horiz),
-          label: '更多',
+          label: '背包',
         ),
       ],
     );
