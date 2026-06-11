@@ -54,15 +54,7 @@ class _RecruitHeroesPageState extends State<RecruitHeroesPage> {
 
   void _startBattle() {
     if (_selected.length < _maxSlots) return;
-    // TODO: 跳转到战斗页面，传入已选武将
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(
-        SnackBar(
-          content: Text('已选择: ${_selected.map((h) => h.name).join('、')}，即将开战'),
-          duration: const Duration(seconds: 1),
-        ),
-      );
+    context.pushNamed('battle', extra: List<GeneralModel>.from(_selected));
   }
 
   @override

@@ -20,9 +20,12 @@ import '../../pages/login_page.dart';
 import '../../pages/maincity_page.dart';
 import '../../pages/personal_page.dart';
 import '../../pages/recruit_heroes_page.dart';
+import '../../pages/battle/battle_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/story_page.dart';
 import '../../pages/story/story_chapter_page.dart';
+
+import '../../data/models/general/general_model.dart';
 
 import '../../pages/city/lord_mansion_page.dart';
 import '../../pages/city/training_ground_page.dart';
@@ -104,6 +107,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const _PlaceholderPage(title: '战斗结算'),
       ),
 
+      /// 战斗页面（4v4回合制卡牌战斗）
+      GoRoute(
+        path: RoutePaths.battle,
+        name: 'battle',
+        pageBuilder: (context, state) => _FadeTransitionPage(
+          key: state.pageKey,
+          child: BattlePage(heroes: state.extra as List<GeneralModel>),
+        ),
+      ),
+
       /// 匹配中
       GoRoute(
         path: RoutePaths.matching,
@@ -140,7 +153,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.home,
             name: 'home',
-            pageBuilder: (context, state) => _ScaleTransitionPage(
+            pageBuilder: (context, state) => _FadeTransitionPage(
               key: state.pageKey,
               child: const MainCityPage(),
             ),
@@ -161,7 +174,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.generalList,
             name: 'generalList',
-            pageBuilder: (context, state) => _ScaleTransitionPage(
+            pageBuilder: (context, state) => _FadeTransitionPage(
               key: state.pageKey,
               child: const GeneralListPage(),
             ),
@@ -338,9 +351,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.story,
             name: 'story',
-            pageBuilder: (context, state) => _ExpandFromRectTransitionPage(
+            pageBuilder: (context, state) => _FadeTransitionPage(
               key: state.pageKey,
-              startRect: state.extra as Rect?,
               child: const StoryPage(),
             ),
             routes: [
@@ -1081,7 +1093,7 @@ class _BottomNavBar extends StatelessWidget {
         NavigationDestination(
           icon: Icon(Icons.casino_outlined),
           selectedIcon: Icon(Icons.casino),
-          label: '招募',
+          label: '战斗',
         ),
         NavigationDestination(
           icon: Icon(Icons.more_horiz),

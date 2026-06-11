@@ -119,6 +119,9 @@ class RoutePaths {
   /// 战斗结算
   static const String battleResult = '/battle/result';
 
+  /// 战斗页面（4v4回合制）
+  static const String battle = '/battle';
+
   // ==================== 城池 ====================
 
   /// 城池主界面
