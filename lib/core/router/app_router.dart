@@ -19,6 +19,7 @@ import '../../pages/general/general_list_page.dart';
 import '../../pages/login_page.dart';
 import '../../pages/maincity_page.dart';
 import '../../pages/personal_page.dart';
+import '../../pages/recruit_heroes_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/story_page.dart';
 import '../../pages/story/story_chapter_page.dart';
@@ -516,9 +517,9 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.recruit,
             name: 'recruit',
-            pageBuilder: (context, state) => _ScaleTransitionPage(
+            pageBuilder: (context, state) => _FadeTransitionPage(
               key: state.pageKey,
-              child: const _PlaceholderPage(title: '招募'),
+              child: const RecruitHeroesPage(),
             ),
             routes: [
               GoRoute(
@@ -960,6 +961,26 @@ class _ScaleTransitionPage extends CustomTransitionPage<void> {
           );
         },
         transitionDuration: const Duration(milliseconds: 300),
+      );
+}
+
+/// 淡入过渡动画页面
+///
+/// 页面以纯淡入效果出现，无缩放或位移。
+/// 用于底部导航栏"招募"等页面的切换效果。
+class _FadeTransitionPage extends CustomTransitionPage<void> {
+  _FadeTransitionPage({required super.key, required super.child})
+    : super(
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(parent: animation, curve: Curves.easeOut),
+            ),
+            child: child,
+          );
+        },
+        transitionDuration: const Duration(milliseconds: 250),
+        reverseTransitionDuration: const Duration(milliseconds: 180),
       );
 }
 

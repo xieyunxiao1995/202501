@@ -186,6 +186,9 @@ class RoutePaths {
   /// 招募历史
   static const String recruitHistory = '/recruit/history';
 
+  /// 招募武将（选择阵容）
+  static const String recruitHeroes = '/recruit/heroes';
+
   // ==================== 商店 ====================
 
   /// 商店主页
