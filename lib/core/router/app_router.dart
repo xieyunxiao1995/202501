@@ -20,6 +20,7 @@ import '../../pages/login_page.dart';
 import '../../pages/maincity_page.dart';
 import '../../pages/personal_page.dart';
 import '../../pages/recruit_heroes_page.dart';
+import '../../pages/package_page.dart';
 import '../../pages/battle/battle_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/story_page.dart';
@@ -600,7 +601,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.bag,
             name: 'bag',
-            builder: (context, state) => const _PlaceholderPage(title: '背包'),
+            pageBuilder: (context, state) => _FadeTransitionPage(
+              key: state.pageKey,
+              child: const PackagePage(),
+            ),
             routes: [
               GoRoute(
                 path: 'items/:id',
@@ -1096,8 +1100,8 @@ class _BottomNavBar extends StatelessWidget {
           label: '战斗',
         ),
         NavigationDestination(
-          icon: Icon(Icons.more_horiz),
-          selectedIcon: Icon(Icons.more_horiz),
+          icon: Icon(Icons.backpack_outlined),
+          selectedIcon: Icon(Icons.backpack),
           label: '背包',
         ),
       ],
@@ -1126,7 +1130,7 @@ class _BottomNavBar extends StatelessWidget {
       case 3:
         GoRouter.of(context).go(RoutePaths.recruit);
       case 4:
-        GoRouter.of(context).go(RoutePaths.settings);
+        GoRouter.of(context).go(RoutePaths.bag);
     }
   }
 }
