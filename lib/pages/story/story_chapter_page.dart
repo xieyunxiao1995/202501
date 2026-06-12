@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../story_page.dart';
 
@@ -685,7 +686,10 @@ class _ChapterActionButton extends StatelessWidget {
         },
         child: GestureDetector(
           onTap: () {
-            // TODO: 进入章节战斗或其他操作
+            context.pushNamed(
+              'stageList',
+              pathParameters: {'chapterId': chapterIndex.toString()},
+            );
           },
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),

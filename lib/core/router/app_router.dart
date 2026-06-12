@@ -23,6 +23,7 @@ import '../../pages/recruit_heroes_page.dart';
 import '../../pages/package_page.dart';
 import '../../pages/battle/battle_page.dart';
 import '../../pages/splash_page.dart';
+import '../../pages/stage/chapter_campaign_page.dart';
 import '../../pages/story_page.dart';
 import '../../pages/story/story_chapter_page.dart';
 
@@ -301,19 +302,26 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'chapters/:chapterId',
                 name: 'stageList',
-                builder: (context, state) {
+                pageBuilder: (context, state) {
                   final chapterId = state.pathParameters['chapterId'] ?? '';
-                  return _PlaceholderPage(title: '关卡列表 章节#$chapterId');
+                  return _FadeTransitionPage(
+                    key: state.pageKey,
+                    child: ChapterCampaignPage(chapterId: chapterId),
+                  );
                 },
                 routes: [
                   GoRoute(
                     path: 'stages/:stageId',
                     name: 'stageDetail',
-                    builder: (context, state) {
+                    pageBuilder: (context, state) {
                       final chapterId = state.pathParameters['chapterId'] ?? '';
                       final stageId = state.pathParameters['stageId'] ?? '';
-                      return _PlaceholderPage(
-                        title: '关卡详情 章节#$chapterId 关卡#$stageId',
+                      return _FadeTransitionPage(
+                        key: state.pageKey,
+                        child: StageDetailPage(
+                          chapterId: chapterId,
+                          stageId: stageId,
+                        ),
                       );
                     },
                   ),
