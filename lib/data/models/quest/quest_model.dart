@@ -1,43 +1,94 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'quest_model.freezed.dart';
-part 'quest_model.g.dart';
-
 /// 任务数据模型（DTO）
 ///
 /// 表示游戏中的任务配置，包含任务目标、进度和奖励。
-@freezed
-@JsonSerializable()
-class QuestModel with _$QuestModel {
-  const factory QuestModel({
-    /// 任务唯一标识
-    required String id,
+class QuestModel {
+  /// 任务唯一标识
+  final String id;
 
-    /// 任务名称
-    required String name,
+  /// 任务名称
+  final String name;
 
-    /// 任务描述
+  /// 任务描述
+  final String? description;
+
+  /// 任务类型标识
+  final String type;
+
+  /// 任务目标值
+  final int targetValue;
+
+  /// 当前进度
+  final int currentProgress;
+
+  /// 奖励列表（物品ID -> 数量）
+  final Map<String, int> rewards;
+
+  /// 是否已完成
+  final bool completed;
+
+  /// 是否已领取奖励
+  final bool claimed;
+
+  const QuestModel({
+    required this.id,
+    required this.name,
+    this.description,
+    required this.type,
+    required this.targetValue,
+    this.currentProgress = 0,
+    this.rewards = const {},
+    this.completed = false,
+    this.claimed = false,
+  });
+
+  factory QuestModel.fromJson(Map<String, dynamic> json) {
+    return QuestModel(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      description: json['description'] as String?,
+      type: json['type'] as String,
+      targetValue: (json['target_value'] as num?)?.toInt() ?? (json['targetValue'] as num?)?.toInt() ?? 0,
+      currentProgress: (json['current_progress'] as num?)?.toInt() ?? (json['currentProgress'] as num?)?.toInt() ?? 0,
+      rewards: (json['rewards'] as Map<String, dynamic>?)
+              ?.map((k, v) => MapEntry(k, (v as num).toInt())) ?? const {},
+      completed: json['completed'] as bool? ?? false,
+      claimed: json['claimed'] as bool? ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        if (description != null) 'description': description,
+        'type': type,
+        'target_value': targetValue,
+        'current_progress': currentProgress,
+        'rewards': rewards,
+        'completed': completed,
+        'claimed': claimed,
+      };
+
+  QuestModel copyWith({
+    String? id,
+    String? name,
     String? description,
-
-    /// 任务类型标识
-    required String type,
-
-    /// 任务目标值
-    required int targetValue,
-
-    /// 当前进度
-    @Default(0) int currentProgress,
-
-    /// 奖励列表（物品ID -> 数量）
-    @Default({}) Map<String, int> rewards,
-
-    /// 是否已完成
-    @Default(false) bool completed,
-
-    /// 是否已领取奖励
-    @Default(false) bool claimed,
-  }) = _QuestModel;
-
-  factory QuestModel.fromJson(Map<String, dynamic> json) =>
-      _$QuestModelFromJson(json);
+    String? type,
+    int? targetValue,
+    int? currentProgress,
+    Map<String, int>? rewards,
+    bool? completed,
+    bool? claimed,
+  }) {
+    return QuestModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      type: type ?? this.type,
+      targetValue: targetValue ?? this.targetValue,
+      currentProgress: currentProgress ?? this.currentProgress,
+      rewards: rewards ?? this.rewards,
+      completed: completed ?? this.completed,
+      claimed: claimed ?? this.claimed,
+    );
+  }
 }

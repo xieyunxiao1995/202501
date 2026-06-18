@@ -1,31 +1,27 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'city_state.freezed.dart';
-
 /// 城池状态
 ///
 /// 管理城池页面的数据状态，包括城池信息、建筑列表和资源数据。
-@freezed
-class CityState with _$CityState {
-  /// 加载中
-  const factory CityState.loading() = _CityLoading;
+sealed class CityState {
+  const CityState();
+  const factory CityState.loading() = CityLoading;
+  const factory CityState.loaded({required CityInfo city, required List<BuildingInfo> buildings, required Map<String, int> resources}) = CityLoaded;
+  const factory CityState.error({required String message}) = CityError;
+}
 
-  /// 数据已加载
-  const factory CityState.loaded({
-    /// 城池信息
-    required CityInfo city,
+final class CityLoading extends CityState {
+  const CityLoading();
+}
 
-    /// 建筑列表
-    required List<BuildingInfo> buildings,
+final class CityLoaded extends CityState {
+  final CityInfo city;
+  final List<BuildingInfo> buildings;
+  final Map<String, int> resources;
+  const CityLoaded({required this.city, required this.buildings, required this.resources});
+}
 
-    /// 资源数据
-    required Map<String, int> resources,
-  }) = _CityLoaded;
-
-  /// 加载失败
-  const factory CityState.error({
-    required String message,
-  }) = _CityError;
+final class CityError extends CityState {
+  final String message;
+  const CityError({required this.message});
 }
 
 /// 城池信息

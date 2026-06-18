@@ -1,32 +1,28 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'home_state.freezed.dart';
-
 /// 主城页面状态
 ///
 /// 管理主城页面的数据状态，包括加载、已加载和错误，
 /// 以及玩家信息、资源和国家等数据。
-@freezed
-class HomeState with _$HomeState {
-  /// 加载中
-  const factory HomeState.loading() = _HomeLoading;
+sealed class HomeState {
+  const HomeState();
+  const factory HomeState.loading() = HomeLoading;
+  const factory HomeState.loaded({required PlayerInfo playerInfo, required Map<String, int> resources, required String kingdom}) = HomeLoaded;
+  const factory HomeState.error({required String message}) = HomeError;
+}
 
-  /// 数据已加载
-  const factory HomeState.loaded({
-    /// 玩家信息
-    required PlayerInfo playerInfo,
+final class HomeLoading extends HomeState {
+  const HomeLoading();
+}
 
-    /// 资源列表
-    required Map<String, int> resources,
+final class HomeLoaded extends HomeState {
+  final PlayerInfo playerInfo;
+  final Map<String, int> resources;
+  final String kingdom;
+  const HomeLoaded({required this.playerInfo, required this.resources, required this.kingdom});
+}
 
-    /// 所属国家
-    required String kingdom,
-  }) = _HomeLoaded;
-
-  /// 加载失败
-  const factory HomeState.error({
-    required String message,
-  }) = _HomeError;
+final class HomeError extends HomeState {
+  final String message;
+  const HomeError({required this.message});
 }
 
 /// 玩家基础信息

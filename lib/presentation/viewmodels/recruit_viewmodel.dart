@@ -13,7 +13,7 @@ final recruitViewModelProvider =
 /// 管理武将招募流程，包括单抽、十连和卡池切换。
 class RecruitViewModel extends Notifier<RecruitState> {
   @override
-  RecruitState build() => const RecruitState.idle(poolId: 'default');
+  RecruitState build() => const RecruitState.idle(poolId: 'default', freeCount: 0);
 
   /// 单抽
   Future<void> singleRecruit() async {

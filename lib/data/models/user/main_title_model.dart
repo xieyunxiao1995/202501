@@ -1,28 +1,53 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'main_title_model.freezed.dart';
-part 'main_title_model.g.dart';
-
 /// 爵位模型（DTO）
 ///
 /// 表示游戏中的爵位配置数据，包含 ID、名称、稀有度和描述。
-@freezed
-@JsonSerializable()
-class MainTitleModel with _$MainTitleModel {
-  const factory MainTitleModel({
-    /// 爵位唯一标识
-    required String id,
+class MainTitleModel {
+  /// 爵位唯一标识
+  final String id;
 
-    /// 爵位名称
-    required String name,
+  /// 爵位名称
+  final String name;
 
-    /// 稀有度
-    @Default('n') String rarity,
+  /// 稀有度
+  final String rarity;
 
-    /// 爵位描述
+  /// 爵位描述
+  final String? description;
+
+  const MainTitleModel({
+    required this.id,
+    required this.name,
+    this.rarity = 'n',
+    this.description,
+  });
+
+  factory MainTitleModel.fromJson(Map<String, dynamic> json) {
+    return MainTitleModel(
+      id: json['id'] as String,
+      name: json['name'] as String? ?? '',
+      rarity: json['rarity'] as String? ?? 'n',
+      description: json['description'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'rarity': rarity,
+        if (description != null) 'description': description,
+      };
+
+  MainTitleModel copyWith({
+    String? id,
+    String? name,
+    String? rarity,
     String? description,
-  }) = _MainTitleModel;
-
-  factory MainTitleModel.fromJson(Map<String, dynamic> json) =>
-      _$MainTitleModelFromJson(json);
+  }) {
+    return MainTitleModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      rarity: rarity ?? this.rarity,
+      description: description ?? this.description,
+    );
+  }
 }

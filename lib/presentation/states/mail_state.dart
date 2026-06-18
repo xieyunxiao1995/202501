@@ -1,28 +1,26 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'mail_state.freezed.dart';
-
 /// 邮件状态
 ///
 /// 管理邮件系统的状态，包括邮件列表和未读数量。
-@freezed
-class MailState with _$MailState {
-  /// 加载中
-  const factory MailState.loading() = _MailLoading;
+sealed class MailState {
+  const MailState();
+  const factory MailState.loading() = MailLoading;
+  const factory MailState.loaded({required List<MailItem> mails, required int unreadCount}) = MailLoaded;
+  const factory MailState.error({required String message}) = MailError;
+}
 
-  /// 数据已加载
-  const factory MailState.loaded({
-    /// 邮件列表
-    required List<MailItem> mails,
+final class MailLoading extends MailState {
+  const MailLoading();
+}
 
-    /// 未读数量
-    required int unreadCount,
-  }) = _MailLoaded;
+final class MailLoaded extends MailState {
+  final List<MailItem> mails;
+  final int unreadCount;
+  const MailLoaded({required this.mails, required this.unreadCount});
+}
 
-  /// 加载失败
-  const factory MailState.error({
-    required String message,
-  }) = _MailError;
+final class MailError extends MailState {
+  final String message;
+  const MailError({required this.message});
 }
 
 /// 邮件项

@@ -1,28 +1,22 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'chat_state.freezed.dart';
-
 /// 聊天状态
 ///
 /// 管理聊天系统的状态，包括消息列表和频道信息。
-@freezed
-class ChatState with _$ChatState {
-  /// 数据已加载
-  const factory ChatState.loaded({
-    /// 消息列表
-    required List<ChatMessage> messages,
+sealed class ChatState {
+  const ChatState();
+  const factory ChatState.loaded({required List<ChatMessage> messages, required List<ChatChannel> channels, String? activeChannelId}) = ChatLoaded;
+  const factory ChatState.error({required String message}) = ChatError;
+}
 
-    /// 频道列表
-    required List<ChatChannel> channels,
+final class ChatLoaded extends ChatState {
+  final List<ChatMessage> messages;
+  final List<ChatChannel> channels;
+  final String? activeChannelId;
+  const ChatLoaded({required this.messages, required this.channels, this.activeChannelId});
+}
 
-    /// 当前选中频道ID
-    String? activeChannelId,
-  }) = _ChatLoaded;
-
-  /// 加载失败
-  const factory ChatState.error({
-    required String message,
-  }) = _ChatError;
+final class ChatError extends ChatState {
+  final String message;
+  const ChatError({required this.message});
 }
 
 /// 聊天消息

@@ -1,26 +1,49 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'user_model.dart';
-
-part 'login_response_model.freezed.dart';
-part 'login_response_model.g.dart';
 
 /// 登录响应模型（DTO）
 ///
 /// 封装登录接口返回数据，包含访问令牌、刷新令牌和用户信息。
-@freezed
-@JsonSerializable()
-class LoginResponseModel with _$LoginResponseModel {
-  const factory LoginResponseModel({
-    /// 访问令牌
-    required String token,
+class LoginResponseModel {
+  /// 访问令牌
+  final String token;
 
-    /// 刷新令牌
-    required String refreshToken,
+  /// 刷新令牌
+  final String refreshToken;
 
-    /// 用户信息
-    required UserModel user,
-  }) = _LoginResponseModel;
+  /// 用户信息
+  final UserModel user;
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseModelFromJson(json);
+  const LoginResponseModel({
+    required this.token,
+    required this.refreshToken,
+    required this.user,
+  });
+
+  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
+    return LoginResponseModel(
+      token: json['token'] as String? ?? '',
+      refreshToken: json['refresh_token'] as String? ?? (json['refreshToken'] as String? ?? ''),
+      user: json['user'] != null
+          ? UserModel.fromJson(json['user'] as Map<String, dynamic>)
+          : UserModel(id: '', name: ''),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'token': token,
+        'refresh_token': refreshToken,
+        'user': user.toJson(),
+      };
+
+  LoginResponseModel copyWith({
+    String? token,
+    String? refreshToken,
+    UserModel? user,
+  }) {
+    return LoginResponseModel(
+      token: token ?? this.token,
+      refreshToken: refreshToken ?? this.refreshToken,
+      user: user ?? this.user,
+    );
+  }
 }

@@ -1,26 +1,29 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'auth_state.freezed.dart';
-
 /// 认证状态
 ///
 /// 管理用户登录认证流程的状态，包括空闲、加载中、已认证和错误等状态。
-@freezed
-class AuthState with _$AuthState {
-  /// 空闲状态
-  const factory AuthState.idle() = _Idle;
+sealed class AuthState {
+  const AuthState();
+  const factory AuthState.idle() = AuthIdle;
+  const factory AuthState.loading() = AuthLoading;
+  const factory AuthState.authenticated({required String userId, required String username}) = AuthAuthenticated;
+  const factory AuthState.error({required String message}) = AuthError;
+}
 
-  /// 登录加载中
-  const factory AuthState.loading() = _AuthLoading;
+final class AuthIdle extends AuthState {
+  const AuthIdle();
+}
 
-  /// 认证成功
-  const factory AuthState.authenticated({
-    required String userId,
-    required String username,
-  }) = _AuthAuthenticated;
+final class AuthLoading extends AuthState {
+  const AuthLoading();
+}
 
-  /// 认证失败
-  const factory AuthState.error({
-    required String message,
-  }) = _AuthError;
+final class AuthAuthenticated extends AuthState {
+  final String userId;
+  final String username;
+  const AuthAuthenticated({required this.userId, required this.username});
+}
+
+final class AuthError extends AuthState {
+  final String message;
+  const AuthError({required this.message});
 }

@@ -1,24 +1,28 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'app_state.freezed.dart';
-
 /// 应用全局状态
 ///
 /// 管理应用的整体生命周期状态，包括初始化、加载中、已认证和未认证等阶段。
-@freezed
-class AppState with _$AppState {
-  /// 应用已初始化
-  const factory AppState.initialized() = _Initialized;
+sealed class AppState {
+  const AppState();
+  const factory AppState.initialized() = AppInitialized;
+  const factory AppState.loading() = AppLoading;
+  const factory AppState.authenticated({required String userId, required String token}) = AppAuthenticated;
+  const factory AppState.unauthenticated() = AppUnauthenticated;
+}
 
-  /// 应用加载中
-  const factory AppState.loading() = _Loading;
+final class AppInitialized extends AppState {
+  const AppInitialized();
+}
 
-  /// 用户已登录认证
-  const factory AppState.authenticated({
-    required String userId,
-    required String token,
-  }) = _Authenticated;
+final class AppLoading extends AppState {
+  const AppLoading();
+}
 
-  /// 用户未认证
-  const factory AppState.unauthenticated() = _Unauthenticated;
+final class AppAuthenticated extends AppState {
+  final String userId;
+  final String token;
+  const AppAuthenticated({required this.userId, required this.token});
+}
+
+final class AppUnauthenticated extends AppState {
+  const AppUnauthenticated();
 }
