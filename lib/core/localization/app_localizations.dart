@@ -80,7 +80,7 @@ class AppLocalizations {
   }
 
   /// 应用名称
-  String get appName => '三国谋定天下';
+  String get appName => '一策定江山';
 
   // ---- 通用 ----
 

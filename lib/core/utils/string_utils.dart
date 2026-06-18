@@ -29,7 +29,7 @@ class StringUtils {
   /// [ellipsis] 省略号，默认 "..."
   ///
   /// 示例：
-  /// - truncate("三国谋定天下", 5) → "三国谋..."
+  /// - truncate("一策定江山", 5) → "三国谋..."
   static String truncate(String value, {int maxLength = 20, String ellipsis = '...'}) {
     if (value.length <= maxLength) return value;
     final targetLength = maxLength - ellipsis.length;

@@ -32,7 +32,7 @@ class AppConfig {
   });
 
   /// 应用名称
-  static const String appName = '三国谋定天下';
+  static const String appName = '一策定江山';
 
   /// 应用版本号
   static const String appVersion = '0.1.0';

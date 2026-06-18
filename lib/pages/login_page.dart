@@ -180,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
 
 // ==================== 游戏标题 ====================
 
-/// 游戏标题 "三国谋定天下"
+/// 游戏标题 "一策定江山"
 class _GameTitle extends StatelessWidget {
   const _GameTitle();
 
@@ -190,9 +190,9 @@ class _GameTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          '三国天下',
+          '一策定江山',
           style: GoogleFonts.liuJianMaoCao(
-            fontSize: 72,
+            fontSize: 55,
             height: 1.2,
             color: const Color(0xFFE2D9CD),
             shadows: const [

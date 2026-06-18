@@ -210,13 +210,16 @@ class _PackagePageState extends State<PackagePage> {
           const SizedBox(width: 12),
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/city/jiuguan.png'), fit: BoxFit.cover),
-        ),
-        child: Column(
-          children: [
-            const SizedBox(height: 150),
+      body: SafeArea(
+        top: false,
+        bottom: true,
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/images/city/jiuguan.png'), fit: BoxFit.cover),
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: MediaQuery.of(context).padding.top + kToolbarHeight),
             // 分类 Tab
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -265,11 +268,21 @@ class _PackagePageState extends State<PackagePage> {
           ],
         ),
       ),
+      ),
     );
+  }
+
+  int _gridColumns(double screenWidth) {
+    if (screenWidth < 380) return 4;
+    if (screenWidth < 600) return 5;
+    if (screenWidth < 900) return 7;
+    return 8;
   }
 
   /// "全部"视图：按分类分组 + 底部按钮
   Widget _buildAllView(List<_PackageItem> items) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final crossAxisCount = _gridColumns(screenWidth);
     final groups = <_ItemCategory, List<_PackageItem>>{};
     for (final item in items) {
       groups.putIfAbsent(item.category, () => []).add(item);
@@ -299,8 +312,8 @@ class _PackagePageState extends State<PackagePage> {
                     GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
                         mainAxisSpacing: 8,
                         crossAxisSpacing: 8,
                         childAspectRatio: 0.78,
@@ -321,13 +334,15 @@ class _PackagePageState extends State<PackagePage> {
 
   /// 单分类网格视图
   Widget _buildCategoryGrid(List<_PackageItem> items) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final crossAxisCount = _gridColumns(screenWidth);
     return Column(
       children: [
         Expanded(
           child: GridView.builder(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
               mainAxisSpacing: 8,
               crossAxisSpacing: 8,
               childAspectRatio: 0.78,

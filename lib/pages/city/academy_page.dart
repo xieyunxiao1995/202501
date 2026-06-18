@@ -180,14 +180,17 @@ class _AcademyPageState extends State<AcademyPage> {
             ),
           ),
           Positioned(
-            left: 0, right: 0, bottom: 0,
-            child: _AcademyPanel(
-              techs: _techs,
-              queues: _queues,
-              maxQueues: _maxQueues,
-              onStartResearch: _startResearch,
-              onSpeedUp: _speedUp,
-              onRemoveQueue: _removeQueue,
+            left: 0, right: 0, top: 0, bottom: 0,
+            child: SafeArea(
+              top: false,
+              child: _AcademyPanel(
+                techs: _techs,
+                queues: _queues,
+                maxQueues: _maxQueues,
+                onStartResearch: _startResearch,
+                onSpeedUp: _speedUp,
+                onRemoveQueue: _removeQueue,
+              ),
             ),
           ),
         ],
@@ -227,20 +230,22 @@ class _AcademyPanel extends StatelessWidget {
         border: const Border(top: BorderSide(color: Color(0x40D4A84B), width: 1)),
       ),
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _PanelTitle(),
-          const SizedBox(height: 14),
-          // 科技列表
-          ...techs.asMap().entries.map((e) => Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: _buildResearchItem(e.key, e.value),
-          )),
-          const SizedBox(height: 6),
-          // 研究队列
-          _QueueBar(queueCount: queues.length, maxQueues: maxQueues, queues: queues, onSpeedUp: onSpeedUp, onRemoveQueue: onRemoveQueue),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _PanelTitle(),
+            const SizedBox(height: 14),
+            // 科技列表
+            ...techs.asMap().entries.map((e) => Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: _buildResearchItem(e.key, e.value),
+            )),
+            const SizedBox(height: 6),
+            // 研究队列
+            _QueueBar(queueCount: queues.length, maxQueues: maxQueues, queues: queues, onSpeedUp: onSpeedUp, onRemoveQueue: onRemoveQueue),
+          ],
+        ),
       ),
     );
   }

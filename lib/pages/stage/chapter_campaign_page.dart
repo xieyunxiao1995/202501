@@ -107,7 +107,7 @@ class StageDetailPage extends StatelessWidget {
           Image.asset('assets/images/ui/story_bg.png', fit: BoxFit.cover),
           Container(color: const Color(0xE617100C)),
           SafeArea(
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(20, 18, 20, 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,7 +210,7 @@ class StageDetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
                     height: 54,
@@ -342,12 +342,16 @@ class _TopBar extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 14),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xFFF6EAD7),
-            fontSize: 26,
-            fontWeight: FontWeight.w700,
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: Color(0xFFF6EAD7),
+              fontSize: 26,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
       ],
@@ -409,6 +413,8 @@ class _StageNodeCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           stage.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             color: Color(0xFFF5EAD8),
                             fontSize: 20,
@@ -444,7 +450,9 @@ class _StageNodeCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Row(
+                  Wrap(
+                    spacing: 16,
+                    runSpacing: 6,
                     children: [
                       Text(
                         '敌首 ${stage.enemyName}',
@@ -454,7 +462,6 @@ class _StageNodeCard extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(width: 16),
                       Text(
                         '推荐 ${stage.recommendedPower}',
                         style: const TextStyle(

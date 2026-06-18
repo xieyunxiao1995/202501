@@ -421,7 +421,7 @@ class _HeroCard extends StatelessWidget {
           if (isSelected)
             const Padding(
               padding: EdgeInsets.only(top: 2),
-              child: Icon(Icons.check_circle, color: Color(0xFFD4A84B), size: 16),
+              child: Icon(Icons.check_circle, color: Color(0xFFD4A84B), size: 10),
             ),
           if (disabled)
             const Padding(

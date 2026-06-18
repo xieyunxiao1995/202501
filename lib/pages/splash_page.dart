@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage>
   late final Animation<double> _sweepAnimation;
   bool _hasNavigated = false;
 
-  static const _titleChars = ['三', '国', '天', '下'];
+  static const _titleChars = ['一', '策', '定', '江', '山'];
 
   @override
   void initState() {

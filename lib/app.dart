@@ -5,7 +5,7 @@ import 'core/localization/app_localizations.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 
-/// 三国谋定天下 App 根组件
+/// 一策定江山 App 根组件
 ///
 /// 配置 MaterialApp.router，集成：
 /// - GoRouter 路由系统
@@ -20,7 +20,7 @@ class SanguoApp extends ConsumerWidget {
 
     return MaterialApp.router(
       // 应用标题
-      title: '三国谋定天下',
+      title: '一策定江山',
 
       // 国风暗色主题（默认）
       theme: AppTheme.lightTheme,
