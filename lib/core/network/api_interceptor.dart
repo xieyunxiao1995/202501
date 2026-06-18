@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:package_info_plus/package_info_plus.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 
 import '../config/env_config.dart';
 import '../constants/app_constants.dart';
@@ -177,33 +175,14 @@ class ApiInterceptor extends Interceptor {
     options.headers['platform'] = Platform.operatingSystem;
   }
 
-  /// 获取应用版本
+  /// 获取应用版本（iOS 写死）
   Future<String> _getAppVersion() async {
-    try {
-      final packageInfo = await PackageInfo.fromPlatform();
-      return packageInfo.version;
-    } catch (e) {
-      AppLogger.warning('获取应用版本失败', e);
-      return 'unknown';
-    }
+    return '1.0.0';
   }
 
-  /// 获取设备 ID
+  /// 获取设备 ID（iOS 写死）
   Future<String> _getDeviceId() async {
-    try {
-      final deviceInfo = DeviceInfoPlugin();
-      if (Platform.isAndroid) {
-        final androidInfo = await deviceInfo.androidInfo;
-        return androidInfo.id;
-      } else if (Platform.isIOS) {
-        final iosInfo = await deviceInfo.iosInfo;
-        return iosInfo.identifierForVendor ?? 'unknown';
-      }
-      return 'unknown';
-    } catch (e) {
-      AppLogger.warning('获取设备ID失败', e);
-      return 'unknown';
-    }
+    return 'ios-device';
   }
 
   /// 判断是否是 Token 过期错误
