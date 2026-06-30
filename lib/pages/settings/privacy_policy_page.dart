@@ -19,7 +19,17 @@ class PrivacyPolicyPage extends StatelessWidget {
         ),
         LegalSection(
           '3. AI 数据传输',
-          '向 AI 助手发送问题时，你的问题、衣橱文字摘要、愿望清单和近期穿搭文字摘要会传输至 DeepSeek。图片文件不会发送给 AI。',
+          'AI 助手功能由杭州深度求索科技有限公司（DeepSeek）提供。当你向 AI 助手发送问题时，以下内容会传输至 DeepSeek 服务器进行处理：\n\n'
+          '· 你输入的聊天文字\n'
+          '· 衣橱物品的文字描述（名称、分类、颜色、季节、养护备注）\n'
+          '· 愿望清单的文字描述（名称、分类、颜色、季节）\n'
+          '· 最近 8 条穿搭记录的文字摘要（日期、标题、场合、心情、备注）\n\n'
+          '图片和视频文件不会发送给 AI 提供商。AI 服务仅在用户主动提问时实时调用，不会在后台自动上传数据。\n\n'
+          '关于 DeepSeek 的数据处理政策，请参阅：https://platform.deepseek.com/privacy',
+        ),
+        LegalSection(
+          '3.1 聊天记录存储',
+          '聊天记录仅保存在你的本地设备中，不会在 DeepSeek 服务器端持久化。AI 回复由 DeepSeek 实时生成后返回客户端，对话历史仅存储在你的设备本地。',
         ),
         LegalSection(
           '4. 数据删除',
