@@ -161,7 +161,7 @@ class _OutfitDetailPageState extends State<OutfitDetailPage> {
                           width: 190,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: AppColors.mistBlue,
+                            color: AppColors.surfaceElevated,
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -224,15 +224,15 @@ class _DetailPill extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F6FA),
+        color: AppColors.surfaceElevated,
         borderRadius: BorderRadius.circular(14),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: AppColors.primary),
+          Icon(icon, size: 16, color: AppColors.primaryLight),
           const SizedBox(width: 6),
-          Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
+          Text(label, style: const TextStyle(fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
         ],
       ),
     );

@@ -116,13 +116,13 @@ class _ClothingDetailPageState extends State<ClothingDetailPage> {
                       ),
                       decoration: BoxDecoration(
                         color: _item.isPurchased
-                            ? AppColors.mistBlue
+                            ? AppColors.surfaceElevated
                             : AppColors.blush,
                         borderRadius: BorderRadius.circular(14),
                       ),
                       child: Text(
                         _item.isPurchased ? '已拥有' : '愿望清单',
-                        style: const TextStyle(fontWeight: FontWeight.w700),
+                        style: const TextStyle(fontWeight: FontWeight.w700, color: AppColors.textPrimary),
                       ),
                     ),
                   ],
@@ -150,7 +150,7 @@ class _ClothingDetailPageState extends State<ClothingDetailPage> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(18),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF6F8FC),
+                    color: AppColors.surfaceElevated,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
@@ -180,7 +180,7 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
       decoration: BoxDecoration(
-        color: AppColors.mistBlue.withValues(alpha: 0.7),
+        color: AppColors.surfaceElevated.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(

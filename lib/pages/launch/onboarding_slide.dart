@@ -43,12 +43,12 @@ class OnboardingSlide extends StatelessWidget {
                   height: imageHeight,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.surface,
                     borderRadius: BorderRadius.circular(38),
                     border: Border.all(color: AppColors.divider),
                     boxShadow: const [
                       BoxShadow(
-                        color: Color(0x123978F6),
+                        color: Color(0x337C3AED),
                         blurRadius: 34,
                         offset: Offset(0, 18),
                       ),
@@ -63,14 +63,14 @@ class OnboardingSlide extends StatelessWidget {
                     errorBuilder: (_, _, _) => const DecoratedBox(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [AppColors.mistBlue, AppColors.blush],
+                          colors: [Color(0xFF4C1D95), Color(0xFF6D28D9)],
                         ),
                       ),
                       child: Center(
                         child: Icon(
                           Icons.checkroom_rounded,
                           size: 72,
-                          color: AppColors.primary,
+                          color: Colors.white,
                         ),
                       ),
                     ),

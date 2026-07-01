@@ -113,7 +113,7 @@ class _EditClothingPageState extends State<EditClothingPage> {
                 AspectRatio(
                   aspectRatio: 1.05,
                   child: Material(
-                    color: AppColors.mistBlue,
+                    color: AppColors.surfaceElevated,
                     borderRadius: BorderRadius.circular(30),
                     clipBehavior: Clip.antiAlias,
                     child: InkWell(

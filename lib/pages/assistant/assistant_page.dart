@@ -165,11 +165,6 @@ class _AssistantPageState extends State<AssistantPage> {
                           ),
                           const SizedBox(height: 7),
                           Text(
-                            'AI 穿搭助手',
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
-                          const SizedBox(height: 7),
-                          Text(
                             '懂你的衣橱，也帮你理性购物',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
@@ -179,7 +174,11 @@ class _AssistantPageState extends State<AssistantPage> {
                     Container(
                       padding: const EdgeInsets.all(11),
                       decoration: BoxDecoration(
-                        color: AppColors.ink,
+                        gradient: const LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xFF7C3AED), Color(0xFF4C1D95)],
+                        ),
                         borderRadius: BorderRadius.circular(18),
                       ),
                       child: const Icon(
@@ -204,9 +203,9 @@ class _AssistantPageState extends State<AssistantPage> {
                       avatar: Icon(
                         index == 3 ? Icons.eco_outlined : Icons.bolt_rounded,
                         size: 17,
-                        color: AppColors.primary,
+                        color: AppColors.primaryLight,
                       ),
-                      backgroundColor: Colors.white.withValues(alpha: 0.88),
+                      backgroundColor: AppColors.surfaceElevated,
                       side: const BorderSide(color: AppColors.divider),
                       onPressed: () => _sendQuestion(question),
                     );
@@ -284,7 +283,7 @@ class _AssistantWelcome extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.88),
+            color: AppColors.surface.withValues(alpha: 0.88),
             borderRadius: BorderRadius.circular(22),
             border: Border.all(color: AppColors.divider),
           ),
@@ -326,10 +325,10 @@ class _MessageBubble extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(15, 12, 15, 12),
         decoration: BoxDecoration(
           color: message.isError
-              ? const Color(0xFFFFEEF0)
+              ? const Color(0xFF3B1020)
               : isUser
               ? AppColors.primary
-              : Colors.white,
+              : AppColors.surfaceElevated,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(20),
             topRight: const Radius.circular(20),
@@ -340,7 +339,7 @@ class _MessageBubble extends StatelessWidget {
               ? null
               : Border.all(
                   color: message.isError
-                      ? AppColors.danger.withValues(alpha: 0.2)
+                      ? AppColors.danger.withValues(alpha: 0.3)
                       : AppColors.divider,
                 ),
         ),
@@ -381,7 +380,7 @@ class _TypingBubble extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 6),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.surfaceElevated,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: AppColors.divider),
         ),
@@ -416,7 +415,7 @@ class _ChatComposer extends StatelessWidget {
         MediaQuery.paddingOf(context).bottom + 10,
       ),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.96),
+        color: AppColors.surface.withValues(alpha: 0.96),
         border: const Border(top: BorderSide(color: AppColors.divider)),
       ),
       child: Row(

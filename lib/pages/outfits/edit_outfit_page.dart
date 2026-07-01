@@ -127,7 +127,7 @@ class _EditOutfitPageState extends State<EditOutfitPage> {
                 AspectRatio(
                   aspectRatio: 1.12,
                   child: Material(
-                    color: AppColors.mistBlue,
+                    color: AppColors.surfaceElevated,
                     borderRadius: BorderRadius.circular(30),
                     clipBehavior: Clip.antiAlias,
                     child: InkWell(
@@ -201,10 +201,10 @@ class _EditOutfitPageState extends State<EditOutfitPage> {
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 4),
                   leading: const CircleAvatar(
-                    backgroundColor: AppColors.mistBlue,
+                    backgroundColor: AppColors.surfaceElevated,
                     child: Icon(
                       Icons.calendar_today_rounded,
-                      color: AppColors.primary,
+                      color: AppColors.primaryLight,
                       size: 19,
                     ),
                   ),

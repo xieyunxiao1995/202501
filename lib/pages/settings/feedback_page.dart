@@ -80,7 +80,7 @@ ${_contentController.text.trim()}
               Container(
                 padding: const EdgeInsets.all(19),
                 decoration: BoxDecoration(
-                  color: AppColors.mistBlue,
+                  color: AppColors.surfaceElevated,
                   borderRadius: BorderRadius.circular(22),
                 ),
                 child: Text(

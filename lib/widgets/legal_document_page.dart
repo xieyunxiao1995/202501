@@ -34,18 +34,18 @@ class LegalDocumentPage extends StatelessWidget {
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [AppColors.mistBlue, AppColors.blush],
+                colors: [Color(0xFF4C1D95), Color(0xFF6D28D9)],
               ),
               borderRadius: BorderRadius.circular(22),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(intro, style: Theme.of(context).textTheme.bodyLarge),
+                Text(intro, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white)),
                 const SizedBox(height: 10),
                 Text(
                   '更新日期：$updatedAt',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70),
                 ),
               ],
             ),

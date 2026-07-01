@@ -15,28 +15,28 @@ class AmbientBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: AppColors.background,
       child: Stack(
         children: [
           Positioned(
             top: -100 + topPadding,
             right: -90,
-            child: const _Glow(size: 260, color: AppColors.mistBlue),
+            child: const _Glow(size: 280, color: Color(0xFF4C1D95)),
           ),
           Positioned(
             top: 230 + topPadding,
             left: -130,
             child: _Glow(
-              size: 250,
-              color: AppColors.blush.withValues(alpha: 0.72),
+              size: 260,
+              color: const Color(0xFF7C3AED).withValues(alpha: 0.35),
             ),
           ),
           Positioned(
             bottom: -170,
             right: -120,
             child: _Glow(
-              size: 310,
-              color: AppColors.mistBlue.withValues(alpha: 0.72),
+              size: 320,
+              color: const Color(0xFFDB2777).withValues(alpha: 0.2),
             ),
           ),
           Positioned.fill(child: child),

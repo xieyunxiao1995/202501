@@ -82,11 +82,6 @@ class _WardrobePageState extends State<WardrobePage> {
                         ),
                         const SizedBox(height: 7),
                         Text(
-                          '我的衣橱',
-                          style: Theme.of(context).textTheme.displaySmall,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
                           '${widget.items.length} 件单品 · 让每件衣服都被看见',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
@@ -120,8 +115,8 @@ class _WardrobePageState extends State<WardrobePage> {
                     label: Text(label),
                     showCheckmark: false,
                     side: BorderSide.none,
-                    selectedColor: AppColors.ink,
-                    backgroundColor: Colors.white.withValues(alpha: 0.78),
+                    selectedColor: AppColors.primary,
+                    backgroundColor: AppColors.surfaceElevated,
                     labelStyle: TextStyle(
                       color: selected ? Colors.white : AppColors.muted,
                       fontWeight: FontWeight.w600,
@@ -180,69 +175,99 @@ class _ClothingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardIndex = item.name.hashCode;
+    final usePurple = cardIndex.abs() % 2 == 0;
+    final gradientColors = usePurple
+        ? AppColors.cardGradientPurple
+        : AppColors.cardGradientTeal;
     return Material(
-      color: Colors.white,
+      color: Colors.transparent,
       borderRadius: BorderRadius.circular(24),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  LocalImage(path: item.imagePath),
-                  Positioned(
-                    right: 10,
-                    top: 10,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 9,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.9),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        item.category,
-                        style: const TextStyle(
-                          color: AppColors.ink,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: gradientColors,
+            ),
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: (usePurple
+                        ? const Color(0xFF6D28D9)
+                        : const Color(0xFF0891B2))
+                    .withValues(alpha: 0.3),
+                blurRadius: 16,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    LocalImage(path: item.imagePath),
+                    Positioned(
+                      right: 10,
+                      top: 10,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 9,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.9),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          item.category,
+                          style: const TextStyle(
+                            color: Color(0xFF1A1230),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(13, 12, 13, 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '${item.color} · ${item.season}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(
-                      context,
-                    ).textTheme.bodyMedium?.copyWith(fontSize: 12),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(13, 12, 13, 14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${item.color} · ${item.season}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white.withValues(alpha: 0.75),
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -31,7 +31,7 @@ class HelpPage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [AppColors.mistBlue, AppColors.blush],
+                colors: [Color(0xFF4C1D95), Color(0xFF6D28D9)],
               ),
               borderRadius: BorderRadius.circular(24),
             ),
@@ -39,7 +39,7 @@ class HelpPage extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.lightbulb_outline_rounded,
-                  color: AppColors.primary,
+                  color: Colors.white,
                   size: 30,
                 ),
                 const SizedBox(width: 14),
@@ -56,7 +56,7 @@ class HelpPage extends StatelessWidget {
           ...items.map(
             (item) => Card(
               elevation: 0,
-              color: const Color(0xFFF8F9FC),
+              color: AppColors.surfaceElevated,
               margin: const EdgeInsets.only(bottom: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18),
@@ -68,7 +68,7 @@ class HelpPage extends StatelessWidget {
                 childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 17),
                 title: Text(
                   item.$1,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
+                  style: const TextStyle(fontWeight: FontWeight.w700, color: AppColors.textPrimary),
                 ),
                 children: [
                   Align(

@@ -16,9 +16,21 @@ class LocalImage extends StatelessWidget {
   final BoxFit fit;
   final IconData icon;
 
+  bool get _isAsset => path.startsWith('assets/');
+
   @override
   Widget build(BuildContext context) {
-    if (path.isEmpty || !File(path).existsSync()) return _fallback();
+    if (path.isEmpty) return _fallback();
+    if (_isAsset) {
+      return Image.asset(
+        path,
+        fit: fit,
+        width: double.infinity,
+        height: double.infinity,
+        errorBuilder: (_, _, _) => _fallback(),
+      );
+    }
+    if (!File(path).existsSync()) return _fallback();
     return Image.file(
       File(path),
       fit: fit,
@@ -34,10 +46,10 @@ class LocalImage extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [AppColors.mistBlue, Colors.white, AppColors.blush],
+          colors: [Color(0xFF2D1B4E), Color(0xFF1A1230), Color(0xFF4C1D95)],
         ),
       ),
-      child: Center(child: Icon(icon, color: AppColors.primary, size: 40)),
+      child: Center(child: Icon(icon, color: AppColors.primaryLight, size: 40)),
     );
   }
 }

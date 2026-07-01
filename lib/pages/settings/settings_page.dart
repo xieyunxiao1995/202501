@@ -69,8 +69,6 @@ class SettingsPage extends StatelessWidget {
                 letterSpacing: 1.5,
               ),
             ),
-            const SizedBox(height: 7),
-            Text('设置', style: Theme.of(context).textTheme.displaySmall),
             const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.all(20),
@@ -78,12 +76,12 @@ class SettingsPage extends StatelessWidget {
                 gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF172033), Color(0xFF315EA8)],
+                  colors: [Color(0xFF7C3AED), Color(0xFF4C1D95)],
                 ),
                 borderRadius: BorderRadius.circular(28),
                 boxShadow: const [
                   BoxShadow(
-                    color: Color(0x22172033),
+                    color: Color(0x447C3AED),
                     blurRadius: 26,
                     offset: Offset(0, 14),
                   ),
@@ -251,7 +249,7 @@ class _SettingsGroup extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.9),
+            color: AppColors.surface.withValues(alpha: 0.9),
             borderRadius: BorderRadius.circular(22),
             border: Border.all(color: AppColors.divider),
           ),
@@ -294,7 +292,7 @@ class _SettingsTile extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: titleColor ?? AppColors.ink,
+          color: titleColor ?? AppColors.textPrimary,
           fontWeight: FontWeight.w600,
         ),
       ),

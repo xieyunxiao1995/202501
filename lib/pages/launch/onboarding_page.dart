@@ -90,7 +90,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       width: 42,
                       height: 42,
                       decoration: BoxDecoration(
-                        color: AppColors.ink,
+                        gradient: const LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xFF7C3AED), Color(0xFF4C1D95)],
+                        ),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: const Center(
@@ -108,7 +112,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const Text(
                       'CLOTH',
                       style: TextStyle(
-                        color: AppColors.ink,
+                        color: AppColors.textPrimary,
                         fontSize: 13,
                         fontWeight: FontWeight.w900,
                         letterSpacing: 2.2,

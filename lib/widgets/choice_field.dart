@@ -34,7 +34,7 @@ class ChoiceField extends StatelessWidget {
                   label: Text(option),
                   showCheckmark: false,
                   selectedColor: AppColors.primary,
-                  backgroundColor: const Color(0xFFF5F7FB),
+                  backgroundColor: AppColors.surfaceElevated,
                   side: BorderSide.none,
                   labelStyle: TextStyle(
                     color: selected ? Colors.white : AppColors.muted,

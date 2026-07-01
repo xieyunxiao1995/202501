@@ -44,7 +44,11 @@ class _ConsentLoginPageState extends State<ConsentLoginPage> {
                             width: 44,
                             height: 44,
                             decoration: BoxDecoration(
-                              color: AppColors.ink,
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [Color(0xFF7C3AED), Color(0xFF4C1D95)],
+                              ),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: const Center(
@@ -61,7 +65,7 @@ class _ConsentLoginPageState extends State<ConsentLoginPage> {
                           const Text(
                             'CPDD小屋',
                             style: TextStyle(
-                              color: AppColors.ink,
+                              color: AppColors.textPrimary,
                               fontSize: 13,
                               fontWeight: FontWeight.w900,
                               letterSpacing: 1.8,
@@ -73,12 +77,12 @@ class _ConsentLoginPageState extends State<ConsentLoginPage> {
                       Container(
                         height: 280,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: AppColors.surface,
                           borderRadius: BorderRadius.circular(34),
                           border: Border.all(color: AppColors.divider),
                           boxShadow: const [
                             BoxShadow(
-                              color: Color(0x133978F6),
+                              color: Color(0x337C3AED),
                               blurRadius: 30,
                               offset: Offset(0, 16),
                             ),
@@ -108,11 +112,11 @@ class _ConsentLoginPageState extends State<ConsentLoginPage> {
                       Container(
                         padding: const EdgeInsets.fromLTRB(10, 8, 12, 8),
                         decoration: BoxDecoration(
-                          color: Colors.white.withValues(alpha: 0.9),
+                          color: AppColors.surface.withValues(alpha: 0.9),
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(
                             color: _accepted
-                                ? AppColors.primary.withValues(alpha: 0.35)
+                                ? AppColors.primary.withValues(alpha: 0.5)
                                 : AppColors.divider,
                           ),
                         ),
@@ -126,7 +130,7 @@ class _ConsentLoginPageState extends State<ConsentLoginPage> {
                             const Text(
                               '我已阅读并同意',
                               style: TextStyle(
-                                color: AppColors.ink,
+                                color: AppColors.textPrimary,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

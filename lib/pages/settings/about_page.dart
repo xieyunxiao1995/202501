@@ -35,18 +35,18 @@ class AboutPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
-              color: AppColors.mistBlue,
+              color: AppColors.surfaceElevated,
               borderRadius: BorderRadius.circular(22),
             ),
             child: const Row(
               children: [
-                Icon(Icons.favorite_rounded, color: AppColors.primary),
+                Icon(Icons.favorite_rounded, color: AppColors.accent),
                 SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     '少一点冲动购买，多一点真正喜欢。',
                     style: TextStyle(
-                      color: AppColors.ink,
+                      color: AppColors.textPrimary,
                       fontWeight: FontWeight.w700,
                       height: 1.4,
                     ),

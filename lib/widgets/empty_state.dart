@@ -29,11 +29,11 @@ class EmptyState extends StatelessWidget {
             Container(
               constraints: const BoxConstraints(maxWidth: 286, maxHeight: 250),
               decoration: BoxDecoration(
-                color: Colors.white.withValues(alpha: 0.82),
+                color: AppColors.surface.withValues(alpha: 0.82),
                 borderRadius: BorderRadius.circular(36),
                 boxShadow: const [
                   BoxShadow(
-                    color: Color(0x0D3978F6),
+                    color: Color(0x337C3AED),
                     blurRadius: 30,
                     offset: Offset(0, 14),
                   ),
@@ -48,7 +48,7 @@ class EmptyState extends StatelessWidget {
                   height: 210,
                   child: Icon(
                     Icons.auto_awesome_rounded,
-                    color: AppColors.primary,
+                    color: AppColors.primaryLight,
                     size: 48,
                   ),
                 ),
