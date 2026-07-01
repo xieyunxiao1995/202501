@@ -19,7 +19,7 @@ void main() {
     // 初始化依赖注入
     await ServiceLocator.init();
 
-    AppLogger.info('一策定江山启动完成 - 环境: ${const AppConfig().environmentName}');
+    AppLogger.info('无双魏蜀吴启动完成 - 环境: ${const AppConfig().environmentName}');
 
     // 使用 Riverpod ProviderScope 包裹应用
     runApp(

@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
             ),
             const SizedBox(height: 24),
             Text(
-              '一策定江山',
+              '无双魏蜀吴',
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                     color: AppColors.accent,
                     fontWeight: FontWeight.bold,

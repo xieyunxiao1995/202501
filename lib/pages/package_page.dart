@@ -54,7 +54,7 @@ class _PackagePageState extends State<PackagePage> {
       // 道具
       _PackageItem(name: '武将招募令', icon: '📜', count: 12, category: _ItemCategory.prop, rarity: '稀有', desc: '在酒馆招募武将的凭证'),
       _PackageItem(name: '铜钱', icon: '🪙', count: 123000, category: _ItemCategory.prop, rarity: '普通', desc: '游戏通用货币', suffix: '万'),
-      _PackageItem(name: '元宝', icon: '💎', count: 12345, category: _ItemCategory.prop, rarity: '稀有', desc: '珍贵货币，可购买稀有道具'),
+      _PackageItem(name: '元宝', icon: 'assets/UI/icon_0009.png', count: 12345, category: _ItemCategory.prop, rarity: '稀有', desc: '珍贵货币，可购买稀有道具'),
       _PackageItem(name: '体力丹', icon: '🍡', count: 25, category: _ItemCategory.prop, rarity: '普通', desc: '恢复30点体力'),
       _PackageItem(name: '经验书', icon: '📙', count: 120, category: _ItemCategory.prop, rarity: '普通', desc: '武将获得500经验'),
       _PackageItem(name: '高级经验书', icon: '📕', count: 36, category: _ItemCategory.prop, rarity: '稀有', desc: '武将获得5000经验'),
@@ -106,6 +106,13 @@ class _PackagePageState extends State<PackagePage> {
     }
   }
 
+  Widget _buildIcon(String icon, double size) {
+    if (icon.startsWith('assets/')) {
+      return Image.asset(icon, width: size, height: size);
+    }
+    return Text(icon, style: TextStyle(fontSize: size));
+  }
+
   void _showItemDetail(_PackageItem item) {
     showDialog(
       context: context,
@@ -114,7 +121,7 @@ class _PackagePageState extends State<PackagePage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         title: Row(
           children: [
-            Text(item.icon, style: const TextStyle(fontSize: 28)),
+            _buildIcon(item.icon, 28),
             const SizedBox(width: 10),
             Expanded(
               child: Column(
@@ -206,7 +213,7 @@ class _PackagePageState extends State<PackagePage> {
         actions: [
           _CurrencyChip(icon: '🪙', value: _fmt(_coins)),
           const SizedBox(width: 6),
-          _CurrencyChip(icon: '💎', value: '$_gems'),
+          _CurrencyChip(icon: 'assets/UI/icon_0009.png', value: '$_gems'),
           const SizedBox(width: 12),
         ],
       ),
@@ -215,7 +222,7 @@ class _PackagePageState extends State<PackagePage> {
         bottom: true,
         child: Container(
           decoration: const BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/images/city/jiuguan.png'), fit: BoxFit.cover),
+            image: DecorationImage(image: AssetImage('assets/Bg/Bg8.png'), fit: BoxFit.cover),
           ),
           child: Column(
             children: [
@@ -369,7 +376,7 @@ class _PackagePageState extends State<PackagePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(item.icon, style: const TextStyle(fontSize: 26)),
+            _buildIcon(item.icon, 26),
             const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -411,7 +418,9 @@ class _CurrencyChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(icon, style: const TextStyle(fontSize: 12)),
+          icon.startsWith('assets/')
+              ? Image.asset(icon, width: 14, height: 14)
+              : Text(icon, style: const TextStyle(fontSize: 12)),
           const SizedBox(width: 3),
           Text(value, style: const TextStyle(color: Color(0xFFE8D5A3), fontSize: 12, fontWeight: FontWeight.bold)),
         ],

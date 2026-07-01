@@ -230,7 +230,7 @@ class _WeaponWorkshopPageState extends State<WeaponWorkshopPage> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/city/wuqifang.png'),
+                  image: AssetImage('assets/Bg/Bg8.png'),
                   fit: BoxFit.cover,
                 ),
               ),

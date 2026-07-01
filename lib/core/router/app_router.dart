@@ -21,6 +21,7 @@ import '../../pages/maincity_page.dart';
 import '../../pages/personal_page.dart';
 import '../../pages/recruit_heroes_page.dart';
 import '../../pages/package_page.dart';
+import '../../pages/activity/activity_pages.dart';
 import '../../pages/battle/battle_page.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/stage/chapter_campaign_page.dart';
@@ -369,7 +370,8 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: 'chapter/:chapterIndex',
                 name: 'storyChapter',
                 pageBuilder: (context, state) {
-                  final chapterIndex = int.tryParse(
+                  final chapterIndex =
+                      int.tryParse(
                         state.pathParameters['chapterIndex'] ?? '0',
                       ) ??
                       0;
@@ -781,8 +783,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'daily',
                 name: 'dailyQuest',
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: '日常任务'),
+                pageBuilder: (context, state) => _FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const DailyActivityPage(),
+                ),
               ),
               GoRoute(
                 path: 'weekly',
@@ -809,30 +813,40 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: RoutePaths.activityList,
             name: 'activityList',
-            builder: (context, state) => const _PlaceholderPage(title: '活动列表'),
+            pageBuilder: (context, state) => _FadeTransitionPage(
+              key: state.pageKey,
+              child: const ActivityHubPage(),
+            ),
             routes: [
-              GoRoute(
-                path: ':id',
-                name: 'activityDetail',
-                builder: (context, state) {
-                  final id = state.pathParameters['id'] ?? '';
-                  return _PlaceholderPage(title: '活动详情 #$id');
-                },
-              ),
               GoRoute(
                 path: 'festival/:id',
                 name: 'festivalActivity',
-                builder: (context, state) {
-                  final id = state.pathParameters['id'] ?? '';
-                  return _PlaceholderPage(title: '节日活动 #$id');
-                },
+                pageBuilder: (context, state) => _FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const DailySignInPage(),
+                ),
               ),
               GoRoute(
                 path: 'limited/:id',
                 name: 'limitedEvent',
-                builder: (context, state) {
+                pageBuilder: (context, state) => _FadeTransitionPage(
+                  key: state.pageKey,
+                  child: const LimitedGiftPage(),
+                ),
+              ),
+              GoRoute(
+                path: ':id',
+                name: 'activityDetail',
+                pageBuilder: (context, state) {
                   final id = state.pathParameters['id'] ?? '';
-                  return _PlaceholderPage(title: '限时活动 #$id');
+                  final child = switch (id) {
+                    'sign-in' => const DailySignInPage(),
+                    'world-recruit' => const WorldRecruitEventPage(),
+                    'daily' => const DailyActivityPage(),
+                    'limited-gift' => const LimitedGiftPage(),
+                    _ => const ActivityHubPage(),
+                  };
+                  return _FadeTransitionPage(key: state.pageKey, child: child);
                 },
               ),
             ],
@@ -1039,7 +1053,7 @@ class _ExpandFromRectTransitionPage extends CustomTransitionPage<void> {
                opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
                  CurvedAnimation(
                    parent: animation,
-                   curve: Interval(0.0, 0.4, curve: Curves.easeOut),
+                   curve: const Interval(0.0, 0.4, curve: Curves.easeOut),
                  ),
                ),
                child: child,
@@ -1063,12 +1077,7 @@ class MainShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 移除底部安全区域，缩小导航栏高度
-    return MediaQuery.removePadding(
-      context: context,
-      removeBottom: true,
-      child: Scaffold(body: child, bottomNavigationBar: const _BottomNavBar()),
-    );
+    return Scaffold(body: child, bottomNavigationBar: const _BottomNavBar());
   }
 }
 
@@ -1082,37 +1091,39 @@ class _BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentIndex = _calculateSelectedIndex(context);
 
-    return NavigationBar(
+    return SafeArea(
+      child: NavigationBar(
       height: 60,
       selectedIndex: currentIndex,
       onDestinationSelected: (index) => _onItemTapped(context, index),
-      destinations: const [
+      destinations: [
         NavigationDestination(
-          icon: Icon(Icons.home_outlined),
-          selectedIcon: Icon(Icons.home),
+          icon: Image.asset('assets/UI/icon_0012.png', width: 24, height: 24),
+          selectedIcon: Image.asset('assets/UI/icon_0012.png', width: 24, height: 24),
           label: '主页',
         ),
         NavigationDestination(
-          icon: Icon(Icons.people_outline),
-          selectedIcon: Icon(Icons.people),
+          icon: Image.asset('assets/UI/icon_0013.png', width: 24, height: 24),
+          selectedIcon: Image.asset('assets/UI/icon_0013.png', width: 24, height: 24),
           label: '武将',
         ),
         NavigationDestination(
-          icon: Icon(Icons.location_city_outlined),
-          selectedIcon: Icon(Icons.location_city),
+          icon: Image.asset('assets/UI/icon_0014.png', width: 24, height: 24),
+          selectedIcon: Image.asset('assets/UI/icon_0014.png', width: 24, height: 24),
           label: '剧情',
         ),
         NavigationDestination(
-          icon: Icon(Icons.casino_outlined),
-          selectedIcon: Icon(Icons.casino),
+          icon: Image.asset('assets/UI/icon_0015.png', width: 24, height: 24),
+          selectedIcon: Image.asset('assets/UI/icon_0015.png', width: 24, height: 24),
           label: '战斗',
         ),
         NavigationDestination(
-          icon: Icon(Icons.backpack_outlined),
-          selectedIcon: Icon(Icons.backpack),
+          icon: Image.asset('assets/UI/icon_0016.png', width: 24, height: 24),
+          selectedIcon: Image.asset('assets/UI/icon_0016.png', width: 24, height: 24),
           label: '背包',
         ),
       ],
+      ),
     );
   }
 

@@ -23,7 +23,7 @@ class _ObservatoryPageState extends State<ObservatoryPage> with SingleTickerProv
   // 奖池
   static const _prizePool = [
     {'name': '招贤令', 'icon': '📜', 'rarity': 'rare', 'value': 'x2'},
-    {'name': '元宝', 'icon': '💎', 'rarity': 'common', 'value': 'x100'},
+    {'name': '元宝', 'icon': 'assets/UI/icon_0009.png', 'rarity': 'common', 'value': 'x100'},
     {'name': '铜钱', 'icon': '🪙', 'rarity': 'common', 'value': 'x56000'},
     {'name': '强化石', 'icon': '🔩', 'rarity': 'common', 'value': 'x5'},
     {'name': '武将碎片', 'icon': '🎴', 'rarity': 'rare', 'value': 'x3'},
@@ -173,7 +173,11 @@ class _ObservatoryPageState extends State<ObservatoryPage> with SingleTickerProv
                 border: Border.all(color: rarityColor.withAlpha(120), width: 2),
                 boxShadow: [BoxShadow(color: rarityColor.withAlpha(80), blurRadius: 20, spreadRadius: 2)],
               ),
-              child: Center(child: Text(prize['icon'] as String, style: const TextStyle(fontSize: 36))),
+              child: Center(
+                child: (prize['icon'] as String).startsWith('assets/')
+                    ? Image.asset(prize['icon'] as String, width: 40, height: 40)
+                    : Text(prize['icon'] as String, style: const TextStyle(fontSize: 36)),
+              ),
             ),
             const SizedBox(height: 12),
             Text(prize['name'] as String, style: const TextStyle(color: Color(0xFFE8D5A3), fontSize: 20, fontWeight: FontWeight.bold)),
@@ -259,7 +263,7 @@ class _ObservatoryPageState extends State<ObservatoryPage> with SingleTickerProv
         children: [
           const Positioned.fill(
             child: DecoratedBox(
-              decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/city/yanxingtai.png'), fit: BoxFit.cover)),
+              decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/Bg/Bg6.png'), fit: BoxFit.cover)),
             ),
           ),
           Positioned(
@@ -387,7 +391,7 @@ class _RewardsSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               _RewardItem(icon: '📜', value: '招贤令'),
-              _RewardItem(icon: '💎', value: '元宝'),
+              _RewardItem(icon: 'assets/UI/icon_0009.png', value: '元宝'),
               _RewardItem(icon: '🌟', value: '武将'),
             ],
           ),
@@ -409,7 +413,11 @@ class _RewardItem extends StatelessWidget {
         Container(
           width: 56, height: 56,
           decoration: BoxDecoration(color: const Color(0x20D4A84B), borderRadius: BorderRadius.circular(10), border: Border.all(color: const Color(0x30D4A84B))),
-          child: Center(child: Text(icon, style: const TextStyle(fontSize: 26))),
+          child: Center(
+            child: icon.startsWith('assets/')
+                ? Image.asset(icon, width: 28, height: 28)
+                : Text(icon, style: const TextStyle(fontSize: 26)),
+          ),
         ),
         const SizedBox(height: 6),
         Text(value, style: const TextStyle(color: Color(0xFFE8D5A3), fontSize: 14, fontWeight: FontWeight.bold)),

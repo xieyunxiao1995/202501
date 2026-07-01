@@ -155,6 +155,7 @@ class ResponseInterceptor extends Interceptor {
       DioExceptionType.connectionTimeout => NetworkException.timeout(url: url),
       DioExceptionType.sendTimeout => NetworkException.timeout(url: url),
       DioExceptionType.receiveTimeout => NetworkException.timeout(url: url),
+      DioExceptionType.transformTimeout => NetworkException.timeout(url: url),
       DioExceptionType.connectionError => NetworkException.noConnection(url: url),
       DioExceptionType.badResponse => _handleBadResponse(err, url),
       DioExceptionType.badCertificate => NetworkException.sslError(url: url),

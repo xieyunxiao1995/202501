@@ -6,7 +6,7 @@ class AppConstants {
   AppConstants._();
 
   /// 应用名称
-  static const String appName = '一策定江山';
+  static const String appName = '无双魏蜀吴';
 
   /// 应用包名
   static const String appPackageName = 'com.sanguogame.app';

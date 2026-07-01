@@ -270,7 +270,7 @@ class _TrainingGroundPageState extends State<TrainingGroundPage> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/city/jiaochang.png'),
+                  image: AssetImage('assets/Bg/Bg6.png'),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -160,7 +160,7 @@ class _CouncilHallPageState extends State<CouncilHallPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/yishitin.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg7.png'), fit: BoxFit.cover),
               ),
             ),
           ),

@@ -137,7 +137,7 @@ class _LordMansionPageState extends State<LordMansionPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/zhugongfu.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg5.png'), fit: BoxFit.cover)
               ),
             ),
           ),

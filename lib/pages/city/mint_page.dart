@@ -122,7 +122,7 @@ class _MintPageState extends State<MintPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/zhubishi.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg12.png'), fit: BoxFit.cover),
               ),
             ),
           ),

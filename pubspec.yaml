@@ -1,5 +1,5 @@
 name: sanguogame
-description: "一策定江山 - 三国策略卡牌RPG"
+description: "无双魏蜀吴 - 三国策略卡牌RPG"
 publish_to: 'none'
 version: 0.1.0
 
@@ -64,6 +64,8 @@ flutter:
 
   assets:
     - assets/data/
+    - assets/Bg/
+    - assets/UI/
     - assets/images/ui/
     - assets/images/city/
     - assets/images/generals/normal/

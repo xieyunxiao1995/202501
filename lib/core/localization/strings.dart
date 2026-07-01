@@ -13,7 +13,7 @@ class Strings {
   // ============================================================
 
   /// 应用名称
-  static const String appName = '一策定江山';
+  static const String appName = '无双魏蜀吴';
 
   /// 应用副标题
   static const String appSubtitle = '策略卡牌RPG';

@@ -5,7 +5,7 @@ import 'core/localization/app_localizations.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 
-/// 一策定江山 App 根组件
+/// 无双魏蜀吴 App 根组件
 ///
 /// 配置 MaterialApp.router，集成：
 /// - GoRouter 路由系统
@@ -20,7 +20,7 @@ class SanguoApp extends ConsumerWidget {
 
     return MaterialApp.router(
       // 应用标题
-      title: '一策定江山',
+      title: '无双魏蜀吴',
 
       // 国风暗色主题（默认）
       theme: AppTheme.lightTheme,

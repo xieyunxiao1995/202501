@@ -8,7 +8,7 @@ import '../core/router/route_paths.dart';
 
 /// 登录偏好存储 key
 class _LoginPrefs {
-  static const _accountKey = 'login_account';
+  static const _accountKey = 'login_character_name';
   static const _rememberPwdKey = 'login_remember_pwd';
   static const _agreedTermsKey = 'login_agreed_terms';
 
@@ -37,7 +37,7 @@ class _LoginPrefs {
 
 /// 登录页
 ///
-/// 包含账号密码登录、第三方登录以及服务器选择入口。
+/// 输入角色名字进行登录，以及服务器选择入口。
 /// 与闪屏页共享暗红渐变背景风格，保持视觉一致性。
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
     if (_accountController.text.trim().isEmpty) {
-      _showSnackBar('请输入任意账号');
+      _showSnackBar('请输入角色名字');
       return;
     }
 
@@ -180,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
 
 // ==================== 游戏标题 ====================
 
-/// 游戏标题 "一策定江山"
+/// 游戏标题 "无双魏蜀吴"
 class _GameTitle extends StatelessWidget {
   const _GameTitle();
 
@@ -190,7 +190,7 @@ class _GameTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          '一策定江山',
+          '无双魏蜀吴',
           style: GoogleFonts.liuJianMaoCao(
             fontSize: 55,
             height: 1.2,
@@ -235,7 +235,7 @@ class _GameTitle extends StatelessWidget {
 
 // ==================== 登录表单 ====================
 
-/// 账号密码输入表单
+/// 角色名字输入表单
 class _LoginForm extends StatelessWidget {
   const _LoginForm({
     required this.accountController,
@@ -255,7 +255,7 @@ class _LoginForm extends StatelessWidget {
         _InputField(
           controller: accountController,
           focusNode: accountFocusNode,
-          hintText: '请输入任意账号',
+          hintText: '请输入角色名字',
           prefixIcon: Icons.person_outline,
           textInputAction: TextInputAction.next,
         ),

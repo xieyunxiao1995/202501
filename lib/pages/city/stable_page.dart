@@ -244,7 +244,7 @@ class _StablePageState extends State<StablePage> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/city/majiu.png'),
+                  image: AssetImage('assets/Bg/Bg9.png'),
                   fit: BoxFit.cover,
                 ),
               ),

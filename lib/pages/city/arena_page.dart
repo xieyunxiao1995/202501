@@ -213,7 +213,7 @@ class _ArenaPageState extends State<ArenaPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/yanwuchang.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg7.png'), fit: BoxFit.cover),
               ),
             ),
           ),

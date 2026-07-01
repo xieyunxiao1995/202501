@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               // 标题
               Text(
-                '一策定江山',
+                '无双魏蜀吴',
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       color: AppColors.accent,
                       fontWeight: FontWeight.bold,

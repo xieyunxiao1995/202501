@@ -109,7 +109,16 @@ class _TavernPageState extends State<TavernPage> {
 
   void _recruit(int count) {
     final scrollCost = count;
-    final gemCost = count * 100; // 备用：1抽=100元宝
+    // 元宝单价随数量递减：1抽=100，10抽=90/抽，千抽=80/抽
+    final int gemPerDraw;
+    if (count >= 1000) {
+      gemPerDraw = 80;
+    } else if (count >= 10) {
+      gemPerDraw = 90;
+    } else {
+      gemPerDraw = 100;
+    }
+    final gemCost = count * gemPerDraw;
 
     if (_scrolls >= scrollCost) {
       // 使用招募令
@@ -133,6 +142,13 @@ class _TavernPageState extends State<TavernPage> {
   void _showResultDialog(List<_PoolGeneral> results) {
     final hasOrange = results.any((g) => g.rarity == '橙');
     final hasPurple = results.any((g) => g.rarity == '紫');
+    final isBulkDraw = results.length > 10;
+
+    // 统计各稀有度数量
+    final rarityCount = <String, int>{};
+    for (final g in results) {
+      rarityCount[g.rarity] = (rarityCount[g.rarity] ?? 0) + 1;
+    }
 
     showDialog(
       context: context,
@@ -148,7 +164,9 @@ class _TavernPageState extends State<TavernPage> {
             ),
             const SizedBox(width: 8),
             Text(
-              hasOrange ? '🌟 天命所归！' : hasPurple ? '✨ 良将入手' : '招募结果',
+              isBulkDraw
+                  ? '招募 ${results.length} 次结果'
+                  : hasOrange ? '🌟 天命所归！' : hasPurple ? '✨ 良将入手' : '招募结果',
               style: TextStyle(
                 color: hasOrange ? const Color(0xFFFF8C00) : hasPurple ? const Color(0xFFAB47BC) : const Color(0xFFE8D5A3),
                 fontSize: 18,
@@ -162,7 +180,13 @@ class _TavernPageState extends State<TavernPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (results.length == 1)
+              if (isBulkDraw) ...[
+                // 大量抽取：显示稀有度汇总
+                _RaritySummary(rarityCount: rarityCount),
+                const SizedBox(height: 10),
+                // 显示橙将和紫将详情
+                ..._buildRareResults(results),
+              ] else if (results.length == 1)
                 _ResultCard(general: results.first)
               else
                 Wrap(
@@ -185,6 +209,32 @@ class _TavernPageState extends State<TavernPage> {
     );
   }
 
+  /// 构建稀有武将（橙+紫）的结果卡片
+  List<Widget> _buildRareResults(List<_PoolGeneral> results) {
+    final rares = results.where((g) => g.rarity == '橙' || g.rarity == '紫').toList();
+    if (rares.isEmpty) return [const Text('本次未获得紫将及以上', style: TextStyle(color: Color(0x668B7E6A), fontSize: 12))];
+    final displayList = rares.length > 20 ? rares.sublist(0, 20) : rares;
+    return [
+      ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 180),
+        child: SingleChildScrollView(
+          child: Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: displayList
+                .map((g) => SizedBox(
+                      width: (MediaQuery.of(context).size.width - 120) / 4,
+                      child: _ResultCard(general: g, compact: true),
+                    ))
+                .toList(),
+          ),
+        ),
+      ),
+      if (rares.length > 20)
+        Text('...及其他 ${rares.length - 20} 位稀有武将', style: const TextStyle(color: Color(0x668B7E6A), fontSize: 11)),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,7 +248,7 @@ class _TavernPageState extends State<TavernPage> {
         actions: [
           _CurrencyChip(icon: '📜', value: '$_scrolls'),
           const SizedBox(width: 8),
-          _CurrencyChip(icon: '💎', value: '$_gems'),
+          _CurrencyChip(icon: 'assets/UI/icon_0009.png', value: '$_gems'),
           const SizedBox(width: 16),
         ],
       ),
@@ -209,7 +259,7 @@ class _TavernPageState extends State<TavernPage> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/city/jiuguan.png'),
+                  image: AssetImage('assets/Bg/Bg10.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -279,7 +329,9 @@ class _CurrencyChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(icon, style: const TextStyle(fontSize: 14)),
+          icon.startsWith('assets/')
+              ? Image.asset(icon, width: 16, height: 16)
+              : Text(icon, style: const TextStyle(fontSize: 14)),
           const SizedBox(width: 4),
           Text(
             value,
@@ -381,31 +433,53 @@ class _PanelTitle extends StatelessWidget {
   }
 }
 
-/// 招募按钮（单抽 & 十连）
+/// 招募按钮（单抽 & 十连 & 千抽）
 class _RecruitButtons extends StatelessWidget {
   const _RecruitButtons({required this.onRecruit});
   final ValueChanged<int> onRecruit;
 
+  static const _gemIcon = 'assets/UI/icon_0009.png';
+
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: _RecruitButton(
-            label: '招募一次',
-            cost: '消耗: 📜x1 或 💎x100',
-            isPrimary: false,
-            onTap: () => onRecruit(1),
-          ),
+        // 第一行：单抽 + 十连
+        Row(
+          children: [
+            Expanded(
+              child: _RecruitButton(
+                label: '招募一次',
+                scrollCount: 1,
+                gemCount: 100,
+                gemIcon: _gemIcon,
+                isPrimary: false,
+                onTap: () => onRecruit(1),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: _RecruitButton(
+                label: '招募十次',
+                scrollCount: 10,
+                gemCount: 900,
+                gemIcon: _gemIcon,
+                isPrimary: true,
+                onTap: () => onRecruit(10),
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _RecruitButton(
-            label: '招募十次',
-            cost: '消耗: 📜x10 或 💎x900',
-            isPrimary: true,
-            onTap: () => onRecruit(10),
-          ),
+        const SizedBox(height: 10),
+        // 第二行：千抽
+        _RecruitButton(
+          label: '千抽',
+          scrollCount: 1000,
+          gemCount: 80000,
+          gemIcon: _gemIcon,
+          isPrimary: true,
+          isHighlight: true,
+          onTap: () => onRecruit(1000),
         ),
       ],
     );
@@ -414,15 +488,21 @@ class _RecruitButtons extends StatelessWidget {
 
 class _RecruitButton extends StatelessWidget {
   final String label;
-  final String cost;
+  final int scrollCount;
+  final int gemCount;
+  final String gemIcon;
   final bool isPrimary;
+  final bool isHighlight;
   final VoidCallback onTap;
 
   const _RecruitButton({
     required this.label,
-    required this.cost,
+    required this.scrollCount,
+    required this.gemCount,
+    required this.gemIcon,
     required this.isPrimary,
     required this.onTap,
+    this.isHighlight = false,
   });
 
   @override
@@ -433,8 +513,10 @@ class _RecruitButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           gradient: isPrimary
-              ? const LinearGradient(
-                  colors: [Color(0xFFD4A84B), Color(0xFFB8922E)],
+              ? LinearGradient(
+                  colors: isHighlight
+                      ? const [Color(0xFFFF8C00), Color(0xFFD4A84B), Color(0xFFFF8C00)]
+                      : const [Color(0xFFD4A84B), Color(0xFFB8922E)],
                 )
               : null,
           color: isPrimary ? null : const Color(0x18D4A84B),
@@ -447,16 +529,34 @@ class _RecruitButton extends StatelessWidget {
               label,
               style: TextStyle(
                 color: isPrimary ? const Color(0xFF1A1111) : const Color(0xFFE8D5A3),
-                fontSize: 16,
+                fontSize: isHighlight ? 17 : 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              cost,
-              style: TextStyle(
-                color: isPrimary ? const Color(0xCC1A1111) : const Color(0x998B7E6A),
-                fontSize: 12,
+            // 消耗：招募令图标 + 数量  或  元宝图标 + 数量
+            RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  color: isPrimary ? const Color(0xCC1A1111) : const Color(0x998B7E6A),
+                  fontSize: 11,
+                ),
+                children: [
+                  const TextSpan(text: '消耗: '),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Text('📜', style: TextStyle(fontSize: 11)),
+                  ),
+                  TextSpan(text: 'x$scrollCount 或 '),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 1),
+                      child: Image.asset(gemIcon, width: 12, height: 12),
+                    ),
+                  ),
+                  TextSpan(text: 'x$gemCount'),
+                ],
               ),
             ),
           ],
@@ -563,6 +663,47 @@ class _RarityBox extends StatelessWidget {
           Text(percent, style: TextStyle(color: color.withOpacity(0.8), fontSize: 12)),
         ],
       ),
+    );
+  }
+}
+
+/// 批量抽取稀有度汇总
+class _RaritySummary extends StatelessWidget {
+  const _RaritySummary({required this.rarityCount});
+  final Map<String, int> rarityCount;
+
+  @override
+  Widget build(BuildContext context) {
+    const order = ['橙', '紫', '蓝', '铜'];
+    return Row(
+      children: order.where((r) => (rarityCount[r] ?? 0) > 0).map((rarity) {
+        final color = _TavernPageState._rarityColors[rarity]!;
+        final count = rarityCount[rarity]!;
+        return Expanded(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 3),
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+              color: color.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(6),
+              border: Border.all(color: color.withOpacity(0.4)),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  '$count',
+                  style: TextStyle(color: color, fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '$rarity将',
+                  style: TextStyle(color: color.withOpacity(0.9), fontSize: 11),
+                ),
+              ],
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }

@@ -146,7 +146,7 @@ class _GranaryPageState extends State<GranaryPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/liangcang.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg11.png'), fit: BoxFit.cover),
               ),
             ),
           ),

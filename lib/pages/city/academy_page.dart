@@ -175,7 +175,7 @@ class _AcademyPageState extends State<AcademyPage> {
           const Positioned.fill(
             child: DecoratedBox(
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/city/xuetang.png'), fit: BoxFit.cover),
+                image: DecorationImage(image: AssetImage('assets/Bg/Bg5.png'), fit: BoxFit.cover),
               ),
             ),
           ),

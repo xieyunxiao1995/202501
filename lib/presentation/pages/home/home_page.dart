@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
           // 货币显示
           _CurrencyChip(icon: Icons.monetization_on, label: '1000', color: AppColors.accent),
           const SizedBox(width: 8),
-          _CurrencyChip(icon: Icons.diamond, label: '100', color: Colors.purpleAccent),
+          _CurrencyChip(iconPath: 'assets/UI/icon_0009.png', label: '100', color: Colors.purpleAccent),
           const SizedBox(width: 8),
           _CurrencyChip(icon: Icons.bolt, label: '120/120', color: Colors.greenAccent),
         ],
@@ -103,12 +103,14 @@ class HomePage extends StatelessWidget {
 }
 
 class _CurrencyChip extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final String? iconPath;
   final String label;
   final Color color;
 
   const _CurrencyChip({
-    required this.icon,
+    this.icon,
+    this.iconPath,
     required this.label,
     required this.color,
   });
@@ -124,7 +126,10 @@ class _CurrencyChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 14, color: color),
+          if (iconPath != null)
+            Image.asset(iconPath!, width: 14, height: 14)
+          else if (icon != null)
+            Icon(icon, size: 14, color: color),
           const SizedBox(width: 4),
           Text(
             label,

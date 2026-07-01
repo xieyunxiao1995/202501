@@ -59,6 +59,7 @@ class RetryPolicy {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:
       case DioExceptionType.sendTimeout:
+      case DioExceptionType.transformTimeout:
       case DioExceptionType.connectionError:
         return true;
       case DioExceptionType.badResponse:

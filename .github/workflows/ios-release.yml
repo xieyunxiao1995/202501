@@ -86,7 +86,7 @@ jobs:
       - name: Upload using iTMSTransporter
         env:
           WORKING_DIRECTORY: build/ios/ipa
-          IPA_FILE_NAME: 一策定江山.ipa
+          IPA_FILE_NAME: 无双魏蜀吴.ipa
           APPLE_USERNAME: kaneKenneth058@icloud.com
           APPLE_PASSWORD: fnfr-khai-xlmb-xpmi
           APPLE_ASC_PROVIDER: N7KYX95W5Z
