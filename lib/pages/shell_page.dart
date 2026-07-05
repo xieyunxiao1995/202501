@@ -4,7 +4,6 @@ import '../app/app_theme.dart';
 import '../models/chat_message.dart';
 import '../models/clothing_item.dart';
 import '../models/outfit_entry.dart';
-import '../services/default_data_service.dart';
 import '../services/image_storage_service.dart';
 import '../services/local_storage_service.dart';
 import 'assistant/assistant_page.dart';
@@ -39,16 +38,7 @@ class _ShellPageState extends State<ShellPage> {
       var clothingItems = await _storage.loadClothingItems();
       final messages = await _storage.loadChatMessages();
 
-      // 首次启动时填充默认穿搭数据（衣橱不填充默认数据）
-      if (outfits.isEmpty) {
-        outfits = DefaultDataService.generateDefaultOutfits();
-        await _storage.saveOutfits(outfits);
-      }
-      // 清除之前遗留的默认衣橱数据（id 以 default_item_ 开头）
-      clothingItems = clothingItems
-          .where((item) => !item.id.startsWith('default_item_'))
-          .toList();
-      await _storage.saveClothingItems(clothingItems);
+
 
       if (!mounted) return;
       setState(() {
