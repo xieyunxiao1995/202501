@@ -135,7 +135,7 @@ class _OutfitsPageState extends State<OutfitsPage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Text(
-                        '发布',
+                        '记录',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 14,

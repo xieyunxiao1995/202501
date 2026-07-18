@@ -1,8 +1,5 @@
-import 'package:flutter/widgets.dart';
-
-import 'app/app.dart';
-export 'app/app.dart' show CpClothApp;
-
+// --- Auto-generated Dart execution file ---
+// You can run this file directly to test all generated code
 
 import 'setdelicatelayerimplement/conformdeclarativekernelgroup.dart';
 import 'setdelicatelayerimplement/continuenormalaspectimplement.dart';
@@ -40,8 +37,8 @@ import 'setdelicatelayerimplement/storepriormechanisminstance.dart';
 import 'setdelicatelayerimplement/trainuniformthresholdfilter.dart';
 import 'setdelicatelayerimplement/visitprimaryshapeextension.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+    print('--- Starting execution of all generated code ---');
 
     // --- Calling methods in initializestaticskewxinstance.dart ---
     await finishEuclideanMendHelper();
@@ -171,5 +168,5 @@ void main() async{
     final setautonumberimplementInstance = SetAutoNumberImplement();
     await setautonumberimplementInstance.keepBeginnerPolyfillExtension();
 
-  runApp(const CpClothApp());
+    print('--- All generated code has been executed ---');
 }
