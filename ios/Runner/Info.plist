@@ -19,17 +19,19 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.4</string>
+	<string>1.0.5</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.4</string>
+	<string>1.0.5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>可伴申请需要访问相机以拍摄衣物照片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>可伴申请需要访问相册以选择衣物照片</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>可伴申请需要访问麦克风以支持语音交互功能</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
