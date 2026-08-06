@@ -7,6 +7,7 @@ import 'privacy_policy_page.dart';
 import 'help_page.dart';
 import 'feedback_page.dart';
 import 'size_profile_page.dart';
+import 'background_music_page.dart';
 import '../wardrobe/style_preferences_page.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -52,6 +53,17 @@ class SettingsPage extends StatelessWidget {
                 icon: Icons.straighten,
                 title: '尺码管理',
                 caption: '更新我的尺码信息',
+              ),
+            ),
+            _tappable(
+              () => Navigator.push(
+                context,
+                FadeSlideRoute(builder: (_) => const BackgroundMusicPage()),
+              ),
+              const SettingRow(
+                icon: Icons.music_note_rounded,
+                title: '背景音乐',
+                caption: '选择曲目，享受沉浸式体验',
               ),
             ),
           ],

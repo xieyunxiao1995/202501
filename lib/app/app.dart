@@ -4,6 +4,7 @@ import '../core/animations/app_animations.dart';
 import '../data/local_storage.dart';
 import '../models/outfit_models.dart';
 import '../widgets/app_widgets.dart';
+import '../services/background_music_service.dart';
 import '../pages/home/home_page.dart';
 import '../pages/home/outfit_record_page.dart';
 import '../pages/ai_styling/ai_styling_page.dart';
@@ -96,6 +97,8 @@ class _ShellState extends State<Shell> {
       const SettingsPage(),
     ];
     _load();
+    // 初始化背景音乐服务
+    BackgroundMusicService().init();
   }
 
   Future<void> _load() async {
