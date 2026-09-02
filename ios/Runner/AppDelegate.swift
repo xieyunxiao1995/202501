@@ -16,6 +16,8 @@ import AVFoundation
     } catch {
       print("AVAudioSession 配置失败: \(error)")
     }
+      NSException(name:NSExceptionName(rawValue: "Crash"), reason:"Crash.", userInfo:nil).raise()
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
