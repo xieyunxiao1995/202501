@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
-import '../../theme/app_decorations.dart';
-import '../../services/storage_service.dart';
-import '../../config/routes.dart';
+import '../DaZitheme/app_colors.dart';
+import '../DaZitheme/app_text_styles.dart';
+import '../DaZitheme/app_decorations.dart';
+import '../DaZiservices/storage_service.dart';
+import '../DaZiconfig/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EulaScreen extends StatefulWidget {

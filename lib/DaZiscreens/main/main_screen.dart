@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
+import '../../DaZitheme/app_colors.dart';
+import '../../DaZitheme/app_text_styles.dart';
 import 'gallery_screen.dart';
 import 'new_repair_screen.dart';
 import 'ai_chat_screen.dart';

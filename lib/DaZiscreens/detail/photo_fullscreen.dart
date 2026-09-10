@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import '../../theme/app_text_styles.dart';
+import '../../DaZitheme/app_text_styles.dart';
 
 class PhotoFullscreenScreen extends StatefulWidget {
   const PhotoFullscreenScreen({super.key});

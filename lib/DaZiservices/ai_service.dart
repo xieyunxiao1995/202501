@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../config/app_config.dart';
-import '../models/chat_message.dart';
+import '../DaZiconfig/app_config.dart';
+import '../DaZimodels/chat_message.dart';
 
 class AIService {
   static const String _systemPrompt = '''

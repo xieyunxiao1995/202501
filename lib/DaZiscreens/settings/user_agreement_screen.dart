@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
+import '../../DaZitheme/app_colors.dart';
+import '../../DaZitheme/app_text_styles.dart';
 
 class UserAgreementScreen extends StatelessWidget {
   const UserAgreementScreen({super.key});

@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/repair_project.dart';
-import '../models/chat_message.dart';
-import '../models/user_preferences.dart';
-import '../models/repair_log.dart';
+import '../DaZimodels/repair_project.dart';
+import '../DaZimodels/chat_message.dart';
+import '../DaZimodels/user_preferences.dart';
+import '../DaZimodels/repair_log.dart';
 
 class StorageService {
   final SharedPreferences _prefs;

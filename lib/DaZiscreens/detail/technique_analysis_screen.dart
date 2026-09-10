@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
-import '../../services/storage_service.dart';
-import '../../services/project_service.dart';
+import '../../DaZitheme/app_colors.dart';
+import '../../DaZitheme/app_text_styles.dart';
+import '../../DaZiservices/storage_service.dart';
+import '../../DaZiservices/project_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TechniqueAnalysisScreen extends StatefulWidget {

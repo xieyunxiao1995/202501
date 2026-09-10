@@ -1,6 +1,6 @@
-import '../models/repair_project.dart';
-import '../services/storage_service.dart';
-import '../services/ai_service.dart';
+import '../DaZimodels/repair_project.dart';
+import '../DaZiservices/storage_service.dart';
+import '../DaZiservices/ai_service.dart';
 
 class ProjectService {
   final StorageService _storageService;

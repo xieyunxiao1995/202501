@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import '../screens/splash_screen.dart';
-import '../screens/onboarding/onboarding_screen.dart';
-import '../screens/eula_screen.dart';
-import '../screens/main/main_screen.dart';
-import '../screens/detail/repair_detail_screen.dart';
-import '../screens/detail/photo_fullscreen.dart';
-import '../screens/detail/technique_analysis_screen.dart';
-import '../screens/detail/repair_log_screen.dart';
-import '../screens/detail/add_repair_log_screen.dart';
-import '../screens/settings/about_screen.dart';
-import '../screens/settings/user_agreement_screen.dart';
-import '../screens/settings/privacy_policy_screen.dart';
-import '../screens/settings/help_tutorial_screen.dart';
-import '../screens/settings/feedback_screen.dart';
-import '../screens/statistics_screen.dart';
+import '../DaZiscreens/splash_screen.dart';
+import '../DaZiscreens/onboarding/onboarding_screen.dart';
+import '../DaZiscreens/eula_screen.dart';
+import '../DaZiscreens/main/main_screen.dart';
+import '../DaZiscreens/detail/repair_detail_screen.dart';
+import '../DaZiscreens/detail/photo_fullscreen.dart';
+import '../DaZiscreens/detail/technique_analysis_screen.dart';
+import '../DaZiscreens/detail/repair_log_screen.dart';
+import '../DaZiscreens/detail/add_repair_log_screen.dart';
+import '../DaZiscreens/settings/about_screen.dart';
+import '../DaZiscreens/settings/user_agreement_screen.dart';
+import '../DaZiscreens/settings/privacy_policy_screen.dart';
+import '../DaZiscreens/settings/help_tutorial_screen.dart';
+import '../DaZiscreens/settings/feedback_screen.dart';
+import '../DaZiscreens/statistics_screen.dart';
 import '../DaZiIAP/RestartMissedMetadataCache.dart';
 
 class AppRoutes {

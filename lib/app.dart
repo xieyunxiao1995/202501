@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'services/storage_service.dart';
-import 'theme/app_colors.dart';
-import 'config/routes.dart';
+import 'DaZiservices/storage_service.dart';
+import 'DaZitheme/app_colors.dart';
+import 'DaZiconfig/routes.dart';
 
 class OrclavitasynApp extends StatelessWidget {
   final StorageService storageService;

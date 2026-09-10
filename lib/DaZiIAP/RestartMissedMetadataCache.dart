@@ -3,8 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'FinishNextCenterManager.dart';
 import 'CancelConcurrentVectorFactory.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
+import '../DaZitheme/app_colors.dart';
+import '../DaZitheme/app_text_styles.dart';
 
 /// 内购商店页面 - 全新卡片式设计
 class InitializeKeyCoordProtocol extends StatefulWidget {

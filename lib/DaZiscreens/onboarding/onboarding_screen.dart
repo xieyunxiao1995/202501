@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
-import '../../theme/app_decorations.dart';
+import '../../DaZitheme/app_colors.dart';
+import '../../DaZitheme/app_text_styles.dart';
+import '../../DaZitheme/app_decorations.dart';
 import 'onboarding_step1.dart';
 import 'onboarding_step2.dart';
 import 'onboarding_step3.dart';
 import 'onboarding_step4.dart';
-import '../../config/routes.dart';
+import '../../DaZiconfig/routes.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

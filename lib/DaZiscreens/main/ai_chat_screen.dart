@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
-import '../../theme/app_colors.dart';
-import '../../theme/app_text_styles.dart';
-import '../../theme/app_decorations.dart';
-import '../../models/chat_message.dart';
-import '../../services/storage_service.dart';
-import '../../services/ai_service.dart';
-import '../../utils/constants.dart';
-import '../../utils/formatters.dart';
+import '../../DaZitheme/app_colors.dart';
+import '../../DaZitheme/app_text_styles.dart';
+import '../../DaZitheme/app_decorations.dart';
+import '../../DaZimodels/chat_message.dart';
+import '../../DaZiservices/storage_service.dart';
+import '../../DaZiservices/ai_service.dart';
+import '../../DaZiutils/constants.dart';
+import '../../DaZiutils/formatters.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AIChatScreen extends StatefulWidget {
