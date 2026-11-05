@@ -1,0 +1,23 @@
+{
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/UI/Scenes/ScenesView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ScenesView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ScenesView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ScenesView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ScenesView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ScenesView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/UI/Settings/AboutUsView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/AboutUsView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/AboutUsView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/AboutUsView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/AboutUsView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/AboutUsView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/UI/Settings/DataManagementView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/DataManagementView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/DataManagementView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/DataManagementView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/DataManagementView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/DataManagementView.swiftdeps"
+  }
+}

@@ -1,0 +1,745 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0797FAE439EA85FA3D5EDBA6 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFDDC431EB9E9AC621E9EA /* RootTabView.swift */; };
+		12E10F9E276552E4DAB2BE40 /* WorkspaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC7177606EDCE19B274973 /* WorkspaceState.swift */; };
+		16A4DC9EA23311D379D6B6BF /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876D6848526A747DF526A164 /* TimelineView.swift */; };
+		1A697B185319FB3D8FE4D1C5 /* StoredScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115AF88BD00BAFBB6BC3C3A /* StoredScene.swift */; };
+		2217ABCE7B8D94D43FF0F7E5 /* Scene3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833CB54045A854A89DE2D12C /* Scene3DView.swift */; };
+		28AC98E1D13F7E09BA76E462 /* UserAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436D909360794543818289F /* UserAgreementView.swift */; };
+		35C553E97C474EAE7305367E /* TargetInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60765BF56A69A99B67A46BC /* TargetInspector.swift */; };
+		4826CB37AEB4259BE94CC757 /* SceneSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666876B824E983074555D755 /* SceneSamples.swift */; };
+		4B49C14719EAE1D6A1F2195D /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC3E7C4D9AEF6CBF43B6C84 /* TimeService.swift */; };
+		5D28CDAD84C8F749BD0042F3 /* DataManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2586DB5DBFC896A3C82F1E /* DataManagementView.swift */; };
+		5EE365888BEBD5EA655F078E /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E77D9F1BFF9436E9D7E9FE /* FeedbackView.swift */; };
+		66264CD38ED4B3AB26C0A433 /* SunShadowPadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E945688349B4D8132D2AFC /* SunShadowPadApp.swift */; };
+		68111FB06352CB137397607C /* SceneDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC2FED6EB334DE0CC8C8AAA /* SceneDocument.swift */; };
+		6922569D695F3636740EFD33 /* ScenarioComparisonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB8F82C13046EEA5E9E7D2 /* ScenarioComparisonService.swift */; };
+		6D3CDE721659E423664E5386 /* SceneCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10096F443DDB9B38D3037D13 /* SceneCanvasView.swift */; };
+		6FE82CC248F5372A4FAB18C8 /* ShadowGeometryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801CEFEC363DD719544D6E5A /* ShadowGeometryEngine.swift */; };
+		7268BF01BDD1093F6087818A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0861DD2DF6222EF6EFC1BE /* SettingsView.swift */; };
+		7F7DAC865EEC27A59D165155 /* SceneNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F82E812C10383506D59F47 /* SceneNavigationUITests.swift */; };
+		8A3B7A92FF532254DFF84B60 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FC0CF72034A93D80C0BC7A /* AboutUsView.swift */; };
+		916F1AE2A1F1F1977A7A3554 /* ScenesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085FF93DD7C81EBFCF5D3D1 /* ScenesView.swift */; };
+		97C05CA268DE3A2149007CEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 519860B1D27463D71887510A /* Assets.xcassets */; };
+		A02B5D81247065BE643C5920 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7971BF4670B53A00DF66A988 /* PrivacyPolicyView.swift */; };
+		A61979925AB3C8DE635A968B /* ExposureAnalysisEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0ECDFE203026944696EE5D /* ExposureAnalysisEngine.swift */; };
+		AFC245C4BBBC375821B0BC52 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A5C54E2F001CE4D4042618 /* OnboardingView.swift */; };
+		B5DDC01A30DED3BBAD562FD5 /* SolarPositionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56C3E95F911A855A123A15 /* SolarPositionEngine.swift */; };
+		B7798F22C87010C29C7978A0 /* SimulationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9DDABD17D3D4EF83AF2871 /* SimulationResult.swift */; };
+		C2E9EB9D8C33A8C10434A3AB /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE1D45AD2DBE8F69C70DF13 /* CompareView.swift */; };
+		C9A3CA9AAF22E54756CA324A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD5D9EB1EFF51441CB85E1 /* PrivacyInfo.xcprivacy */; };
+		D6757C822F59514BF769110D /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76573AAD28B1DDDD298EEAB /* HelpView.swift */; };
+		D829BF6A51D3206F79EBB0FF /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1538B5E0E8D602C64FF3D4E /* Theme.swift */; };
+		D8769500D71C65657A9AEE35 /* SimulatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B7C4BD65AEBFAB7C7E342 /* SimulatorView.swift */; };
+		DB69D66AC5E7280FBC0E681D /* SceneViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF182F2C6A3D4373EDD8BE29 /* SceneViewMode.swift */; };
+		DBAFC5318BDEB3B188CBBD7F /* ProjectBackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC89B99581F9BFAE92274549 /* ProjectBackupService.swift */; };
+		E0B51BC30EF085EAD387DC16 /* SceneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBC17EFEB770D492524D5F5 /* SceneEditorView.swift */; };
+		E0C2F3E50A42B934795EA577 /* ElementInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3B404A35FF2192FF61F98 /* ElementInspector.swift */; };
+		E6FDB7B28A7E9C8503CF81EB /* Scene3DMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13E2F0A100402BBC8749296 /* Scene3DMath.swift */; };
+		F5710CDD9EE0D2D164763432 /* SolarAndShadowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344DBFF581EB5D4543520521 /* SolarAndShadowTests.swift */; };
+		FB819133E53122DE6B3D9077 /* ReportExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90CE05F1D20880E26AB427A6 /* ReportExportService.swift */; };
+		FC622012F944243AB1A9EFD2 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA158423D314769838C711 /* AppInfo.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5296C2B1F74BDFD94C29C60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FE3FBD7A51C361D063370C7;
+			remoteInfo = SunShadowPad;
+		};
+		B567741A393326F6C35686DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2FE3FBD7A51C361D063370C7;
+			remoteInfo = SunShadowPad;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		10096F443DDB9B38D3037D13 /* SceneCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCanvasView.swift; sourceTree = "<group>"; };
+		1D9DDABD17D3D4EF83AF2871 /* SimulationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationResult.swift; sourceTree = "<group>"; };
+		1DC3B404A35FF2192FF61F98 /* ElementInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementInspector.swift; sourceTree = "<group>"; };
+		1DE1D45AD2DBE8F69C70DF13 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		1EBC17EFEB770D492524D5F5 /* SceneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEditorView.swift; sourceTree = "<group>"; };
+		3115AF88BD00BAFBB6BC3C3A /* StoredScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredScene.swift; sourceTree = "<group>"; };
+		344DBFF581EB5D4543520521 /* SolarAndShadowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndShadowTests.swift; sourceTree = "<group>"; };
+		3ACD4FCE2926083C83034463 /* SunShadowPadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunShadowPadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		40AB8F82C13046EEA5E9E7D2 /* ScenarioComparisonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenarioComparisonService.swift; sourceTree = "<group>"; };
+		48F82E812C10383506D59F47 /* SceneNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneNavigationUITests.swift; sourceTree = "<group>"; };
+		519860B1D27463D71887510A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5436D909360794543818289F /* UserAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementView.swift; sourceTree = "<group>"; };
+		595C479D7AC91F29089D5228 /* SunShadowPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunShadowPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A269849CA06604135732C8A /* SunShadowPadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunShadowPadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AFD5D9EB1EFF51441CB85E1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5D2586DB5DBFC896A3C82F1E /* DataManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagementView.swift; sourceTree = "<group>"; };
+		666876B824E983074555D755 /* SceneSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneSamples.swift; sourceTree = "<group>"; };
+		68E945688349B4D8132D2AFC /* SunShadowPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunShadowPadApp.swift; sourceTree = "<group>"; };
+		6FC4350C3E5A1695116A38B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7085FF93DD7C81EBFCF5D3D1 /* ScenesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenesView.swift; sourceTree = "<group>"; };
+		72FC0CF72034A93D80C0BC7A /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsView.swift; sourceTree = "<group>"; };
+		7971BF4670B53A00DF66A988 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		801CEFEC363DD719544D6E5A /* ShadowGeometryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowGeometryEngine.swift; sourceTree = "<group>"; };
+		833CB54045A854A89DE2D12C /* Scene3DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene3DView.swift; sourceTree = "<group>"; };
+		876D6848526A747DF526A164 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		8FC3E7C4D9AEF6CBF43B6C84 /* TimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
+		901B7C4BD65AEBFAB7C7E342 /* SimulatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatorView.swift; sourceTree = "<group>"; };
+		90CE05F1D20880E26AB427A6 /* ReportExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportExportService.swift; sourceTree = "<group>"; };
+		A13E2F0A100402BBC8749296 /* Scene3DMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene3DMath.swift; sourceTree = "<group>"; };
+		AC0861DD2DF6222EF6EFC1BE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AC89B99581F9BFAE92274549 /* ProjectBackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBackupService.swift; sourceTree = "<group>"; };
+		ACEFDDC431EB9E9AC621E9EA /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		ADC2FED6EB334DE0CC8C8AAA /* SceneDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDocument.swift; sourceTree = "<group>"; };
+		B60765BF56A69A99B67A46BC /* TargetInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetInspector.swift; sourceTree = "<group>"; };
+		B8EA158423D314769838C711 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		B9A5C54E2F001CE4D4042618 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		BC56C3E95F911A855A123A15 /* SolarPositionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarPositionEngine.swift; sourceTree = "<group>"; };
+		C1538B5E0E8D602C64FF3D4E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C5AC7177606EDCE19B274973 /* WorkspaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceState.swift; sourceTree = "<group>"; };
+		DF182F2C6A3D4373EDD8BE29 /* SceneViewMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewMode.swift; sourceTree = "<group>"; };
+		E8E77D9F1BFF9436E9D7E9FE /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		F76573AAD28B1DDDD298EEAB /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		FE0ECDFE203026944696EE5D /* ExposureAnalysisEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureAnalysisEngine.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		38A9AF1AA40869F34483A631 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		741DE2E93112FAF9A844310A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26930FF2F7BF9077468EEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1696BA116EFCCFFEA6F34D09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				595C479D7AC91F29089D5228 /* SunShadowPad.app */,
+				3ACD4FCE2926083C83034463 /* SunShadowPadTests.xctest */,
+				5A269849CA06604135732C8A /* SunShadowPadUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CE1FDD3E83BBD7B29AACC3B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				21E854B06F9B72EDFCC5B566 /* Compare */,
+				6508494D93CB00353802481E /* Components */,
+				545AEE2841360599D51FAD8E /* Editor */,
+				2679E15D95DFDA3E4A514EC1 /* Scenes */,
+				90BEECEFC126C90A401A396B /* Settings */,
+				D4884BF0DCC4332A3C455E56 /* Simulator */,
+				B3AEF8BB2D97289A1BD1D139 /* Timeline */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		21E854B06F9B72EDFCC5B566 /* Compare */ = {
+			isa = PBXGroup;
+			children = (
+				1DE1D45AD2DBE8F69C70DF13 /* CompareView.swift */,
+			);
+			path = Compare;
+			sourceTree = "<group>";
+		};
+		2679E15D95DFDA3E4A514EC1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				7085FF93DD7C81EBFCF5D3D1 /* ScenesView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3143F4F9F3C566D4FDE668AB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B8EA158423D314769838C711 /* AppInfo.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		545AEE2841360599D51FAD8E /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				1DC3B404A35FF2192FF61F98 /* ElementInspector.swift */,
+				1EBC17EFEB770D492524D5F5 /* SceneEditorView.swift */,
+				B60765BF56A69A99B67A46BC /* TargetInspector.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		54704F11AFBF71BD0E0A824F /* SunShadowPadTests */ = {
+			isa = PBXGroup;
+			children = (
+				344DBFF581EB5D4543520521 /* SolarAndShadowTests.swift */,
+			);
+			path = SunShadowPadTests;
+			sourceTree = "<group>";
+		};
+		5B71DB4D4DBCC58BC7178F92 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				519860B1D27463D71887510A /* Assets.xcassets */,
+				6FC4350C3E5A1695116A38B5 /* Info.plist */,
+				5AFD5D9EB1EFF51441CB85E1 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5F553CC20FB1C918273CE90F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FE0ECDFE203026944696EE5D /* ExposureAnalysisEngine.swift */,
+				AC89B99581F9BFAE92274549 /* ProjectBackupService.swift */,
+				90CE05F1D20880E26AB427A6 /* ReportExportService.swift */,
+				40AB8F82C13046EEA5E9E7D2 /* ScenarioComparisonService.swift */,
+				A13E2F0A100402BBC8749296 /* Scene3DMath.swift */,
+				666876B824E983074555D755 /* SceneSamples.swift */,
+				801CEFEC363DD719544D6E5A /* ShadowGeometryEngine.swift */,
+				BC56C3E95F911A855A123A15 /* SolarPositionEngine.swift */,
+				8FC3E7C4D9AEF6CBF43B6C84 /* TimeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6508494D93CB00353802481E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				833CB54045A854A89DE2D12C /* Scene3DView.swift */,
+				10096F443DDB9B38D3037D13 /* SceneCanvasView.swift */,
+				DF182F2C6A3D4373EDD8BE29 /* SceneViewMode.swift */,
+				C1538B5E0E8D602C64FF3D4E /* Theme.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7319F935E79990EF53DA8EFD /* SunShadowPad */ = {
+			isa = PBXGroup;
+			children = (
+				79ADB4F33F3296226639344A /* App */,
+				F0101FE339C7C797ABCBEAD7 /* Models */,
+				5B71DB4D4DBCC58BC7178F92 /* Resources */,
+				5F553CC20FB1C918273CE90F /* Services */,
+				1CE1FDD3E83BBD7B29AACC3B /* UI */,
+				3143F4F9F3C566D4FDE668AB /* Utilities */,
+			);
+			path = SunShadowPad;
+			sourceTree = "<group>";
+		};
+		79ADB4F33F3296226639344A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B9A5C54E2F001CE4D4042618 /* OnboardingView.swift */,
+				ACEFDDC431EB9E9AC621E9EA /* RootTabView.swift */,
+				68E945688349B4D8132D2AFC /* SunShadowPadApp.swift */,
+				C5AC7177606EDCE19B274973 /* WorkspaceState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8506DDB6453484895B4F193F = {
+			isa = PBXGroup;
+			children = (
+				7319F935E79990EF53DA8EFD /* SunShadowPad */,
+				54704F11AFBF71BD0E0A824F /* SunShadowPadTests */,
+				8AF9B132A200E65C76914ADD /* SunShadowPadUITests */,
+				1696BA116EFCCFFEA6F34D09 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8AF9B132A200E65C76914ADD /* SunShadowPadUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48F82E812C10383506D59F47 /* SceneNavigationUITests.swift */,
+			);
+			path = SunShadowPadUITests;
+			sourceTree = "<group>";
+		};
+		90BEECEFC126C90A401A396B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				72FC0CF72034A93D80C0BC7A /* AboutUsView.swift */,
+				5D2586DB5DBFC896A3C82F1E /* DataManagementView.swift */,
+				E8E77D9F1BFF9436E9D7E9FE /* FeedbackView.swift */,
+				F76573AAD28B1DDDD298EEAB /* HelpView.swift */,
+				7971BF4670B53A00DF66A988 /* PrivacyPolicyView.swift */,
+				AC0861DD2DF6222EF6EFC1BE /* SettingsView.swift */,
+				5436D909360794543818289F /* UserAgreementView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B3AEF8BB2D97289A1BD1D139 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				876D6848526A747DF526A164 /* TimelineView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		D4884BF0DCC4332A3C455E56 /* Simulator */ = {
+			isa = PBXGroup;
+			children = (
+				901B7C4BD65AEBFAB7C7E342 /* SimulatorView.swift */,
+			);
+			path = Simulator;
+			sourceTree = "<group>";
+		};
+		F0101FE339C7C797ABCBEAD7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ADC2FED6EB334DE0CC8C8AAA /* SceneDocument.swift */,
+				1D9DDABD17D3D4EF83AF2871 /* SimulationResult.swift */,
+				3115AF88BD00BAFBB6BC3C3A /* StoredScene.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2FE3FBD7A51C361D063370C7 /* SunShadowPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3233052A5440452A8DD1D786 /* Build configuration list for PBXNativeTarget "SunShadowPad" */;
+			buildPhases = (
+				409230197774DD73454A94D7 /* Sources */,
+				741DE2E93112FAF9A844310A /* Frameworks */,
+				CEF77CFB10DA8BCA36226E6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SunShadowPad;
+			productName = SunShadowPad;
+			productReference = 595C479D7AC91F29089D5228 /* SunShadowPad.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45C98D5FCE3016A4889B25F4 /* SunShadowPadTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE4CC12F197262D87A8FE774 /* Build configuration list for PBXNativeTarget "SunShadowPadTests" */;
+			buildPhases = (
+				33974DE9ADC8FAB7C83B23A4 /* Sources */,
+				38A9AF1AA40869F34483A631 /* Frameworks */,
+				3641F0A50FC44BC489E79EA4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5F1F99BDE9793F7DFCBE8E88 /* PBXTargetDependency */,
+			);
+			name = SunShadowPadTests;
+			productName = SunShadowPadTests;
+			productReference = 3ACD4FCE2926083C83034463 /* SunShadowPadTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BCE7CA36E139078E993E9DA9 /* SunShadowPadUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB2707E7F067A5283F247214 /* Build configuration list for PBXNativeTarget "SunShadowPadUITests" */;
+			buildPhases = (
+				4068450DD51854396F9894B3 /* Sources */,
+				B26930FF2F7BF9077468EEFD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3248ED19FF43FEACCF5910A /* PBXTargetDependency */,
+			);
+			name = SunShadowPadUITests;
+			productName = SunShadowPadUITests;
+			productReference = 5A269849CA06604135732C8A /* SunShadowPadUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98F54143AB4E86B28C3AFEE0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					2FE3FBD7A51C361D063370C7 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					45C98D5FCE3016A4889B25F4 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 2FE3FBD7A51C361D063370C7;
+					};
+					BCE7CA36E139078E993E9DA9 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 2FE3FBD7A51C361D063370C7;
+					};
+				};
+			};
+			buildConfigurationList = B88C56B7A33B94E2A64D252D /* Build configuration list for PBXProject "SunShadowPad" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8506DDB6453484895B4F193F;
+			productRefGroup = 1696BA116EFCCFFEA6F34D09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2FE3FBD7A51C361D063370C7 /* SunShadowPad */,
+				45C98D5FCE3016A4889B25F4 /* SunShadowPadTests */,
+				BCE7CA36E139078E993E9DA9 /* SunShadowPadUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3641F0A50FC44BC489E79EA4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEF77CFB10DA8BCA36226E6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97C05CA268DE3A2149007CEA /* Assets.xcassets in Resources */,
+				C9A3CA9AAF22E54756CA324A /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		33974DE9ADC8FAB7C83B23A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5710CDD9EE0D2D164763432 /* SolarAndShadowTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4068450DD51854396F9894B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F7DAC865EEC27A59D165155 /* SceneNavigationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		409230197774DD73454A94D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFC245C4BBBC375821B0BC52 /* OnboardingView.swift in Sources */,
+				0797FAE439EA85FA3D5EDBA6 /* RootTabView.swift in Sources */,
+				66264CD38ED4B3AB26C0A433 /* SunShadowPadApp.swift in Sources */,
+				12E10F9E276552E4DAB2BE40 /* WorkspaceState.swift in Sources */,
+				68111FB06352CB137397607C /* SceneDocument.swift in Sources */,
+				B7798F22C87010C29C7978A0 /* SimulationResult.swift in Sources */,
+				1A697B185319FB3D8FE4D1C5 /* StoredScene.swift in Sources */,
+				A61979925AB3C8DE635A968B /* ExposureAnalysisEngine.swift in Sources */,
+				DBAFC5318BDEB3B188CBBD7F /* ProjectBackupService.swift in Sources */,
+				FB819133E53122DE6B3D9077 /* ReportExportService.swift in Sources */,
+				6922569D695F3636740EFD33 /* ScenarioComparisonService.swift in Sources */,
+				E6FDB7B28A7E9C8503CF81EB /* Scene3DMath.swift in Sources */,
+				4826CB37AEB4259BE94CC757 /* SceneSamples.swift in Sources */,
+				6FE82CC248F5372A4FAB18C8 /* ShadowGeometryEngine.swift in Sources */,
+				B5DDC01A30DED3BBAD562FD5 /* SolarPositionEngine.swift in Sources */,
+				4B49C14719EAE1D6A1F2195D /* TimeService.swift in Sources */,
+				C2E9EB9D8C33A8C10434A3AB /* CompareView.swift in Sources */,
+				2217ABCE7B8D94D43FF0F7E5 /* Scene3DView.swift in Sources */,
+				6D3CDE721659E423664E5386 /* SceneCanvasView.swift in Sources */,
+				DB69D66AC5E7280FBC0E681D /* SceneViewMode.swift in Sources */,
+				D829BF6A51D3206F79EBB0FF /* Theme.swift in Sources */,
+				E0C2F3E50A42B934795EA577 /* ElementInspector.swift in Sources */,
+				E0B51BC30EF085EAD387DC16 /* SceneEditorView.swift in Sources */,
+				35C553E97C474EAE7305367E /* TargetInspector.swift in Sources */,
+				916F1AE2A1F1F1977A7A3554 /* ScenesView.swift in Sources */,
+				8A3B7A92FF532254DFF84B60 /* AboutUsView.swift in Sources */,
+				5D28CDAD84C8F749BD0042F3 /* DataManagementView.swift in Sources */,
+				5EE365888BEBD5EA655F078E /* FeedbackView.swift in Sources */,
+				D6757C822F59514BF769110D /* HelpView.swift in Sources */,
+				A02B5D81247065BE643C5920 /* PrivacyPolicyView.swift in Sources */,
+				7268BF01BDD1093F6087818A /* SettingsView.swift in Sources */,
+				28AC98E1D13F7E09BA76E462 /* UserAgreementView.swift in Sources */,
+				D8769500D71C65657A9AEE35 /* SimulatorView.swift in Sources */,
+				16A4DC9EA23311D379D6B6BF /* TimelineView.swift in Sources */,
+				FC622012F944243AB1A9EFD2 /* AppInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5F1F99BDE9793F7DFCBE8E88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FE3FBD7A51C361D063370C7 /* SunShadowPad */;
+			targetProxy = B567741A393326F6C35686DF /* PBXContainerItemProxy */;
+		};
+		E3248ED19FF43FEACCF5910A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2FE3FBD7A51C361D063370C7 /* SunShadowPad */;
+			targetProxy = B5296C2B1F74BDFD94C29C60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1FD03120D63246CF96C52E1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		23CC19645F58CA92F606F1FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6DB67QY76Z;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SunShadowPad/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadow.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 6DB67QY76Z.com.sunshadow.app;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3618AF5F77AB4219596A75A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/Frameworks",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadowpad.local.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SunShadowPad.app/SunShadowPad";
+			};
+			name = Release;
+		};
+		B9782ABDBCF1EF28CFC289CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadowpad.local.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = SunShadowPad;
+			};
+			name = Release;
+		};
+		D96F03AAA7875131709F4599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6DB67QY76Z;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SunShadowPad/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadow.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = 6DB67QY76Z.com.sunshadow.app;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EFC601047B709317EA163C5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadowpad.local.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = SunShadowPad;
+			};
+			name = Debug;
+		};
+		FEBADC40F66BC5A2BFC0C27F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		FFA8326634453E489606658E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/Frameworks",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sunshadowpad.local.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SunShadowPad.app/SunShadowPad";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3233052A5440452A8DD1D786 /* Build configuration list for PBXNativeTarget "SunShadowPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D96F03AAA7875131709F4599 /* Debug */,
+				23CC19645F58CA92F606F1FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE4CC12F197262D87A8FE774 /* Build configuration list for PBXNativeTarget "SunShadowPadTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFA8326634453E489606658E /* Debug */,
+				3618AF5F77AB4219596A75A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B88C56B7A33B94E2A64D252D /* Build configuration list for PBXProject "SunShadowPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FD03120D63246CF96C52E1A /* Debug */,
+				FEBADC40F66BC5A2BFC0C27F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB2707E7F067A5283F247214 /* Build configuration list for PBXNativeTarget "SunShadowPadUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFC601047B709317EA163C5E /* Debug */,
+				B9782ABDBCF1EF28CFC289CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
+}

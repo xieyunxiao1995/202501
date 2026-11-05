@@ -1,0 +1,23 @@
+{
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/Services/ShadowGeometryEngine.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ShadowGeometryEngine.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ShadowGeometryEngine.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ShadowGeometryEngine.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ShadowGeometryEngine.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/ShadowGeometryEngine.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/Services/SolarPositionEngine.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SolarPositionEngine.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SolarPositionEngine.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SolarPositionEngine.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SolarPositionEngine.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SolarPositionEngine.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/Services/TimeService.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/TimeService.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/TimeService.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/TimeService.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/TimeService.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-test/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/TimeService.swiftdeps"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "62ad100d6e68a3b8a6b76ad931f5e48edd0b521e510a09eaaace3a8a601f503d"
+    },
+    {
+      "guid" : "62ad100d6e68a3b8a6b76ad931f5e48e5048a442f5b2e2274fd1ecf938fda221"
+    },
+    {
+      "guid" : "62ad100d6e68a3b8a6b76ad931f5e48e85d8903b6caf4b4788514632e39ef615"
+    }
+  ],
+  "containerPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "hostTargetedPlatform" : null,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator27.0",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Products",
+      "derivedDataPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build",
+      "indexDataStoreFolderPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+          "CODE_SIGNING_ALLOWED" : "NO"
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone19,2",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "27.0",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone19,2",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "CLANG_COVERAGE_MAPPING" : "YES",
+          "CLANG_PROFILE_DATA_DIRECTORY" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/ProfileData",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "ONLY_ACTIVE_ARCH" : "YES",
+          "TARGET_DEVICE_IDENTIFIER" : "A2ECCCDB-F1D7-459E-B942-1037F9FB44F3",
+          "TARGET_DEVICE_MODEL" : "iPhone19,2",
+          "TARGET_DEVICE_OS_VERSION" : "27.0",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphonesimulator"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "test",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

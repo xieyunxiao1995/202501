@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>13</integer>
+	<key>logs</key>
+	<dict>
+		<key>E531DB37-9B59-4228-9596-5DE49BA19117</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E531DB37-9B59-4228-9596-5DE49BA19117.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SunShadowPad project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SunShadowPad</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project SunShadowPad with scheme SunShadowPad</string>
+			<key>timeStartedRecording</key>
+			<real>815363623.64577103</real>
+			<key>timeStoppedRecording</key>
+			<real>815363628.43412304</real>
+			<key>title</key>
+			<string>Testing project SunShadowPad with scheme SunShadowPad</string>
+			<key>uniqueIdentifier</key>
+			<string>E531DB37-9B59-4228-9596-5DE49BA19117</string>
+		</dict>
+		<key>E821A82E-BC68-46E3-8D6B-E026D48D30E3</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E821A82E-BC68-46E3-8D6B-E026D48D30E3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>SunShadowPad project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>SunShadowPad</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Testing project SunShadowPad with scheme SunShadowPad</string>
+			<key>timeStartedRecording</key>
+			<real>815355878.90769804</real>
+			<key>timeStoppedRecording</key>
+			<real>815355885.34483099</real>
+			<key>title</key>
+			<string>Testing project SunShadowPad with scheme SunShadowPad</string>
+			<key>uniqueIdentifier</key>
+			<string>E821A82E-BC68-46E3-8D6B-E026D48D30E3</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

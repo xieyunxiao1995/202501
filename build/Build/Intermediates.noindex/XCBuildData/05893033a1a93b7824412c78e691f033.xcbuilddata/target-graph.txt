@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'SunShadowPadUITests' in project 'SunShadowPad'
+➜ Explicit dependency on target 'SunShadowPad' in project 'SunShadowPad'
+Target 'SunShadowPadTests' in project 'SunShadowPad'
+➜ Explicit dependency on target 'SunShadowPad' in project 'SunShadowPad'
+Target 'SunShadowPad' in project 'SunShadowPad' (no dependencies)

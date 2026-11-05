@@ -1,0 +1,30 @@
+{
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/App/OnboardingView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/OnboardingView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/OnboardingView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/OnboardingView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/OnboardingView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/App/RootTabView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/RootTabView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/RootTabView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/RootTabView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/RootTabView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/RootTabView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/App/SunShadowPadApp.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPadApp.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPadApp.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPadApp.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPadApp.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPadApp.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/App/WorkspaceState.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/WorkspaceState.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/WorkspaceState.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/WorkspaceState.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/WorkspaceState.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build/Build/Intermediates.noindex/SunShadowPad.build/Debug-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/WorkspaceState.swiftdeps"
+  }
+}

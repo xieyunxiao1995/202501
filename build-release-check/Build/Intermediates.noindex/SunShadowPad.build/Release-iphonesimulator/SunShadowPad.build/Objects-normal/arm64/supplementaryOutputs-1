@@ -1,0 +1,12 @@
+{
+  "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/SunShadowPad/App/OnboardingView.swift" : {
+    "abi-baseline-json" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad.abi.json",
+    "const-values" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad-primary.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad-primary.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad-primary.dia",
+    "objc-header" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad-Swift.h",
+    "swiftdoc" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad.swiftdoc",
+    "swiftmodule" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad.swiftmodule",
+    "swiftsourceinfo" : "/Volumes/MAC2/swift_APP/20261102-SunShadowPad/SunShadowPad_Xcode_Project_20261102/build-release-check/Build/Intermediates.noindex/SunShadowPad.build/Release-iphonesimulator/SunShadowPad.build/Objects-normal/arm64/SunShadowPad.swiftsourceinfo"
+  }
+}
