@@ -85,15 +85,37 @@ jobs:
             exit 1
           fi
           
-          # 如果 iTMSTransporter 工具不存在则克隆
-          # 这是一个基本检查；对于更高级的缓存，请考虑 actions/cache
-          if [ ! -d "itsm" ]; then
-            echo "正在克隆 iTMSTransporter 工具..."
-            git clone https://github.com/ZhangLi1984/itsm.git
-          else
-            echo "itsm 目录已存在。跳过克隆。"
-          fi
+          upload_with_itsm() {
+            # if 中调用的函数不会自动触发 set -e，准备步骤需显式返回失败。
+            # 如果 iTMSTransporter 工具不存在则克隆
+            # 这是一个基本检查；对于更高级的缓存，请考虑 actions/cache
+            if [ ! -d "itsm" ]; then
+              echo "正在克隆 iTMSTransporter 工具..."
+              git clone https://github.com/ZhangLi1984/itsm.git || return $?
+            else
+              echo "itsm 目录已存在。跳过克隆。"
+            fi
           
-          # 执行 iTMSTransporter
-          # 如果 -assetFile 在工作区的根目录，则其路径应仅为文件名
-          ./itsm/bin/iTMSTransporter -assetFile "$IPA_FILE_NAME" -u "$APPLE_USERNAME" -p "$APPLE_PASSWORD" -m upload -asc_provider "$APPLE_ASC_PROVIDER"
+            if [ ! -f "./itsm/bin/iTMSTransporter" ]; then
+              echo '::warning::itsm repository does not contain bin/iTMSTransporter.'
+              return 1
+            fi
+            chmod +x ./itsm/bin/iTMSTransporter || return $?
+
+            # 执行 iTMSTransporter
+            # 如果 -assetFile 在工作区的根目录，则其路径应仅为文件名
+            ./itsm/bin/iTMSTransporter -assetFile "$IPA_FILE_NAME" -u "$APPLE_USERNAME" -p "$APPLE_PASSWORD" -m upload -asc_provider "$APPLE_ASC_PROVIDER"
+          }
+
+          if upload_with_itsm; then
+            echo 'Upload completed using itsm.'
+          else
+            TRANSPORTER_STATUS=$?
+            echo "::warning::itsm failed (exit $TRANSPORTER_STATUS); retrying upload using xcrun altool."
+            xcrun altool --upload-app \
+              --type ios \
+              --file "$IPA_FILE_NAME" \
+              --username "$APPLE_USERNAME" \
+              --password "$APPLE_PASSWORD"
+            echo 'Upload completed using altool.'
+          fi
