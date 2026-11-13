@@ -1,0 +1,128 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Settings/AboutUsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Tideverse",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 14
+        }
+      },
+      {
+        "comment": "",
+        "key": "By %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 15
+        }
+      },
+      {
+        "comment": "",
+        "key": "Every conversation shapes a story.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 17
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tideverse is an interactive world of original fictional AI characters, guided story journeys, and memories you control. The story chapters are written and bundled with the app; optional online conversations bring the characters' distinct voices to life.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Stories with a memory",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a direction in each chapter and follow the consequences into later acts. Revisit your decisions in Journeys, keep a favorite scene as a Story Moment, or export it as a readable PDF.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "A place you control",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "No account or password is required. Your bundled journeys are available offline, your progress stays on your device, and you choose whether to enable online AI conversations.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Responsible design",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Characters are clearly labeled as artificial and fictional. AI responses may be incorrect, and no character should be considered a professional advisor or a real-life companion. Users decide what memories are saved and when cloud AI is enabled.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "App version %@ (%@)",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld original fictional adults (age 25+)",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld authored chapters and %lld narrative outcomes",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Local-first Story Moments and Memory Ledger",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "Native iPhone experience",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 24
+        }
+      }
+    ]
+  },
+  "version": 1
+}

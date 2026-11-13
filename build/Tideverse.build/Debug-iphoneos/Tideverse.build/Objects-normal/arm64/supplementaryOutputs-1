@@ -1,0 +1,37 @@
+{
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/AppConfiguration.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppConfiguration.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppConfiguration.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppConfiguration.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppConfiguration.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppConfiguration.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/PersistenceRecoveryView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/PersistenceRecoveryView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/PersistenceRecoveryView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/PersistenceRecoveryView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/PersistenceRecoveryView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/PersistenceRecoveryView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/RootTabView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/RootTabView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/RootTabView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/RootTabView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/RootTabView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/RootTabView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/TideverseApp.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/TideverseApp.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/TideverseApp.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/TideverseApp.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/TideverseApp.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/TideverseApp.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Data/AppPersistence.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppPersistence.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppPersistence.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppPersistence.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppPersistence.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/Tideverse.build/Debug-iphoneos/Tideverse.build/Objects-normal/arm64/AppPersistence.swiftdeps"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Journeys/StoryDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Story Journey",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "Unable to save your choice",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 180
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Story Moments",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Previously: %@",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld of %lld chapters",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "Completed",
+        "location": {
+          "startingColumn": 61,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "The story remembers: %@",
+        "location": {
+          "startingColumn": 53,
+          "startingLine": 68
+        }
+      },
+      {
+        "comment": "",
+        "key": "The world remembers every choice you made. Revisit your path below, or continue the conversation in Chats.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "Journey complete",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your path",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld. %@",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "Talk about this story",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "Continue",
+        "location": {
+          "startingColumn": 76,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 181
+        }
+      }
+    ]
+  },
+  "version": 1
+}

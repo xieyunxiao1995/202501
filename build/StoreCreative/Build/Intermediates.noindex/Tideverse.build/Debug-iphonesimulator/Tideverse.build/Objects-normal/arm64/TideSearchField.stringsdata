@@ -1,0 +1,24 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Design/TideSearchField.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Clear search",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 45
+        }
+      }
+    ]
+  },
+  "version": 1
+}

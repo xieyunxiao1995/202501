@@ -1,0 +1,72 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatComposerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Preparing selected photo…",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Selected photo preview",
+        "location": {
+          "startingColumn": 45,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reading text…",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Read text on-device",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Remove selected photo",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Message %@…",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "Send message",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a photo",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 37
+        }
+      }
+    ]
+  },
+  "version": 1
+}

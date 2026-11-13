@@ -1,0 +1,184 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/MemoryLedgerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Memory Ledger",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Memory error",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "Approved Memories",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Only pinned notes you explicitly save may be shared with %@ after you allow AI processing. Up to twelve recent pinned notes are used. Turn off the pin or delete a note at any time.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add a note you want this character to remember.",
+        "location": {
+          "startingColumn": 105,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "No saved memories",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "Only the first part fits in AI context. Shorten this note to include it in full.",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Selected for next AI context",
+        "location": {
+          "startingColumn": 87,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pinned · Outside the 12-note context limit",
+        "location": {
+          "startingColumn": 120,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Excluded from AI context",
+        "location": {
+          "startingColumn": 169,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Edit",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "Unpin",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Pin",
+        "location": {
+          "startingColumn": 64,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Memory options",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add a Memory",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "What should this character remember?",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 104
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld / 500 characters",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 107
+        }
+      },
+      {
+        "comment": "",
+        "key": "Avoid sensitive details about yourself or other people. This note stays on your device until you explicitly enable online AI chat.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 120
+        }
+      }
+    ]
+  },
+  "version": 1
+}

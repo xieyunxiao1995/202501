@@ -1,0 +1,104 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ReplyReportView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Report a Reply",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "What went wrong?",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Selected reply",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 27
+        }
+      },
+      {
+        "comment": "",
+        "key": "Send your report",
+        "location": {
+          "startingColumn": 25,
+          "startingLine": 30
+        }
+      },
+      {
+        "comment": "",
+        "key": "Review the selected reply before sharing. This report includes this reply and your note; it excludes your other messages, photos and memories.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "Reason",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add details (optional)",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tideverse Reply Report",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a recipient and complete sending in your email or sharing app. Preparing a report does not submit it automatically.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "Email Support",
+        "location": {
+          "startingColumn": 56,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share Report",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 77,
+          "startingLine": 43
+        }
+      }
+    ]
+  },
+  "version": 1
+}

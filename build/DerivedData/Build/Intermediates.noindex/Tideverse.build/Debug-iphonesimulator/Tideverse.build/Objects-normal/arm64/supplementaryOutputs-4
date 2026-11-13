@@ -1,0 +1,37 @@
+{
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/MemoryLedgerView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/MemoryLedgerView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/MemoryLedgerView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/MemoryLedgerView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/MemoryLedgerView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/MemoryLedgerView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ReplyReportView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/ReplyReportView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/ReplyReportView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/ReplyReportView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/ReplyReportView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/ReplyReportView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Discover/CharacterCard.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterCard.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterCard.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterCard.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterCard.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterCard.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Discover/CharacterDetailView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterDetailView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterDetailView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterDetailView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterDetailView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/CharacterDetailView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Discover/DiscoverHeroCard.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/DiscoverHeroCard.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/DiscoverHeroCard.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/DiscoverHeroCard.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/DiscoverHeroCard.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/arm64/DiscoverHeroCard.swiftdeps"
+  }
+}

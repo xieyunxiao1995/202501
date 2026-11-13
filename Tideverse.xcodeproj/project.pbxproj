@@ -1,0 +1,938 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		038B2946EC9F2D377CF4D011 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 25AE0DDFB72E28FB9D6FE823 /* stories.json */; };
+		08F034DB4BE6F9BB52377383 /* DataManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E8FFF9807FD714B3C70BD5 /* DataManagementView.swift */; };
+		0B9A983B9F5FE6CBE7A9DC6F /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D739D9C8843B973A8B4EFE /* AppConfiguration.swift */; };
+		0F0DEB12BC3ECD8BACE3E49E /* ReplyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6115EA36B9D5822A94F8B9 /* ReplyReportView.swift */; };
+		0F20A1F5B63D47E968970B22 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E59B671D66DE02A848A46D /* WelcomeView.swift */; };
+		14CBB1C193454243D51B0000 /* LegalArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5FF1879DAB10DF01613775 /* LegalArticleView.swift */; };
+		1B04EF4A147694D5D05C33D7 /* StoryChatDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65457C9193B8461696F3BFFD /* StoryChatDirector.swift */; };
+		1BEA590E8B84C5D5A891CB66 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB1A505D65190EC83BFB83 /* ChatViewModel.swift */; };
+		220C008FFA32AF041CC9DFD5 /* TideTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304A809AF0485FD8041CC6AA /* TideTheme.swift */; };
+		296B963D0CB7DB371ACE4269 /* StoryBeatSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6864165198EEE34E212F8D95 /* StoryBeatSheet.swift */; };
+		3140ABD2C02A9A3CA3682143 /* TideverseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FB595B37AE3EABC93CEEB8 /* TideverseApp.swift */; };
+		37382D6CFA0108DF68DF1B71 /* StoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B978F4A2562D914A4FF0511 /* StoryDetailView.swift */; };
+		385C9968EF272AE7381BC795 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B426E2BB0EB4152199CC5 /* RootTabView.swift */; };
+		3AF458D2AB9D41FBCE09D132 /* AIConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E51D5DBE14CB40CB081FB44 /* AIConsentView.swift */; };
+		3C7C8DE7A93C8AF777A7B35D /* ConsentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1301113B35834FCF8665F7ED /* ConsentService.swift */; };
+		403B2BEB223D387C7C135B82 /* StoryPDFExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A3EEA255E6E1E4BF27E0D1 /* StoryPDFExporter.swift */; };
+		44E0C7BAD7E8B57A6FEDE9A7 /* characters.json in Resources */ = {isa = PBXBuildFile; fileRef = AF9DBE8013C53D247BB3EB4E /* characters.json */; };
+		493C0C716FDA93D7916390FC /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDB5708E0BF444EFDC5E095 /* ChatsView.swift */; };
+		4F795BE449BDAC6D3D523D9B /* PersistenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A574211BEC0AA3A3C89DCC4 /* PersistenceModels.swift */; };
+		4FAD0348099E0F6FCE750E19 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA9FA476E2EB4A659EAC00 /* HelpView.swift */; };
+		53FCE394BD6A0440C2A9D872 /* AppPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFFEE46240182B0B90689C4 /* AppPersistence.swift */; };
+		57DEE95AD2482D5061EDA8B1 /* ContentModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E8EF4273F9FD93B0682E05 /* ContentModels.swift */; };
+		597631B03AD49DEA7B885F21 /* MemoryLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908BD2A4BE4C7ACCD0B4A923 /* MemoryLedgerView.swift */; };
+		5B0A33E51FBE10FFD1C4A098 /* ChatComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3397C701F8299B62388FD73F /* ChatComposerView.swift */; };
+		627894139EA2C02BB0E132DF /* ChatDraftStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202EC76E171F1ADB35E8B5CC /* ChatDraftStore.swift */; };
+		6BD577125E856142FABE5FCB /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DE1F97A8C3FAA2F6B553CE /* CharacterDetailView.swift */; };
+		6E4B77416EF2CCE81581A474 /* JourneyStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC04F32A1A6E8067BBCC8B /* JourneyStatistic.swift */; };
+		72DA51047252A76515F9AE5F /* ImagePreparationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAE74AD04CD8997D43073A9 /* ImagePreparationService.swift */; };
+		758C381EEE9E37EDF6677CCA /* VisionTextService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA694B41F01A8E7849B71239 /* VisionTextService.swift */; };
+		782AD31BE0154DCF7E252F9E /* PersistenceRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C50AC66A72EC4DEDD06B91F /* PersistenceRecoveryView.swift */; };
+		797135B0EF5AD42C23B1DC08 /* AboutUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541EDDB94B3CA9987C060F68 /* AboutUsView.swift */; };
+		798238B374F565BBA34C382D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0BBDC007263267B558092D /* PrivacyPolicyView.swift */; };
+		7AFE2017E2291211A93E23C5 /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406B8FF42B270A44C1F6710D /* ContentRepository.swift */; };
+		7B87244AC3EF4A5A9DC7B239 /* FeedbackSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D04709068678C97E1D7C567 /* FeedbackSuggestionsView.swift */; };
+		7E3A8110951C9A5909FED9A9 /* DeveloperInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD19B237171C1EE7FB8D9E9 /* DeveloperInformationView.swift */; };
+		893461F2CD434EEDE156E2A1 /* MemoryApprovalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061D11520EE9B4142C905EE9 /* MemoryApprovalView.swift */; };
+		9AA2C9C277A49043AFBBC07B /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388F47E28F0C1DD2CBA64BA7 /* ChatBubble.swift */; };
+		A08B3E5CD1B2B41814F7FDA0 /* AIChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFBC89B8DEEB25F78EF69D1 /* AIChatService.swift */; };
+		A0C1EEAA36C865AC5B4FC9DA /* TermsOfUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932B48BFECCA539D1E8E95D /* TermsOfUseView.swift */; };
+		A654EFFA0BF61DB5921B7CDD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785685CBA07D41DE8C737B3 /* SettingsView.swift */; };
+		A76F67DC39433E6118948746 /* StoryMomentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF148A1264E228BA533D7E43 /* StoryMomentDetailView.swift */; };
+		AD90A4B0B27254E1DC7EA897 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DB55E504669EFF223136BD /* ChatDetailView.swift */; };
+		AFE100000000000000000001 /* Tideverse/Design/TidePrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE200000000000000000001 /* Tideverse/Design/TidePrimaryButtonStyle.swift */; };
+		AFE100000000000000000002 /* Tideverse/Features/Chats/ConversationStartersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE200000000000000000002 /* Tideverse/Features/Chats/ConversationStartersView.swift */; };
+		AFE100000000000000000003 /* Tideverse/Features/Chats/ChatConsentAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE200000000000000000003 /* Tideverse/Features/Chats/ChatConsentAction.swift */; };
+		B756F553C4F1D9504D115BBF /* StorySuggestionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2B46000083278A9088465 /* StorySuggestionCard.swift */; };
+		BFE100000000000000000001 /* Tideverse/Design/TideNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200000000000000000001 /* Tideverse/Design/TideNavigationHeader.swift */; };
+		BFE100000000000000000002 /* Tideverse/Design/TideNavigationTitleModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200000000000000000002 /* Tideverse/Design/TideNavigationTitleModifier.swift */; };
+		BFE100000000000000000003 /* Tideverse/Design/TideMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200000000000000000003 /* Tideverse/Design/TideMotion.swift */; };
+		BFE100000000000000000004 /* Tideverse/Design/TideCardButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE200000000000000000004 /* Tideverse/Design/TideCardButtonStyle.swift */; };
+		D07364D24D29925BCD692069 /* ChatTextBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31ED2F4F58B8FB21F6AE35D /* ChatTextBudget.swift */; };
+		D135B20E438DB5E826F1E8D8 /* TideverseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42E9153C9B8148A7E1D009 /* TideverseUITests.swift */; };
+		DD48BAF03B2855F18EFF4D6F /* DiscoverHeroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B12E50F96C71938C476629 /* DiscoverHeroCard.swift */; };
+		DEB94F6AEAE413B2DDA4A6F2 /* JourneysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3374EA5365B666F8C1C1A /* JourneysView.swift */; };
+		DEC100000000000000000001 /* Tideverse/Services/DeepSeekConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC200000000000000000001 /* Tideverse/Services/DeepSeekConfiguration.swift */; };
+		DEC100000000000000000002 /* Tideverse/Services/DeepSeekChatAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC200000000000000000002 /* Tideverse/Services/DeepSeekChatAdapter.swift */; };
+		DFB999C535BDFB605BFB01EF /* ChatCharacterRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4257864286F207711C96F /* ChatCharacterRow.swift */; };
+		E2AAC7621D037660DDC57426 /* JourneyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F892FECF901BA6D6C2BB630D /* JourneyRow.swift */; };
+		E516E35470461D2F4F682FAF /* TideverseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CF07F08011BE4299DF5DEDC /* TideverseTests.swift */; };
+		E783DD7049A1F5F139A76683 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A29FDE05076853D96BFB76 /* DiscoverView.swift */; };
+		E8C86B5C01EC087226F3A21A /* CharacterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BB071BE083EAC90B0C7A67 /* CharacterCard.swift */; };
+		E985A009584FBA8C2D48779E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 615A0508B723B9B984A2A903 /* Assets.xcassets */; };
+		EEFE1B6DC12C6A4CFEE8CB29 /* StoryEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C169CB24111B89EF48B4E0FA /* StoryEngine.swift */; };
+		F6D429148766E074666282AF /* BackupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936EEEDDE9E013AB832F467 /* BackupService.swift */; };
+		FEC100000000000000000001 /* TideSearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC100000000000000000002 /* TideSearchField.swift */; };
+		FEC200000000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FEC200000000000000000002 /* PrivacyInfo.xcprivacy */; };
+		FEC300000000000000000001 /* UsageAgreementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC400000000000000000001 /* UsageAgreementService.swift */; };
+		FEC300000000000000000002 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC400000000000000000002 /* OnboardingPageView.swift */; };
+		FEC300000000000000000003 /* EntryConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC400000000000000000003 /* EntryConsentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD948E11E4744D99F0C6B904 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D0525E5F2CAA6273D0966E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 923A7866C0AAD37405F5F6F4;
+			remoteInfo = Tideverse;
+		};
+		E058A56C4C64CFF284F28416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D0525E5F2CAA6273D0966E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 923A7866C0AAD37405F5F6F4;
+			remoteInfo = Tideverse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04BB9B15D3FAD2BD48BC4548 /* TideverseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TideverseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		061D11520EE9B4142C905EE9 /* MemoryApprovalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryApprovalView.swift; path = Tideverse/Features/Chats/MemoryApprovalView.swift; sourceTree = "<group>"; };
+		078C31909F7373835766C843 /* ASSET_INDEX.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = ASSET_INDEX.md; path = Documentation/ASSET_INDEX.md; sourceTree = "<group>"; };
+		09E59B671D66DE02A848A46D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomeView.swift; path = Tideverse/Features/Onboarding/WelcomeView.swift; sourceTree = "<group>"; };
+		0A574211BEC0AA3A3C89DCC4 /* PersistenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistenceModels.swift; path = Tideverse/Models/PersistenceModels.swift; sourceTree = "<group>"; };
+		0E61F105EB594701A3D6AC2A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1301113B35834FCF8665F7ED /* ConsentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConsentService.swift; path = Tideverse/Services/ConsentService.swift; sourceTree = "<group>"; };
+		13FB1A505D65190EC83BFB83 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewModel.swift; path = Tideverse/Features/Chats/ChatViewModel.swift; sourceTree = "<group>"; };
+		19CB0B152B4DDAEAEC5256F6 /* Tideverse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tideverse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C50AC66A72EC4DEDD06B91F /* PersistenceRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistenceRecoveryView.swift; path = Tideverse/App/PersistenceRecoveryView.swift; sourceTree = "<group>"; };
+		1CF07F08011BE4299DF5DEDC /* TideverseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TideverseTests.swift; path = Tests/TideverseTests.swift; sourceTree = "<group>"; };
+		202EC76E171F1ADB35E8B5CC /* ChatDraftStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatDraftStore.swift; path = Tideverse/Services/ChatDraftStore.swift; sourceTree = "<group>"; };
+		25AC04F32A1A6E8067BBCC8B /* JourneyStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JourneyStatistic.swift; path = Tideverse/Features/Journeys/JourneyStatistic.swift; sourceTree = "<group>"; };
+		25AE0DDFB72E28FB9D6FE823 /* stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = stories.json; path = Tideverse/Resources/Stories/stories.json; sourceTree = "<group>"; };
+		2936EEEDDE9E013AB832F467 /* BackupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackupService.swift; path = Tideverse/Services/BackupService.swift; sourceTree = "<group>"; };
+		2D04709068678C97E1D7C567 /* FeedbackSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedbackSuggestionsView.swift; path = Tideverse/Features/Settings/FeedbackSuggestionsView.swift; sourceTree = "<group>"; };
+		304A809AF0485FD8041CC6AA /* TideTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TideTheme.swift; path = Tideverse/Design/TideTheme.swift; sourceTree = "<group>"; };
+		3397C701F8299B62388FD73F /* ChatComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatComposerView.swift; path = Tideverse/Features/Chats/ChatComposerView.swift; sourceTree = "<group>"; };
+		365408903C4D40818BD043F9 /* verify_release.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = verify_release.py; path = Tools/verify_release.py; sourceTree = "<group>"; };
+		37222C4B773A00D6EA0F9590 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = package.json; path = Backend/package.json; sourceTree = "<group>"; };
+		388861E910D6E4941619F418 /* split_artwork.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = split_artwork.py; path = Tools/split_artwork.py; sourceTree = "<group>"; };
+		388F47E28F0C1DD2CBA64BA7 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatBubble.swift; path = Tideverse/Features/Chats/ChatBubble.swift; sourceTree = "<group>"; };
+		3AD19B237171C1EE7FB8D9E9 /* DeveloperInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeveloperInformationView.swift; path = Tideverse/Features/Settings/DeveloperInformationView.swift; sourceTree = "<group>"; };
+		3EA516A0AAF3F96E392027BD /* EXTENSION_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = EXTENSION_GUIDE.md; path = Documentation/EXTENSION_GUIDE.md; sourceTree = "<group>"; };
+		406B8FF42B270A44C1F6710D /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentRepository.swift; path = Tideverse/Data/ContentRepository.swift; sourceTree = "<group>"; };
+		41DB55E504669EFF223136BD /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatDetailView.swift; path = Tideverse/Features/Chats/ChatDetailView.swift; sourceTree = "<group>"; };
+		46B12E50F96C71938C476629 /* DiscoverHeroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscoverHeroCard.swift; path = Tideverse/Features/Discover/DiscoverHeroCard.swift; sourceTree = "<group>"; };
+		4A0BBDC007263267B558092D /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PrivacyPolicyView.swift; path = Tideverse/Features/Settings/PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		4F9F606278E9B311EDFD91C8 /* CAST_EXPANSION_20.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CAST_EXPANSION_20.md; path = Documentation/CAST_EXPANSION_20.md; sourceTree = "<group>"; };
+		50114DF8AD4162CA159F87E1 /* storyCanon.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = storyCanon.js; path = Backend/storyCanon.js; sourceTree = "<group>"; };
+		50DE1F97A8C3FAA2F6B553CE /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterDetailView.swift; path = Tideverse/Features/Discover/CharacterDetailView.swift; sourceTree = "<group>"; };
+		541EDDB94B3CA9987C060F68 /* AboutUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutUsView.swift; path = Tideverse/Features/Settings/AboutUsView.swift; sourceTree = "<group>"; };
+		56637EBDFBAA168CA81CEDF2 /* self_test.mjs */ = {isa = PBXFileReference; lastKnownFileType = text; name = self_test.mjs; path = Backend/self_test.mjs; sourceTree = "<group>"; };
+		5EFBC89B8DEEB25F78EF69D1 /* AIChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIChatService.swift; path = Tideverse/Services/AIChatService.swift; sourceTree = "<group>"; };
+		615A0508B723B9B984A2A903 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Tideverse/Resources/Assets.xcassets; sourceTree = "<group>"; };
+		635AAD5FA95F8E4EC5F06C0C /* characters.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = characters.js; path = Backend/characters.js; sourceTree = "<group>"; };
+		63FB595B37AE3EABC93CEEB8 /* TideverseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TideverseApp.swift; path = Tideverse/App/TideverseApp.swift; sourceTree = "<group>"; };
+		65457C9193B8461696F3BFFD /* StoryChatDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryChatDirector.swift; path = Tideverse/Services/StoryChatDirector.swift; sourceTree = "<group>"; };
+		6864165198EEE34E212F8D95 /* StoryBeatSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryBeatSheet.swift; path = Tideverse/Features/Chats/StoryBeatSheet.swift; sourceTree = "<group>"; };
+		68E8EF4273F9FD93B0682E05 /* ContentModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentModels.swift; path = Tideverse/Models/ContentModels.swift; sourceTree = "<group>"; };
+		6C4CF2BE849A0750905FD26D /* GOAL_AUDIT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = GOAL_AUDIT.md; path = Documentation/GOAL_AUDIT.md; sourceTree = "<group>"; };
+		6E51D5DBE14CB40CB081FB44 /* AIConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIConsentView.swift; path = Tideverse/Features/Chats/AIConsentView.swift; sourceTree = "<group>"; };
+		72DFF594631ACD17E96320A0 /* VALIDATION_REPORT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = VALIDATION_REPORT.md; path = Documentation/VALIDATION_REPORT.md; sourceTree = "<group>"; };
+		7A80A3E86E5B60F0ABA8C1B7 /* AGENTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AGENTS.md; sourceTree = "<group>"; };
+		7B978F4A2562D914A4FF0511 /* StoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryDetailView.swift; path = Tideverse/Features/Journeys/StoryDetailView.swift; sourceTree = "<group>"; };
+		7F703C3436B81AA45433ED2B /* worker.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = worker.js; path = Backend/worker.js; sourceTree = "<group>"; };
+		82E8FFF9807FD714B3C70BD5 /* DataManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataManagementView.swift; path = Tideverse/Features/Settings/DataManagementView.swift; sourceTree = "<group>"; };
+		8DF3374EA5365B666F8C1C1A /* JourneysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JourneysView.swift; path = Tideverse/Features/Journeys/JourneysView.swift; sourceTree = "<group>"; };
+		8EA3F2A10882F46D3630FAD4 /* ACT_II_EXPANSION_20.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = ACT_II_EXPANSION_20.md; path = Documentation/ACT_II_EXPANSION_20.md; sourceTree = "<group>"; };
+		8EA634D419FA2BBC5A3C5615 /* split_expansion_artwork.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = split_expansion_artwork.py; path = Tools/split_expansion_artwork.py; sourceTree = "<group>"; };
+		9021907A8011DE734A0E581D /* wrangler.toml */ = {isa = PBXFileReference; lastKnownFileType = text; name = wrangler.toml; path = Backend/wrangler.toml; sourceTree = "<group>"; };
+		903D5CBBFB6FF650234361DC /* APP_STORE_RELEASE_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = APP_STORE_RELEASE_CHECKLIST.md; path = Documentation/APP_STORE_RELEASE_CHECKLIST.md; sourceTree = "<group>"; };
+		908BD2A4BE4C7ACCD0B4A923 /* MemoryLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MemoryLedgerView.swift; path = Tideverse/Features/Chats/MemoryLedgerView.swift; sourceTree = "<group>"; };
+		94BB071BE083EAC90B0C7A67 /* CharacterCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CharacterCard.swift; path = Tideverse/Features/Discover/CharacterCard.swift; sourceTree = "<group>"; };
+		991823D35577FC2386829E66 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Backend/README.md; sourceTree = "<group>"; };
+		9ED3DA7704C5C3B68DA3BD52 /* split_cast20_artwork.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = split_cast20_artwork.py; path = Tools/split_cast20_artwork.py; sourceTree = "<group>"; };
+		A31ED2F4F58B8FB21F6AE35D /* ChatTextBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatTextBudget.swift; path = Tideverse/Services/ChatTextBudget.swift; sourceTree = "<group>"; };
+		AD42E9153C9B8148A7E1D009 /* TideverseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TideverseUITests.swift; path = UITests/TideverseUITests.swift; sourceTree = "<group>"; };
+		AF148A1264E228BA533D7E43 /* StoryMomentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryMomentDetailView.swift; path = Tideverse/Features/Journeys/StoryMomentDetailView.swift; sourceTree = "<group>"; };
+		AF9DBE8013C53D247BB3EB4E /* characters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = characters.json; path = Tideverse/Resources/Stories/characters.json; sourceTree = "<group>"; };
+		AFA4257864286F207711C96F /* ChatCharacterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatCharacterRow.swift; path = Tideverse/Features/Chats/ChatCharacterRow.swift; sourceTree = "<group>"; };
+		AFE200000000000000000001 /* Tideverse/Design/TidePrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Design/TidePrimaryButtonStyle.swift; sourceTree = SOURCE_ROOT; };
+		AFE200000000000000000002 /* Tideverse/Features/Chats/ConversationStartersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Features/Chats/ConversationStartersView.swift; sourceTree = SOURCE_ROOT; };
+		AFE200000000000000000003 /* Tideverse/Features/Chats/ChatConsentAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Features/Chats/ChatConsentAction.swift; sourceTree = SOURCE_ROOT; };
+		B99B426E2BB0EB4152199CC5 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootTabView.swift; path = Tideverse/App/RootTabView.swift; sourceTree = "<group>"; };
+		B9D739D9C8843B973A8B4EFE /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfiguration.swift; path = Tideverse/App/AppConfiguration.swift; sourceTree = "<group>"; };
+		BA694B41F01A8E7849B71239 /* VisionTextService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VisionTextService.swift; path = Tideverse/Services/VisionTextService.swift; sourceTree = "<group>"; };
+		BC5FF1879DAB10DF01613775 /* LegalArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LegalArticleView.swift; path = Tideverse/Features/Settings/LegalArticleView.swift; sourceTree = "<group>"; };
+		BE6BFAE2334DE65E55913B26 /* STORY_BIBLE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = STORY_BIBLE.md; path = Documentation/STORY_BIBLE.md; sourceTree = "<group>"; };
+		BFE200000000000000000001 /* Tideverse/Design/TideNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Design/TideNavigationHeader.swift; sourceTree = SOURCE_ROOT; };
+		BFE200000000000000000002 /* Tideverse/Design/TideNavigationTitleModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Design/TideNavigationTitleModifier.swift; sourceTree = SOURCE_ROOT; };
+		BFE200000000000000000003 /* Tideverse/Design/TideMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Design/TideMotion.swift; sourceTree = SOURCE_ROOT; };
+		BFE200000000000000000004 /* Tideverse/Design/TideCardButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Design/TideCardButtonStyle.swift; sourceTree = SOURCE_ROOT; };
+		C169CB24111B89EF48B4E0FA /* StoryEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryEngine.swift; path = Tideverse/Services/StoryEngine.swift; sourceTree = "<group>"; };
+		C746DDBAD1F375865491692C /* DARK_CARTOON_DESIGN.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = DARK_CARTOON_DESIGN.md; path = Documentation/DARK_CARTOON_DESIGN.md; sourceTree = "<group>"; };
+		D06BBAC476CAC988AEC8368D /* verify_package.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = verify_package.py; path = Tools/verify_package.py; sourceTree = "<group>"; };
+		D694C4F480A2271B9BBB1D6B /* TideverseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TideverseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D87F8BCD6950078894DBF8A7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = Backend/.gitignore; sourceTree = "<group>"; };
+		DBDB5708E0BF444EFDC5E095 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatsView.swift; path = Tideverse/Features/Chats/ChatsView.swift; sourceTree = "<group>"; };
+		DEC200000000000000000001 /* Tideverse/Services/DeepSeekConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Services/DeepSeekConfiguration.swift; sourceTree = SOURCE_ROOT; };
+		DEC200000000000000000002 /* Tideverse/Services/DeepSeekChatAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tideverse/Services/DeepSeekChatAdapter.swift; sourceTree = SOURCE_ROOT; };
+		DFD0450444DA8FB1C1D15184 /* preview_artwork.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = preview_artwork.py; path = Tools/preview_artwork.py; sourceTree = "<group>"; };
+		E4A29FDE05076853D96BFB76 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscoverView.swift; path = Tideverse/Features/Discover/DiscoverView.swift; sourceTree = "<group>"; };
+		E4DFC344A8954DC61616552C /* sync_content.py */ = {isa = PBXFileReference; lastKnownFileType = text; name = sync_content.py; path = Backend/sync_content.py; sourceTree = "<group>"; };
+		E8A3EEA255E6E1E4BF27E0D1 /* StoryPDFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StoryPDFExporter.swift; path = Tideverse/Services/StoryPDFExporter.swift; sourceTree = "<group>"; };
+		E932B48BFECCA539D1E8E95D /* TermsOfUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TermsOfUseView.swift; path = Tideverse/Features/Settings/TermsOfUseView.swift; sourceTree = "<group>"; };
+		EB6115EA36B9D5822A94F8B9 /* ReplyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReplyReportView.swift; path = Tideverse/Features/Chats/ReplyReportView.swift; sourceTree = "<group>"; };
+		EEFA9FA476E2EB4A659EAC00 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HelpView.swift; path = Tideverse/Features/Settings/HelpView.swift; sourceTree = "<group>"; };
+		EFFFEE46240182B0B90689C4 /* AppPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppPersistence.swift; path = Tideverse/Data/AppPersistence.swift; sourceTree = "<group>"; };
+		F2F19A24CEE51C57731EC728 /* CHARACTER_PREVIEW.jpg */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHARACTER_PREVIEW.jpg; path = Documentation/CHARACTER_PREVIEW.jpg; sourceTree = "<group>"; };
+		F334FCE34A531D1F0C5A5641 /* PACKAGE_MANIFEST.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = PACKAGE_MANIFEST.json; path = Documentation/PACKAGE_MANIFEST.json; sourceTree = "<group>"; };
+		F5D814CC3BDD4E8CBBAB4FD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tideverse/Resources/Info.plist; sourceTree = "<group>"; };
+		F6E2B46000083278A9088465 /* StorySuggestionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorySuggestionCard.swift; path = Tideverse/Features/Chats/StorySuggestionCard.swift; sourceTree = "<group>"; };
+		F785685CBA07D41DE8C737B3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Tideverse/Features/Settings/SettingsView.swift; sourceTree = "<group>"; };
+		F892FECF901BA6D6C2BB630D /* JourneyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JourneyRow.swift; path = Tideverse/Features/Journeys/JourneyRow.swift; sourceTree = "<group>"; };
+		FBAE74AD04CD8997D43073A9 /* ImagePreparationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagePreparationService.swift; path = Tideverse/Services/ImagePreparationService.swift; sourceTree = "<group>"; };
+		FEC100000000000000000002 /* TideSearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TideSearchField.swift; path = Tideverse/Design/TideSearchField.swift; sourceTree = SOURCE_ROOT; };
+		FEC200000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Tideverse/Resources/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
+		FEC400000000000000000001 /* UsageAgreementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UsageAgreementService.swift; path = Tideverse/Services/UsageAgreementService.swift; sourceTree = SOURCE_ROOT; };
+		FEC400000000000000000002 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnboardingPageView.swift; path = Tideverse/Features/Onboarding/OnboardingPageView.swift; sourceTree = SOURCE_ROOT; };
+		FEC400000000000000000003 /* EntryConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EntryConsentView.swift; path = Tideverse/Features/Onboarding/EntryConsentView.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		549547DCAFC7793F33CB0B75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1ADC2CDECA8F5C03BBA5109 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F85383C9E36BA2D3FD0EDB64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00732EB3FEB840EE4BAD4A15 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				32526F1164926F6BCED01028 /* Chats */,
+				6D007A8C2A981FCE48A141E0 /* Discover */,
+				C32A2B4C96D380C55ED0B239 /* Journeys */,
+				F37105F4AAA3A26BCF5C41A4 /* Onboarding */,
+				68DA8640E5D63E9467817DF9 /* Settings */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		2C6BD19D2EE8BB3E02BDAAF7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FEC400000000000000000001 /* UsageAgreementService.swift */,
+				DEC200000000000000000002 /* Tideverse/Services/DeepSeekChatAdapter.swift */,
+				DEC200000000000000000001 /* Tideverse/Services/DeepSeekConfiguration.swift */,
+				5EFBC89B8DEEB25F78EF69D1 /* AIChatService.swift */,
+				2936EEEDDE9E013AB832F467 /* BackupService.swift */,
+				202EC76E171F1ADB35E8B5CC /* ChatDraftStore.swift */,
+				A31ED2F4F58B8FB21F6AE35D /* ChatTextBudget.swift */,
+				1301113B35834FCF8665F7ED /* ConsentService.swift */,
+				FBAE74AD04CD8997D43073A9 /* ImagePreparationService.swift */,
+				65457C9193B8461696F3BFFD /* StoryChatDirector.swift */,
+				C169CB24111B89EF48B4E0FA /* StoryEngine.swift */,
+				E8A3EEA255E6E1E4BF27E0D1 /* StoryPDFExporter.swift */,
+				BA694B41F01A8E7849B71239 /* VisionTextService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		32526F1164926F6BCED01028 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				AFE200000000000000000002 /* Tideverse/Features/Chats/ConversationStartersView.swift */,
+				AFE200000000000000000003 /* Tideverse/Features/Chats/ChatConsentAction.swift */,
+				6E51D5DBE14CB40CB081FB44 /* AIConsentView.swift */,
+				388F47E28F0C1DD2CBA64BA7 /* ChatBubble.swift */,
+				AFA4257864286F207711C96F /* ChatCharacterRow.swift */,
+				3397C701F8299B62388FD73F /* ChatComposerView.swift */,
+				41DB55E504669EFF223136BD /* ChatDetailView.swift */,
+				13FB1A505D65190EC83BFB83 /* ChatViewModel.swift */,
+				DBDB5708E0BF444EFDC5E095 /* ChatsView.swift */,
+				061D11520EE9B4142C905EE9 /* MemoryApprovalView.swift */,
+				908BD2A4BE4C7ACCD0B4A923 /* MemoryLedgerView.swift */,
+				EB6115EA36B9D5822A94F8B9 /* ReplyReportView.swift */,
+				6864165198EEE34E212F8D95 /* StoryBeatSheet.swift */,
+				F6E2B46000083278A9088465 /* StorySuggestionCard.swift */,
+			);
+			name = Chats;
+			sourceTree = "<group>";
+		};
+		572BB49C9B2F2F1B2BDA0CEC = {
+			isa = PBXGroup;
+			children = (
+				F3791FECA247657015779010 /* Backend */,
+				B1FF05D2D31205C9E0E69952 /* Documentation */,
+				EB148913D59BB6725D3F3F81 /* Tests */,
+				69712C26E31E52C0AEC87680 /* Tideverse */,
+				9B8A1365D8839734E3929559 /* Tools */,
+				FB46E557DB4CEE412FB62C05 /* UITests */,
+				0E61F105EB594701A3D6AC2A /* README.md */,
+				7A80A3E86E5B60F0ABA8C1B7 /* AGENTS.md */,
+				E84CDEE137A3AE3BCC6C6C68 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		623BB88904D7122CEE9E8946 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FEC200000000000000000002 /* PrivacyInfo.xcprivacy */,
+				FEE0F84C3A68888E6EBA3B1F /* Stories */,
+				615A0508B723B9B984A2A903 /* Assets.xcassets */,
+				F5D814CC3BDD4E8CBBAB4FD2 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		68DA8640E5D63E9467817DF9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				541EDDB94B3CA9987C060F68 /* AboutUsView.swift */,
+				82E8FFF9807FD714B3C70BD5 /* DataManagementView.swift */,
+				3AD19B237171C1EE7FB8D9E9 /* DeveloperInformationView.swift */,
+				2D04709068678C97E1D7C567 /* FeedbackSuggestionsView.swift */,
+				EEFA9FA476E2EB4A659EAC00 /* HelpView.swift */,
+				BC5FF1879DAB10DF01613775 /* LegalArticleView.swift */,
+				4A0BBDC007263267B558092D /* PrivacyPolicyView.swift */,
+				F785685CBA07D41DE8C737B3 /* SettingsView.swift */,
+				E932B48BFECCA539D1E8E95D /* TermsOfUseView.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		69712C26E31E52C0AEC87680 /* Tideverse */ = {
+			isa = PBXGroup;
+			children = (
+				E90AB78FC9F62F88805E5F5B /* App */,
+				8D1348A57A85F067192DBCB7 /* Data */,
+				85B48CEF414F21EB3D5A558D /* Design */,
+				00732EB3FEB840EE4BAD4A15 /* Features */,
+				74E65BDDC2E9565A7093CBF6 /* Models */,
+				623BB88904D7122CEE9E8946 /* Resources */,
+				2C6BD19D2EE8BB3E02BDAAF7 /* Services */,
+			);
+			name = Tideverse;
+			sourceTree = "<group>";
+		};
+		6D007A8C2A981FCE48A141E0 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				94BB071BE083EAC90B0C7A67 /* CharacterCard.swift */,
+				50DE1F97A8C3FAA2F6B553CE /* CharacterDetailView.swift */,
+				46B12E50F96C71938C476629 /* DiscoverHeroCard.swift */,
+				E4A29FDE05076853D96BFB76 /* DiscoverView.swift */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		74E65BDDC2E9565A7093CBF6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68E8EF4273F9FD93B0682E05 /* ContentModels.swift */,
+				0A574211BEC0AA3A3C89DCC4 /* PersistenceModels.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		85B48CEF414F21EB3D5A558D /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				AFE200000000000000000001 /* Tideverse/Design/TidePrimaryButtonStyle.swift */,
+				BFE200000000000000000004 /* Tideverse/Design/TideCardButtonStyle.swift */,
+				BFE200000000000000000003 /* Tideverse/Design/TideMotion.swift */,
+				BFE200000000000000000002 /* Tideverse/Design/TideNavigationTitleModifier.swift */,
+				BFE200000000000000000001 /* Tideverse/Design/TideNavigationHeader.swift */,
+				304A809AF0485FD8041CC6AA /* TideTheme.swift */,
+				FEC100000000000000000002 /* TideSearchField.swift */,
+			);
+			name = Design;
+			sourceTree = "<group>";
+		};
+		8D1348A57A85F067192DBCB7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EFFFEE46240182B0B90689C4 /* AppPersistence.swift */,
+				406B8FF42B270A44C1F6710D /* ContentRepository.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		9B8A1365D8839734E3929559 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				DFD0450444DA8FB1C1D15184 /* preview_artwork.py */,
+				388861E910D6E4941619F418 /* split_artwork.py */,
+				9ED3DA7704C5C3B68DA3BD52 /* split_cast20_artwork.py */,
+				8EA634D419FA2BBC5A3C5615 /* split_expansion_artwork.py */,
+				D06BBAC476CAC988AEC8368D /* verify_package.py */,
+				365408903C4D40818BD043F9 /* verify_release.py */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		B1FF05D2D31205C9E0E69952 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				8EA3F2A10882F46D3630FAD4 /* ACT_II_EXPANSION_20.md */,
+				903D5CBBFB6FF650234361DC /* APP_STORE_RELEASE_CHECKLIST.md */,
+				078C31909F7373835766C843 /* ASSET_INDEX.md */,
+				4F9F606278E9B311EDFD91C8 /* CAST_EXPANSION_20.md */,
+				F2F19A24CEE51C57731EC728 /* CHARACTER_PREVIEW.jpg */,
+				C746DDBAD1F375865491692C /* DARK_CARTOON_DESIGN.md */,
+				3EA516A0AAF3F96E392027BD /* EXTENSION_GUIDE.md */,
+				6C4CF2BE849A0750905FD26D /* GOAL_AUDIT.md */,
+				F334FCE34A531D1F0C5A5641 /* PACKAGE_MANIFEST.json */,
+				BE6BFAE2334DE65E55913B26 /* STORY_BIBLE.md */,
+				72DFF594631ACD17E96320A0 /* VALIDATION_REPORT.md */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		C32A2B4C96D380C55ED0B239 /* Journeys */ = {
+			isa = PBXGroup;
+			children = (
+				F892FECF901BA6D6C2BB630D /* JourneyRow.swift */,
+				25AC04F32A1A6E8067BBCC8B /* JourneyStatistic.swift */,
+				8DF3374EA5365B666F8C1C1A /* JourneysView.swift */,
+				7B978F4A2562D914A4FF0511 /* StoryDetailView.swift */,
+				AF148A1264E228BA533D7E43 /* StoryMomentDetailView.swift */,
+			);
+			name = Journeys;
+			sourceTree = "<group>";
+		};
+		E84CDEE137A3AE3BCC6C6C68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19CB0B152B4DDAEAEC5256F6 /* Tideverse.app */,
+				D694C4F480A2271B9BBB1D6B /* TideverseTests.xctest */,
+				04BB9B15D3FAD2BD48BC4548 /* TideverseUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E90AB78FC9F62F88805E5F5B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B9D739D9C8843B973A8B4EFE /* AppConfiguration.swift */,
+				1C50AC66A72EC4DEDD06B91F /* PersistenceRecoveryView.swift */,
+				B99B426E2BB0EB4152199CC5 /* RootTabView.swift */,
+				63FB595B37AE3EABC93CEEB8 /* TideverseApp.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		EB148913D59BB6725D3F3F81 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1CF07F08011BE4299DF5DEDC /* TideverseTests.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		F37105F4AAA3A26BCF5C41A4 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FEC400000000000000000003 /* EntryConsentView.swift */,
+				FEC400000000000000000002 /* OnboardingPageView.swift */,
+				09E59B671D66DE02A848A46D /* WelcomeView.swift */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		F3791FECA247657015779010 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				D87F8BCD6950078894DBF8A7 /* .gitignore */,
+				991823D35577FC2386829E66 /* README.md */,
+				635AAD5FA95F8E4EC5F06C0C /* characters.js */,
+				37222C4B773A00D6EA0F9590 /* package.json */,
+				56637EBDFBAA168CA81CEDF2 /* self_test.mjs */,
+				50114DF8AD4162CA159F87E1 /* storyCanon.js */,
+				E4DFC344A8954DC61616552C /* sync_content.py */,
+				7F703C3436B81AA45433ED2B /* worker.js */,
+				9021907A8011DE734A0E581D /* wrangler.toml */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
+		FB46E557DB4CEE412FB62C05 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD42E9153C9B8148A7E1D009 /* TideverseUITests.swift */,
+			);
+			name = UITests;
+			sourceTree = "<group>";
+		};
+		FEE0F84C3A68888E6EBA3B1F /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				AF9DBE8013C53D247BB3EB4E /* characters.json */,
+				25AE0DDFB72E28FB9D6FE823 /* stories.json */,
+			);
+			name = Stories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		923A7866C0AAD37405F5F6F4 /* Tideverse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34A42D823C36C09568AF992D /* Build configuration list for PBXNativeTarget "Tideverse" */;
+			buildPhases = (
+				CDD7CA0BFF660B20CBF00EEB /* Verify Release Metadata */,
+				86C03F4CB059261CF2DF6F81 /* Sources */,
+				F85383C9E36BA2D3FD0EDB64 /* Frameworks */,
+				2073CC05D23A4C62AE1D0599 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tideverse;
+			productName = Tideverse;
+			productReference = 19CB0B152B4DDAEAEC5256F6 /* Tideverse.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B843CA95D4DAD9C1041AF1B2 /* TideverseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 458CF199B613F9F3EC8494E1 /* Build configuration list for PBXNativeTarget "TideverseTests" */;
+			buildPhases = (
+				7F775E5E22FDAF5E1E3AFDD2 /* Sources */,
+				549547DCAFC7793F33CB0B75 /* Frameworks */,
+				35C15F76D65A89BA5A44BA58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				24A729EFFA35D6C4AB40E0DB /* PBXTargetDependency */,
+			);
+			name = TideverseTests;
+			productName = TideverseTests;
+			productReference = D694C4F480A2271B9BBB1D6B /* TideverseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D621C0B6C22C45921C18D270 /* TideverseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3D595AF752CD229B782F9DC /* Build configuration list for PBXNativeTarget "TideverseUITests" */;
+			buildPhases = (
+				51B8CFAD8999F6AF7C25AA2C /* Sources */,
+				D1ADC2CDECA8F5C03BBA5109 /* Frameworks */,
+				D9C725954D058B2DA4968625 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CDEACDEB4762B7512CE68A3 /* PBXTargetDependency */,
+			);
+			name = TideverseUITests;
+			productName = TideverseUITests;
+			productReference = 04BB9B15D3FAD2BD48BC4548 /* TideverseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D0525E5F2CAA6273D0966E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					923A7866C0AAD37405F5F6F4 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+					};
+					B843CA95D4DAD9C1041AF1B2 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+						TestTargetID = 923A7866C0AAD37405F5F6F4;
+					};
+					D621C0B6C22C45921C18D270 = {
+						CreatedOnToolsVersion = 16.0;
+						LastSwiftMigration = 1600;
+						TestTargetID = 923A7866C0AAD37405F5F6F4;
+					};
+				};
+			};
+			buildConfigurationList = 045F083D9BC20561DB4C0C4E /* Build configuration list for PBXProject "Tideverse" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 572BB49C9B2F2F1B2BDA0CEC;
+			productRefGroup = E84CDEE137A3AE3BCC6C6C68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				923A7866C0AAD37405F5F6F4 /* Tideverse */,
+				B843CA95D4DAD9C1041AF1B2 /* TideverseTests */,
+				D621C0B6C22C45921C18D270 /* TideverseUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2073CC05D23A4C62AE1D0599 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEC200000000000000000001 /* PrivacyInfo.xcprivacy in Resources */,
+				E985A009584FBA8C2D48779E /* Assets.xcassets in Resources */,
+				44E0C7BAD7E8B57A6FEDE9A7 /* characters.json in Resources */,
+				038B2946EC9F2D377CF4D011 /* stories.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35C15F76D65A89BA5A44BA58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9C725954D058B2DA4968625 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CDD7CA0BFF660B20CBF00EEB /* Verify Release Metadata */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Tideverse/Resources/Info.plist",
+				"$(SRCROOT)/Tools/verify_release.py",
+			);
+			name = "Verify Release Metadata";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"$CONFIGURATION\" = \"Release\" ]; then /usr/bin/python3 \"$SRCROOT/Tools/verify_release.py\"; fi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51B8CFAD8999F6AF7C25AA2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D135B20E438DB5E826F1E8D8 /* TideverseUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F775E5E22FDAF5E1E3AFDD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E516E35470461D2F4F682FAF /* TideverseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86C03F4CB059261CF2DF6F81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FEC300000000000000000003 /* EntryConsentView.swift in Sources */,
+				FEC300000000000000000002 /* OnboardingPageView.swift in Sources */,
+				FEC300000000000000000001 /* UsageAgreementService.swift in Sources */,
+				BFE100000000000000000004 /* Tideverse/Design/TideCardButtonStyle.swift in Sources */,
+				BFE100000000000000000003 /* Tideverse/Design/TideMotion.swift in Sources */,
+				BFE100000000000000000002 /* Tideverse/Design/TideNavigationTitleModifier.swift in Sources */,
+				BFE100000000000000000001 /* Tideverse/Design/TideNavigationHeader.swift in Sources */,
+				AFE100000000000000000003 /* Tideverse/Features/Chats/ChatConsentAction.swift in Sources */,
+				AFE100000000000000000002 /* Tideverse/Features/Chats/ConversationStartersView.swift in Sources */,
+				AFE100000000000000000001 /* Tideverse/Design/TidePrimaryButtonStyle.swift in Sources */,
+				DEC100000000000000000002 /* Tideverse/Services/DeepSeekChatAdapter.swift in Sources */,
+				DEC100000000000000000001 /* Tideverse/Services/DeepSeekConfiguration.swift in Sources */,
+				0B9A983B9F5FE6CBE7A9DC6F /* AppConfiguration.swift in Sources */,
+				782AD31BE0154DCF7E252F9E /* PersistenceRecoveryView.swift in Sources */,
+				385C9968EF272AE7381BC795 /* RootTabView.swift in Sources */,
+				3140ABD2C02A9A3CA3682143 /* TideverseApp.swift in Sources */,
+				53FCE394BD6A0440C2A9D872 /* AppPersistence.swift in Sources */,
+				7AFE2017E2291211A93E23C5 /* ContentRepository.swift in Sources */,
+				220C008FFA32AF041CC9DFD5 /* TideTheme.swift in Sources */,
+				FEC100000000000000000001 /* TideSearchField.swift in Sources */,
+				3AF458D2AB9D41FBCE09D132 /* AIConsentView.swift in Sources */,
+				9AA2C9C277A49043AFBBC07B /* ChatBubble.swift in Sources */,
+				DFB999C535BDFB605BFB01EF /* ChatCharacterRow.swift in Sources */,
+				5B0A33E51FBE10FFD1C4A098 /* ChatComposerView.swift in Sources */,
+				AD90A4B0B27254E1DC7EA897 /* ChatDetailView.swift in Sources */,
+				1BEA590E8B84C5D5A891CB66 /* ChatViewModel.swift in Sources */,
+				493C0C716FDA93D7916390FC /* ChatsView.swift in Sources */,
+				893461F2CD434EEDE156E2A1 /* MemoryApprovalView.swift in Sources */,
+				597631B03AD49DEA7B885F21 /* MemoryLedgerView.swift in Sources */,
+				0F0DEB12BC3ECD8BACE3E49E /* ReplyReportView.swift in Sources */,
+				296B963D0CB7DB371ACE4269 /* StoryBeatSheet.swift in Sources */,
+				B756F553C4F1D9504D115BBF /* StorySuggestionCard.swift in Sources */,
+				E8C86B5C01EC087226F3A21A /* CharacterCard.swift in Sources */,
+				6BD577125E856142FABE5FCB /* CharacterDetailView.swift in Sources */,
+				DD48BAF03B2855F18EFF4D6F /* DiscoverHeroCard.swift in Sources */,
+				E783DD7049A1F5F139A76683 /* DiscoverView.swift in Sources */,
+				E2AAC7621D037660DDC57426 /* JourneyRow.swift in Sources */,
+				6E4B77416EF2CCE81581A474 /* JourneyStatistic.swift in Sources */,
+				DEB94F6AEAE413B2DDA4A6F2 /* JourneysView.swift in Sources */,
+				37382D6CFA0108DF68DF1B71 /* StoryDetailView.swift in Sources */,
+				A76F67DC39433E6118948746 /* StoryMomentDetailView.swift in Sources */,
+				0F20A1F5B63D47E968970B22 /* WelcomeView.swift in Sources */,
+				797135B0EF5AD42C23B1DC08 /* AboutUsView.swift in Sources */,
+				08F034DB4BE6F9BB52377383 /* DataManagementView.swift in Sources */,
+				7E3A8110951C9A5909FED9A9 /* DeveloperInformationView.swift in Sources */,
+				7B87244AC3EF4A5A9DC7B239 /* FeedbackSuggestionsView.swift in Sources */,
+				4FAD0348099E0F6FCE750E19 /* HelpView.swift in Sources */,
+				14CBB1C193454243D51B0000 /* LegalArticleView.swift in Sources */,
+				798238B374F565BBA34C382D /* PrivacyPolicyView.swift in Sources */,
+				A654EFFA0BF61DB5921B7CDD /* SettingsView.swift in Sources */,
+				A0C1EEAA36C865AC5B4FC9DA /* TermsOfUseView.swift in Sources */,
+				57DEE95AD2482D5061EDA8B1 /* ContentModels.swift in Sources */,
+				4F795BE449BDAC6D3D523D9B /* PersistenceModels.swift in Sources */,
+				A08B3E5CD1B2B41814F7FDA0 /* AIChatService.swift in Sources */,
+				F6D429148766E074666282AF /* BackupService.swift in Sources */,
+				627894139EA2C02BB0E132DF /* ChatDraftStore.swift in Sources */,
+				D07364D24D29925BCD692069 /* ChatTextBudget.swift in Sources */,
+				3C7C8DE7A93C8AF777A7B35D /* ConsentService.swift in Sources */,
+				72DA51047252A76515F9AE5F /* ImagePreparationService.swift in Sources */,
+				1B04EF4A147694D5D05C33D7 /* StoryChatDirector.swift in Sources */,
+				EEFE1B6DC12C6A4CFEE8CB29 /* StoryEngine.swift in Sources */,
+				403B2BEB223D387C7C135B82 /* StoryPDFExporter.swift in Sources */,
+				758C381EEE9E37EDF6677CCA /* VisionTextService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CDEACDEB4762B7512CE68A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 923A7866C0AAD37405F5F6F4 /* Tideverse */;
+			targetProxy = DD948E11E4744D99F0C6B904 /* PBXContainerItemProxy */;
+		};
+		24A729EFFA35D6C4AB40E0DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 923A7866C0AAD37405F5F6F4 /* Tideverse */;
+			targetProxy = E058A56C4C64CFF284F28416 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2764E059700CD0C684A1865F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3B76D92AAA427CC6E2B36A2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tideverse.app/Tideverse";
+			};
+			name = Debug;
+		};
+		3DC1AC25A8387CD0ABCF4630 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Tideverse;
+			};
+			name = Release;
+		};
+		4E1898294ECEDD0B6F352DCA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L65FF8MPC8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Tideverse/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = L65FF8MPC8.app.tideverse.journeys;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5963DBCB19F9D284E86A887F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = Tideverse;
+			};
+			name = Debug;
+		};
+		8540A98DF141C6E38AC17708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_TESTABILITY = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CAF15D856EFA194CE665060C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L65FF8MPC8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Tideverse/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = L65FF8MPC8.app.tideverse.journeys;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F4AE084292E546DCCA59CB44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = app.tideverse.journeys.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tideverse.app/Tideverse";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		045F083D9BC20561DB4C0C4E /* Build configuration list for PBXProject "Tideverse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2764E059700CD0C684A1865F /* Debug */,
+				8540A98DF141C6E38AC17708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34A42D823C36C09568AF992D /* Build configuration list for PBXNativeTarget "Tideverse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E1898294ECEDD0B6F352DCA /* Debug */,
+				CAF15D856EFA194CE665060C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		458CF199B613F9F3EC8494E1 /* Build configuration list for PBXNativeTarget "TideverseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B76D92AAA427CC6E2B36A2A /* Debug */,
+				F4AE084292E546DCCA59CB44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3D595AF752CD229B782F9DC /* Build configuration list for PBXNativeTarget "TideverseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5963DBCB19F9D284E86A887F /* Debug */,
+				3DC1AC25A8387CD0ABCF4630 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D0525E5F2CAA6273D0966E3 /* Project object */;
+}

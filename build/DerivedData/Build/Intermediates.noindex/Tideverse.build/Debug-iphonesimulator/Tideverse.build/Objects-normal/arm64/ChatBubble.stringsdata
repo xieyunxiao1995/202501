@@ -1,0 +1,24 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatBubble.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Story beat. %@",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Photo attached to this message",
+        "location": {
+          "startingColumn": 45,
+          "startingLine": 54
+        }
+      }
+    ]
+  },
+  "version": 1
+}

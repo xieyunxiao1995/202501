@@ -1,0 +1,12 @@
+name = "tideverse-ark-gateway"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = false
+
+[vars]
+ARK_MODEL_ID = "doubao-seed-character-260628"
+
+[[ratelimits]]
+name = "REQUEST_LIMITER"
+namespace_id = "1001"
+simple = { limit = 12, period = 60 }

@@ -1,0 +1,71 @@
+{
+  "capturedBuild": "1.0.0 (1)",
+  "configuration": "Debug, simulator",
+  "device": "iPhone 18 Pro / iOS 27.0",
+  "sourceResultBundle": "/tmp/tideverse-review-build/Logs/Test/Test-Tideverse-2026.11.11_11-39-54-+0800.xcresult",
+  "modified": false,
+  "screenshots": [
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/01-discover.png",
+      "sourceAttachment": "C109D264-59F1-4546-AF0D-2F446B5FDE52.png",
+      "sourceName": "02-discover_0_6F3A4E54-97F8-4055-9E2C-49B91C6BBC26.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "8a86a6567b22e2fe888545e0cae36526648fec68661cf79130db4706d5cc98ec"
+    },
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/02-character.png",
+      "sourceAttachment": "ECB6BA59-679F-4ACF-99F9-B65542D98319.png",
+      "sourceName": "03-character_0_49E24BCC-D6B8-499B-BBEA-06722FB6B15A.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "9b1818534ef08d672928be44c96a8879daf9734e711dfc44098d7907f2c51821"
+    },
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/03-story-reading.png",
+      "sourceAttachment": "3B3E769D-6A6B-4B5F-9080-2005FB13E100.png",
+      "sourceName": "04-chapter-one_0_C79B47CC-6396-4676-ACFB-21113E27087A.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "63a8dc845a5ceed68609c17ba1ff338f6f6e5964ebcb89310de1a2c0115cb794"
+    },
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/04-story-moment.png",
+      "sourceAttachment": "2EEB25F7-D62C-4B7D-A15B-D39DE9E0F55A.png",
+      "sourceName": "05-story-moment_0_70275C74-9B93-4CC0-B137-E84C9E217A0D.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "f0140cc8f8ed4376917bdefe1f4156207d1050dc4b0966005a38cc8abb05c25b"
+    },
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/05-journeys.png",
+      "sourceAttachment": "1905E473-F602-43FB-8693-17178ACA9A9F.png",
+      "sourceName": "07-journeys_0_30AB1719-736F-4757-B25B-EAE9D119D384.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "ea89ed9406688cf68b28d7ffa9b6399d516f1c6902ef2e2d36d321f8f2025cae"
+    },
+    {
+      "file": "Screenshots/en-US/iPhone-1206x2622/06-pdf-preview.png",
+      "sourceAttachment": "A9CE49EB-5F51-479A-B998-DE2D13AA8A54.png",
+      "sourceName": "10-pdf-preview_0_5BB21343-95A0-458E-92DC-501706526AA8.png",
+      "test": "TideverseUITests/testFirstJourneyPersistsAcrossRelaunch()",
+      "width": 1206,
+      "height": 2622,
+      "pngColorType": 2,
+      "sha256": "d91dd30b2747d20360dba87631dc840dcb0b8f3138664a502f95a7b8f8baec78"
+    }
+  ],
+  "needsRecapture": true,
+  "reason": "Core profiles and chapter counts changed in the Act III expansion; these are historical pre-expansion captures."
+}

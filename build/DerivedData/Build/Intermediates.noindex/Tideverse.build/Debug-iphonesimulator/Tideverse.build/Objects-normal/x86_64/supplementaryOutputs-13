@@ -1,0 +1,37 @@
+{
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatComposerView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatComposerView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatComposerView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatComposerView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatComposerView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatComposerView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatDetailView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatDetailView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatDetailView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatDetailView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatDetailView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatDetailView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatViewModel.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatViewModel.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatViewModel.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatViewModel.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatViewModel.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatViewModel.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatsView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatsView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatsView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatsView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatsView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ChatsView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/MemoryApprovalView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/MemoryApprovalView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/MemoryApprovalView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/MemoryApprovalView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/MemoryApprovalView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/build/DerivedData/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/MemoryApprovalView.swiftdeps"
+  }
+}

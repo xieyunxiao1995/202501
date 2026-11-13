@@ -1,0 +1,51 @@
+{
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/RootTabView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/RootTabView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/RootTabView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/RootTabView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/RootTabView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/RootTabView.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/App/TideverseApp.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideverseApp.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideverseApp.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideverseApp.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideverseApp.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideverseApp.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Data/AppPersistence.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AppPersistence.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AppPersistence.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AppPersistence.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AppPersistence.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AppPersistence.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Data/ContentRepository.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ContentRepository.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ContentRepository.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ContentRepository.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ContentRepository.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/ContentRepository.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Design/TideSearchField.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideSearchField.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideSearchField.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideSearchField.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideSearchField.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideSearchField.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Design/TideTheme.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideTheme.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideTheme.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideTheme.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideTheme.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/TideTheme.swiftdeps"
+  },
+  "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/AIConsentView.swift" : {
+    "const-values" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AIConsentView.swiftconstvalues",
+    "dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AIConsentView.d",
+    "diagnostics" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AIConsentView.dia",
+    "object" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AIConsentView.o",
+    "swift-dependencies" : "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/build/StoreCreative/Build/Intermediates.noindex/Tideverse.build/Debug-iphonesimulator/Tideverse.build/Objects-normal/x86_64/AIConsentView.swiftdeps"
+  }
+}

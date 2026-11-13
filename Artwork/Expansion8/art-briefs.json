@@ -1,0 +1,66 @@
+{
+  "portraits": [
+    [
+      "daria",
+      "An original fictional adult woman Daria Sen, age 41, underwater documentary photographer; deep brown skin, short tightly curled hair with a teal headband, kind observant eyes, modest zipped deep-teal expedition jacket, camera housing held securely at her side."
+    ],
+    [
+      "lucian",
+      "An original fictional adult man Lucian Rook, age 34, puzzle-library curator; olive skin, wavy chestnut hair, round thin spectacles, curious reserved expression, modest plum waistcoat over a high-collar cream shirt, carrying a closed dark puzzle box with geometric brass inlay."
+    ],
+    [
+      "maeve",
+      "An original fictional adult woman Maeve Orin, age 39, volcanic-island geologist; copper-brown skin, auburn braided hair, visible freckles, sturdy olive field coat and charcoal trousers, holding a small labeled rock case, calm capable expression."
+    ],
+    [
+      "idris",
+      "An original fictional adult man Idris Keene, age 36, practical-illusion designer; dark brown skin, close-cropped hair, neat beard, thoughtful amused expression, fully clothed indigo work jacket with rolled cuffs over a rust shirt, holding a small folded stage model."
+    ],
+    [
+      "rhea",
+      "An original fictional adult woman Rhea Sato, age 33, orbital salvage robotics engineer; East Asian features, short asymmetrical black hair with a white streak, friendly determined expression, fully clothed slate-blue utility coveralls, small inactive repair robot supported against one hip, no weapons."
+    ],
+    [
+      "bastien",
+      "An original fictional adult man Bastien Morel, age 45, scent-composition archivist; fair weathered skin, shoulder-length dark hair tied back and silver at temples, short beard, thoughtful warm gaze, fully clothed dark forest-green apron over a beige linen shirt, holding two small stoppered amber scent bottles."
+    ],
+    [
+      "anika",
+      "An original fictional adult woman Anika Dove, age 30, high-altitude kite maker; medium brown skin, long dark braid with a simple blue cloth tie, bright attentive eyes, modest layered navy and saffron travel clothes, carrying a compact folded silk kite and a spool, no fantasy armor."
+    ]
+  ],
+  "scenes": [
+    [
+      "vera",
+      "An abandoned island railway platform inside a vast stone terminal at blue hour. Two elegant clock faces show different minutes, curving rails disappear beneath a covered arch, an unmarked brass timetable cabinet, warm desk lamp, rain on windows."
+    ],
+    [
+      "daria",
+      "A serene submerged glass observation gallery beneath a coastal harbor. Blue-green water beyond thick windows, an old mosaic wall with an empty rectangular space, documentary camera equipment on a dry workbench, caustic light, no divers."
+    ],
+    [
+      "lucian",
+      "An atmospheric puzzle library built around an enormous mechanical brass reading table. Sliding bookcases, a small geometric inlaid puzzle box, linked amber lamps and translucent paper charts, a deep-blue skylight, no readable letters."
+    ],
+    [
+      "maeve",
+      "A spectacular fictional volcanic island survey shelter overlooking a dark crater lake at twilight. Safe distant mountain ridges, a strange second ridge shadow across the water, sample trays and folded survey maps on a foreground table, warm lantern."
+    ],
+    [
+      "idris",
+      "An original atmospheric practical-illusion theatre workshop with two offset doorframes and ingenious mirrored stage scenery. Exposed harmless pulleys, folded paper room model on a wooden workbench, deep indigo curtains and warm rehearsal lights, no people."
+    ],
+    [
+      "rhea",
+      "A beautiful abandoned orbital greenhouse with curved windows looking onto a distant blue planet. Overgrown but cared-for plants in hydroponic rails, small inactive repair robots, amber maintenance lights, a brass-green central seed cabinet, atmospheric science fiction."
+    ],
+    [
+      "bastien",
+      "A sophisticated scent archive workshop overlooking a rain-washed old courtyard. Small stoppered amber glass bottles, blotter strips, a ceramic rain collector, carefully arranged wooden drawers, navy dusk through tall windows and warm brass lamps, no readable labels."
+    ],
+    [
+      "anika",
+      "A mountain-top kite maker's observatory with folded silk kites, a large wind-map table and spools in a safe sheltered workshop. Through broad windows, suspended ribbons trace blue mountain winds and a distant cloud bridge, warm interior lanterns, poetic fantasy."
+    ]
+  ]
+}

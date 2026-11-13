@@ -1,0 +1,80 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/ChatsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Find a conversation",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "Chats",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 71
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your conversations",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "Meet someone new",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Try another name, or restore hidden characters in Settings.",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 64
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI conversation is currently unavailable. Your saved conversations, memory ledger and offline journeys are still here.",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "No conversations found",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 63
+        }
+      },
+      {
+        "comment": "",
+        "key": "Every world has a voice.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your choices and pinned memories keep each character’s context personal to their journey.",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 35
+        }
+      }
+    ]
+  },
+  "version": 1
+}

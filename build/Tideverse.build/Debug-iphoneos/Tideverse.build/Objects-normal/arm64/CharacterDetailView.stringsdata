@@ -1,0 +1,136 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Discover/CharacterDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Hide %@?",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "Journeys work offline. AI replies need an internet connection and your permission. Conversations cannot rewrite your saved chapter choices.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "Fictional AI character",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld. %@",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "What matters to them",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "Get to know %@",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your memory ledger",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Open conversation",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@, %lld chapters",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "Unsave character",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save character",
+        "location": {
+          "startingColumn": 76,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Character options",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hide character",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hide character",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 119
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 120
+        }
+      },
+      {
+        "comment": "",
+        "key": "This hides the character from Discover and Chats. Your journeys and memories stay saved. Restore hidden characters in Settings.",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 121
+        }
+      }
+    ]
+  },
+  "version": 1
+}

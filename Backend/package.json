@@ -1,0 +1,8 @@
+{
+  "name": "tideverse-ark-gateway",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node self_test.mjs"
+  }
+}

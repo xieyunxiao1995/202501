@@ -1,0 +1,22 @@
+{
+  "name": {
+    "characters": 9,
+    "limit": 30
+  },
+  "subtitle": {
+    "characters": 30,
+    "limit": 30
+  },
+  "promotional_text": {
+    "characters": 96,
+    "limit": 170
+  },
+  "keywords": {
+    "characters": 80,
+    "limit": 100
+  },
+  "description": {
+    "characters": 1345,
+    "limit": 4000
+  }
+}

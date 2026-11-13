@@ -1,0 +1,32 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse-ai/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Chats/StorySuggestionCard.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Recording this rewrites the chapter in your saved journey. You can still keep talking afterward.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "Keep talking",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "Record this decision",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 53
+        }
+      }
+    ]
+  },
+  "version": 1
+}

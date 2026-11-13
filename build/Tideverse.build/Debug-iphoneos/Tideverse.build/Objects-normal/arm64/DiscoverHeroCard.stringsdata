@@ -1,0 +1,64 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Discover/DiscoverHeroCard.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "PICK UP YOUR STORY",
+        "location": {
+          "startingColumn": 70,
+          "startingLine": 10
+        }
+      },
+      {
+        "comment": "",
+        "key": "A WORLD TO STEP INTO",
+        "location": {
+          "startingColumn": 93,
+          "startingLine": 10
+        }
+      },
+      {
+        "comment": "",
+        "key": "Revisit your moments",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Begin the journey",
+        "location": {
+          "startingColumn": 94,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "Continue chapter %lld",
+        "location": {
+          "startingColumn": 116,
+          "startingLine": 21
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld chapters · Play offline",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 24
+        }
+      },
+      {
+        "comment": "",
+        "key": "With %@",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 18
+        }
+      }
+    ]
+  },
+  "version": 1
+}

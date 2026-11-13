@@ -1,0 +1,87 @@
+[
+  {
+    "file": "iPhone-1320x2868/01-your-next-story.png",
+    "width": 1320,
+    "height": 2868,
+    "alpha": false,
+    "sha256": "79ef876ffc2cd84c292d95dacd2a2c1f5ef5ce91cad1e2434768b36384be0235",
+    "origin": {
+      "method": "native AppKit composition, existing app art and actual screenshots; no synthesized UI",
+      "sources": [
+        "refined-01-discover.png",
+        "mira_portrait",
+        "mira_scene"
+      ],
+      "renderer": "Tools/render_store_creative_v3.swift",
+      "styleReferences": "user-provided Tavo and Swerve iPhone screenshots; composition inspiration only"
+    }
+  },
+  {
+    "file": "iPhone-1320x2868/02-meet-the-characters.png",
+    "width": 1320,
+    "height": 2868,
+    "alpha": false,
+    "sha256": "2f506ef486553731947811beabacc9a3164033ad83249fe7ae513ec4919247a9",
+    "origin": {
+      "method": "native AppKit composition, existing app art and actual screenshots; no synthesized UI",
+      "sources": [
+        "refined-01-discover.png",
+        "refined-06-profile.png",
+        "refined-04-journeys.png",
+        "jonah_portrait",
+        "elara_portrait",
+        "seraphine_scene"
+      ],
+      "renderer": "Tools/render_store_creative_v3.swift",
+      "styleReferences": "user-provided Tavo and Swerve iPhone screenshots; composition inspiration only"
+    }
+  },
+  {
+    "file": "iPhone-1320x2868/03-begin-a-conversation.png",
+    "width": 1320,
+    "height": 2868,
+    "alpha": false,
+    "sha256": "41a84044e8ad9f935e924f90c3066d2c2429620cc79ac2206e45b9250eba1c5f",
+    "origin": {
+      "method": "native AppKit composition, existing app art and actual screenshots; no synthesized UI",
+      "sources": [
+        "refined-07-conversation.png; enlarged crop x175 y804 w975 h335",
+        "vera_portrait",
+        "vera_scene"
+      ],
+      "renderer": "Tools/render_store_creative_v3.swift",
+      "styleReferences": "user-provided Tavo and Swerve iPhone screenshots; composition inspiration only"
+    }
+  },
+  {
+    "file": "iPhone-1320x2868/04-your-story-to-keep.png",
+    "width": 1320,
+    "height": 2868,
+    "alpha": false,
+    "sha256": "3e79619095de1f859b8dc5528440fcfe8f11cead1686242873f2f974dcdcbb4e",
+    "origin": {
+      "method": "native AppKit composition, existing app art and actual screenshots; no synthesized UI",
+      "sources": [
+        "refined-04-journeys.png; enlarged crop x65 y1765 w1080 h440",
+        "luna_scene"
+      ],
+      "renderer": "Tools/render_store_creative_v3.swift",
+      "styleReferences": "user-provided Tavo and Swerve iPhone screenshots; composition inspiration only"
+    }
+  },
+  {
+    "file": "Preview.png",
+    "width": 1584,
+    "height": 860,
+    "alpha": false,
+    "sha256": "77ab8d06b68745f7410c8cdb14b79cfe9e3c3a7c718be689a0589ec6dc255e3e",
+    "origin": {
+      "method": "native AppKit composition, existing app art and actual screenshots; no synthesized UI",
+      "sources": [
+        "four finished v3 campaign posters"
+      ],
+      "renderer": "Tools/render_store_creative_v3.swift",
+      "styleReferences": "user-provided Tavo and Swerve iPhone screenshots; composition inspiration only"
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "source": "/Volumes/MAC2/swift_APP/20261028-Tideverse/Tideverse_Dark_Cartoon_Xcode_Project/Tideverse/Features/Settings/FeedbackSuggestionsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Feedback & Suggestions",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "Feedback Category",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 17
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Message",
+        "location": {
+          "startingColumn": 21,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share an idea or tell us what went wrong. Review your report before sending it with an app of your choice.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 14
+        }
+      },
+      {
+        "comment": "",
+        "key": "Category",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please avoid including private conversations, passwords or other sensitive details.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "Describe your feedback",
+        "location": {
+          "startingColumn": 41,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tideverse Feedback",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Feedback prepared in Tideverse",
+        "location": {
+          "startingColumn": 92,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear Draft",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Email Support",
+        "location": {
+          "startingColumn": 52,
+          "startingLine": 31
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share Feedback",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 35
+        }
+      }
+    ]
+  },
+  "version": 1
+}
