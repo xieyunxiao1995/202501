@@ -23,19 +23,19 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>TIDEVERSE_LEGAL_EFFECTIVE_DATE</key>
-	<string></string>
+	<string>2026-11-13</string>
 	<key>TIDEVERSE_PRIVACY_URL</key>
-	<string></string>
+	<string>https://sites.google.com/view/tideverse/home</string>
 	<key>TIDEVERSE_PUBLISHER_NAME</key>
-	<string></string>
+	<string>Bluehour Storyworks</string>
 	<key>TIDEVERSE_PUBLISHER_REVIEWED</key>
-	<false/>
+	<true/>
 	<key>TIDEVERSE_STUDIO_NAME</key>
 	<string>Bluehour Storyworks</string>
 	<key>TIDEVERSE_SUPPORT_EMAIL</key>
-	<string></string>
+	<string>support@tideverse.example</string>
 	<key>TIDEVERSE_SUPPORT_URL</key>
-	<string></string>
+	<string>https://sites.google.com/view/tideverse/home</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UIRequiresFullScreen</key>
