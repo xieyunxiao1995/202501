@@ -1,3 +1,0 @@
-Independent visual review: SHIP.
-User corrections verified: poster 02 shows exactly one character (Jonah), with no foreground duplicate or background phones. Poster 03 shows actual two-way AI conversation, no floating story extract, and a moderately enlarged matching Mira with full face and shoulders. User prompt and over 90% of AI answer remain readable. All campaign headline/support copy emphasizes chat. Poster 04 uses exact enlarged Jonah directory-card crop. No material visual fix found.
-Output validation: four opaque RGB PNGs, 1320 x 2868. Only iPhone. New Jonah profile captured from actual simulator; other source captures retained. No app runtime/icon changes; no new provider messages sent.

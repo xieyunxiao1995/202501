@@ -1,2 +1,0 @@
-Independent visual review: SHIP.
-Reviewed all four full-resolution posters and the contact sheet. Material finding in poster 03 (portrait cutoff and background bands) was fixed; reviewer re-inspected refreshed output and confirmed the fix resolved. Character count verified as 40 from project source. All four outputs verified 1320 × 2868 opaque RGB PNG. No runtime app code changed.

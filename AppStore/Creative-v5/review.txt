@@ -1,6 +1,0 @@
-Independent visual review: SHIP; no material required fixes.
-02 Elara visibly distinct from Mira, one female character only, actual screenshot readable.
-03 enlarged real conversation shows complete user prompt and AI reply unobstructed, no external portrait. Intentional lower device bleed preserves composer.
-04 enlarged Elara card is clearly female, name/description/metadata/chevron visible.
-Blue ribbons and geometric glints remain outside phones and do not obscure headings or chat.
-All four upload candidates independently verified 1320 x 2868 opaque RGB PNG.

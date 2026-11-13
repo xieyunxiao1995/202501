@@ -1,6 +1,0 @@
-Target dependency graph (3 targets)
-Target 'TideverseUITests' in project 'Tideverse'
-➜ Explicit dependency on target 'Tideverse' in project 'Tideverse'
-Target 'TideverseTests' in project 'Tideverse'
-➜ Explicit dependency on target 'Tideverse' in project 'Tideverse'
-Target 'Tideverse' in project 'Tideverse' (no dependencies)

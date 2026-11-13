@@ -1,4 +1,0 @@
-Fresh reference-based visual review: SHIP after one localized correction.
-Inspected Tavo iPhone_0/1/2, Swerve iPhone_0/1, all four final v3 posters, overview, and conversation/journeys source captures.
-Findings: strong reference fidelity with original art; no material clipping/composition defects. Added 'Authored story invitation' below enlarged excerpt in poster 03 to preserve disclosure. Reviewer re-inspected and scored the fix resolved.
-Validation: four opaque RGB PNGs, each 1320 x 2868. No iPad outputs. No app runtime or icon changes.
