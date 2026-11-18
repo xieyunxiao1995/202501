@@ -12,11 +12,6 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
-PROFILE_DIR = ROOT / "Config/Signing"
-TARGET_PROFILES = {
-    "GeckConnent": "SC6T3VGHGXcomgeckconnentapp.mobileprovision",
-    "PacketTunnel": "SC6T3VGHGXcomgeckconnentappPacketTunnel.mobileprovision",
-}
 
 
 def check(condition, message):
@@ -28,7 +23,8 @@ def read_plist(path):
     return plistlib.loads(path.read_bytes())
 
 
-def main(keychain):
+def main(keychain, app_profile, tunnel_profile):
+    target_profiles = {"GeckConnent": Path(app_profile), "PacketTunnel": Path(tunnel_profile)}
     export = read_plist(ROOT / "ExportOptions.plist")
     team = export["teamID"]
     profiles = export["provisioningProfiles"]
@@ -37,7 +33,7 @@ def main(keychain):
         "-configuration", "Release", "-sdk", "iphoneos", "-showBuildSettings", "-json",
     ], cwd=ROOT))
     release_targets = {item["target"]: item["buildSettings"] for item in settings}
-    check({release_targets[target]["PRODUCT_BUNDLE_IDENTIFIER"] for target in TARGET_PROFILES}
+    check({release_targets[target]["PRODUCT_BUNDLE_IDENTIFIER"] for target in target_profiles}
           == set(profiles), "ExportOptions.plist 必须分别映射主 App 和 Packet Tunnel。")
 
     identity_list = subprocess.check_output(
@@ -45,9 +41,8 @@ def main(keychain):
     )
     identities = set(re.findall(r"\b[A-F0-9]{40}\b", identity_list))
     validated = []
-    for target, filename in TARGET_PROFILES.items():
+    for target, source in target_profiles.items():
         build = release_targets[target]
-        source = PROFILE_DIR / filename
         profile = plistlib.loads(subprocess.check_output(["security", "cms", "-D", "-i", str(source)]))
         bundle = build["PRODUCT_BUNDLE_IDENTIFIER"]
         entitlements = profile["Entitlements"]
@@ -79,6 +74,6 @@ def main(keychain):
 
 if __name__ == "__main__":
     try:
-        main(sys.argv[1])
+        main(*sys.argv[1:])
     except (KeyError, ValueError, OSError, subprocess.CalledProcessError) as error:
         sys.exit(f"::error::{error}")

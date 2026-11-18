@@ -25,28 +25,31 @@ jobs:
           xcodebuild -version
 
       - name: Install distribution certificate and both provisioning profiles
-        env:
-          CERTIFICATE_BASE64: ${{ secrets.CERTIFICATE_BASE64 }}
-          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
         run: |
           set -euo pipefail
-          : "${CERTIFICATE_BASE64:?Set CERTIFICATE_BASE64 in GitHub Actions secrets}"
-          : "${CERTIFICATE_PASSWORD:?Set CERTIFICATE_PASSWORD in GitHub Actions secrets}"
+          source .github/scripts/release-credentials.sh
           umask 077
           keychain="$RUNNER_TEMP/app-signing.keychain-db"
-          certificate="$RUNNER_TEMP/distribution.p12"
+          signing_dir="$(mktemp -d "$RUNNER_TEMP/release-signing.XXXXXX")"
+          trap 'rm -rf -- "$signing_dir"' EXIT
+          certificate="$signing_dir/distribution.p12"
+          app_profile="$signing_dir/app.mobileprovision"
+          tunnel_profile="$signing_dir/packet-tunnel.mobileprovision"
           keychain_password="$(openssl rand -hex 32)"
           echo "::add-mask::$keychain_password"
-          trap 'rm -f "$certificate"' EXIT
+          echo "::add-mask::$CERTIFICATE_PASSWORD"
+
+          printf '%s' "$CERTIFICATE_BASE64" | base64 --decode > "$certificate"
+          printf '%s' "$PROVISIONING_PROFILE_BASE64" | base64 --decode > "$app_profile"
+          printf '%s' "$PACKET_TUNNEL_PROFILE_BASE64" | base64 --decode > "$tunnel_profile"
 
           security create-keychain -p "$keychain_password" "$keychain"
           security set-keychain-settings -lut 21600 "$keychain"
           security unlock-keychain -p "$keychain_password" "$keychain"
           security list-keychains -d user -s "$keychain" "$HOME/Library/Keychains/login.keychain-db"
-          printf '%s' "$CERTIFICATE_BASE64" | base64 --decode > "$certificate"
           security import "$certificate" -k "$keychain" -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$keychain_password" "$keychain" >/dev/null
-          python3 .github/scripts/prepare-ios.py "$keychain"
+          python3 .github/scripts/prepare-ios.py "$keychain" "$app_profile" "$tunnel_profile"
 
       - name: Archive and export IPA
         run: |
@@ -74,14 +77,12 @@ jobs:
             build/ios/App.xcarchive/dSYMs/
 
       - name: Upload to App Store Connect
-        env:
-          APPLE_USERNAME: ${{ secrets.APPLE_USERNAME }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          ASC_PROVIDER_PUBLIC_ID: ${{ vars.ASC_PROVIDER_PUBLIC_ID }}
         run: |
           set -euo pipefail
-          : "${APPLE_USERNAME:?Set APPLE_USERNAME in GitHub Actions secrets}"
-          : "${APPLE_PASSWORD:?Set APPLE_PASSWORD in GitHub Actions secrets}"
+          source .github/scripts/release-credentials.sh
+          echo "::add-mask::$APPLE_USERNAME"
+          echo "::add-mask::$APPLE_PASSWORD"
+          export APPLE_PASSWORD
           shopt -s nullglob
           ipa_files=(build/ios/ipa/*.ipa)
           if [ "${#ipa_files[@]}" -ne 1 ]; then

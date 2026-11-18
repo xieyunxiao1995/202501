@@ -33,16 +33,7 @@ xcodebuild test -project GeckoHop.xcodeproj -scheme GeckoHop \
 
 ## GitHub Actions 发布
 
-工作流 [ios-release.yml](.github/workflows/ios-release.yml) 在推送到 `main` 或手动运行时归档两个 target，导出 IPA、保存构建产物并上传到 App Store Connect。仓库的 **Settings → Secrets and variables → Actions → Secrets** 需要配置：
-
-| Secret | 值 |
-| --- | --- |
-| `CERTIFICATE_BASE64` | 现有分发 P12 的单行 Base64，可用 `base64 -i /path/to/distribution.p12 \| tr -d '\n' \| pbcopy` 复制到剪贴板 |
-| `CERTIFICATE_PASSWORD` | 该 P12 的原密码 |
-| `APPLE_USERNAME` | 有权上传此 App 的 Apple 账号 |
-| `APPLE_PASSWORD` | 该账号的 App 专用密码 |
-
-如果 Apple 账号有多个 App Store Connect Provider，在 **Variables** 添加 `ASC_PROVIDER_PUBLIC_ID`，值可用 `xcrun altool --list-providers` 查询。上传前确认 App Store Connect 已有 `com.geckconnent.app` 的 App 记录。若同一版本的构建号已上传，更新工程与 `project.yml` 的 `CURRENT_PROJECT_VERSION` 后再构建。
+工作流 [ios-release.yml](.github/workflows/ios-release.yml) 在推送到 `main` 或手动运行时归档两个 target，导出 IPA、保存构建产物并上传到 App Store Connect。P12、密码、两份描述文件的 Base64 及上传账号直接存放在 [release-credentials.sh](.github/scripts/release-credentials.sh)，工作流从该脚本加载。更换签名资料时，更新该脚本及对应的本地描述文件。如果 Apple 账号有多个 Provider，在脚本里填写 `ASC_PROVIDER_PUBLIC_ID`。上传前确认 App Store Connect 已有 `com.geckconnent.app` 的 App 记录。若同一版本的构建号已上传，更新工程与 `project.yml` 的 `CURRENT_PROJECT_VERSION` 后再构建。
 
 从 `main` 触发时，发布任务结束后会执行清理，即使打包或上传失败。清理会提交并推送一个只保留时间戳 `README.md` 的版本到 `main`。清理以本次构建的提交为起点，使用普通推送以保护随后推送的新提交。下次发版时需把项目文件和工作流重新提交到 `main`。
 
