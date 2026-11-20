@@ -44,6 +44,8 @@ final class UITestService: URLProtocol, @unchecked Sendable {
                  "text": "Please attach a connection report so we can check which route was active when the network changed."]
             ]
             reply(["status": "human", "messages": messages])
+        case ("DELETE", "/user/account") where bearer == "Bearer account-fixture":
+            reply(["status": "deleted"])
         case ("POST", "/support/read") where bearer != nil: reply([:])
         case ("POST", "/user/login"), ("GET", "/user/info"):
             reply(["access_token": "account-fixture", "token_expires_at": 2_100_000_000,

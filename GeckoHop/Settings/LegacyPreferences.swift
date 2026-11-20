@@ -6,23 +6,11 @@ enum LegacyPreferences {
         copy("veil.theme", to: "theme", allowed: ["system", "light", "dark"], in: defaults)
         copy("veil.node.last", to: "selectedNode", in: defaults)
 
-        if defaults.object(forKey: "smartRouting") == nil,
-           let mode = defaults.string(forKey: "veil.routing.mode"),
-           ["global", "rule"].contains(mode) {
-            defaults.set(mode == "rule", forKey: "smartRouting")
+        for key in ["smartRouting", "customRoutes", "veil.routing.mode", "veil.routing.custom"] {
+            defaults.removeObject(forKey: key)
         }
-
-        if defaults.object(forKey: "customRoutes") == nil,
-           let legacy = defaults.stringArray(forKey: "veil.routing.custom") {
-            var seen = Set<String>()
-            let routes = legacy.compactMap { item -> [String: String]? in
-                let fields = item.split(separator: ":", maxSplits: 1)
-                guard fields.count == 2, ["direct", "proxy"].contains(fields[0]),
-                      let domain = RoutingRules.domain(String(fields[1])),
-                      seen.insert(domain).inserted else { return nil }
-                return ["domain": domain, "out": String(fields[0])]
-            }
-            defaults.set(Array(routes.prefix(200)), forKey: "customRoutes")
+        if let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+            try? FileManager.default.removeItem(at: support.appendingPathComponent("GeckConnent/cn.vrs"))
         }
     }
 

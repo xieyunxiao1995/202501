@@ -25,6 +25,7 @@ struct SupportView: View {
     @State private var visitor = false
     @State private var showDiagnostics = false
     @State private var askedDiagnostics = false
+    @State private var showFeedbackThanks = false
 
     private var signedIn: Bool { model.session != nil }
     private var available: Bool { signedIn || visitor }
@@ -156,6 +157,11 @@ struct SupportView: View {
         } message: {
             Text(L("包含系统版本、线路、连接状态和近期错误。", "Includes system version, route, connection status, and recent errors."))
         }
+        .alert(L("感谢你的反馈", "Thank you for your feedback"), isPresented: $showFeedbackThanks) {
+            Button(L("知道了", "OK"), role: .cancel) {}
+        } message: {
+            Text(L("可在客服会话中查看发送状态。", "Check the support conversation for message status."))
+        }
     }
 
     private var status: String {
@@ -227,6 +233,7 @@ struct SupportView: View {
                     Spacer(minLength: 0)
                     Button {
                         draftFocused = false
+                        showFeedbackThanks = true
                         Task { await send() }
                     } label: {
                         Text(L("发送", "Send"))
@@ -396,8 +403,12 @@ struct SupportView: View {
             guard identity == model.supportIdentity else { return }
             pendingIdentity = identity
             pending = body
-            _ = try await model.support("/messages", method: "POST", body: body, identity: identity)
+            let receipt = try await model.support("/messages", method: "POST", body: body, identity: identity)
             guard identity == model.supportIdentity else { return }
+            guard let message = receipt["message"] as? [String: Any],
+                  let sequence = message["seq"] as? Int, sequence > 0 else {
+                throw APIError(code: "response")
+            }
             if body["diagnostics"] == nil {
                 draft = ""
                 photo = nil

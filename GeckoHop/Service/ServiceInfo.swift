@@ -3,10 +3,12 @@ import Foundation
 
 @MainActor
 final class ServiceInfo: ObservableObject {
+    static let developerName = "BABIC PEKARA d.o.o."
+    static let contactEmail = "ljubomiri@babicpekara.pics"
+    static let contactURL = URL(string: "mailto:" + contactEmail)!
+
     @Published private(set) var notice: [String: Any]?
     @Published private(set) var upgrade: [String: Any]?
-    @Published private(set) var website = URL(string: "https://GeckConnent.com")!
-    @Published private(set) var email = ""
     private var lastVersionAttempt: Date?
     private var lastVersionSuccess: Date?
     private var lastNotices: Date?
@@ -76,8 +78,6 @@ final class ServiceInfo: ObservableObject {
     }
 
     private func apply(_ payload: [String: Any]) {
-        if let url = secureURL(payload["website"]) { website = url }
-        email = payload["support_email"] as? String ?? ""
         guard let remote = payload["version"] as? String, let build = payload["build_number"] as? Int else { return }
         let local = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0"
         let localBuild = Int(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "") ?? 0

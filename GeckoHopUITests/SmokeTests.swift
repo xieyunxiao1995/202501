@@ -53,6 +53,13 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(keyboard.waitForExistence(timeout: 5))
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.45)).tap()
         XCTAssertTrue(keyboard.waitForNonExistence(timeout: 5))
+        send.tap()
+        let thanks = app.alerts["Thank you for your feedback"]
+        XCTAssertTrue(thanks.waitForExistence(timeout: 5))
+        thanks.buttons["OK"].tap()
+        XCTAssertTrue(app.buttons["Retry send"].waitForExistence(timeout: 5))
+        app.buttons["Discard retry"].tap()
+        XCTAssertEqual(draft.value as? String, "I can reproduce this on mobile data.")
         XCTAssertTrue(app.buttons["Choose a photo"].isHittable)
         app.buttons["Attach a connection report"].tap()
         XCTAssertTrue(app.buttons["Send to support"].waitForExistence(timeout: 5))
@@ -136,22 +143,31 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(route.waitForExistence(timeout: 15))
         XCTAssertTrue(app.buttons["Support"].exists)
         dismissPasswordPrompt(in: app)
-        save("home", app)
-        let alternate = routes.element(boundBy: route.isSelected ? 1 : 0)
-        XCTAssertTrue(alternate.exists)
-        alternate.tap()
-        if !alternate.isSelected {
-            dismissPasswordPrompt(in: app)
-            alternate.tap()
-        }
-        XCTAssertTrue(alternate.isSelected)
-        save("alternate-route", app)
+        save("home", app, settling: true)
 
         app.buttons["Settings"].tap()
-        XCTAssertTrue(app.staticTexts["Traffic routing"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Appearance"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.staticTexts["Traffic routing"].exists)
+        XCTAssertFalse(app.buttons["Custom domain rules"].exists)
+        XCTAssertFalse(app.buttons["Update routing rules"].exists)
+        XCTAssertTrue(app.staticTexts["BABIC PEKARA d.o.o."].exists)
         dismissPasswordPrompt(in: app)
         save("settings", app)
+        let privacy = app.buttons["Privacy notice"]
+        if !privacy.isHittable { app.swipeUp() }
+        privacy.tap()
+        XCTAssertTrue(app.navigationBars["Privacy notice"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["BABIC PEKARA d.o.o."].exists)
+        app.buttons["Done"].tap()
         app.navigationBars.buttons.firstMatch.tap()
+
+        let alternate = routes.element(boundBy: route.isSelected ? 1 : 0)
+        XCTAssertTrue(alternate.waitForExistence(timeout: 5))
+        dismissPasswordPrompt(in: app)
+        alternate.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        save("alternate-route", app, settling: true)
+        XCTAssertTrue(alternate.isSelected)
+
         let account = app.buttons["Account"]
         if !account.isHittable {
             dismissPasswordPrompt(in: app)
@@ -169,8 +185,8 @@ final class SmokeTests: XCTestCase {
         XCTAssertTrue(delete.exists)
         delete.tap()
         app.alerts.buttons["Confirm deletion"].tap()
-        let alert = app.alerts["Account deletion request"]
-        let receipt = alert.staticTexts["We’ve received your request and will verify and process it within 24 hours on business days."]
+        let alert = app.alerts["Account deleted"]
+        let receipt = alert.staticTexts["The service confirmed that your account was deleted."]
         XCTAssertTrue(receipt.waitForExistence(timeout: 5))
         save("deletion-receipt", app)
         alert.buttons["OK"].tap()

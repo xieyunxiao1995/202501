@@ -132,6 +132,13 @@ which answered.
 FOUNDATION_EXPORT NSString* _Nonnull MobileResolveSealedRemote(NSString* _Nullable sealed);
 
 /**
+ * RoutingMode is "rule" for rule routing and "global" otherwise (a full
+tunnel, with or without the user's exit); platforms report it. Do not infer
+it from DNSServer: a full tunnel with an exit uses the in-tunnel resolver too.
+ */
+FOUNDATION_EXPORT NSString* _Nonnull MobileRoutingMode(NSString* _Nullable routing);
+
+/**
  * RulesVersion validates a downloaded rule file and returns its version. An
 empty path reports the rules embedded in this build.
  */

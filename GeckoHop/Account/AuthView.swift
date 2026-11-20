@@ -125,7 +125,7 @@ struct AuthView: View {
                 .disabled(submitting)
             }
             Divider()
-            Link(L("隐私政策", "Privacy policy"), destination: URL(string: "https://GeckConnent.com/privacy-policy.html")!)
+            PrivacyNoticeButton(title: L("隐私说明", "Privacy notice"))
                 .font(.footnote.weight(.medium))
                 .frame(minHeight: 44)
         }

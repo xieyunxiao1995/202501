@@ -4,13 +4,12 @@ import NetworkExtension
 
 @MainActor
 final class Tunnel: ObservableObject {
+    private static let configurationVersion = 2
     private var manager: NETunnelProviderManager?
     private var revision = 0
-    private var rulesSynced = false
     private var sampling = false
     private var probe: Task<Void, Never>?
     @Published private(set) var internetReachable: Bool?
-    @Published private(set) var ruleRouting = false
     @Published private(set) var status = "disconnected"
     @Published private(set) var nodeID = ""
     @Published private(set) var nodeName = ""
@@ -21,6 +20,10 @@ final class Tunnel: ObservableObject {
 
     var active: Bool { status != "disconnected" && status != "error" }
     var owner: String? { metadata["accountId"] as? String }
+    var hasLegacyConnection: Bool {
+        guard let manager, ![.invalid, .disconnected].contains(manager.connection.status) else { return false }
+        return (metadata["version"] as? Int ?? 0) < Self.configurationVersion
+    }
     private var providerID: String { (Bundle.main.bundleIdentifier ?? "com.GeckConnent.app") + ".PacketTunnel" }
     private var metadata: [String: Any] {
         (manager?.protocolConfiguration as? NETunnelProviderProtocol)?.providerConfiguration ?? [:]
@@ -39,7 +42,6 @@ final class Tunnel: ObservableObject {
         revision += 1
         let current = revision
         failure = nil
-        rulesSynced = false
         try await load()
         try ensureCurrent(current)
         let manager = self.manager ?? NETunnelProviderManager()
@@ -47,7 +49,7 @@ final class Tunnel: ObservableObject {
         let proto = NETunnelProviderProtocol()
         proto.providerBundleIdentifier = providerID
         proto.serverAddress = "GeckConnent"
-        proto.providerConfiguration = ["version": 1]
+        proto.providerConfiguration = ["version": Self.configurationVersion]
         for field in ["nodeId", "nodeName", "accountId"] { proto.providerConfiguration?[field] = config[field] }
         manager.protocolConfiguration = proto
         manager.localizedDescription = "GeckConnent"
@@ -94,7 +96,6 @@ final class Tunnel: ObservableObject {
             guard current == revision, [.connected, .reasserting].contains(session.status) else { return }
             let previous = status
             status = reply?["state"] as? String ?? "checking"
-            ruleRouting = reply?["routing"] as? String == "rule"
             if status != previous {
                 probe?.cancel()
                 internetReachable = nil
@@ -105,10 +106,6 @@ final class Tunnel: ObservableObject {
             nodeID = reply?["nodeId"] as? String ?? metadata["nodeId"] as? String ?? ""
             nodeName = reply?["nodeName"] as? String ?? metadata["nodeName"] as? String ?? ""
             startedAt = session.connectedDate
-            if status == "connected", !rulesSynced {
-                rulesSynced = true
-                await syncRules()
-            }
         case .disconnected:
             if active, status != "disconnecting" {
                 let error = await disconnectError(session)
@@ -119,7 +116,6 @@ final class Tunnel: ObservableObject {
                     internetReachable = nil
                     status = "error"
                     startedAt = nil
-                    rulesSynced = false
                     return
                 }
             }
@@ -143,20 +139,6 @@ final class Tunnel: ObservableObject {
         }
         if let failure { return ["system": failure] }
         return [:]
-    }
-
-    func syncRules() async {
-        guard let session = manager?.connection as? NETunnelProviderSession,
-              let data = try? Data(contentsOf: RoutingRules.file),
-              let local = RuleFile.version(data),
-              let remote = await send(Data([1, 0]), to: session)?["rulesVersion"] as? Int64,
-              local > remote,
-              await send(Data([1, 1]), to: session) != nil else { return }
-        for offset in stride(from: 0, to: data.count, by: 65_536) {
-            let bytes = data[offset..<min(offset + 65_536, data.count)]
-            guard await send(Data([1, 2]) + bytes, to: session) != nil else { return }
-        }
-        _ = await send(Data([1, 3]), to: session)
     }
 
     private func send(_ data: Data, to session: NETunnelProviderSession) async -> [String: Any]? {
@@ -223,13 +205,11 @@ final class Tunnel: ObservableObject {
     private func clear() {
         probe?.cancel()
         internetReachable = nil
-        ruleRouting = false
         status = "disconnected"
         startedAt = nil
         upload = 0
         download = 0
         nodeID = ""
         nodeName = ""
-        rulesSynced = false
     }
 }

@@ -46,7 +46,7 @@ struct ConnectionPanel: View {
             }
             if online {
                 HStack {
-                    Text(tunnel.ruleRouting ? L("智能路由", "Smart routing") : L("全局路由", "Global routing"))
+                    Text(L("全隧道 VPN", "Full-tunnel VPN"))
                     if let startedAt = tunnel.startedAt {
                         Spacer()
                         Text(startedAt, style: .timer).monospacedDigit()

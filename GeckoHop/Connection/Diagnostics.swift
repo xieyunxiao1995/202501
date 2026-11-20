@@ -20,7 +20,7 @@ extension AppModel {
         result["core"] = Self.coreVersion
         result["os"] = ProcessInfo.processInfo.operatingSystemVersionString
         result["state"] = tunnel.status
-        result["mode"] = UserDefaults.standard.bool(forKey: "smartRouting") ? "rule" : "global"
+        result["mode"] = "global"
         result["node"] = ["id": tunnel.nodeID, "name": tunnel.nodeName]
         if tunnel.active { result["traffic"] = ["up": tunnel.upload, "down": tunnel.download] }
         if let probe = tunnel.internetReachable { result["probe"] = probe ? "ok" : "failed" }

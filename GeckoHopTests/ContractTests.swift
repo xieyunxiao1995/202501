@@ -30,6 +30,26 @@ final class ContractTests: XCTestCase {
     }
 
     @MainActor
+    func testAccountDeletionWaitsForServerConfirmation() async throws {
+        for scenario in ["standard", "deletion-conflict"] {
+            let api = client(scenario: scenario)
+            let model = AppModel(api: api)
+            let vault = KeychainStore(namespace: api.base)
+            defer { try? vault.write("session", value: Optional<Session>.none) }
+            try await signIn(model)
+
+            await model.requestAccountDeletion()
+
+            let deleted = scenario == "standard"
+            XCTAssertEqual(model.showDeletionReceipt, deleted)
+            XCTAssertEqual(model.session == nil, deleted)
+            XCTAssertEqual(try vault.read("session", as: Session.self) == nil, deleted)
+            XCTAssertEqual(model.issue == nil, deleted)
+            XCTAssertFalse(model.changingAccount)
+        }
+    }
+
+    @MainActor
     func testNodesAndPendingRetryHeader() async throws {
         let api = client()
         let nodes = try await Node.decode(api.call("/nodes"))
@@ -150,7 +170,7 @@ final class ContractTests: XCTestCase {
         XCTAssertNil(model.visitorToken)
     }
 
-    func testLegacyPreferencesKeepRoutingAndRespectNewChoices() throws {
+    func testLegacyPreferencesDiscardRoutingAndRespectOtherChoices() throws {
         let suite = UUID().uuidString
         let defaults = try XCTUnwrap(UserDefaults(suiteName: suite))
         defer { defaults.removePersistentDomain(forName: suite) }
@@ -158,27 +178,25 @@ final class ContractTests: XCTestCase {
         defaults.set("zh", forKey: "veil.language")
         defaults.set("osaka", forKey: "veil.node.last")
         defaults.set("rule", forKey: "veil.routing.mode")
-        defaults.set(["direct:*.example.com", "proxy:example.com", "proxy:example.net",
-                      "invalid:ignored.test", "proxy:bad..test"], forKey: "veil.routing.custom")
+        defaults.set(["direct:*.example.com"], forKey: "veil.routing.custom")
+        defaults.set(true, forKey: "smartRouting")
+        defaults.set([["domain": "example.com", "out": "direct"]], forKey: "customRoutes")
 
         LegacyPreferences.migrate(in: defaults)
 
         XCTAssertEqual(defaults.string(forKey: "theme"), "dark")
         XCTAssertEqual(defaults.string(forKey: "language"), "zh")
         XCTAssertEqual(defaults.string(forKey: "selectedNode"), "osaka")
-        XCTAssertTrue(defaults.bool(forKey: "smartRouting"))
-        XCTAssertEqual(defaults.array(forKey: "customRoutes") as? [[String: String]], [
-            ["domain": "example.com", "out": "direct"], ["domain": "example.net", "out": "proxy"]
-        ])
+        for key in ["smartRouting", "customRoutes", "veil.routing.mode", "veil.routing.custom"] {
+            XCTAssertNil(defaults.object(forKey: key), key)
+        }
 
         defaults.set("light", forKey: "theme")
-        defaults.set(false, forKey: "smartRouting")
-        defaults.set([], forKey: "customRoutes")
         LegacyPreferences.migrate(in: defaults)
 
         XCTAssertEqual(defaults.string(forKey: "theme"), "light")
-        XCTAssertFalse(defaults.bool(forKey: "smartRouting"))
-        XCTAssertEqual(defaults.array(forKey: "customRoutes")?.count, 0)
+        XCTAssertNil(defaults.object(forKey: "smartRouting"))
+        XCTAssertNil(defaults.object(forKey: "customRoutes"))
     }
 
     @MainActor

@@ -22,6 +22,12 @@ final class ContractURLProtocol: URLProtocol, @unchecked Sendable {
             reply(200, session("renewed", expires: 2_100_000_001))
         case ("GET", "/user/invite") where authorization == "Bearer renewed":
             reply(401, ["error": "token_revoked"])
+        case ("DELETE", "/user/account") where authorization == "Bearer login" && fields == nil:
+            if request.url?.host?.hasPrefix("deletion-conflict.") == true {
+                reply(409, ["error": "membership_active"])
+            } else {
+                reply(200, ["status": "deleted"])
+            }
         case ("GET", "/nodes"):
             reply(200, ["nodes": [["id": "tokyo", "name_en": "Tokyo", "region_code": "JP"],
                                   ["id": "osaka", "name_en": "Osaka", "region_code": "JP"]]])

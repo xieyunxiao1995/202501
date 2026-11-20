@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01A7283ACDE31753C5885658 /* StatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328F5E117AFBFC8D31019FAD /* StatusBanner.swift */; };
-		08AB2DA24DAED7DED994A85E /* RuleFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588B2EBE33BECA3178166DF2 /* RuleFile.swift */; };
 		0F0F5CBBC9325F4027052F48 /* RouteTrace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185F05A50362CA682F6CBA4F /* RouteTrace.swift */; };
-		103F2A3A5C5239D75E90EEA5 /* DomainRulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F1B1758C910C2BBEFC49A /* DomainRulesView.swift */; };
 		1137F41CB285251D4486AB56 /* SupportIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94758B16FF98190BBAAD0090 /* SupportIdentity.swift */; };
 		19EC5EA7547CD5467B1E30D5 /* ConnectionPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E15A7E7F8529D76E1ECED6 /* ConnectionPanel.swift */; };
 		1ED7496E1A2D37DA8D228E66 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342759D589FD7EBF3F902323 /* AppModel.swift */; };
@@ -24,12 +22,13 @@
 		5B729296286CACAD69368A81 /* HeaderButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA6C00918B21C7E7EF38D9C /* HeaderButtonStyle.swift */; };
 		61029476DD086A762CB0477F /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79534AE7060D5102A4253C8 /* KeychainStore.swift */; };
 		64D3E4F111159DC2EAE59564 /* UITestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0914776948FD048E68479EB2 /* UITestService.swift */; };
+		6E8E103FFB289400AB0122A7 /* PrivacyNoticeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25639CA3777D9F0CF50D6647 /* PrivacyNoticeButton.swift */; };
 		7078CF867ACB22E0A216E406 /* ContractTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F02E1FFDE400E685F5C98D2 /* ContractTests.swift */; };
 		7C88E49A5462203B8C4A5886 /* Tunnel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF013D7F688434B379212BD /* Tunnel.swift */; };
 		8D0711287406E56AEBA5FCA1 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A67494442BB506E1B7B046 /* Node.swift */; };
 		8D936EC58CCCC1B23332301F /* AuthMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8890A8999DB37BB3BD75DB4D /* AuthMode.swift */; };
 		941D285857282DD37620EDED /* VeilCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955A0773DEDB733FF791AB2 /* VeilCore.xcframework */; };
-		9A95A1A98E40B908374732E1 /* GeckConnentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777FABCB91DD31A55A400131 /* GeckConnentApp.swift */; };
+		9A95A1A98E40B908374732E1 /* GeckoHopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777FABCB91DD31A55A400131 /* GeckoHopApp.swift */; };
 		9C6A128E6FFF0A5378B4BA40 /* ServiceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F7D80B01540B6690E8F59 /* ServiceInfo.swift */; };
 		9F5B3633D4B04C657A9ABA9B /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471EF32D0CD01B8708329145 /* SmokeTests.swift */; };
 		A00E68986DBCB74D1FD35824 /* InviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EABA5E7EAD7B8C049CFFDE2 /* InviteView.swift */; };
@@ -51,7 +50,6 @@
 		F6AC0855A5E3D7A0EC3A005A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD8C2EAB79CC802DB131058 /* Assets.xcassets */; };
 		F9DCDBB2C043F30F84077EA4 /* VerificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916FF242954B34ABDA1A4795 /* VerificationAPI.swift */; };
 		FA1985E36D61E3FFA9098CA0 /* LegacyPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C0C744EA6A56C90F4AF083 /* LegacyPreferences.swift */; };
-		FA791F37A4DA69149BF0ABBD /* RoutingRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D47FB766FAB59A024F6DEC7 /* RoutingRules.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,11 +94,11 @@
 		07F8524229C88F725EE6795E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0914776948FD048E68479EB2 /* UITestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestService.swift; sourceTree = "<group>"; };
 		15C0C744EA6A56C90F4AF083 /* LegacyPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyPreferences.swift; sourceTree = "<group>"; };
-		172F1B1758C910C2BBEFC49A /* DomainRulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainRulesView.swift; sourceTree = "<group>"; };
 		185F05A50362CA682F6CBA4F /* RouteTrace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTrace.swift; sourceTree = "<group>"; };
 		1D56738738AC4DF83C267BF7 /* ContractURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractURLProtocol.swift; sourceTree = "<group>"; };
 		1FF37C7FC12C2FB2F867CED3 /* SupportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportService.swift; sourceTree = "<group>"; };
 		219CBD6A087E2BCDC051D7E1 /* SupportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportMessage.swift; sourceTree = "<group>"; };
+		25639CA3777D9F0CF50D6647 /* PrivacyNoticeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyNoticeButton.swift; sourceTree = "<group>"; };
 		2BF013D7F688434B379212BD /* Tunnel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tunnel.swift; sourceTree = "<group>"; };
 		2EABA5E7EAD7B8C049CFFDE2 /* InviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteView.swift; sourceTree = "<group>"; };
 		328F5E117AFBFC8D31019FAD /* StatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBanner.swift; sourceTree = "<group>"; };
@@ -112,14 +110,12 @@
 		4C6F7D80B01540B6690E8F59 /* ServiceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceInfo.swift; sourceTree = "<group>"; };
 		4F02E1FFDE400E685F5C98D2 /* ContractTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTests.swift; sourceTree = "<group>"; };
 		51273074F73195BA77A9AE53 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		588B2EBE33BECA3178166DF2 /* RuleFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleFile.swift; sourceTree = "<group>"; };
 		640B2AEB1826ED4A35190C7A /* CaptchaChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptchaChallenge.swift; sourceTree = "<group>"; };
 		6D90BA9552320498A9C96A86 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		718524A39BB77139C53DB6FB /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		76BEEA0A38A95D24C72C8FA7 /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
-		777FABCB91DD31A55A400131 /* GeckConnentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeckoHopApp.swift; sourceTree = "<group>"; };
+		777FABCB91DD31A55A400131 /* GeckoHopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeckoHopApp.swift; sourceTree = "<group>"; };
 		7C73F4CDAB662A5DA576AE2E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		7D47FB766FAB59A024F6DEC7 /* RoutingRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingRules.swift; sourceTree = "<group>"; };
 		7DD8C2EAB79CC802DB131058 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8890A8999DB37BB3BD75DB4D /* AuthMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMode.swift; sourceTree = "<group>"; };
 		916FF242954B34ABDA1A4795 /* VerificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationAPI.swift; sourceTree = "<group>"; };
@@ -134,7 +130,7 @@
 		C0CEFD387D679EFDD9ED93E8 /* Diagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		C1A67494442BB506E1B7B046 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C25BFA8310EA12F30D8E0049 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
-		C955A0773DEDB733FF791AB2 /* VeilCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VeilCore.xcframework; path = "PacketTunnel/Frameworks/VeilCore.xcframework"; sourceTree = "<group>"; };
+		C955A0773DEDB733FF791AB2 /* VeilCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VeilCore.xcframework; path = PacketTunnel/Frameworks/VeilCore.xcframework; sourceTree = "<group>"; };
 		CFA6C00918B21C7E7EF38D9C /* HeaderButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderButtonStyle.swift; sourceTree = "<group>"; };
 		D64668F22E77C260A6E5B0E0 /* GeckConnent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeckConnent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA99567F89282F5EE05923B1 /* SupportContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportContactView.swift; sourceTree = "<group>"; };
@@ -188,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				342759D589FD7EBF3F902323 /* AppModel.swift */,
-				777FABCB91DD31A55A400131 /* GeckConnentApp.swift */,
+				777FABCB91DD31A55A400131 /* GeckoHopApp.swift */,
 				CFA6C00918B21C7E7EF38D9C /* HeaderButtonStyle.swift */,
 				C0C0A7A1E5A1F15000000002 /* Compat.swift */,
 				07F8524229C88F725EE6795E /* HomeView.swift */,
@@ -196,6 +192,7 @@
 				B93845416EC8E463015B643A /* LanguageMenu.swift */,
 				A5A6C5F353B58D2AA6BE91FB /* Palette.swift */,
 				328F5E117AFBFC8D31019FAD /* StatusBanner.swift */,
+				25639CA3777D9F0CF50D6647 /* PrivacyNoticeButton.swift */,
 				0914776948FD048E68479EB2 /* UITestService.swift */,
 			);
 			path = App;
@@ -208,7 +205,6 @@
 				F14F8AFB3E0E88CDA9120DAE /* GeckConnent */,
 				FF85FE35DA89C701EB15B748 /* GeckConnentTests */,
 				3D95C4E2DDB8141F61AC17F8 /* GeckConnentUITests */,
-				F29136D6040671B8241F4B67 /* Shared */,
 				2FD9CC3BBA147305F52AF40A /* Frameworks */,
 				CAAA8ABA93A7DDE821E13E2B /* Products */,
 			);
@@ -217,10 +213,8 @@
 		B90C9EBE4F2726B59EE5A1BD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				172F1B1758C910C2BBEFC49A /* DomainRulesView.swift */,
 				15C0C744EA6A56C90F4AF083 /* LegacyPreferences.swift */,
 				718524A39BB77139C53DB6FB /* PreferencesView.swift */,
-				7D47FB766FAB59A024F6DEC7 /* RoutingRules.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -296,14 +290,6 @@
 			);
 			name = GeckConnent;
 			path = GeckoHop;
-			sourceTree = "<group>";
-		};
-		F29136D6040671B8241F4B67 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				588B2EBE33BECA3178166DF2 /* RuleFile.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		FF85FE35DA89C701EB15B748 /* GeckConnentTests */ = {
@@ -461,8 +447,7 @@
 				C7D2B277ED38FFDE11B2C7FB /* CaptchaView.swift in Sources */,
 				19EC5EA7547CD5467B1E30D5 /* ConnectionPanel.swift in Sources */,
 				2C55C308D6127FF9C5DBF243 /* Diagnostics.swift in Sources */,
-				103F2A3A5C5239D75E90EEA5 /* DomainRulesView.swift in Sources */,
-				9A95A1A98E40B908374732E1 /* GeckConnentApp.swift in Sources */,
+				9A95A1A98E40B908374732E1 /* GeckoHopApp.swift in Sources */,
 				5B729296286CACAD69368A81 /* HeaderButtonStyle.swift in Sources */,
 				C0C0A7A1E5A1F15000000001 /* Compat.swift in Sources */,
 				AE3B7746F1E71C6A90A87F04 /* HomeView.swift in Sources */,
@@ -475,11 +460,10 @@
 				E9785FC779C37663DA493BA3 /* Palette.swift in Sources */,
 				CB0C6EAF876E52C71B52B2A9 /* PreferencesView.swift in Sources */,
 				0F0F5CBBC9325F4027052F48 /* RouteTrace.swift in Sources */,
-				FA791F37A4DA69149BF0ABBD /* RoutingRules.swift in Sources */,
-				08AB2DA24DAED7DED994A85E /* RuleFile.swift in Sources */,
 				9C6A128E6FFF0A5378B4BA40 /* ServiceInfo.swift in Sources */,
 				39B80840EF6908319140B08A /* Session.swift in Sources */,
 				01A7283ACDE31753C5885658 /* StatusBanner.swift in Sources */,
+				6E8E103FFB289400AB0122A7 /* PrivacyNoticeButton.swift in Sources */,
 				F3305113975CB21400D3813F /* SupportContactView.swift in Sources */,
 				1137F41CB285251D4486AB56 /* SupportIdentity.swift in Sources */,
 				C68C0490BF495417CDB2B041 /* SupportMessage.swift in Sources */,
@@ -564,7 +548,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 633;
+				CURRENT_PROJECT_VERSION = 636;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = G622AKDJJ7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -651,7 +635,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphonesimulator*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 633;
+				CURRENT_PROJECT_VERSION = 636;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = G622AKDJJ7;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -683,7 +667,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Config/VPN.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SC6T3VGHGX;
@@ -702,7 +687,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VEIL_API_BASE_URL = "https://api-GeckConnent.bigbaer77.top";
+				VEIL_API_BASE_URL = "https://api-geckohop.bigbaer77.top";
 			};
 			name = Release;
 		};
@@ -728,7 +713,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Config/VPN.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SC6T3VGHGX;
@@ -747,7 +733,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_STRICT_CONCURRENCY = complete;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VEIL_API_BASE_URL = "https://api-GeckConnent.bigbaer77.top";
+				VEIL_API_BASE_URL = "https://api-geckohop.bigbaer77.top";
 			};
 			name = Debug;
 		};
@@ -755,7 +741,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Config/VPN.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SC6T3VGHGX;
@@ -763,7 +750,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/PacketTunnel/Frameworks",
 				);
-				INFOPLIST_FILE = "PacketTunnel/Info.plist";
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -817,7 +804,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Config/VPN.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = SC6T3VGHGX;
@@ -825,7 +813,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/PacketTunnel/Frameworks",
 				);
-				INFOPLIST_FILE = "PacketTunnel/Info.plist";
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

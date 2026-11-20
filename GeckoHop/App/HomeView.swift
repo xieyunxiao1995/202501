@@ -63,11 +63,10 @@ struct HomeView: View {
 
     private var dialogs: some View {
         content
-            .alert(L("注销申请", "Account deletion request"), isPresented: deletionReceipt) {
+            .alert(L("账号已注销", "Account deleted"), isPresented: deletionReceipt) {
                 Button(L("知道了", "OK"), role: .cancel) {}
             } message: {
-                Text(L("收到用户请求会在工作日24小时内核实并处理",
-                       "We’ve received your request and will verify and process it within 24 hours on business days."))
+                Text(L("服务端已确认删除你的账号。", "The service confirmed that your account was deleted."))
             }
             .confirmationDialog(L("切换线路？", "Switch route?"), isPresented: switchPrompt, presenting: switchTarget) { node in
                 Button(L("切换并连接", "Switch and connect")) { Task { await model.switchTo(node) } }
@@ -230,11 +229,11 @@ struct HomeView: View {
                     "Selected routes, connection sessions, and data usage support connectivity and your allowance. Your account token and a temporary public key authorize the VPN. IP addresses may be used for security and abuse prevention."
                 ))
                 disclosureRow(L("连通性与客服", "Connectivity and support"), L(
-                    "VPN 按路由模式转发流量，并通过不含账号信息的请求检查连通性。客服只接收你主动发送的消息、图片和诊断。",
-                    "The VPN forwards traffic according to your routing mode and checks connectivity with a request that contains no account details. Support receives the messages, photos, and diagnostics you choose to send."
+                    "连接后，VPN 通过所选节点转发流量，并向 Google 的连通性检测端点发送不含账号信息的请求。客服接收你主动发送的消息、图片和诊断。",
+                    "When connected, the VPN routes traffic through your selected server and sends a connectivity check to a Google endpoint without account details. Support receives the messages, photos, and diagnostics you choose to send."
                 ))
             }
-            Link(L("查看隐私政策", "Read the privacy policy"), destination: URL(string: "https://GeckConnent.com/privacy-policy.html")!)
+            PrivacyNoticeButton(title: L("查看隐私说明", "Read the privacy notice"))
                 .foregroundStyle(Palette.signal)
             Button(L("继续", "Continue")) { privacyAccepted = true }
                 .buttonStyle(.borderedProminent)

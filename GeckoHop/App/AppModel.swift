@@ -40,7 +40,10 @@ final class AppModel: ObservableObject {
     func bootstrap() async {
         guard !bootstrapped else { return }
         defer { restoring = false }
-        do { try await tunnel.load() }
+        do {
+            try await tunnel.load()
+            if tunnel.hasLegacyConnection { try await tunnel.stop() }
+        }
         catch { if !Task.isCancelled { issue = error.localizedDescription } }
         do {
             let saved = try storage.read("session", as: Session.self)
@@ -127,8 +130,20 @@ final class AppModel: ObservableObject {
 
     func requestAccountDeletion() async {
         guard !changingAccount, session != nil else { return }
-        showDeletionReceipt = true
-        await signOut()
+        changingAccount = true
+        issue = nil
+        defer { changingAccount = false }
+
+        do {
+            let reply = try await authorized("/user/account", method: "DELETE")
+            guard reply["status"] as? String == "deleted" else { throw APIError(code: "response") }
+            clearSession()
+            showDeletionReceipt = true
+            await stop()
+        } catch is CancellationError {
+        } catch {
+            issue = error.localizedDescription
+        }
     }
 
     func dismissDeletionReceipt() { showDeletionReceipt = false }
@@ -221,18 +236,12 @@ final class AppModel: ObservableObject {
             if let expiry = grant["sealed_expires_at"] as? Int64, expiry <= Int64(Date().timeIntervalSince1970) {
                 throw APIError(code: "device_clock_ahead")
             }
-            var config: [String: Any] = [
+            return [
                 "nodeId": node.id, "nodeName": node.name, "uuid": uuid, "accountId": uuid,
                 "sealed": sealed, "userType": "paid",
                 "deviceSecret": base64URL(key.rawRepresentation), "apiBase": api.base, "apiToken": token,
                 "configPath": "/v2/user/connection-config", "statusPath": "/user/connection-status"
             ]
-            if UserDefaults.standard.bool(forKey: "smartRouting") {
-                let custom = (UserDefaults.standard.array(forKey: "customRoutes") as? [[String: String]]) ?? []
-                let data = try JSONSerialization.data(withJSONObject: ["mode": "rule", "custom": custom])
-                config["routing"] = String(decoding: data, as: UTF8.self)
-            }
-            return config
         }
         throw APIError(code: "prepare_timeout")
     }

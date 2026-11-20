@@ -67,10 +67,6 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
     private var attemptAbandoned = false
     private var attemptEngine: MobileEngine?
     private var attemptSession: URLSession?
-    // Whether the primary physical interface has IPv6 (MobileEngine.setDirectIPv6);
-    // nil until the first path update. Only touched on worker.
-    private var directIPv6: Bool?
-
     private func publish(_ state: String, _ message: String) {
         self.state = state
         let value: [String: Any] = [
@@ -78,7 +74,6 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
             "nodeId": config["nodeId"] as? String ?? "",
             "nodeName": config["nodeName"] as? String ?? "",
             "accountId": config["accountId"] as? String ?? "",
-            "routing": MobileDNSServer(config["routing"] as? String ?? "") == MobileDNSServer("") ? "global" : "rule",
             "upload": uploaded + (engine?.uploaded() ?? 0),
             "download": downloaded + (engine?.downloaded() ?? 0)
         ]
@@ -155,6 +150,7 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
     override func startTunnel(options: [String: NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         worker.async {
             guard self.stopped else { completionHandler(self.failure("VPN 正在运行")); return }
+            Self.removeLegacyRuleFiles()
             guard let data = options?["configuration"] as? Data,
                   let config = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let sealed = config["sealed"] as? String, let uuid = config["uuid"] as? String,
@@ -188,9 +184,7 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
             let ipv6 = NEIPv6Settings(addresses: ["fd77::2"], networkPrefixLengths: [64])
             ipv6.includedRoutes = [NEIPv6Route.default()]
             settings.ipv6Settings = ipv6
-            // Rule routing installs the core's in-tunnel resolver so no client
-            // upgrades it to encrypted DNS, which would hide names from the core.
-            let dns = NEDNSSettings(servers: [MobileDNSServer(config["routing"] as? String ?? "")])
+            let dns = NEDNSSettings(servers: [MobileDNSServer("")])
             dns.matchDomains = [""]; settings.dnsSettings = dns; settings.mtu = 1280
             self.setTunnelNetworkSettings(settings) { error in
                 self.worker.async {
@@ -250,12 +244,12 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         var error: NSError?
         let remaining = deadline == 0 ? 8 : min(8, deadline - ProcessInfo.processInfo.systemUptime)
         guard remaining > 0 else { throw failure("recovery timeout") }
+        // The existing core selects full-tunnel mode with empty routing and rule-file arguments.
         guard let next = MobileStartPacketFlowSealedRouted(config["sealed"] as? String ?? "",
-            Self.userAgent, config["routing"] as? String ?? "", Self.rulesFile.path,
+            Self.userAgent, "", "",
             bridge, max(1, Int(remaining * 1000)), &error)
         else { bridge.stop(); throw error ?? failure("core start failed") }
         self.bridge = bridge; engine = next
-        next.setDirectIPv6(directIPv6 == true)
         bridge.read(into: next)
     }
     private func closeEngine() {
@@ -269,7 +263,7 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
     private func cleanup() {
         generation += 1
         stopped = true; timer?.cancel(); timer = nil
-        monitor?.cancel(); monitor = nil; directIPv6 = nil
+        monitor?.cancel(); monitor = nil
         pathChange?.cancel(); pathChange = nil
         closeEngine(); deadline = 0; config = [:]
     }
@@ -287,15 +281,8 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         let generation = self.generation
         let timer = DispatchSource.makeTimerSource(queue: worker)
         timer.schedule(deadline: .now() + 1, repeating: 1)
-        var ticks = 0
         timer.setEventHandler { [weak self] in
             guard let self, self.generation == generation else { return }
-            // A new IPv6 address is unusable for about a second of duplicate
-            // address detection, and its end may bring no path update.
-            ticks += 1
-            if ticks % 5 == 0, self.directIPv6 != nil, let path = self.monitor?.currentPath {
-                self.checkDirectIPv6(path)
-            }
             self.supervise()
         }
         self.timer = timer; timer.resume()
@@ -318,9 +305,6 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
                     : path.usesInterfaceType(.cellular) ? "cellular"
                     : path.usesInterfaceType(.wiredEthernet) ? "ethernet" : "other"
                 self.snapshotLock.lock(); self.network = kind; self.snapshotLock.unlock()
-                // Before the primary-interface check: IPv6 can come and go on the
-                // same interface, as when its router advertisement arrives late.
-                self.checkDirectIPv6(path)
                 guard let previous = last else { last = key; return }
                 // iOS also reports cellular coming and going under Wi-Fi, Low Data
                 // Mode, DNS and similar changes. Carriers on an unchanged primary
@@ -368,13 +352,6 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         attemptLock.lock(); defer { attemptLock.unlock() }
         return attemptAbandoned
     }
-    // Notes a changed direct IPv6 answer and hands it to the core.
-    private func checkDirectIPv6(_ path: Network.NWPath) {
-        let ipv6 = Self.physicalIPv6(path)
-        guard ipv6 != directIPv6 else { return }
-        note("direct ipv6 \(ipv6 ? "yes" : "no")")
-        directIPv6 = ipv6; engine?.setDirectIPv6(ipv6)
-    }
     // The preferred physical interface, e.g. "wifi(en0)"; the tunnel's own utun is "other".
     private static func pathKey(_ path: Network.NWPath) -> String {
         guard path.status == .satisfied else { return "none" }
@@ -387,39 +364,6 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         default: "other"
         }
         return "\(kind)(\(primary.name))"
-    }
-    // Whether the preferred physical interface reaches the IPv6 Internet: it
-    // routes a public address and picks a global source for it, 2000::/3
-    // without Teredo (2001::/32) and 6to4 (2002::/16), so not link-local or
-    // ULA. A sniffed flow is accepted before it is dialed, so the core reads
-    // IPv6 names only when direct sockets reach IPv6 too. Connecting a UDP
-    // socket sends nothing. path.supportsIPv6 is not used: the path also lists
-    // the tunnel's own utun, which has IPv6.
-    private static func physicalIPv6(_ path: Network.NWPath) -> Bool {
-        guard path.status == .satisfied,
-              let primary = path.availableInterfaces.first(where: { $0.type != .other && $0.type != .loopback })
-        else { return false }
-        let fd = socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDP)
-        guard fd >= 0 else { return false }
-        defer { close(fd) }
-        var index = UInt32(primary.index)
-        var target = sockaddr_in6()
-        target.sin6_len = UInt8(MemoryLayout<sockaddr_in6>.size)
-        target.sin6_family = sa_family_t(AF_INET6)
-        target.sin6_port = UInt16(443).bigEndian
-        var source = sockaddr_in6()
-        var length = socklen_t(MemoryLayout<sockaddr_in6>.size)
-        guard setsockopt(fd, IPPROTO_IPV6, IPV6_BOUND_IF, &index, socklen_t(MemoryLayout<UInt32>.size)) == 0,
-              inet_pton(AF_INET6, "2606:4700:4700::1111", &target.sin6_addr) == 1,
-              withUnsafePointer(to: &target, {
-                  $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { connect(fd, $0, socklen_t(MemoryLayout<sockaddr_in6>.size)) }
-              }) == 0,
-              withUnsafeMutablePointer(to: &source, {
-                  $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { getsockname(fd, $0, &length) }
-              }) == 0
-        else { return false }
-        let b = source.sin6_addr.__u6_addr.__u6_addr8
-        return b.0 & 0xE0 == 0x20 && !(b.0 == 0x20 && b.1 == 0x01 && b.2 == 0 && b.3 == 0) && !(b.0 == 0x20 && b.1 == 0x02)
     }
     // Requests originate in the provider so recovery does not depend on the
     // broken tunnel. Never follow redirects carrying credentials.
@@ -526,54 +470,25 @@ final class PacketTunnelProvider: NEPacketTunnelProvider {
         publish("blocked", "连接异常，已阻止直接联网。请重试或手动断开")
         note("blocked")
     }
-    // The app cannot share files with the extension (macOS runs it as a system
-    // extension), so a downloaded rule set arrives in messages and is kept here.
-    private static let rulesFile = (FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
-        ?? FileManager.default.temporaryDirectory).appendingPathComponent("rules/cn.vrs")
-    private var incomingRules = Data()
-    private static func rulesVersion(_ path: String) -> Int64 {
-        var version: Int64 = 0
-        return MobileRulesVersion(path, &version, nil) ? version : 0
+    private static func removeLegacyRuleFiles() {
+        let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+            ?? FileManager.default.temporaryDirectory
+        let rules = support.appendingPathComponent("rules/cn.vrs")
+        try? FileManager.default.removeItem(at: rules)
+        try? FileManager.default.removeItem(at: rules.appendingPathExtension("tmp"))
     }
-    private var installedRulesVersion: Int64 {
-        max(Self.rulesVersion(""), Self.rulesVersion(Self.rulesFile.path))
-    }
-    // The core checks the file; only a newer set replaces the current one.
-    private func installRules(_ data: Data) {
-        let tmp = Self.rulesFile.appendingPathExtension("tmp")
-        defer { try? FileManager.default.removeItem(at: tmp) }
-        do {
-            try FileManager.default.createDirectory(at: tmp.deletingLastPathComponent(), withIntermediateDirectories: true)
-            try data.write(to: tmp, options: .atomic)
-            guard Self.rulesVersion(tmp.path) > installedRulesVersion else { return }
-            _ = try FileManager.default.replaceItemAt(Self.rulesFile, withItemAt: tmp)
-            // Applies at once under rule routing; a full tunnel has nothing to swap.
-            try? engine?.loadRules(data)
-        } catch {}
-    }
-    /// Messages starting with 0x01: [1, 0] asks for the version, [1, 1] begins a
-    /// transfer, [1, 2, bytes...] appends, [1, 3] installs. Each answers the version.
-    private func handleRules(_ message: Data) -> Data? {
-        switch message.count > 1 ? message[message.startIndex + 1] : 0 {
-        case 1: incomingRules = Data()
-        case 2:
-            // Matches rules.MaxSize in the core.
-            if incomingRules.count + message.count <= 4 << 20 { incomingRules.append(message.dropFirst(2)) }
-        case 3: installRules(incomingRules); incomingRules = Data()
-        default: break
-        }
-        return try? JSONSerialization.data(withJSONObject: ["rulesVersion": installedRulesVersion])
-    }
+
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
-        if messageData.first == 1 {
-            worker.async { completionHandler?(self.handleRules(messageData)) }
-            return
-        }
-        if String(data: messageData, encoding: .utf8) == "diagnostics" {
+        let message = String(data: messageData, encoding: .utf8)
+        if message == "diagnostics" {
             completionHandler?(try? JSONSerialization.data(withJSONObject: diagnostics()))
             return
         }
-        if String(data: messageData, encoding: .utf8) == "retry" {
+        guard message == "status" || message == "retry" else {
+            completionHandler?(nil)
+            return
+        }
+        if message == "retry" {
             worker.async {
                 if self.state == "blocked" && !self.stopped {
                     self.note("retry")

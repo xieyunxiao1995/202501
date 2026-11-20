@@ -37,6 +37,9 @@ struct AccountView: View {
                     }
                     .disabled(model.changingAccount)
                 }
+                if let issue = model.issue {
+                    StatusBanner(tone: .failure, message: issue)
+                }
             }
         }
         .navigationTitle(L("账号", "Account"))

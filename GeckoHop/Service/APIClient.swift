@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 struct APIClient {
-    static let fallback = "https://api-GeckConnent.bigbaer77.top"
+    static let fallback = "https://api-geckohop.bigbaer77.top"
     let base: String
     let transport: URLSession
 

@@ -45,7 +45,5 @@
 	<string>$(VEIL_API_BASE_URL)</string>
 	<key>VeilCoreVersion</key>
 	<string>0.5.2</string>
-	<key>VeilRulesVersion</key>
-	<integer>202611070230</integer>
 </dict>
 </plist>
