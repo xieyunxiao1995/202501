@@ -8,7 +8,7 @@
 - 状态模型用 `ObservableObject`（不用 iOS 17 的 Observation）。iOS 16/17 才有的系统接口集中在 [GeckoHop/App/Compat.swift](GeckoHop/App/Compat.swift)：新系统照用原组件，旧系统用替代实现。iOS 15 上的差异：输入框为单行，宽度不够时直接竖排，无法读取 VPN 断开原因（按正常断开处理），设置图标用 `dial.min`；iOS 15/16 上的空状态是自绘的。照片选择在各系统上都用 PHPicker。新代码用到 iOS 16 及以上接口时，加 `#available` 或放进 Compat.swift。
 - 工程文件已生成。修改 target、文件清单或构建设置后，可在本目录执行 `xcodegen generate`。
 - `VEIL_API_BASE_URL` 是 HTTPS API 基地址。默认使用附件文档中的 `https://api-geckohop.bigbaer77.top`，可通过 Xcode Build Settings 或命令行覆盖。钥匙串按 API 地址隔离，原域名的现有会话需要重新登录。
-- SwiftUI 版支持邮箱验证、登录和续期、找回密码、邀请、节点选择、全隧道 VPN 启停、连接恢复、流量统计、公告、更新及客服。连接资格由服务端决定。
+- SwiftUI 版支持邮箱验证、登录和续期、找回密码、邀请、节点选择、全隧道 VPN 启停、连接恢复、流量统计、公告、更新及客服。连接资格由服务端决定。2
 - 登录凭据保存在 SwiftUI 版自己的 Keychain 项里。覆盖安装 Flutter 版时，用户需要重新登录并设置本机偏好。
 - 内购留到后续版本。
 
