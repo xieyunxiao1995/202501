@@ -1,9 +1,0 @@
-.DS_Store
-xcuserdata/
-build/
-DerivedData/
-*.p12
-*.p8
-*.key
-*.pem
-release.json

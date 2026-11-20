@@ -1,8 +1,0 @@
-framework module "VeilCore" {
-	header "ref.h"
-    header "Mobile.objc.h"
-    header "Universe.objc.h"
-    header "VeilCore.h"
-
-    export *
-}
